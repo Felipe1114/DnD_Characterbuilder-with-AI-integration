@@ -1,0 +1,94 @@
+"""Projektaufbau:
+- Abstrakte Parent Klasse
+
+	Class DnDTemplate(ABC):
+	...
+
+- Algemeine Klasse für algemeine daten, w.z.B alle Klassen oder alle features.
+
+	Class DnDBase(DnDClass):
+
+		def get_all_classes():
+			...
+
+        # brauche ich all diese funktionen?
+		(((def get_all_subclasses():
+		    ...
+
+		def get_all_races():
+		    ...
+
+		def get_all_features():
+		    ...
+
+		def get_alL_weapons():
+		    ...
+
+		def get_all_equipment():
+		    ...)))
+
+
+- Alle 12 DnD-Klassen als eigene Klasse
+    Hier für habe ich noch mal eine 'parent class' die alle methoden vordefiniert, die die verschiedenen klassen braucen
+
+    Ziel der jeweilgen klassen:
+        - alle api zugriffe machen, die die klasse bruacht.
+            i. get subclass
+                1)
+			ii. get spells
+				1) get all spell descriptions
+			iii. get all levels
+				1) Enthält alle features
+					a) get all feature descriptions
+				2) Enthält alle resources
+					a) Spellcasting - wenn vorhanden, ansonsten None
+						i) für jede classe hardcoden, wie maige system funktioniert
+						ii) Sagt aus, wie viele zauber slots ein zauberer auf welcher stufe hat
+					b) Class specific
+						i) wird erfasst. beschreibungen sind aber in den feature beschreibungen dabei
+
+    Class DnDClasses(DnDTemplate):
+        def __init__(self)
+            def __init__(self, index):
+                super().__init__()
+                self.index = index
+                self.endpoint = "classes"
+
+
+        von der DnDClasses Klasse man noch mal subclassen erstellen
+            ├── MartialClass (abstract base class - nicht magisch)
+            - haben keine magie -> spellcasting = None
+            │   ├── Fighter
+            │   ├── Barbarian
+            │   ├── Rogue
+            │   └── Monk
+            ├── MagicalClass (abstract base class - magisch)
+            - haben magie -> spellcasting = Josn
+            │   ├── PreparedCasters (Zauber täglich vorbereiten aus Liste)
+                    - brauchen info, wie viele zauber sie vorbereiten können aus fester auswahl
+            │   │   ├── Cleric
+            │   │   ├── Druid
+            │   │   └── Paladin
+            │   ├── KnownCasters (feste Zauber, keine Vorbereitung)
+                    - brauchen info, wie viele zauber sie kennen = vorbereitet haben
+            │   │   ├── Sorcerer
+            │   │   └── Bard
+            │   │   └── ranger
+            │   ├── FlexiblePreparedCasters (bereiten täglich aus Zauberbuch vor)
+                    - brauchen info, wie viele zauber sie kennen, vorbereiten können und zauber auswahl
+            │   │   └── Wizard
+            │   ├── PactCasters( skalierende Zauberplätze)
+                    - packt magie regeln
+                    - infos über: alle zauber auf max (spellslots), mystic arcanum, zauber zum auswählen
+            │   │   ├── Warlock
+
+
+        Class DnD{class_name}(DnDClasses):
+
+            def get_data_for_class():
+                ...
+
+            def get_data_for_subclass():
+                ...
+
+"""
