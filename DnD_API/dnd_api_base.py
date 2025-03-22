@@ -1,5 +1,7 @@
 import requests
+from requests import RequestException
 import time
+
 
 class DnDAPIBase:
     def __init__(self, url):
@@ -18,7 +20,7 @@ class DnDAPIBase:
 
             else:
                 # TODO richtige exception heausfinden
-                raise Exception(f"Error at loading: {response.status_code}; dnd_api_base.py 20")
+                raise RequestException(f"Error at loading: {response.status_code}; dnd_api_base.py 20")
 
-        except Exception as e:
+        except RequestException as e:
             print(f"Error with request: {e}")
