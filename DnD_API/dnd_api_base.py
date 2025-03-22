@@ -19,7 +19,6 @@ class DnDAPIBase:
                 time.sleep(0.1)  # delay for API
 
             else:
-                # TODO richtige exception heausfinden
                 raise RequestException(f"Error at loading: {response.status_code}; dnd_api_base.py 20")
 
         except RequestException as e:
