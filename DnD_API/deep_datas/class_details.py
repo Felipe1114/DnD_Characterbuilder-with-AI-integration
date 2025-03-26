@@ -31,7 +31,7 @@ class ClassDetails:
     def initialize_all_data(self):
         """Initialisiert alle Basisdaten: Zauber, Level und Subklassen."""
         # Überprüfen, ob Zauber vorhanden sind und laden
-        self.spells = self.load_spells() if 'spells' in self.data else None
+        self.spells = self.load_spells() if 'spells' in self.data else []
         # Laden der Leveldaten
         self.levels = self.load_levels()
         # Laden der Subklassendaten
@@ -44,6 +44,7 @@ class ClassDetails:
 
         self.d_fetcher.detail_url = url
         print("Loading base spell data")
+
         return self.d_fetcher.load_data()
 
     def load_levels(self):
@@ -53,6 +54,7 @@ class ClassDetails:
 
         self.d_fetcher.detail_url = url
         print("Loading base level data")
+
         return self.d_fetcher.load_data()
 
     def load_subclasses(self):
@@ -208,7 +210,7 @@ class ClassDetails:
             self.enriched_subclasses.append(subclass)
 
 
-    def initialate_all_details(self) -> tuple:
+    def initialize_all_details(self) -> tuple:
         """Lädt alle Details: Zauber, Level und Subklassen."""
         if self.spells:
             self.spell_details()
