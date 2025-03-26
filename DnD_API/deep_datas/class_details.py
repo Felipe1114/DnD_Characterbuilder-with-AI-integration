@@ -94,7 +94,7 @@ class ClassDetails:
             detailed_spells.append({
                 "index": spell["index"],
                 "name": spell["name"],
-                "level": spell.get("level"), # TODO warum hier spell.geht('level')?
+                "level": spell.get("level"),
                 "details": details
             })
 
