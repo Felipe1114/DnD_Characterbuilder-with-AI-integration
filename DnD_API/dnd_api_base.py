@@ -11,7 +11,7 @@ class DnDAPIBase:
     def load_data(self):
         """loads data from DnD5e-API, depending on given url"""
         try:
-            print(f"Loadt data from {self.url}")
+            print(f"Load data from {self.url}")
             response = requests.get(self.url)
 
             if response.status_code == 200:

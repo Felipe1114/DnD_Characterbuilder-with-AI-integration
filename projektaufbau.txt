@@ -46,6 +46,7 @@
 						ii) Sagt aus, wie viele zauber slots ein zauberer auf welcher stufe hat
 					b) Class specific
 						i) wird erfasst. beschreibungen sind aber in den feature beschreibungen dabei
+            iiii. equipment...
 
     Class DnDClasses(DnDTemplate):
         def __init__(self)

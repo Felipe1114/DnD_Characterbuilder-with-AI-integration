@@ -28,9 +28,7 @@ class DnDDetailsFetcher(DnDAPIBase):
             return
 
         try:
-            print(f"Lade Klassendaten von: {self.class_detail_url}")
             response = requests.get(self.class_detail_url)
-            print(response)
 
             if response.status_code == 200:
                 self.data = response.json()
@@ -41,7 +39,7 @@ class DnDDetailsFetcher(DnDAPIBase):
                 )
 
             return self.data
-
+        # TODO hier fehlermeldung mit einer eigenen fehler meldung klasse ausgeben
         except RequestException as e:
             print(f"Fehler bei der Anfrage: {e}")
             self.data = None

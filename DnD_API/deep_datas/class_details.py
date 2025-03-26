@@ -43,7 +43,6 @@ class ClassDetails:
         url = f"{BASE_URL}{self.data['spells']}"
 
         self.d_fetcher.detail_url = url
-        print("Loading base spell data")
 
         return self.d_fetcher.load_data()
 
@@ -53,7 +52,6 @@ class ClassDetails:
         url = f"{BASE_URL}{self.data['class_levels']}"
 
         self.d_fetcher.detail_url = url
-        print("Loading base level data")
 
         return self.d_fetcher.load_data()
 
@@ -63,9 +61,7 @@ class ClassDetails:
         urls = [f"{BASE_URL}{entry['url']}" for entry in self.data.get('subclasses', [])]
         all_data = []
 
-        print("Loading base subclass data")
         for i, url in enumerate(urls):
-            print(f"Loading subclass-{i}")
             self.d_fetcher.detail_url = url
             # API-Call zur Subklassen-URL
             data = self.d_fetcher.load_data()
@@ -98,7 +94,7 @@ class ClassDetails:
                 "details": details
             })
 
-            tracker.update(message='loading spell details')
+            tracker.update(message=f'loading spell details{url}')
 
         tracker.done()
 
@@ -129,9 +125,9 @@ class ClassDetails:
                     "name": feature["name"],
                     "details": details
                 })
+                tracker.update(message=f'loading level/feature details{url}')
 
             level["features"] = features
-            tracker.update(message='loading level/feature details')
 
         # gefechte daten abspeichern
         self.enriched_levels = enriched_levels
@@ -173,7 +169,7 @@ class ClassDetails:
                     "details": details
                 })
 
-                spell_tracker.update(message=f'loading {subclass['name']} spells')
+                spell_tracker.update(message=f'loading {subclass['name']} spells:{url}')
 
             spell_tracker.done()
             subclass['spells'] = subclass_spells
@@ -201,7 +197,7 @@ class ClassDetails:
                         "details": details
                     })
 
-                    feature_tracker.update(message=f'loading {subclass['name']} levels/features')
+                    feature_tracker.update(message=f'loading {subclass['name']} levels/features: {f_url}')
 
                 level["features"] = features
 
