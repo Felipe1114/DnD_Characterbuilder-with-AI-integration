@@ -1,0 +1,315 @@
+[
+    [
+        {
+            "index": "draconic",
+            "class": {
+                "index": "sorcerer",
+                "name": "Sorcerer",
+                "url": "/api/2014/classes/sorcerer"
+            },
+            "name": "Draconic",
+            "subclass_flavor": "Sorcerous Origin",
+            "desc": [
+                "Your innate magic comes from draconic magic that was mingled with your blood or that of your ancestors. Most often, sorcerers with this origin trace their descent back to a mighty sorcerer of ancient times who made a bargain with a dragon or who might even have claimed a dragon parent. Some of these bloodlines are well established in the world, but most are obscure. Any given sorcerer could be the first of a new bloodline, as a result of a pact or some other exceptional circumstance."
+            ],
+            "subclass_levels": [
+                {
+                    "level": 1,
+                    "features": [
+                        {
+                            "index": "dragon-ancestor",
+                            "name": "Dragon Ancestor",
+                            "details": {
+                                "index": "dragon-ancestor",
+                                "class": {
+                                    "index": "sorcerer",
+                                    "name": "Sorcerer",
+                                    "url": "/api/2014/classes/sorcerer"
+                                },
+                                "subclass": {
+                                    "index": "draconic",
+                                    "name": "Draconic",
+                                    "url": "/api/2014/subclasses/draconic"
+                                },
+                                "name": "Dragon Ancestor",
+                                "level": 1,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.",
+                                    "You can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+                                ],
+                                "feature_specific": {
+                                    "subfeature_options": {
+                                        "choose": 1,
+                                        "type": "feature",
+                                        "from": {
+                                            "option_set_type": "options_array",
+                                            "options": [
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-black---acid-damage",
+                                                        "name": "Dragon Ancestor: Black - Acid Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-black---acid-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-blue---lightning-damage",
+                                                        "name": "Dragon Ancestor: Blue - Lightning Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-blue---lightning-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-brass---fire-damage",
+                                                        "name": "Dragon Ancestor: Brass - Fire Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-brass---fire-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-bronze---lightning-damage",
+                                                        "name": "Dragon Ancestor: Bronze - Lightning Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-bronze---lightning-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-copper---acid-damage",
+                                                        "name": "Dragon Ancestor: Copper - Acid Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-copper---acid-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-gold---fire-damage",
+                                                        "name": "Dragon Ancestor: Gold - Fire Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-gold---fire-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-green---poison-damage",
+                                                        "name": "Dragon Ancestor: Green - Poison Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-green---poison-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-red---fire-damage",
+                                                        "name": "Dragon Ancestor: Red - Fire Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-red---fire-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-silver---cold-damage",
+                                                        "name": "Dragon Ancestor: Silver - Cold Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-silver---cold-damage"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "dragon-ancestor-white---cold-damage",
+                                                        "name": "Dragon Ancestor: White - Cold Damage",
+                                                        "url": "/api/2014/features/dragon-ancestor-white---cold-damage"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "invocations": []
+                                },
+                                "url": "/api/2014/features/dragon-ancestor",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        },
+                        {
+                            "index": "draconic-resilience",
+                            "name": "Draconic Resilience",
+                            "details": {
+                                "index": "draconic-resilience",
+                                "class": {
+                                    "index": "sorcerer",
+                                    "name": "Sorcerer",
+                                    "url": "/api/2014/classes/sorcerer"
+                                },
+                                "subclass": {
+                                    "index": "draconic",
+                                    "name": "Draconic",
+                                    "url": "/api/2014/subclasses/draconic"
+                                },
+                                "name": "Draconic Resilience",
+                                "level": 1,
+                                "prerequisites": [],
+                                "desc": [
+                                    "As magic flows through your body, it causes physical traits of your dragon ancestors to emerge. At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this class.",
+                                    "Additionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren't wearing armor, your AC equals 13 + your Dexterity modifier."
+                                ],
+                                "url": "/api/2014/features/draconic-resilience",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "sorcerer",
+                        "name": "Sorcerer",
+                        "url": "/api/2014/classes/sorcerer"
+                    },
+                    "subclass": {
+                        "index": "draconic",
+                        "name": "Draconic",
+                        "url": "/api/2014/subclasses/draconic"
+                    },
+                    "url": "/api/2014/subclasses/draconic/levels/1",
+                    "index": "draconic-1",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 6,
+                    "features": [
+                        {
+                            "index": "elemental-affinity",
+                            "name": "Elemental Affinity",
+                            "details": {
+                                "index": "elemental-affinity",
+                                "class": {
+                                    "index": "sorcerer",
+                                    "name": "Sorcerer",
+                                    "url": "/api/2014/classes/sorcerer"
+                                },
+                                "subclass": {
+                                    "index": "draconic",
+                                    "name": "Draconic",
+                                    "url": "/api/2014/subclasses/draconic"
+                                },
+                                "name": "Elemental Affinity",
+                                "level": 6,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 6th level, when you cast a spell that deals damage of the type associated with your draconic ancestry, you can add your Charisma modifier to one damage roll of that spell. At the same time, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour."
+                                ],
+                                "reference": "/api/2014/subclasses/draconic",
+                                "url": "/api/2014/features/elemental-affinity",
+                                "updated_at": "2025-03-24T22:45:33.465Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "sorcerer",
+                        "name": "Sorcerer",
+                        "url": "/api/2014/classes/sorcerer"
+                    },
+                    "subclass": {
+                        "index": "draconic",
+                        "name": "Draconic",
+                        "url": "/api/2014/subclasses/draconic"
+                    },
+                    "url": "/api/2014/subclasses/draconic/levels/6",
+                    "index": "draconic-6",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 14,
+                    "features": [
+                        {
+                            "index": "dragon-wings",
+                            "name": "Dragon Wings",
+                            "details": {
+                                "index": "dragon-wings",
+                                "class": {
+                                    "index": "sorcerer",
+                                    "name": "Sorcerer",
+                                    "url": "/api/2014/classes/sorcerer"
+                                },
+                                "subclass": {
+                                    "index": "draconic",
+                                    "name": "Draconic",
+                                    "url": "/api/2014/subclasses/draconic"
+                                },
+                                "name": "Dragon Wings",
+                                "level": 14,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 14th level, you gain the ability to sprout a pair of dragon wings from your back, gaining a flying speed equal to your current speed. You can create these wings as a bonus action on your turn. They last until you dismiss them as a bonus action on your turn.",
+                                    "You can't manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them."
+                                ],
+                                "url": "/api/2014/features/dragon-wings",
+                                "updated_at": "2025-03-24T22:45:33.465Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "sorcerer",
+                        "name": "Sorcerer",
+                        "url": "/api/2014/classes/sorcerer"
+                    },
+                    "subclass": {
+                        "index": "draconic",
+                        "name": "Draconic",
+                        "url": "/api/2014/subclasses/draconic"
+                    },
+                    "url": "/api/2014/subclasses/draconic/levels/14",
+                    "index": "draconic-14",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 18,
+                    "features": [
+                        {
+                            "index": "draconic-presence",
+                            "name": "Draconic Presence",
+                            "details": {
+                                "index": "draconic-presence",
+                                "class": {
+                                    "index": "sorcerer",
+                                    "name": "Sorcerer",
+                                    "url": "/api/2014/classes/sorcerer"
+                                },
+                                "subclass": {
+                                    "index": "draconic",
+                                    "name": "Draconic",
+                                    "url": "/api/2014/subclasses/draconic"
+                                },
+                                "name": "Draconic Presence",
+                                "level": 18,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Beginning at 18th level, you can channel the dread presence of your dragon ancestor, causing those around you to become awestruck or frightened. As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear (your choice) to a distance of 60 feet. For 1 minute or until you lose your concentration (as if you were casting a concentration spell), each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours."
+                                ],
+                                "url": "/api/2014/features/draconic-presence",
+                                "updated_at": "2025-03-24T22:45:33.465Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "sorcerer",
+                        "name": "Sorcerer",
+                        "url": "/api/2014/classes/sorcerer"
+                    },
+                    "subclass": {
+                        "index": "draconic",
+                        "name": "Draconic",
+                        "url": "/api/2014/subclasses/draconic"
+                    },
+                    "url": "/api/2014/subclasses/draconic/levels/18",
+                    "index": "draconic-18",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                }
+            ],
+            "url": "/api/2014/subclasses/draconic",
+            "updated_at": "2025-03-24T22:45:54.885Z",
+            "spells": []
+        }
+    ]
+]
