@@ -28,7 +28,6 @@ wizard_details.initialize_all_data()
 wizard_data = wizard_details.initialize_all_details()
 
 file_name_list = ['wizard_spells.json', 'wizard_levels_features.json', 'wizard_subclass(es).json']
-# TODO data_test muss noch erstellt werden
 for i, data in enumerate(wizard_data):
     crud_2 = CRUD(f'.././data_test/{file_name_list[i]}')
     crud_2.data = data

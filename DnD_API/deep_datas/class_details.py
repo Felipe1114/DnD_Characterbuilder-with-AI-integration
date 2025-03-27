@@ -46,6 +46,7 @@ class ClassDetails:
 
         return self.d_fetcher.load_data()
 
+    # TODO beim abspeichern der features wird nur eine lehre liste gespeichert, warum?!
     def load_levels(self):
         """Lädt die Levelinformationen für die Klasse."""
         # API-Call zur Level-URL
