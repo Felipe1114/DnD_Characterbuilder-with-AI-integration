@@ -1,11 +1,10 @@
 from DnD_API.dnd_api_base import DnDAPIBase
 from DnD_API.CRUD_for_Classes import CRUD
-# TODO hier noch die databe_Class importieren
 
 class DnDClassFetcher(DnDAPIBase):
     def __init__(self, url):
         super().__init__(url)
-        self.crud = CRUD("../data_test/all_classes.json")
+        self.crud = CRUD("../static_dnd_data/all_classes.json")
         # TODO hier noch ClassDetails einbauen
 
     def load_and_save(self):
@@ -21,12 +20,7 @@ class DnDClassFetcher(DnDAPIBase):
 
     # temporary method
     def save_data(self, new_data):
-       # TODO hier muss dann, statt CRUD der SQLAlchemy code hin
-        self.crud.data(new_data)
+        self.crud.data = new_data
 
-
-
-        # TODO hier kann dann der SQlAclhemy part angedockt
-        #  werden um die tables zu erstellen und die daten in das SQLite file zu packen
 
 

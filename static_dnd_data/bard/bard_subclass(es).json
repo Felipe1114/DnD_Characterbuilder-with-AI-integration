@@ -1,0 +1,187 @@
+[
+    [
+        {
+            "index": "lore",
+            "class": {
+                "index": "bard",
+                "name": "Bard",
+                "url": "/api/2014/classes/bard"
+            },
+            "name": "Lore",
+            "subclass_flavor": "Bard College",
+            "desc": [
+                "Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king. The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic. The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority."
+            ],
+            "subclass_levels": [
+                {
+                    "level": 3,
+                    "features": [
+                        {
+                            "index": "bonus-proficiencies",
+                            "name": "Bonus Proficiencies",
+                            "details": {
+                                "index": "bonus-proficiencies",
+                                "class": {
+                                    "index": "bard",
+                                    "name": "Bard",
+                                    "url": "/api/2014/classes/bard"
+                                },
+                                "subclass": {
+                                    "index": "lore",
+                                    "name": "Lore",
+                                    "url": "/api/2014/subclasses/lore"
+                                },
+                                "name": "Bonus Proficiencies",
+                                "level": 3,
+                                "prerequisites": [],
+                                "desc": [
+                                    "When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice."
+                                ],
+                                "url": "/api/2014/features/bonus-proficiencies",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        },
+                        {
+                            "index": "cutting-words",
+                            "name": "Cutting Words",
+                            "details": {
+                                "index": "cutting-words",
+                                "class": {
+                                    "index": "bard",
+                                    "name": "Bard",
+                                    "url": "/api/2014/classes/bard"
+                                },
+                                "subclass": {
+                                    "index": "lore",
+                                    "name": "Lore",
+                                    "url": "/api/2014/subclasses/lore"
+                                },
+                                "name": "Cutting Words",
+                                "level": 3,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others.",
+                                    "When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll.",
+                                    "You can choose to use this feature after the creature makes its roll, but before the GM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed."
+                                ],
+                                "url": "/api/2014/features/cutting-words",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "subclass_specific": {
+                        "additional_magical_secrets_max_lvl": 0
+                    },
+                    "class": {
+                        "index": "bard",
+                        "name": "Bard",
+                        "url": "/api/2014/classes/bard"
+                    },
+                    "subclass": {
+                        "index": "lore",
+                        "name": "Lore",
+                        "url": "/api/2014/subclasses/lore"
+                    },
+                    "url": "/api/2014/subclasses/lore/levels/3",
+                    "index": "lore-3",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 6,
+                    "features": [
+                        {
+                            "index": "additional-magical-secrets",
+                            "name": "Additional Magical Secrets",
+                            "details": {
+                                "index": "additional-magical-secrets",
+                                "class": {
+                                    "index": "bard",
+                                    "name": "Bard",
+                                    "url": "/api/2014/classes/bard"
+                                },
+                                "subclass": {
+                                    "index": "lore",
+                                    "name": "Lore",
+                                    "url": "/api/2014/subclasses/lore"
+                                },
+                                "name": "Additional Magical Secrets",
+                                "level": 6,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don't count against the number of bard spells you know."
+                                ],
+                                "url": "/api/2014/features/additional-magical-secrets",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "subclass_specific": {
+                        "additional_magical_secrets_max_lvl": 3
+                    },
+                    "class": {
+                        "index": "bard",
+                        "name": "Bard",
+                        "url": "/api/2014/classes/bard"
+                    },
+                    "subclass": {
+                        "index": "lore",
+                        "name": "Lore",
+                        "url": "/api/2014/subclasses/lore"
+                    },
+                    "url": "/api/2014/subclasses/lore/levels/6",
+                    "index": "lore-6",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 14,
+                    "features": [
+                        {
+                            "index": "peerless-skill",
+                            "name": "Peerless Skill",
+                            "details": {
+                                "index": "peerless-skill",
+                                "class": {
+                                    "index": "bard",
+                                    "name": "Bard",
+                                    "url": "/api/2014/classes/bard"
+                                },
+                                "subclass": {
+                                    "index": "lore",
+                                    "name": "Lore",
+                                    "url": "/api/2014/subclasses/lore"
+                                },
+                                "name": "Peerless Skill",
+                                "level": 14,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 14th level, when you make an ability check, you can expend one use of Bardic Inspiration. Roll a Bardic Inspiration die and add the number rolled to your ability check. You can choose to do so after you roll the die for the ability check, but before the GM tells you whether you succeed or fail."
+                                ],
+                                "url": "/api/2014/features/peerless-skill",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "subclass_specific": {
+                        "additional_magical_secrets_max_lvl": 3
+                    },
+                    "class": {
+                        "index": "bard",
+                        "name": "Bard",
+                        "url": "/api/2014/classes/bard"
+                    },
+                    "subclass": {
+                        "index": "lore",
+                        "name": "Lore",
+                        "url": "/api/2014/subclasses/lore"
+                    },
+                    "url": "/api/2014/subclasses/lore/levels/14",
+                    "index": "lore-14",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                }
+            ],
+            "url": "/api/2014/subclasses/lore",
+            "updated_at": "2025-03-24T22:45:54.885Z",
+            "spells": []
+        }
+    ]
+]

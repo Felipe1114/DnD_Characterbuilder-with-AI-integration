@@ -1,0 +1,341 @@
+[
+    [
+        {
+            "index": "hunter",
+            "class": {
+                "index": "ranger",
+                "name": "Ranger",
+                "url": "/api/2014/classes/ranger"
+            },
+            "name": "Hunter",
+            "subclass_flavor": "Ranger Archetype",
+            "desc": [
+                "Emulating the Hunter archetype means accepting your place as a bulwark between civilization and the terrors of the wilderness. As you walk the Hunter's path, you learn specialized techniques for fighting the threats you face, from rampaging ogres and hordes of orcs to towering giants and terrifying dragons."
+            ],
+            "subclass_levels": [
+                {
+                    "level": 3,
+                    "features": [
+                        {
+                            "index": "hunters-prey",
+                            "name": "Hunter's Prey",
+                            "details": {
+                                "index": "hunters-prey",
+                                "class": {
+                                    "index": "ranger",
+                                    "name": "Ranger",
+                                    "url": "/api/2014/classes/ranger"
+                                },
+                                "subclass": {
+                                    "index": "hunter",
+                                    "name": "Hunter",
+                                    "url": "/api/2014/subclasses/hunter"
+                                },
+                                "name": "Hunter's Prey",
+                                "level": 3,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 3rd level, you gain one of the following features of your choice.",
+                                    "Colossus Slayer",
+                                    "Giant Killer",
+                                    "Horde Breaker"
+                                ],
+                                "feature_specific": {
+                                    "subfeature_options": {
+                                        "choose": 1,
+                                        "type": "feature",
+                                        "from": {
+                                            "option_set_type": "options_array",
+                                            "options": [
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "hunters-prey-colossus-slayer",
+                                                        "name": "Hunter's Prey: Colossus Slayer",
+                                                        "url": "/api/2014/features/hunters-prey-colossus-slayer"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "hunters-prey-giant-killer",
+                                                        "name": "Hunter's Prey: Giant Killer",
+                                                        "url": "/api/2014/features/hunters-prey-giant-killer"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "hunters-prey-horde-breaker",
+                                                        "name": "Hunter's Prey: Horde Breaker",
+                                                        "url": "/api/2014/features/hunters-prey-horde-breaker"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "invocations": []
+                                },
+                                "url": "/api/2014/features/hunters-prey",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "ranger",
+                        "name": "Ranger",
+                        "url": "/api/2014/classes/ranger"
+                    },
+                    "subclass": {
+                        "index": "hunter",
+                        "name": "Hunter",
+                        "url": "/api/2014/subclasses/hunter"
+                    },
+                    "url": "/api/2014/subclasses/hunter/levels/3",
+                    "index": "hunter-3",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 7,
+                    "features": [
+                        {
+                            "index": "defensive-tactics",
+                            "name": "Defensive Tactics",
+                            "details": {
+                                "index": "defensive-tactics",
+                                "class": {
+                                    "index": "ranger",
+                                    "name": "Ranger",
+                                    "url": "/api/2014/classes/ranger"
+                                },
+                                "subclass": {
+                                    "index": "hunter",
+                                    "name": "Hunter",
+                                    "url": "/api/2014/subclasses/hunter"
+                                },
+                                "name": "Defensive Tactics",
+                                "level": 7,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 7th level, you gain one of the following features of your choice.",
+                                    "Escape the Horde",
+                                    "Multiattack Defense",
+                                    "Steel Will"
+                                ],
+                                "feature_specific": {
+                                    "subfeature_options": {
+                                        "choose": 1,
+                                        "type": "feature",
+                                        "from": {
+                                            "option_set_type": "options_array",
+                                            "options": [
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "defensive-tactics-escape-the-horde",
+                                                        "name": "Defensive Tactics: Escape the Horde",
+                                                        "url": "/api/2014/features/defensive-tactics-escape-the-horde"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "defensive-tactics-multiattack-defense",
+                                                        "name": "Defensive Tactics: Multiattack Defense",
+                                                        "url": "/api/2014/features/defensive-tactics-multiattack-defense"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "defensive-tactics-steel-will",
+                                                        "name": "Defensive Tactics: Steel Will",
+                                                        "url": "/api/2014/features/defensive-tactics-steel-will"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "invocations": []
+                                },
+                                "url": "/api/2014/features/defensive-tactics",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "ranger",
+                        "name": "Ranger",
+                        "url": "/api/2014/classes/ranger"
+                    },
+                    "subclass": {
+                        "index": "hunter",
+                        "name": "Hunter",
+                        "url": "/api/2014/subclasses/hunter"
+                    },
+                    "url": "/api/2014/subclasses/hunter/levels/7",
+                    "index": "hunter-7",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 11,
+                    "features": [
+                        {
+                            "index": "multiattack",
+                            "name": "Multiattack",
+                            "details": {
+                                "index": "multiattack",
+                                "class": {
+                                    "index": "ranger",
+                                    "name": "Ranger",
+                                    "url": "/api/2014/classes/ranger"
+                                },
+                                "subclass": {
+                                    "index": "hunter",
+                                    "name": "Hunter",
+                                    "url": "/api/2014/subclasses/hunter"
+                                },
+                                "name": "Multiattack",
+                                "level": 11,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 11th level, you gain one of the following features of your choice.",
+                                    "Volley",
+                                    "Whirlwind Attack"
+                                ],
+                                "feature_specific": {
+                                    "subfeature_options": {
+                                        "choose": 1,
+                                        "type": "feature",
+                                        "from": {
+                                            "option_set_type": "options_array",
+                                            "options": [
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "multiattack-volley",
+                                                        "name": "Multiattack: Volley",
+                                                        "url": "/api/2014/features/multiattack-volley"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "multiattack-whirlwind-attack",
+                                                        "name": "Multiattack: Whirlwind Attack",
+                                                        "url": "/api/2014/features/multiattack-whirlwind-attack"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "invocations": []
+                                },
+                                "url": "/api/2014/features/multiattack",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "ranger",
+                        "name": "Ranger",
+                        "url": "/api/2014/classes/ranger"
+                    },
+                    "subclass": {
+                        "index": "hunter",
+                        "name": "Hunter",
+                        "url": "/api/2014/subclasses/hunter"
+                    },
+                    "url": "/api/2014/subclasses/hunter/levels/11",
+                    "index": "hunter-11",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                },
+                {
+                    "level": 15,
+                    "features": [
+                        {
+                            "index": "superior-hunters-defense",
+                            "name": "Superior Hunter's Defense",
+                            "details": {
+                                "index": "superior-hunters-defense",
+                                "class": {
+                                    "index": "ranger",
+                                    "name": "Ranger",
+                                    "url": "/api/2014/classes/ranger"
+                                },
+                                "subclass": {
+                                    "index": "hunter",
+                                    "name": "Hunter",
+                                    "url": "/api/2014/subclasses/hunter"
+                                },
+                                "name": "Superior Hunter's Defense",
+                                "level": 15,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 15th level, you gain one of the following features of your choice.",
+                                    "Evasion",
+                                    "Stand Against the Tide",
+                                    "Uncanny Dodge"
+                                ],
+                                "feature_specific": {
+                                    "subfeature_options": {
+                                        "choose": 1,
+                                        "type": "feature",
+                                        "from": {
+                                            "option_set_type": "options_array",
+                                            "options": [
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "superior-hunters-defense-evasion",
+                                                        "name": "Superior Hunter's Defense: Evasion",
+                                                        "url": "/api/2014/features/superior-hunters-defense-evasion"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "superior-hunters-defense-stand-against-the-tide",
+                                                        "name": "Superior Hunter's Defense: Stand Against the Tide",
+                                                        "url": "/api/2014/features/superior-hunters-defense-stand-against-the-tide"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "superior-hunters-defense-uncanny-dodge",
+                                                        "name": "Superior Hunter's Defense: Uncanny Dodge",
+                                                        "url": "/api/2014/features/superior-hunters-defense-uncanny-dodge"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "invocations": []
+                                },
+                                "url": "/api/2014/features/superior-hunters-defense",
+                                "updated_at": "2025-03-24T22:45:33.464Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "ranger",
+                        "name": "Ranger",
+                        "url": "/api/2014/classes/ranger"
+                    },
+                    "subclass": {
+                        "index": "hunter",
+                        "name": "Hunter",
+                        "url": "/api/2014/subclasses/hunter"
+                    },
+                    "url": "/api/2014/subclasses/hunter/levels/15",
+                    "index": "hunter-15",
+                    "updated_at": "2025-03-24T22:45:37.568Z"
+                }
+            ],
+            "url": "/api/2014/subclasses/hunter",
+            "updated_at": "2025-03-24T22:45:54.885Z",
+            "spells": []
+        }
+    ]
+]
