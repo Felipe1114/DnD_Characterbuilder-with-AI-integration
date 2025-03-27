@@ -30,3 +30,7 @@ class CRUD:
             existing_data.append(new_data)
 
             self._save(existing_data)
+
+
+    def new_file(self, new_data):
+        self._save(new_data)
