@@ -3,8 +3,8 @@ Basis-Klasse für alle 12 DnD-Klassen.
 Stellt die Grundstruktur für Subklassen bereit.
 """
 
-from DnD_API.dnd_details_fetcher import DnDDetailsFetcher
-from DnD_API.progress_tracker import ProgressTracker
+from src.DnD_API.dnd_details_fetcher import DnDDetailsFetcher
+from src.DnD_API.progress_tracker import ProgressTracker
 
 BASE_URL = "https://www.dnd5eapi.co"
 

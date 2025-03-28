@@ -1,0 +1,12 @@
+barbarian: Krieger, Barbar, wild, aggresiv, wütend, stark, übermenschlich, kampfrausch, Ritter, axt, hammer, großes schwert, nahkampf
+bard: fechter, musiker, musik, besondere magie, kunst, gevievt, geschickt, degen, dolch, nahkampf, unterstützung, dieb, schleichen, barde
+cleric: priester, ritter, gut, böse, gott, götter, unterstützer, magie, licht, dunkelheit, schutz, zauberer, weise, rüstung, schwere rüstung
+druid: natur, tiere, verwandlung, magie, naturmagie, priester, zauberer, weise, wald
+fighter: krieger, kämpfer, ritter, athletisch, stark, waffenmeister, fernkampf, nahkampf, kampfkust, rüstung
+monk: kampfkunst, assasine, exotisch, mönch, ki, kmapfstab, waffenlos, athletisch, akrobatisch, kämpfer, krieger, weise, kloster, nahkampf
+paladin: ritter, tempeler, orden, hammer, große waffen, nahkampf, magie, kampfmagie, licht, beschützer, schwere rüstung, schwere waffen, halbmagier
+ranger: fernkampf, natur, schleichen, halbmagier, waldläufer, bogenschütze, kampf, geschickt, athletisch, wald
+rogue: dieb, schleichen, assasine, kelttern, athletisch, akrobatisch, dolch, hinterhältig, nahkampf, fernkampf
+sorcerer: magier, zauberer, elementar magie, spezialisierte magie, magie beeinflussen, gelehrter, orden, begabt, mächtig
+warlock: packt, dunkel, magier, zauberer, magische waffen, beschwörung, schwarze magie, artefakt, mächtig
+wizard: magier, zauberer, elementar magie, gelehrter, mächtig,

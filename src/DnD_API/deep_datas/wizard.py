@@ -1,4 +1,4 @@
-from DnD_API.base.class_base import ClassDetails
+from src.DnD_API import ClassDetails
 import requests
 
 class Wizard(ClassDetails):

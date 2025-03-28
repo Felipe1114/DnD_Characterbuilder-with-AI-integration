@@ -1,5 +1,5 @@
-from DnD_API.deep_datas.class_details import ClassDetails
-from DnD_API.CRUD_for_Classes import CRUD
+from src.DnD_API.deep_datas import ClassDetails
+from src.DnD_API.CRUD_for_Classes import CRUD
 CLASS_NAMES = {
             'barbarian': 0,
             'bard': 1,

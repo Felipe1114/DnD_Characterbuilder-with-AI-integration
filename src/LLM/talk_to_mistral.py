@@ -1,5 +1,5 @@
 from mistralai import Mistral
-from env_loader import EnvLoader
+from src.handle_data.env_loader import EnvLoader
 
 env_loader = EnvLoader()
 MISTRAL_KEY = env_loader.get_mistral_api_key()

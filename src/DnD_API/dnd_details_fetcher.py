@@ -1,7 +1,7 @@
 import requests
 import time
 from requests import RequestException
-from DnD_API.dnd_api_base import DnDAPIBase
+from src.DnD_API.dnd_api_base import DnDAPIBase
 
 class DnDDetailsFetcher(DnDAPIBase):
     """
