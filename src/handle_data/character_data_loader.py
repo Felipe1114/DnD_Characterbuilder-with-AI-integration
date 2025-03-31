@@ -37,6 +37,8 @@ class CharacterDataLoader:
         self.crud = CRUD(None)
 
         self.class_name = class_name.lower()
+        # TODO pfad muss vielleicht noch mal angepasst werden, je nach dem, wo die Klasse referenziert wird
+        # TODO wenn pfad probleme macht, vielleicht mit OS arbeiten?
         self.data_base_path = "../../static_dnd_data/"
         self.base_data_path = "all_classes.json"
         self.class_data_path = f"{class_name}/{class_name}"
@@ -59,6 +61,7 @@ class CharacterDataLoader:
         subclass_crud = CRUD(self.subclass_file_path)
 
         base_data = base_crud.data[CLASS_INDICIES[self.class_name]]
+
         spells = spell_crud.data
         level_features = level_crud.data
         subclasses = subclass_crud.data
