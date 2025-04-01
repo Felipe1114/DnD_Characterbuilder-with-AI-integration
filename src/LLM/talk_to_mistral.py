@@ -1,5 +1,5 @@
 from mistralai import Mistral
-from env_loader import EnvLoader
+from src.handle_data.env_loader import EnvLoader
 
 env_loader = EnvLoader()
 MISTRAL_KEY = env_loader.get_mistral_api_key()
@@ -32,8 +32,9 @@ class TalkToMistral:
 
         return self.mistral_response.choices[0].message.content
 
-
-
+    def system_message(self):
+        """erklärt dem LLM, was es genau mit den erhaltenen daten machen soll"""
+        ...
 
 
 

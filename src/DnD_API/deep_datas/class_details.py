@@ -3,8 +3,8 @@ Basis-Klasse für alle 12 DnD-Klassen.
 Stellt die Grundstruktur für Subklassen bereit.
 """
 
-from DnD_API.dnd_details_fetcher import DnDDetailsFetcher
-from DnD_API.progress_tracker import ProgressTracker
+from src.DnD_API.dnd_details_fetcher import DnDDetailsFetcher
+from src.DnD_API.progress_tracker import ProgressTracker
 
 BASE_URL = "https://www.dnd5eapi.co"
 
@@ -46,6 +46,7 @@ class ClassDetails:
 
         return self.d_fetcher.load_data()
 
+    # TODO beim abspeichern der features wird nur eine lehre liste gespeichert, warum?!
     def load_levels(self):
         """Lädt die Levelinformationen für die Klasse."""
         # API-Call zur Level-URL
