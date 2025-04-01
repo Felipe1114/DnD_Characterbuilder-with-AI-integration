@@ -6,8 +6,9 @@ from sentence_transformers import SentenceTransformer, util
 from src.handle_data.CRUD import CRUD
 
 CLASS_KEYWORDS_URL = "../static_dnd_data/class_keywords.json"
-
-class AnalyzeUserPrompt:
+# TODO was genau dauert so lange: das laden?
+# TODO wenn es zu lange dauert, auch Mistral einfach verwenden / oder eine ghostere variante des transformers
+class AnalyceClassName:
     def __init__(self, class_keywords: dict[str, list[str]]=None, model_name="all-MiniLM-L6-v2"):
         self.class_keywords = class_keywords
         self.model = SentenceTransformer(model_name)
