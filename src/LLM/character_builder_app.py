@@ -1,4 +1,9 @@
-"""	•	Main Controller: bekommt User-Prompt
-	•	ruft CharacterRequestBuilder auf
-	•	sendet Anfrage an TalkToMistral
-	•	zeigt die fertigen Charaktere an"""
+"""	fungiert als LLM-main
+kombiniert
+- Class CharacterRequestBuilder
+- Class TalkToMistral
+- AnalyseUserPromt
+
+kombiniert alles und gibt das - von dem LLM - erstelle Character Json zurück.
+
+"""
