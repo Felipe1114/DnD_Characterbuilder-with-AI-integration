@@ -9,7 +9,8 @@ class TalkToMistral:
     def __init__(self):
         # greif auf 'mistral_small' zurück link: https://docs.mistral.ai/getting-started/models/models_overview/
         self.model = "mistral-small-latest"
-        self.client = Mistral(api_key=MISTRAL_KEY)
+        # TODO api key muss aus env_loader kommen!!!!!!!!!!!!
+        self.client = Mistral(api_key="EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt")
 
         self._mistral_response = None
 

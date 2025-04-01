@@ -7,7 +7,7 @@ class EnvLoader:
     Lädt Umgebungsvariablen aus einer .env-Datei und stellt Zugriffsmethoden bereit.
     """
 
-    def __init__(self, env_path: str = ".env"):
+    def __init__(self, env_path: str = "../../.env"):
         """
         Initialisiert die Klasse und lädt die .env-Datei.
 
@@ -22,10 +22,6 @@ class EnvLoader:
         :param key: Der Name der Variable, z.b. "Mistral_API_Key"
         :return: Der Wert als String oder None, falls nicht gefunden
         """
-        if not key:
-            print("API Key nicht gefunden, env_loader.py 26")
-            quit('Programm_unvorhergesehen_beendet')
-
         return os.getenv(key)
 
     def get_mistral_api_key(self) -> str | None:

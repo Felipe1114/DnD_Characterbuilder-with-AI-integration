@@ -9,14 +9,14 @@ class RewriteUserPromt(TalkToMistral):
     def __init__(self, class_name: str):
         super().__init__()
         self.class_name = class_name
-        self._user_prompt = None
-        self.__system_prompt = f"Schreibe den folgenden Satz um, wobei du das zentrale Wesen durch '{self.class_name}' ersetzt: '''{self._user_prompt}'''\n"
 
     def rewrite(self, user_promt):
         """fragt das LLM, den User-Promt umzuschreiben"""
-        self.prompt = user_promt.strip() # definiert den user_promt
-
-        self.ask(self.__system_prompt) # gibt Mistral den Auftrag den user_promt umzuschreiben
+        stippted_user_prompt = user_promt.strip() # definiert den user_promt
+        request = (f"Schreibe den folgenden Satz um, wobei du das zentrale Wesen durch "
+                 f"'{self.class_name}' ersetzt: '''{stippted_user_prompt}'''."
+                   f"Gebe nur den umgeschriebenen Satz zurück. Füge keine erklärungen hinzu.")
+        self.ask(request) # gibt Mistral den Auftrag den user_promt umzuschreiben
 
         return self.response() # gibt umgeschriebenen user_promt zurück
 
@@ -34,7 +34,7 @@ class RewriteUserPromt(TalkToMistral):
 
 
 if __name__ == "__main__":
-    rewrite = RewriteUserPromt('wizard')
+    rewrite = RewriteUserPromt('fighter')
 
     user_promt = "dunkler Magier, der tote beschwört und feuer Zauber beherrscht"
 
