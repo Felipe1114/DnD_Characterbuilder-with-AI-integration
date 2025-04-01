@@ -1,14 +1,14 @@
 """
 """
 
-from src.LLM.analyse_user_promt import AnalyzeUserPrompt
+from src.LLM.analyse_user_promt import AnalyceClassName
 from src.handle_data.CRUD import CRUD
 
 def main():
     crud = CRUD("../static_dnd_data/class_keywords.json")
     class_keywords = crud.data
 
-    analyzer = AnalyzeUserPrompt(class_keywords=class_keywords)
+    analyzer = AnalyceClassName(class_keywords=class_keywords)
 
     user_input = input("Beschreibe deinen Charakterwunsch: ")
     results = analyzer.analyze(user_input)
