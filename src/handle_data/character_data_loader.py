@@ -53,7 +53,7 @@ class CharacterDataLoader:
                # erstellt eine liste mit spell-, level- und subclass-datapath
 
 
-    def class_data(self):
+    def class_data(self) -> tuple[dict, list, list, list]:
         """gibt alle klassen daten in einer liste zurück"""
         base_crud = CRUD(self.class_base_data)
         spell_crud = CRUD(self.spell_file_path)
