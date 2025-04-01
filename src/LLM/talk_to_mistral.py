@@ -11,30 +11,38 @@ class TalkToMistral:
         self.model = "mistral-small-latest"
         self.client = Mistral(api_key=MISTRAL_KEY)
 
-        self.mistral_response = None
+        self._mistral_response = None
 
-    def ask(self, promt):
+    def ask(self, promt: str, user: str="user"):
         """
-        schckt eine frage an Mistral_small_api und gibt die antwort zruück
+        schickt eine frage an Mistral_small_api und gibt die antwort zruück
         """
         mistral_small_response = self.client.chat.complete(
-            model=model,
-            messages=[{"role": "user", "content": f"{promt}"}]
+            model=self.model,
+            messages=[{"role": user, "content": f"{promt}"}]
         )
 
-        self.mistral_response = mistral_small_response
+        self._mistral_response = mistral_small_response
 
-    def response(self):
+    def response(self) -> str:
         """Gibt die anwort von Mistral_small zurück; falls keine antwort zwischen gespeichert ist.
         wird ausgegeben: 'You did not ask anything. Please make a question!'"""
-        if not self.mistral_response:
+        if not self._mistral_response:
             return "You did not ask anything. Please make a question!"
 
-        return self.mistral_response.choices[0].message.content
+        return self._mistral_response.choices[0].message.content
 
+    # noch nicht definiert
     def system_message(self):
         """erklärt dem LLM, was es genau mit den erhaltenen daten machen soll"""
         ...
+
+if __name__ == "__main__":
+    question = "wie viele DnD klassen gibt es in der 5. edition von Dungeons and Dragons?"
+    talk = TalkToMistral()
+    talk.ask(question)
+    print(talk.response())
+
 
 
 
