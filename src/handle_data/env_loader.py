@@ -22,6 +22,10 @@ class EnvLoader:
         :param key: Der Name der Variable, z.b. "Mistral_API_Key"
         :return: Der Wert als String oder None, falls nicht gefunden
         """
+        if not key:
+            print("API Key nicht gefunden, env_loader.py 26")
+            quit('Programm_unvorhergesehen_beendet')
+
         return os.getenv(key)
 
     def get_mistral_api_key(self) -> str | None:
