@@ -79,21 +79,14 @@ class RewriteUserPromt(TalkToMistral):
 
 
 if __name__ == "__main__":
-    crud = CRUD()
+    # TODO hier noch die speicherung der antworten einbauen
 
     prompt_key = "prompt_alpha_3"
-    user_promt = "dunkler Magier, der tote beschwört und feuer Zauber beherrscht"
-
-    data_strukture = [
-        {
-
-        }
-    ]
+    user_promt = "Ein bote des lichts. Er hat ein großes schwert und beherrscht die elemente. Er ist in eine strahlende Rüstung getaucht."
 
     rewrite = RewriteUserPromt(user_promt, prompt_key=prompt_key)
 
     rewritten_promt = rewrite.rewrite()
 
 
-    print(type(rewritten_promt))
     print(rewritten_promt)
