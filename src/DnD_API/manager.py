@@ -1,5 +1,5 @@
-from DnD_API.class_list_fetcher import DnDClassListFetcher
-from DnD_API.dnd_class_fetcher import DnDClassFetcher
+from src.DnD_API.class_list_fetcher import DnDClassListFetcher
+from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
 
 class DnDClassManager:
     def __init__(self):

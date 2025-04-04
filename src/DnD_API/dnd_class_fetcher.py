@@ -1,5 +1,5 @@
-from DnD_API.dnd_api_base import DnDAPIBase
-from DnD_API.CRUD_for_Classes import CRUD
+from src.DnD_API.dnd_api_base import DnDAPIBase
+from src.DnD_API.CRUD_for_Classes import CRUD
 
 class DnDClassFetcher(DnDAPIBase):
     def __init__(self, url):

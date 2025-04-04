@@ -1,0 +1,62 @@
+{
+    "barbarian": [
+        "krieger", "barbar", "wild", "aggressiv", "wütend", "stark",
+        "übermenschlich", "kampfrausch", "axt", "hammer", "großes schwert",
+        "widerstand", "zäh", "instinkt", "nahkampf"
+    ],
+    "bard": [
+        "barde", "musiker", "kunst", "magie", "unterstützung", "charismatisch",
+        "redegewandt", "trickreich", "geschickt", "degen", "dolch", "nahkampf",
+        "illusion", "inspiration", "soziale magie"
+    ],
+    "cleric": [
+        "priester", "götter", "magie", "heilung", "unterstützung", "licht",
+        "dunkelheit", "schutz", "göttlich", "zauber", "schwere rüstung",
+        "kanalisation", "wiederbelebung"
+    ],
+    "druid": [
+        "natur", "tiere", "verwandlung", "magie", "naturmagie", "heilung",
+        "gestaltwandlung", "wald", "pflanzen", "elemente", "wildform",
+        "beschwörung", "halbmagier"
+    ],
+    "fighter": [
+        "krieger", "kämpfer", "waffenmeister", "nahkampf", "fernkampf",
+        "rüstung", "taktik", "vielseitig", "athletisch", "kampfstil",
+        "schwert", "schild", "schwerter", "spezialisiert"
+    ],
+    "monk": [
+        "kampfkunst", "mönch", "ki", "waffenlos", "akrobatisch", "schnell",
+        "beweglich", "exotisch", "schlagkombinationen", "defensiv",
+        "meditation", "inneres chi", "kloster"
+    ],
+    "paladin": [
+        "paladin", "ritter", "gelübde", "magie", "kampfmagie", "heilung",
+        "göttlich", "licht", "schwere rüstung", "nahkampf", "beschützer",
+        "halbmagier", "heilige macht", "rache"
+    ],
+    "ranger": [
+        "natur", "waldläufer", "jäger", "bogenschütze", "verfolger",
+        "tiergefährte", "spurensuche", "geschickt", "wald", "fernkampf",
+        "halbmagier", "tarnung", "wildnis"
+    ],
+    "rogue": [
+        "dieb", "schleichen", "hinterhalt", "dolch", "akrobatisch",
+        "geschickt", "assasine", "entrinnen", "hinterhältig", "klettern",
+        "schlösser knacken", "ausweichen", "trickreich"
+    ],
+    "sorcerer": [
+        "magie", "zauber", "begabt", "chaotisch", "blutlinie", "spontan",
+        "machtvoll", "elemente", "manipulation", "magie beeinflussen",
+        "impulsgesteuert", "mächtig", "arkane macht"
+    ],
+    "warlock": [
+        "magie", "packt", "patron", "beschwörung", "dunkel", "verführerisch",
+        "manipulation", "eldritch blast", "magische waffen", "artefakte",
+        "flüche", "charismatisch", "macht gegen preis"
+    ],
+    "wizard": [
+        "magie", "zauberer", "gelehrter", "arkan", "zauberschulen",
+        "rituale", "spezialisiert", "studiert", "kontrolliert", "mächtig",
+        "elemente", "zauberbuch", "intelligenz", "theorie"
+    ]
+}
