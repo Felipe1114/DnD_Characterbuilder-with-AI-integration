@@ -1,0 +1,273 @@
+// enthält alle geschriebenen char_ideas
+Table char_ideas{
+  idea_id  int(primary_key)
+  user_prompt text
+}
+
+// enthält alle erstellen charactere
+Table characters{
+  character_id int(primary_Key)
+  idea_id int (foreign_Key)
+  char_name str
+  char_level int
+  hit_points int
+  proficiency_bonus int
+  subclass str
+  armor_class int
+  attack_bonus int
+
+}
+
+ref: characters.idea_id > char_ideas.idea_id
+
+Table attributes{
+  attribute_table_id int (primary_key)
+  character_id int (foreign_key)
+  strenght int
+  dexteerity int
+  constituion int
+  intelligence int
+  wisdom int
+  charisma int
+}
+
+ref: characters.character_id - attributes.character_id
+
+Table attribute_proficiencys{
+  attribute_prof_table_id int (primary_key)
+  character_id int (foregin_key)
+  strenght bool
+  dexteerity bool
+  constituion bool
+  intelligence bool
+  wisdom bool
+  charisma bool
+}
+
+ref: characters.character_id - attribute_proficiencys.character_id
+
+Table saving_throws{
+  character_id int (foregin_key)
+  strenght int
+  dexteerity int
+  constituion int
+  intelligence int
+  wisdom int
+  charisma int
+}
+
+ref: characters.character_id - saving_throws.character_id
+
+Table spellcasting{
+  character_id int (primary_key)
+  spellcasting_bonus int
+  spellcasting_dc int
+  spellcasting_attack_bonus int
+  contrips_kown int
+  spells_prepared int
+  spellslots_1 int
+  spellslots_2 int
+  spellslots_3 int
+  spellslots_4 int
+  spellslots_5 int
+  spellslots_6 int
+  spellslots_7 int
+  spellslots_8 int
+  spellslots_9 int
+}
+
+ref: characters.character_id - spellcasting.character_id
+
+Table known_spells{
+  spell_id int (primary_key)
+  spell_name str
+  spell_level int
+}
+
+Table spells_to_character{
+  character_id int (primary_key)
+  spell_id int (primary_key)
+  prepared bool // ist der zauber vorbereitet?
+}
+
+ref: characters.character_id - spells_to_character.character_id
+ref: known_spells.spell_id - spells_to_character.spell_id
+
+Table skills{
+  skill_table_id int (primary_id)
+  athletics int
+  acrobatics int
+  slegiht_of_hand int
+  stealth int
+  arcana int
+  history int
+  investigation int
+  nature int
+  religion int
+  animal_handling int
+  insight int
+  medicine int
+  perception int
+  survival int
+  deception int
+  intimidation int
+  performance int
+  persuasion int
+}
+
+ref: characters.character_id - skills.skill_table_id
+
+Table features{
+  feature_id int (pirmary_key)
+  feature_name str
+}
+
+Table features_to_character{
+  character_id int (primary_key)
+  feature_id int (primary_key)
+}
+
+ref: characters.character_id - features_to_character.character_id
+ref: features.feature_id - features_to_character.feature_id
+
+Table traits{
+  trait_id int (primary_key)
+  trait_name str
+}
+
+Table traits_to_character{
+  character_id int (pirmary_key)
+  trait_id int (primary_key)
+}
+
+ref: characters.character_id - traits_to_character.character_id
+ref: traits.trait_id - traits_to_character.trait_id
+
+Table languages{
+  languages_table_id int (primary_key)
+  character_id int (foregin_key)
+  common bool
+  dwarvish bool
+  elvish bool
+  giant bool
+  gnomish bool
+  goblin bool
+  halfling bool
+  orc bool
+  abyssal bool
+  celestial bool
+  draconic bool
+  deep_speach bool
+  invernal bool
+  primordoial bool
+  sylvan bool
+  undercommon bool
+}
+
+ref: characters.character_id - languages.character_id
+
+Table equipment{
+  equipment_id int (primary_key)
+  equipment_name str
+}
+
+Table equipment_to_character{
+  character_id int (primary_id)
+  equipment_id int (primary_id)
+}
+
+ref: characters.character_id - equipment_to_character.character_id
+ref: equipment.equipment_id - equipment_to_character.equipment_id
+
+Table money{
+  money_table_id int (primary_id)
+  character_id int (foreign_in)
+  platinum int
+  gold int
+  electrum int
+  silver int
+  copper int
+}
+
+ref: characters.character_id - money.character_id
+
+Table weapons{
+  weapon_id int (primary_key)
+  weapon_name str
+  damage str
+}
+
+Table weapons_to_character{
+  character_id int (primary_key)
+  weapons_id int (primary_key)
+  attack_bonus int
+}
+
+ref: characters.character_id - weapons_to_character.character_id
+ref: weapons.weapon_id - weapons_to_character.weapons_id
+
+Table properties{
+  propertie_table_id int (primary_key)
+  weapon_id int (foreign_key)
+  simple bool
+  martial bool
+  melee bool
+  ranged bool
+  ammunition bool
+  finesse bool
+  heavy bool
+  light bool
+  loading bool
+  range bool
+  reach bool
+  thrown bool
+  two_handed bool
+  versatile bool
+  improvised_weapons bool
+  silvered_weapons bool
+}
+
+ref: weapons.weapon_id - properties.weapon_id
+
+// enthält die analysierten user_prompt daten
+Table analysed_prompts {
+  prompt_id int (primary_id)
+  idea_id int (foreign_id)
+  key_descriptions str (str_is_a_list) // ['groß', 'böse', 'feuer', ...]
+}
+
+ref: char_ideas.idea_id - analysed_prompts.idea_id
+
+Table key_descriptions{
+  description_id int (primary_key)
+  description str
+  idea_id int (foreign_key)
+}
+
+ref: analysed_prompts.idea_id < key_descriptions.idea_id
+
+Table classes {
+  class_id int(primary_key)
+  class_name str
+  idea_id in (foregin_key)
+}
+
+ref: analysed_prompts.idea_id < classes.idea_id
+
+// enthält die sortierten charactere von 'bester' zu 'schlechtester'
+Table best_char{
+  idea_id int(foreign_id)
+  num_one int(foreign_id) // die ide des 'besten' chars mit der idea_id i
+  num_two int(forein_id)
+  num_three int(foreign_id)
+  num_four int(foreign_id)
+}
+
+ref: char_ideas.idea_id - best_char.idea_id
+ref: characters.character_id - best_char.num_one
+ref: characters.character_id - best_char.num_two
+ref: characters.character_id - best_char.num_three
+ref: characters.character_id - best_char.num_four
+
+
+
