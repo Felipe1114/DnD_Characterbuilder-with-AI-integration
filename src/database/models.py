@@ -4,7 +4,7 @@ auf Basis der überarbeiteten Datenbankstruktur. Die Klassen beschreiben die
 Tabellenstruktur für Charakterideen, generierte Charaktere, analysierte Prompts,
 Beschreibungen, Klassen und Bewertungen.
 """
-from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, JSON
+from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, JSON, func, select
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
@@ -46,22 +46,12 @@ class Character(Base):
 
 	idea = relationship("CharIdea", back_populates="characters")
 
-class AnalysedPrompt(Base):
-	"""
-	Enthält analysierte Informationen zu einem Prompt, etwa in Verbindung mit Schlüsselbeschreibungen und Klassen.
-	"""
-	__tablename__ = 'analysed_prompts'
-	prompt_id = Column(Integer, primary_key=True)
-	idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
-
-	idea = relationship("CharIdea", back_populates="analysed_prompt")
-
 class KeyDescription(Base):
 	"""
 	Repräsentiert eine einzelne Eigenschaft oder Beschreibung wie 'groß', 'feurig', etc.
 	"""
 	__tablename__ = 'key_descriptions'
-	description_id = Column(Integer, primary_key=True)
+	description_id = Column(Integer, primary_key=True, autoincrement=True)
 	description = Column(String)
 
 	description_links = relationship("DescriptionToIdea", back_populates="description")
