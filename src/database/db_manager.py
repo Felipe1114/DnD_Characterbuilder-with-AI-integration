@@ -134,7 +134,23 @@ class DatabaseManager:
 
 	# TODO write method to get all char_ideas
 	def load_all_char_ideas(self):
-		...
+		"""lädt alle char_ideen und gibt sie als dict mit key=id und value=idea zurück"""
+		session = self.Session()
+
+		try:
+			stmt = select(CharIdea)
+			result = session.execute(stmt).all()
+
+			if not result:
+				return {}
+
+			return result
+
+		except Exception as e:
+			session.rollback()
+			raise e
+		finally:
+			session.close()
 
 	def load_character_data(self, idea_id):
 		"""loads all data form the analysed user_prompt for creating a system prompt for character creation"""
