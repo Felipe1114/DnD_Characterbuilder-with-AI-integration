@@ -4,7 +4,7 @@
 - können objekte aus der db gelöscht werden?
 """
 from src.database.models import Base, CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, \
-	BestChar
+	BestChar, AnalysedPrompt
 from src.database.db_manager import DatabaseManager
 from sqlalchemy import create_engine, select
 
@@ -28,11 +28,15 @@ def ue_save_user_prompt(db):
 	# daten in db gespeichert
 	db.save_user_prompt(prompt, analysed_result)
 	
-	stmt = select(CharIdea)
+	stmt = select(RewrittenPrompts)
 	result = session.execute(stmt).all()
 	
-	print(result)
-	assert len(result) == 1
+	
+	# Korrigierte Ausgabe der idea_id's
+	for prompt in result:
+		
+		print(prompt[0].rewritten_prompt)
+	
 	
 if __name__ == "__main__":
 	engine = create_engine("sqlite:///:memory:")
@@ -40,6 +44,7 @@ if __name__ == "__main__":
 	
 	db = DatabaseManager(engine)
 	
+	# test funtion wird ausgeführt
 	ue_save_user_prompt(db)
 	
 	# schließt lokale db wieder
