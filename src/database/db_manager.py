@@ -46,8 +46,7 @@ class DatabaseManager:
 
 		# umgeschriebene user_prompts abspeichern
 		self._save_rewritten_prompts(new_idea_id, rewritten_prompts, session)
-
-		session.flush()
+		session.commit()
 		session.close()
 	
 	@DebugLog.debug_log
@@ -61,8 +60,8 @@ class DatabaseManager:
 	def _save_rewritten_prompts(self, new_idea_id, rewritten_prompts, session):
 		"""saves the three rewritten user_prompts in db"""
 		for i, r_prompt in enumerate(rewritten_prompts):
-			rewritten_promp = RewrittenPrompts(idea_id=new_idea_id, rewritten_promp=r_prompt)
-			session.add(rewritten_promp)
+			rewritten_prompt = RewrittenPrompts(idea_id=new_idea_id, rewritten_prompt=r_prompt)
+			session.add(rewritten_prompt)
 	
 	@DebugLog.debug_log
 	def _save_key_descriptions(self, key_descriptions, new_idea_id, session):
@@ -103,7 +102,7 @@ class DatabaseManager:
 		session.add(dnd_classes)
 	
 	@DebugLog.debug_log
-	def extract_analysed_data(self, analysed_dict: dict[list[str]]) -> tuple:
+	def extract_analysed_data(self, analysed_dict: dict[str, list[str]]) -> tuple:
 		"""
 		extrahiert alle daten aus dem dictionary und gibt sie als tuple zurück
 		"""
