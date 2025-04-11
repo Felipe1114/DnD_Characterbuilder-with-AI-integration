@@ -5,33 +5,25 @@ was die DebugLog Klasse macht, wenn ein falscher Type eingefügt wird
 from src.debug.debug_log import DebugLog
 
 
+@DebugLog.debug_log
 def sum_num(num_1, num_2):
-	try:
-		res = sum([num_1, num_2])
-		return res
-	except Exception as e:
-		DebugLog.log_error(e, context="Fehler in sum_num, debug_log_überpfüfung.py")
-		raise
+	res = sum([num_1, num_2])
+	return res
+
 
 def main():
-	try:
-		num_1 = 1
-		num_2 = 2
-		list_1 = [1, 2]
-		dict_1 = {num_1: 1,
-				  num_2: 2}
-		tuple_1 = (1, 2)
-		res_list =[
-			sum_num(num_1, num_2), # 3
-			sum_num(num_1, list_1), # TypeError
-			sum_num(num_2, dict_1) # TypeError
-		]
-
-		for res in res_list:
-			print(res)
-	except Exception as e:
-		DebugLog.log_error(e, context="Fehler in main, debug_log_überpfüfung.py")
-		raise
+	num_1 = 1
+	num_2 = 2
+	list_1 = [1, 2]
+	dict_1 = {num_1: 1,
+			  num_2: 2}
+	tuple_1 = (1, 2)
+	
+	res = sum_num(num_1, list_1)
+	print(res)
+	res = sum_num(2, 3)
+	print(res)
+		
 
 if __name__ == "__main__":
 	main()
