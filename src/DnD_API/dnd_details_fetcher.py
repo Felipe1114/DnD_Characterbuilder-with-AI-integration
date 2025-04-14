@@ -2,13 +2,13 @@ import requests
 import time
 from requests import RequestException
 from src.DnD_API.dnd_api_base import DnDAPIBase
-
+# TODO: debug_log Klasse hier noch einbauen
 class DnDDetailsFetcher(DnDAPIBase):
     """
     Diese Klasse ist für das Laden von Detaildaten zu DnD-Klassen zuständig.
     Sie erbt von DnDAPIBase und erweitert sie um eine einstellbare URL sowie um eine Datenlade-Funktion.
     """
-
+	
     def __init__(self, base_url=None):
         """
         Initialisiert den Fetcher. Optional kann eine Basis-URL angegeben werden.
@@ -31,7 +31,7 @@ class DnDDetailsFetcher(DnDAPIBase):
             response = requests.get(self.class_detail_url)
 
             if response.status_code == 200:
-                self.data = response.json()
+                self.data = response.json() # hier werden die daten der Api-response gespeichert
                 time.sleep(delay)  # Kurze Pause für API-Rate-Limiting
             else:
                 raise RequestException(
@@ -39,7 +39,7 @@ class DnDDetailsFetcher(DnDAPIBase):
                 )
 
             return self.data
-        # TODO hier fehlermeldung mit einer eigenen fehler meldung klasse ausgeben
+
         except RequestException as e:
             print(f"Fehler bei der Anfrage: {e}")
             self.data = None

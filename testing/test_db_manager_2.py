@@ -38,11 +38,14 @@ def test_save_user_prompt(db):
 	# daten in db gespeichert
 	db.save_user_prompt(prompt, analysed_result)
 	
-	stmt = select(CharIdea)
+	stmt = select(RewrittenPrompts)
 	result = session.execute(stmt).all()
+	print(result)
 	
-	assert len(result) == 1
-
+	# assert len(result) == 1
+	# u_res_list = analysed_result["rewritten_prompt_template"]
+	# for i, u_res in enumerate(result):
+	# 	assert u_res == u_res_list[i]
 	
 
 

@@ -31,10 +31,9 @@ def ue_save_user_prompt(db):
 	stmt = select(RewrittenPrompts)
 	result = session.execute(stmt).all()
 	
-	
+	print(result)
 	# Korrigierte Ausgabe der idea_id's
 	for prompt in result:
-		
 		print(prompt[0].rewritten_prompt)
 	
 	

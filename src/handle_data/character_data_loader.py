@@ -1,22 +1,8 @@
-"""Diese Klasse lädt die JSON-Dateien aus dem lokalen Speicher.
-
-Aufgabe:
-	•	load_class_data("wizard") → gibt wizard.json zurück
-	•	ggf. auch: load_spells("wizard"), load_features("sorcerer"), etc.
-
-arbeitet mit f-string.
-f-string sieht in etwa so aus:
-f" (erstelle einen DnD character mit der Klasse: {Klannen_name}.
-nutze diese daten für die erstellung.
-Orientiere dich bei der erstellung an diesen details: {user promt-details}
-)
-
-
-"""
+"""Diese Klasse lädt die JSON-Dateien aus dem lokalen Speicher."""
 from openai import file_from_path
 
 from src.handle_data.CRUD import CRUD
-
+# TODO: pydantic kann hier noch für die input validierung eingefügt werden
 CLASS_INDICIES = {
   "barbarian": 0,
   "bard": 1,
@@ -33,12 +19,11 @@ CLASS_INDICIES = {
                 }
 
 class CharacterDataLoader:
+    """läd einen character aus dem lokalen speicher. 'class_name' ist eine von den 12 möglichen Klassen"""
     def __init__(self, class_name):
         self.crud = CRUD(None)
 
         self.class_name = class_name.lower()
-        # TODO pfad muss vielleicht noch mal angepasst werden, je nach dem, wo die Klasse referenziert wird
-        # TODO wenn pfad probleme macht, vielleicht mit OS arbeiten?
         self.data_base_path = "../../static_dnd_data/"
         self.base_data_path = "all_classes.json"
         self.class_data_path = f"{class_name}/{class_name}"
@@ -54,7 +39,7 @@ class CharacterDataLoader:
 
 
     def class_data(self) -> tuple[dict, list, list, list]:
-        """gibt alle klassen daten in einer liste zurück"""
+        """gibt alle klassen daten, in einer liste zurück"""
         base_crud = CRUD(self.class_base_data)
         spell_crud = CRUD(self.spell_file_path)
         level_crud = CRUD(self.level_file_path)
