@@ -1,0 +1,39 @@
+Welche aktionen müssen auf die DB gemacht werden.
+
+user_prompt wird analyisert und in data_base abgespeichert:
+1. userpromt muss gespeichert werden
+2. classes müssen als bool in Table classes gespeichert werden
+3. key_descriptions müssen - mit verbindungstable - in key_descriptions gespeichert werden
+    wichtig: vorher abfragen, ob key_description schon vorhanden ist.
+        Wenn ja:
+            nur verbindungs_table_colum anlegen
+4. rewritten_prompts in rewritten_prompts abspeichern
+
+character wird erstellt:
+1. alle nötigen daten zum erstellen werden von der daten_bank geladen:
+    a. classes
+    b. key_descriptions
+    c. rewritten_prompts
+
+2. vier erstelle charactere werden in die daten_bank, in den Table characters, gespeichert
+
+
+character löschen:
+1. alle colums löschen, die mit dem Table char_ideas und der idea_id zusammen hängen.
+    Table, auf die löschungen angewendet werden müssen:
+    a. char_ideas:
+        i. 1. colum
+    b. description_to_idea
+        i. len(description_keys) colums
+    c. rewritten_prompts
+        i. 3 colums
+    d. classes
+        i. 1. colum
+    c. characters
+        i. 4 colums
+        ii. nicht zwingend vorhanden
+    e. best_char
+        i. 1 colum
+        ii. nicht zwingend vorhanden
+
+
