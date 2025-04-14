@@ -4,7 +4,7 @@ from src.handle_data.CRUD import CRUD
 class DnDClassFetcher(DnDAPIBase):
     def __init__(self, url):
         super().__init__(url)
-        self.crud = CRUD("../static_dnd_data/all_classes.json")
+        self.crud = CRUD("../../static_dnd_data/all_classes.json")
 
     def load_and_save(self):
         self.load_data()
