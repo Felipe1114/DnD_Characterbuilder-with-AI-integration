@@ -1,5 +1,6 @@
 from src.DnD_API.class_url_fetcher import DnDClassUrlFetcher
 from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
+from src.DnD_API.progress_tracker import ProgressTracker
 
 
 class DnDApiManager:
@@ -15,15 +16,20 @@ class DnDApiManager:
 		# ['https://www.dnd5eapi.co/api/2014/classes/barbarian', 'https://www.dnd5eapi.co/api/2014/classes/bard', ...
 		class_urls = fetcher.get_class_urls()
 		
+		tracker = ProgressTracker(len(class_urls), task_name="Base_class_data")
 		# TODO: wenn file: 'all_classes.json' schon existiert, soll die for-schleife nicht ausgeführt werden
-		# lädt alle daten von der DnD5e-API und speichert sie in file
+		# lädt alle basis Klassen daten von der DnD5e-API und speichert sie in Json: 'all_classes.json'
 		for url in class_urls:
-			print(f"→ load class: {url}")
 			char_class = DnDClassFetcher(url)
 			char_class.load_and_save()
-			print(char_class.data)
+			# über self.classes wird dann später iteriert um die details zu erhalten
 			self.classes.append(char_class)
 			
+			tracker.update(message=f"-{url}")
+		
+		tracker.done()
+		
+		
 		# TODO: hier auch ClassDetails einbauen, damit alles über den DnDClassManager läuft
 			
 #
