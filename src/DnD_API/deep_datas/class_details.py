@@ -30,6 +30,7 @@ class ClassDetails:
 		self.class_name = self.data.get('name', '').lower()
 		self.d_fetcher = DnDDetailsFetcher()
 		
+		# überpft, ob das dictionary auch die daten der richtigen Klasse enthält
 		if self.class_name != class_name.lower():
 			raise ValueError(f"Wrong data input. Expected '{class_name}', got '{self.class_name}'.")
 		
@@ -207,9 +208,9 @@ class ClassDetails:
 			enriched_levels.append({
 									"level": level["level"],
 			                        "ability_score_bonuses": level["ability_score_bonuses"],
-			                        "prov_bonus": level["prov_bonus"],
+			                        "prof_bonus": level["prof_bonus"],
 			                        "features": features,
-			                        "spellcasting": level["spellcasting"] if level["spellcasting"] in level else None,
+			                        "spellcasting": level.get("spellcasting", None),
 			                        "class_specific": level["class_specific"],
 			                        "index": level["index"],
 			                        })
