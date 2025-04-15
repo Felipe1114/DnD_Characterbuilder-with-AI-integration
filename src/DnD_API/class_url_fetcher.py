@@ -4,7 +4,7 @@ from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
 
 # TODO: debug_log Klasse hier noch einbauen
 
-class DnDClassListFetcher(DnDAPIBase):
+class DnDClassUrlFetcher(DnDAPIBase):
 	"""Erbt von DnDAPIBase
 	gibt die URLs für die requests für alle DnD Klassen von der DnD5e-API zurück"""
 	def __init__(self):

@@ -11,10 +11,6 @@ class DnDClassFetcher(DnDAPIBase):
         indicies = [key for key in self.data.keys() if key != 'updated_at']
         class_data_dict = {i: self.data.get(i) for i in indicies}
 
-        class_name = class_data_dict['index']
-
-        # hier kommt der code für die tiefer liegenden daten hin
-
         self.save_data(class_data_dict)
 
     # temporary method
