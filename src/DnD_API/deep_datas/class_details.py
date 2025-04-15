@@ -6,6 +6,14 @@ Nutzung der Klasse:
 1. zuerst mus in die instanzierte Klase ein dnd_class_dict und ein class_nme eingefügt werden
 2. dann 'initialize_all_data(self) ausführen
 	füllt self.spells, self.levels u. self.subclasses mit daten (von der api)
+comment zu 2:
+	da die geladenen spells, levels und subclass daten noch keine beschreibung der einzelnen datensäzte haben
+	werden in punkt 3 für jeden spell, level/feature und subclass spell/feature, die descriptions von der api angefragt
+3. spell_details, level_details und subclass_details ausführen
+	lädt alle descriptions der spells, level/features, etc...
+
+
+
 """
 
 from src.DnD_API.dnd_details_fetcher import DnDDetailsFetcher
@@ -25,13 +33,15 @@ class ClassDetails:
 		if self.class_name != class_name.lower():
 			raise ValueError(f"Wrong data input. Expected '{class_name}', got '{self.class_name}'.")
 		
+		# detaiil daten ohne descriptions
 		self.spells = None
 		self.levels = None
 		self.subclasses = None
 		
+		# detaiil daten mit descriptions
 		self.enriched_spells = None
 		self.enriched_levels = None
-		self.enriched_subclasses = []
+		self.enriched_subclasses = [] # da es mögl. mehr subclasses gibt, ist hier eine leere Liste, statt None
 
 	def initialize_all_data(self):
 		"""Initialisiert alle Basisdaten: Zauber, Level und Subklassen."""
@@ -52,7 +62,6 @@ class ClassDetails:
 		# führt api spell-request aus und gibt api spell-response zurück
 		return self.d_fetcher.load_data()
 
-	# TODO beim abspeichern der features wird nur eine lehre liste gespeichert, warum?!
 	def load_levels(self):
 		"""Lädt die Levelinformationen für die Klasse."""
 		# erstellt request-url für class_levels
@@ -113,18 +122,70 @@ class ClassDetails:
 		# speichere spells zwischen
 		self.enriched_spells = detailed_spells
 
-
+	# TODO beim abspeichern der features wird nur eine lehre liste gespeichert, warum?!
 	def level_details(self):
-		"""Lädt detaillierte Informationen zu den Leveln der Klasse."""
+		"""Lädt detaillierte Informationen zu den Leveln der Klasse.
+		level daten sehen so aus:
+		[
+			{
+			"level": 1,
+			"ability_score_bonuses": 0,
+			"prof_bonus": 2,
+			================================
+			"features": [ <<<<<<<<<<<<<<<<<<<HIER IST DER WICHTIGE DATENSATZ<<<<<<<<<<<<<<
+				{                                                    -
+				"index": "spellcasting-druid",                      |
+				"name": "Spellcasting: Druid",                      |
+				"url": "/api/2014/features/spellcasting-druid"      |
+				},                                                    |
+				{                                                     ->  über url wird die description geholt und in neues dict
+				"index": "druidic",                                 |   mit index, name usw, gespeichert
+				"name": "Druidic",                                  |   so entsteht ein neues 'feature' dict
+				"url": "/api/2014/features/druidic"                 |   neues 'feature-dict' wird in jeweiliges level gespeichert
+				}                                                     |   'enriched_levels'dict wird in self.enriched_levels gespeichert
+			],                                                      -
+			===============================================
+			"spellcasting": {
+			  "cantrips_known": 2,
+			  "spell_slots_level_1": 2,
+			  "spell_slots_level_2": 0,
+			  "spell_slots_level_3": 0,
+			  "spell_slots_level_4": 0,
+			  "spell_slots_level_5": 0,
+			  "spell_slots_level_6": 0,
+			  "spell_slots_level_7": 0,
+			  "spell_slots_level_8": 0,
+			  "spell_slots_level_9": 0
+			},
+			"class_specific": {
+			  "wild_shape_max_cr": 0,
+			  "wild_shape_swim": false,
+			  "wild_shape_fly": false
+			},
+			"index": "druid-1",
+			"class": {
+			  "index": "druid",
+			  "name": "Druid",
+			  "url": "/api/2014/classes/druid"
+			},
+			"url": "/api/2014/classes/druid/levels/1",
+			"updated_at": "2025-04-08T21:14:04.101Z"
+			},
+		"""
 		# Fortschrittsverfolgung für das Laden der Level
 		tracker = ProgressTracker(len(self.levels), task_name="level/feature details")
-		# leehre liste die später in self.enriched_levels gespeichert wird
+		# leere liste die später in self.enriched_levels gespeichert wird
+		# überprüft, ob self.levels überhaupt daten enthält
+		if not self.levels:
+			raise ValueError("self.data enthält keine daten!!!")
+			
 		enriched_levels = []
-
+		
+		# geht jedes der 20 level in self.levels durch
 		for i, level in enumerate(self.levels):
 			features = []
 
-			# hier gehen wir in die feature liste hinein und iterieren darüber
+			# es wird über die features, in level iteriert
 			for feature in level.get('features', []):
 				# API-Call zur Feature-URL
 				url = f"{BASE_URL}{feature['url']}"
@@ -132,18 +193,31 @@ class ClassDetails:
 				# url für api zugriff wird in fetcher gesetzt
 				self.d_fetcher.detail_url = url
 				details = self.d_fetcher.load_data()
-				features.append({
-				    "index": feature["index"],
-				    "name": feature["name"],
-				    "details": details
-				})
+				if details:
+					features.append({
+					    "index": feature["index"],
+					    "name": feature["name"],
+					    "details": details
+					})
+				else:
+					raise ValueError(f"Error: Fehler beim laden von: {self.class_name}-feature: {url}")
+				
 				tracker.update(message=f'loading level/feature details{url}')
 
-			level["features"] = features
+			enriched_levels.append({
+									"level": level["level"],
+			                        "ability_score_bonuses": level["ability_score_bonuses"],
+			                        "prov_bonus": level["prov_bonus"],
+			                        "features": features,
+			                        "spellcasting": level["spellcasting"] if level["spellcasting"] in level else None,
+			                        "class_specific": level["class_specific"],
+			                        "index": level["index"],
+			                        })
 
-		# gefechte daten abspeichern
+		# angefragte daten abspeichern
 		self.enriched_levels = enriched_levels
 		tracker.done()
+		
 
 
 
