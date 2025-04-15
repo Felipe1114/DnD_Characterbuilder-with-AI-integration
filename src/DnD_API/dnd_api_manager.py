@@ -1,39 +1,84 @@
 from src.DnD_API.class_url_fetcher import DnDClassUrlFetcher
 from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
+from src.DnD_API.deep_datas.class_details import ClassDetails
 from src.DnD_API.progress_tracker import ProgressTracker
+from src.handle_data.CRUD import CRUD
+from src.debug.debug_log import DebugLog
 
 
 class DnDApiManager:
 	"""holt alle 'base'-Klassen daten von der DnD5e-API und erstellt ein großes Josn mit allen 12 Klassen und base-daten"""
 	def __init__(self):
-		self.classes = []
-	
+		self.class_ids = {
+            'barbarian': 0,
+            'bard': 1,
+            'cleric': 2,
+            'druid': 3,
+            'fighter': 4,
+            'monk': 5,
+            'paladin': 6,
+            'ranger': 7,
+            'rogue': 8,
+            'sorcerer': 9,
+            'warlock': 10,
+            'wizard': 11
+                        }
+	@DebugLog.debug_log
 	def run(self):
 		# instanziert DnDClassListFetcher
+		self.load_base_class_datas()
+		
+		self.load_detaild_calss_datas()
+	
+	def load_detaild_calss_datas(self):
+		tracker = ProgressTracker(len(self.class_ids), task_name="Load and Save 'Detail Class-data' for ")
+		crud = CRUD("../../static_dnd_data/all_classes.json")
+		
+		# lädt von 'all_classes.jons' die daten
+		class_base_data = crud.data
+		# TODO: hier noch überprüfen, ob detail data schon existiert
+		for class_name, id in self.class_ids.items():
+			
+			# extrahiert die base data der jeweiligen Klasse
+			base_data = class_base_data[id]
+			detail_data = ClassDetails(base_data, class_name)
+			
+			detail_data.initialize_all_data()
+			
+			enriched_detail_data = detail_data.initialize_all_details()
+			
+			file_name_list = [f"{class_name}_spells.json", f"{class_name}_levels_features.json",
+			                  f"{class_name}_subclass(es).json"]
+			
+			for i, data in enumerate(enriched_detail_data):
+				crud = CRUD(f"../../static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
+				crud.data = data
+			
+			tracker.update(message=f"-{class_name}")
+	
+	def load_base_class_datas(self):
+		crud = CRUD("../../static_dnd_data/all_classes.json")
+		# reinigt 'all_classes.json' damit es nicht zu dopplungen kommt
+		crud.reset()
+		# wenn 'all_classes.json' nicht vollständig ist:
 		fetcher = DnDClassUrlFetcher()
 		# gets all urls for all classes, in a list
 		# hier kommt raus:
 		# ['https://www.dnd5eapi.co/api/2014/classes/barbarian', 'https://www.dnd5eapi.co/api/2014/classes/bard', ...
 		class_urls = fetcher.get_class_urls()
-		
-		tracker = ProgressTracker(len(class_urls), task_name="Base_class_data")
-		# TODO: wenn file: 'all_classes.json' schon existiert, soll die for-schleife nicht ausgeführt werden
+		tracker = ProgressTracker(len(class_urls), task_name="Loading 'Base Class-data' for ")
 		# lädt alle basis Klassen daten von der DnD5e-API und speichert sie in Json: 'all_classes.json'
 		for url in class_urls:
 			char_class = DnDClassFetcher(url)
 			char_class.load_and_save()
 			# über self.classes wird dann später iteriert um die details zu erhalten
-			self.classes.append(char_class)
 			
 			tracker.update(message=f"-{url}")
-		
 		tracker.done()
+	
 		
-		
-		# TODO: hier auch ClassDetails einbauen, damit alles über den DnDClassManager läuft
-			
-#
-# if __name__ == "__maxin__":
-# 	manager = DnDClassManager()
-# 	manager.run()
+
+if __name__ == "__main__":
+	manager = DnDApiManager()
+	manager.run()
 	
