@@ -1,6 +1,7 @@
 import requests
 from requests import RequestException
 import time
+from src.DnD_API.progress_tracker import ProgressTracker
 
 # TODO: debug_log Klasse hier noch einbauen
 
@@ -14,7 +15,6 @@ class DnDAPIBase:
 	def load_data(self):
 		"""loads data from DnD5e-API, depending on given url"""
 		try:
-			print(f"Load data from {self.url}")
 			response = requests.get(self.url)
 
 			if response.status_code == 200:
@@ -23,6 +23,7 @@ class DnDAPIBase:
 
 			else:
 				raise RequestException(f"Error at loading: {response.status_code}; dnd_api_base.py 20")
-
+		
 		except RequestException as e:
-			print(f"Error with request: {e}")
+			raise e
+		

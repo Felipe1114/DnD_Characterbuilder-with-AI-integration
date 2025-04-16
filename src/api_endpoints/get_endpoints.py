@@ -4,10 +4,12 @@ was muss hier gemacht werden:
 -   diese daten werden - jeweils - in Json files gespeichert und lokal abgelegt.
 """
 from fastapi import APIRouter
+from src.DnD_API.dnd_api_manager import DnDApiManager
 
 router = APIRouter()
 
 @router.get("/")
 async def get_data():
-    # Placeholder-Funktion, die später durch die Logik zum Abrufen von DnD5e-Daten ersetzt wird
-    return {"message": "Daten von DnD5e API werden hier abgerufen."}
+	manager = DnDApiManager()
+	manager.run()
+	
