@@ -86,8 +86,8 @@ class DnDApiManager:
 		tracker.done()
 	
 		
-
-if __name__ == "__main__":
-	manager = DnDApiManager()
-	manager.run()
-	
+#
+# if __name__ == "__main__":
+# 	manager = DnDApiManager()
+# 	manager.run()
+#
