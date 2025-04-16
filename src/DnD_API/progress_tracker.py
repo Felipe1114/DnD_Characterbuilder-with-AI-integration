@@ -13,6 +13,7 @@ class ProgressTracker:
         bar_length = self.bar_length  # Länge des Balkens
         filled_length = int(bar_length * percent)
         bar = "#" * filled_length + "-" * (bar_length - filled_length)
+       
         sys.stdout.write(f"\r[{bar}] {int(percent * 100)}% - {self.task_name}: {message}")
         sys.stdout.flush()
 

@@ -21,6 +21,7 @@ class DnDDetailsFetcher(DnDAPIBase):
 		"""
 	    Lädt die Klassendaten von der aktuell gesetzten URL (class_detail_url).
 	    Ein Delay zwischen Anfragen schützt die öffentliche API vor Überlastung.
+	    
 	    """
 
 		if not self.class_detail_url:

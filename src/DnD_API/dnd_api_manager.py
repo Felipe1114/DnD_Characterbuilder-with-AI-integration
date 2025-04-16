@@ -4,7 +4,25 @@ from src.DnD_API.deep_datas.class_details import ClassDetails
 from src.DnD_API.progress_tracker import ProgressTracker
 from src.handle_data.CRUD import CRUD
 from src.debug.debug_log import DebugLog
+import os
 
+"""Note:
+folgende buggs gibt es:
+	1. beim Laden der base-data wird folgendes angezeigt:
+		Load data from https://www.dnd5eapi.co/api/2014/classes/barbarian
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		[#-------------------] 8% - Loading 'Base Class-data' for:: -0Load data from https://www.dnd5eapi.co/api/2014/classes/bard
+		[###-----------------] 16% - Loading 'Base Class-data' for:: -1Load data from https://www.dnd5eapi.co/api/2014/classes/cleric
+		...
+		
+		hier ist der bugg, dass die barbarian-url zuerst allein angezeigt wird.
+		Sie soll aber gleich neben dem ladebalken stehen
+	
+	2. nach dem lden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
+		Woher kommen diese Error nachrichten?
+	
+	
+"""
 
 class DnDApiManager:
 	"""holt alle 'base'-Klassen daten von der DnD5e-API und erstellt ein großes Josn mit allen 12 Klassen und base-daten"""
@@ -52,6 +70,7 @@ class DnDApiManager:
 			
 			for i, data in enumerate(enriched_detail_data):
 				crud = CRUD(f"../../static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
+				crud.check_path()
 				crud.data = data
 			
 			tracker.update(message=f"-{class_name}")
@@ -60,20 +79,24 @@ class DnDApiManager:
 		crud = CRUD("../../static_dnd_data/all_classes.json")
 		# reinigt 'all_classes.json' damit es nicht zu dopplungen kommt
 		crud.reset()
+		
 		# wenn 'all_classes.json' nicht vollständig ist:
 		fetcher = DnDClassUrlFetcher()
+		
 		# gets all urls for all classes, in a list
 		# hier kommt raus:
 		# ['https://www.dnd5eapi.co/api/2014/classes/barbarian', 'https://www.dnd5eapi.co/api/2014/classes/bard', ...
 		class_urls = fetcher.get_class_urls()
-		tracker = ProgressTracker(len(class_urls), task_name="Loading 'Base Class-data' for ")
+		# TODO hier kleines tool bauen, dass namen von classen in tracker einbaut
+		tracker = ProgressTracker(len(class_urls), task_name="Loading 'Base Class-data' for all classes")
+		
 		# lädt alle basis Klassen daten von der DnD5e-API und speichert sie in Json: 'all_classes.json'
-		for url in class_urls:
+		for i, url in enumerate(class_urls):
 			char_class = DnDClassFetcher(url)
 			char_class.load_and_save()
 			# über self.classes wird dann später iteriert um die details zu erhalten
 			
-			tracker.update(message=f"-{url}")
+			tracker.update()
 		tracker.done()
 	
 		

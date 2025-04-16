@@ -1,8 +1,12 @@
 import json
+import os
+from pathlib import PurePath
 
 class CRUD:
 	def __init__(self, data_path):
 		self.data_path = data_path
+		self._pure_path = PurePath(self.data_path)
+		self._parent_path = self._pure_path.parent
 
 	def _save(self, data):
 		with open(self.data_path, 'w') as json_obj:
@@ -38,3 +42,12 @@ class CRUD:
   
 	def reset(self, new_data=[]):
 		self._save(new_data)
+		
+	def check_path(self):
+		"""überprüft, ob die directories, in denen das file liegen soll, existieren.
+		Falls nein, wird das directory erstellt"""
+		if not os.path.exists(self._parent_path):
+			os.makedirs(self._parent_path)
+
+	
+

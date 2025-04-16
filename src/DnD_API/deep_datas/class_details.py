@@ -98,7 +98,7 @@ class ClassDetails:
 			return []
 		
 		# Fortschrittsverfolgung für das Laden der Zauber
-		tracker = ProgressTracker(self.spells.get("count", 0), task_name="spell_details")
+		tracker = ProgressTracker(self.spells.get("count", 0), task_name=f"{self.class_name}-spell_details")
 		detailed_spells = []
 
 		for i, spell in enumerate(self.spells.get("results", [])):
@@ -123,58 +123,11 @@ class ClassDetails:
 		# speichere spells zwischen
 		self.enriched_spells = detailed_spells
 
-	# TODO beim abspeichern der features wird nur eine lehre liste gespeichert, warum?!
 	def level_details(self):
 		"""Lädt detaillierte Informationen zu den Leveln der Klasse.
-		level daten sehen so aus:
-		[
-			{
-			"level": 1,
-			"ability_score_bonuses": 0,
-			"prof_bonus": 2,
-			================================
-			"features": [ <<<<<<<<<<<<<<<<<<<HIER IST DER WICHTIGE DATENSATZ<<<<<<<<<<<<<<
-				{                                                    -
-				"index": "spellcasting-druid",                      |
-				"name": "Spellcasting: Druid",                      |
-				"url": "/api/2014/features/spellcasting-druid"      |
-				},                                                    |
-				{                                                     ->  über url wird die description geholt und in neues dict
-				"index": "druidic",                                 |   mit index, name usw, gespeichert
-				"name": "Druidic",                                  |   so entsteht ein neues 'feature' dict
-				"url": "/api/2014/features/druidic"                 |   neues 'feature-dict' wird in jeweiliges level gespeichert
-				}                                                     |   'enriched_levels'dict wird in self.enriched_levels gespeichert
-			],                                                      -
-			===============================================
-			"spellcasting": {
-			  "cantrips_known": 2,
-			  "spell_slots_level_1": 2,
-			  "spell_slots_level_2": 0,
-			  "spell_slots_level_3": 0,
-			  "spell_slots_level_4": 0,
-			  "spell_slots_level_5": 0,
-			  "spell_slots_level_6": 0,
-			  "spell_slots_level_7": 0,
-			  "spell_slots_level_8": 0,
-			  "spell_slots_level_9": 0
-			},
-			"class_specific": {
-			  "wild_shape_max_cr": 0,
-			  "wild_shape_swim": false,
-			  "wild_shape_fly": false
-			},
-			"index": "druid-1",
-			"class": {
-			  "index": "druid",
-			  "name": "Druid",
-			  "url": "/api/2014/classes/druid"
-			},
-			"url": "/api/2014/classes/druid/levels/1",
-			"updated_at": "2025-04-08T21:14:04.101Z"
-			},
 		"""
 		# Fortschrittsverfolgung für das Laden der Level
-		tracker = ProgressTracker(len(self.levels), task_name="level/feature details")
+		tracker = ProgressTracker(len(self.levels), task_name=f"{self.class_name}-level/feature details")
 		# leere liste die später in self.enriched_levels gespeichert wird
 		# überprüft, ob self.levels überhaupt daten enthält
 		if not self.levels:
@@ -225,7 +178,7 @@ class ClassDetails:
 	def subclass_details(self):
 		"""Lädt detaillierte Informationen zu den Subklassen der Klasse."""
 		# Fortschrittsverfolgung für das Laden der Subklassen
-		tracker = ProgressTracker(len(self.subclasses), task_name="subclasses")
+		tracker = ProgressTracker(len(self.subclasses), task_name=f"{self.class_name}-subclasses")
 		
 		for i, subclass in enumerate(self.subclasses):
 			tracker.update(message='loading subclasses')
@@ -240,7 +193,7 @@ class ClassDetails:
 			subclass_spells = []
 			spell_list = subclass.get('spells', [])
 			# Fortschrittsverfolgung für das Laden der Subklassenzauber
-			spell_tracker = ProgressTracker(len(spell_list), task_name=f"subclass:{subclass['name']} spells")
+			spell_tracker = ProgressTracker(len(spell_list), task_name=f"{self.class_name}-subclass:{subclass['name']} spells")
 
 			for s, spell_entry in enumerate(spell_list):
 				spell = spell_entry.get('spell', {})
@@ -269,7 +222,7 @@ class ClassDetails:
 			levels = self.d_fetcher.load_data()
 			
 			# Fortschrittsverfolgung für das Laden der Subklassenzauber
-			feature_tracker = ProgressTracker(len(levels), task_name=f"subclass:{subclass['name']} levels/features")
+			feature_tracker = ProgressTracker(len(levels), task_name=f"{self.class_name}-subclass:{subclass['name']} levels/features")
 
 			for level in levels:
 				features = []
