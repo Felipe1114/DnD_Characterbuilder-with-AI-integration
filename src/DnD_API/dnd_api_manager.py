@@ -4,24 +4,11 @@ from src.DnD_API.deep_datas.class_details import ClassDetails
 from src.DnD_API.progress_tracker import ProgressTracker
 from src.handle_data.CRUD import CRUD
 from src.debug.debug_log import DebugLog
-import os
 
+# TODO:
 """Note:
-folgende buggs gibt es:
-	1. beim Laden der base-data wird folgendes angezeigt:
-		Load data from https://www.dnd5eapi.co/api/2014/classes/barbarian
-		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-		[#-------------------] 8% - Loading 'Base Class-data' for:: -0Load data from https://www.dnd5eapi.co/api/2014/classes/bard
-		[###-----------------] 16% - Loading 'Base Class-data' for:: -1Load data from https://www.dnd5eapi.co/api/2014/classes/cleric
-		...
-		
-		hier ist der bugg, dass die barbarian-url zuerst allein angezeigt wird.
-		Sie soll aber gleich neben dem ladebalken stehen
-	
-	2. nach dem lden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
+	1. nach dem lden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
 		Woher kommen diese Error nachrichten?
-	
-	
 """
 
 class DnDApiManager:
@@ -55,10 +42,10 @@ class DnDApiManager:
 		# lädt von 'all_classes.jons' die daten
 		class_base_data = crud.data
 		# TODO: hier noch überprüfen, ob detail data schon existiert
-		for class_name, id in self.class_ids.items():
+		for class_name, indent in self.class_ids.items():
 			
 			# extrahiert die base data der jeweiligen Klasse
-			base_data = class_base_data[id]
+			base_data = class_base_data[indent]
 			detail_data = ClassDetails(base_data, class_name)
 			
 			detail_data.initialize_all_data()
@@ -87,7 +74,6 @@ class DnDApiManager:
 		# hier kommt raus:
 		# ['https://www.dnd5eapi.co/api/2014/classes/barbarian', 'https://www.dnd5eapi.co/api/2014/classes/bard', ...
 		class_urls = fetcher.get_class_urls()
-		# TODO hier kleines tool bauen, dass namen von classen in tracker einbaut
 		tracker = ProgressTracker(len(class_urls), task_name="Loading 'Base Class-data' for all classes")
 		
 		# lädt alle basis Klassen daten von der DnD5e-API und speichert sie in Json: 'all_classes.json'
