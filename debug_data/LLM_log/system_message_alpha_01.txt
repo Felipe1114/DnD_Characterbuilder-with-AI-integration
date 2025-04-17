@@ -170,8 +170,11 @@ Hier ist ein Beispiel für einen DnD character der stufe 20:
     }
 }
 
-
 '''
 Geb bitte den erstellen character in genau dieser struktur zurück, wie ich sie dir im beispiel gezeigt habe.
+Achte darauf, dass das Level der beispiel-struktur 20 ist. Nicht jeder Character soll auf level 20 erstellt werden!
+
+Wenn du in der Characterbeschreibung keine klar erkennbare Level-höhe herauslesen kannst,
+dann wähle ein level zwischen 7 und 12.
 
 Als nächstes kommt die aufforderung den character zu erstellen, mit den KLassen daten und den character details.
