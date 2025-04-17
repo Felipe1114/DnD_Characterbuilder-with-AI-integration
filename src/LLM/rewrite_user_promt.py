@@ -35,7 +35,7 @@ JSON rückgabe:
 from src.LLM.talk_to_mistral import TalkToMistral
 from src.handle_data.CRUD import CRUD
 
-prompt_data_path = "../../static_dnd_data/system_messages/system_prompts_for_analysing.json"
+prompt_data_path = "../../debug_data/LLM_log/system_prompts_for_analysing.json"
 
 class RewriteUserPromt(TalkToMistral):
     def __init__(self, user_prompt, prompt_key: str= "prompt_alpha_1"):

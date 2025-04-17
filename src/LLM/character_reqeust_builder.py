@@ -14,7 +14,7 @@ class CharacterRequestBuilder:
 
         self.class_name = None # TODO aus analyse_user_promt einfügen
         # system nachricht, die dem LLM mehr details über die aufgabe gibt
-        self.crud = CRUD("../../static_dnd_data/system_messages/system_message_alpha_01.txt")
+        self.crud = CRUD("../../debug_data/LLM_log/system_message_alpha_01.txt")
         self.system_message = self.crud.data
 
     def build_request_message(self):
