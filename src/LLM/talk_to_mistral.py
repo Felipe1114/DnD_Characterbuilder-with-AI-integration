@@ -30,7 +30,7 @@ class TalkToMistral:
         wird ausgegeben: 'You did not ask anything. Please make a question!'"""
         if not self._mistral_response:
             return "You did not ask anything. Please make a question!"
-
+		
         return self._mistral_response.choices[0].message.content
 
     # noch nicht definiert
