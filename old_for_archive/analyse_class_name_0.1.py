@@ -3,7 +3,7 @@ analysiert den user promt mit embedings
 wandelt den user promt und die Klasse-Key-words in vectoren um und vergleicht deise semantisch
 """
 from sentence_transformers import SentenceTransformer, util
-from src.handle_data.CRUD import CRUD
+from src.handle_data.crud_json import CrudJsonFiles
 
 CLASS_KEYWORDS_URL = "../static_dnd_data/class_keywords.json"
 # TODO was genau dauert so lange: das laden?
@@ -13,7 +13,7 @@ class AnalyceClassName:
         self.class_keywords = class_keywords
         self.model = SentenceTransformer(model_name)
 
-        self.crud = CRUD(CLASS_KEYWORDS_URL)
+        self.crud = CrudJsonFiles(CLASS_KEYWORDS_URL)
 
         # Vektorisierung der Klassen-Keywords vorbereiten
         self.class_vectors = self._prepare_class_vectors()

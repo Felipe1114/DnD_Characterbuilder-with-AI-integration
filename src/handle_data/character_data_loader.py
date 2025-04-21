@@ -1,7 +1,7 @@
 """Diese Klasse lädt die JSON-Dateien aus dem lokalen Speicher."""
 from openai import file_from_path
 
-from src.handle_data.CRUD import CRUD
+from src.handle_data.crud_json import CrudJsonFiles
 # TODO: pydantic kann hier noch für die input validierung eingefügt werden
 CLASS_INDICIES = {
   "barbarian": 0,
@@ -21,7 +21,7 @@ CLASS_INDICIES = {
 class CharacterDataLoader:
     """läd einen character aus dem lokalen speicher. 'class_name' ist eine von den 12 möglichen Klassen"""
     def __init__(self, class_name):
-        self.crud = CRUD(None)
+        self.crud = CrudJsonFiles(None)
 
         self.class_name = class_name.lower()
         self.data_base_path = "../../static_dnd_data/"
@@ -40,10 +40,10 @@ class CharacterDataLoader:
 
     def class_data(self) -> tuple[dict, list, list, list]:
         """gibt alle klassen daten, in einer liste zurück"""
-        base_crud = CRUD(self.class_base_data)
-        spell_crud = CRUD(self.spell_file_path)
-        level_crud = CRUD(self.level_file_path)
-        subclass_crud = CRUD(self.subclass_file_path)
+        base_crud = CrudJsonFiles(self.class_base_data)
+        spell_crud = CrudJsonFiles(self.spell_file_path)
+        level_crud = CrudJsonFiles(self.level_file_path)
+        subclass_crud = CrudJsonFiles(self.subclass_file_path)
 
         base_data = base_crud.data[CLASS_INDICIES[self.class_name]]
 

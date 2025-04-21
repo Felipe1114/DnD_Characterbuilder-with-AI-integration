@@ -33,8 +33,9 @@ genauer ablauf:
 from fastapi import APIRouter
 from pydantic import BaseModel # BaseModel is a Class, which defines the input type
 from src.database.db_manager import DatabaseManager
-from src.LLM.rewrite_user_promt import RewriteUserPromt
+from src.LLM.rewrite_user_promt import RewriteUserprompt
 from sqlalchemy import create_engine
+
 
 router = APIRouter()
 
@@ -61,7 +62,7 @@ async def analyze_prompt(user_prompt: Prompt):
 	anaylsierter user_prompt und user_prompt werden in db gespeichert
 	"""
 	# instanziert RewriteUserPrompt und erhält bereits user_prompt
-	rewrite = RewriteUserPromt(user_prompt)
+	rewrite = RewriteUserprompt(user_prompt)
 	# analysiert user_prompt und gibt analysed_prompt zurück
 	analysed_prompt: AnalysedPrompt = rewrite.rewrite()
 	
