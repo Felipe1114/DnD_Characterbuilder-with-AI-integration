@@ -188,11 +188,9 @@ Falls keine dieser - oder andere - Schlagwörter für die Stärke eines Characte
 
 Als nächstes kommt die aufforderung den character zu erstellen, mit den KLassen daten und den character details.
 
-'''
 __RewrittenPrompt__
-'''
 
 Hier sind die jeweiligen Character daten:
 '''
-___ClassJSON__
+___ClassJSONData__
 '''
