@@ -55,12 +55,16 @@ class SystemRequestBuilder:
 		es muss eine for-schleife (4 mal) geschrieben werden, die 4 charactere auf basis der classen und rewritten prompts erstellt
 		class_list = [class_1, class_2, class_3]
 		character aufteilung: 2x class_1, 1x class_2, 1x class_3
-			-> for i in range(4):
+			->  system_messages = []
+				for i in range(4):
 					if i <= 1:
-						generiere charcter für class_list[0]
+						system_messages.append(generieree system_message für class_list[0])
 					else:
-						generiere charcter für class_list[i-1]
-
+						system_messages.append(generieree system_message für class_list[i-1])
+					
 		"""
 		system_message = self.get_system_message()
+		
+		#TODO hier muss vieleicht mit "yield" gearbeitet werden, da es ja drei system messages gibt, die ausgegeben werden sollen
+		
 		
