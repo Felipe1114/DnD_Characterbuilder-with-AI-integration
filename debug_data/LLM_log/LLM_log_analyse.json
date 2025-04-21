@@ -1,0 +1,34 @@
+[
+    [
+        {
+            "prompt_generation": "prompt_alpha_1",
+            "llm_answers": []
+        },
+        {
+            "prompt_generation": "prompt_alpha_2",
+            "llm_answers": [
+                {
+                    "user_prompt": "dunkler Magier, der tote beschw\u00f6rt und feuer Zauber beherrscht",
+                    "answer": "```json\n{\n  \"matched_classes\": [\"warlock\", \"wizard\", \"sorcerer\"],\n  \"keywords\": [\"dunkler\", \"Magier\", \"tote\", \"beschw\u00f6rt\", \"feuer\", \"Zauber\"],\n  \"rewritten_prompt_template\": [\n    \"dunkler warlock, der tote beschw\u00f6rt und Feuerzauber beherrscht\",\n    \"dunkler wizard, der tote beschw\u00f6rt und Feuerzauber beherrscht\",\n    \"dunkler sorcerer, der tote beschw\u00f6rt und Feuerzauber beherrscht\"\n  ]\n}\n```"
+                }
+            ]
+        },
+        {
+            "prompt_generation": "prompt_alpha_3",
+            "llm_answers": [
+                {
+                    "user_prompt": "dunkler Magier, der tote beschw\u00f6rt und feuer Zauber beherrscht",
+                    "answer": "{\n  \"matched_classes\": [\"warlock\", \"wizard\", \"sorcerer\"],\n  \"keywords\": [\"dunkel\", \"Magier\", \"beschw\u00f6rt\", \"tote\", \"feuer\", \"Zauber\"],\n  \"rewritten_prompt_template\": [\"dunkler warlock, der tote beschw\u00f6rt und Feuerzauber beherrscht\", \"dunkler wizard, der tote beschw\u00f6rt und Feuerzauber beherrscht\", \"dunkler sorcerer, der tote beschw\u00f6rt und Feuerzauber beherrscht\"]\n}"
+                },
+                {
+                    "user_prompt": "Ein bote des lichts. Er hat ein gro\u00dfes schwert und beherrscht die elemente. Er ist in eine strahlende R\u00fcstung getaucht.",
+                    "answer": "{\n  \"matched_classes\": [\"paladin\", \"fighter\", \"cleric\"],\n  \"keywords\": [\"Bote des Lichts\", \"gro\u00dfes Schwert\", \"Elemente beherrschen\", \"strahlende R\u00fcstung\"],\n  \"rewritten_prompt_template\": [\n    \"Ein paladin des Lichts. Er hat ein gro\u00dfes Schwert und beherrscht die Elemente. Er ist in eine strahlende R\u00fcstung getaucht.\",\n    \"Ein fighter des Lichts. Er hat ein gro\u00dfes Schwert und beherrscht die Elemente. Er ist in eine strahlende R\u00fcstung getaucht.\",\n    \"Ein cleric des Lichts. Er hat ein gro\u00dfes Schwert und beherrscht die Elemente. Er ist in eine strahlende R\u00fcstung getaucht.\"\n  ]\n}"
+                },
+                {
+                    "user_prompt": "Aang aus 'Avatar - the last airbender'",
+                    "answer": "{\n  \"matched_classes\": [\"monk\", \"ranger\", \"fighter\"],\n  \"keywords\": [\"Aang\", \"Avatar\", \"Luftb\u00e4ndiger\", \"Bender\", \"Kampf\", \"Bewegung\", \"Gleichgewicht\"],\n  \"rewritten_prompt_template\": [\n    \"Aang aus 'Avatar - the last airbender' als monk\",\n    \"Aang aus 'Avatar - the last airbender' als ranger\",\n    \"Aang aus 'Avatar - the last airbender' als fighter\"\n  ]\n}"
+                }
+            ]
+        }
+    ]
+]
