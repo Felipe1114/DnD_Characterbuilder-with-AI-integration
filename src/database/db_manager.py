@@ -125,7 +125,7 @@ class DatabaseManager:
 		return result
 	
 	@DebugLog.debug_log
-	def load_character_data(self, idea_id):
+	def load_character_prompts(self, idea_id):
 		"""loads all data form the analysed user_prompt for creating a system prompt for character creation"""
 		session = self.Session()
 		classes_for_idea =  self._load_classes_for_idea(idea_id, session)
