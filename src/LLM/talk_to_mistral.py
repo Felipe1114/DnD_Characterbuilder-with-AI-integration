@@ -33,34 +33,11 @@ class TalkToMistral:
 		
 		return self._mistral_response.choices[0].message.content
   
-	def send_file(self, file_path: str, message: str, custom_filename: str = None, user: str = "user"):
-		"""
-		Lädt eine Datei hoch und sendet sie zusammen mit einer Nachricht an die Mistral-API.
-		"""
-		try:
-			with open(file_path, 'rb') as file:
-				file_content = file.read()
-	   
-			files = {
-				"file": (custom_filename if custom_filename else file_path, file_content)
-			}
-	  
-			mistral_small_response = self.client.chat.complete(
-				model=self.model,
-				messages=[{"role": user, "content": message}],
-				files=files
-			)
-			self._mistral_response = mistral_small_response
-   
-		except FileNotFoundError:
-			return "File not found. Please check the file path."
-		except Exception as e:
-			return f"An error occurred: {e}"
 
 	# noch nicht definiert
-    def system_message(self):
+	def system_message(self):
 		"""erklärt dem LLM, was es genau mit den erhaltenen daten machen soll"""
-		...
+		pass
 
 
 
