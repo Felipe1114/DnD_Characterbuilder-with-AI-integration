@@ -135,9 +135,9 @@ class DatabaseManager:
 		rewritten_prompts = self._load_rewritten_prompts(idea_id, session)
 
 		return {
-			'classes': classes_for_idea,
-			'key_descriptions': descriptions_for_idea,
-			'rewritten_prompts': rewritten_prompts
+			'classes': classes_for_idea, # -> three classes [class_1, class_2, class_2]
+			'key_descriptions': descriptions_for_idea, # -> ["great", "big", "strong", "fire", ...]
+			'rewritten_prompts': rewritten_prompts # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
 		}
 	
 	@DebugLog.debug_log
