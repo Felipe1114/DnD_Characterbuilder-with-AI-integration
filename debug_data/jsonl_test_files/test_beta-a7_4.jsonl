@@ -1,6 +1,6 @@
 {
-    "text": "This are all available spells for the DnD-class 'Cleric'",
-    "data": [
+  "tpye": "data",
+  "data": [
                     {
                         "index": "guidance",
                         "name": "Guidance",

@@ -75,19 +75,57 @@
                 "question": "I´ve send a Jsonl file to you, with the name: 'test_beta-a7_2.jsonl'. Please give me a summery of the content of the file",
                 "answer": "I'm unable to directly access or process files, including JSONL files, that you send. However, I can guide you on how to summarize the content of a JSONL file yourself.\n\n                A JSONL (JSON Lines) file is a text file where each line is a valid JSON object. Here’s a step-by-step guide to summarize the content of your `test_beta-a7_2.jsonl` file:\n\n                1. **Open the File**: Use a text editor or a programming environment to open the file.\n\n                2. **Read the File**: If you're using a programming language like Python, you can read the file line by line.\n\n                3. **Parse Each Line**: Each line in the file is a JSON object, so you need to parse it using a JSON parser.\n\n                4. **Summarize the Content**: Depending on what you want to summarize, you can extract specific fields or perform aggregations.\n\n                Here’s an example using Python:\n\n                ```python\n                import json\n\n                # Open the file\n                with open('test_beta-a7_2.jsonl', 'r') as file:\n                    lines = file.readlines()\n\n                # Initialize a summary dictionary\n                summary = {\n                    'total_lines': len(lines),\n                    'fields': set()\n                }\n\n                # Parse each line and summarize\n                for line in lines:\n                    data = json.loads(line)\n                    summary['fields'].update(data.keys())\n\n                # Print the summary\n                print(f\"Total lines: {summary['total_lines']}\")\n                print(\"Fields found:\")\n                for field in summary['fields']:\n                    print(f\"  - {field}\")\n                ```\n\n                This script will give you the total number of lines in the file and the unique fields present in the JSON objects.\n\n                If you provide more details about what specific information you want to summarize (e.g., counts of certain values, aggregations, etc.), I can help you tailor the script further.",
                 "success": false
+            },
+            {
+                "test_file_name": "test_beta-a7_2.jsonl",
+                "test_description": "use the OCR code template with 'client.chat.complete(...)'",
+                "question": "I´ve send a Jsonl file to you, with the name: 'test_beta-a7_2.jsonl'. Please give me a summery of the content of the file",
+                "answer": "SKDError",
+                "success": false
+            },
+            {
+                "test_file_name": "test_beta-a7_3.jsonl",
+                "test_description": "use the OCR code template with 'client.chat.complete(...)'; test file has only 'data' key",
+                "question": "I´ve send a Jsonl file to you, with the name: 'test_beta-a7_2.jsonl'. Please give me a summery of the content of the file",
+                "answer": "SKDError",
+                "success": false
+            },
+            {
+                "test_file_name": "test_beta-a7_2.jsonl",
+                "test_description": "use the OCR code template with 'client.chat.complete(...)'; using old jsonl file, but with other purpose: purpose='fine-tune'",
+                "question": "I´ve send a Jsonl file to you, with the name: 'test_beta-a7_2.jsonl'. Please give me a summery of the content of the file",
+                "answer": "summary of answer: false 'type' in messages; Error: upload_files_with_response: 2 validation errors for Unmarshaller\nbody.0.user.content.str\n  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...DmgtMz48dm%2BrhpfI%3D'}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.10/v/string_type\nbody.0.user.content.list[tagged-union[ImageURLChunk,DocumentURLChunk,TextChunk,ReferenceChunk]].1\n  Input tag 'jsonl-file' found using <lambda>() does not match any of the expected tags: 'image_url', 'document_url', 'text', 'reference' [type=union_tag_invalid, input_value={'type': 'jsonl-file', 'd...DDmgtMz48dm%2BrhpfI%3D'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/union_tag_invalid",
+                "signed_url": "url='https://mistralaifilesapiprodswe.blob.core.windows.net/fine-tune/e0bdcf2c-c355-43d5-bfa2-bb23d2a4bedc/b758e648f75a456984153d64dddcb2c6.jsonl?se=2025-04-27T14%3A48%3A08Z&sp=r&sv=2025-05-05&sr=b&sig=fGAORVR7nSlGr11wUGgyCjQPp8%2BVS508c12YnLqK4rk%3D'",
+                "success": false
             }
         ]
     },
     {
-        "test_file_name": "test_alpha_8.jsonl",
-        "test_description": "try to send a file and get ideamedly a response from mistral",
-        "question": false,
-        "answer": false,
-        "success": false
+        "test_file_name": "test_alpha_8.txt",
+        "test_description": "use the OCR code template, but this time with a txt file'",
+        "question": "I´ve send a Jsonl file to you, with the name: 'test_alpha_8.txt'. Please give me a summery of the content of the file",
+        "answer": "\nError: upload_files_with_response: 2 validation errors for Unmarshaller\nbody.0.user.content.str\n  Input should be a valid string [type=string_type, input_value=[{'type': 'text', 'text':...953Ff2F8DxIInmmRTk%3D'}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.10/v/string_type\nbody.0.user.content.list[tagged-union[ImageURLChunk,DocumentURLChunk,TextChunk,ReferenceChunk]].1.text.text\n  Field required [type=missing, input_value={'type': 'text', 'documen...2953Ff2F8DxIInmmRTk%3D'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/missing",
+        "success": false,
+        "beta_tests": [
+            {
+                "test_file_name": "test_beta-a8_1.txt",
+                "test_description": "txt file has now no 'gänsefüschen' and no [] parenteces",
+                "question": "I´ve send a Jsonl file to you, with the name: 'test_beta-a8_1.txt'. Please give me a summery of the content of the file",
+                "answer": "\nError: upload_files_with_response: \nfile wiht error: '../../debug_data/jsonl_test_files/test_beta-a8_1.txt'; \nAPI error occurred: Status 422\n{\"detail\": \"Invalid file format.\", \"description\": \"Found 1 error in this file. You can view supported formats here: https://docs.mistral.ai/capabilities/finetuning. \", \"errors\": [{\"message\": \"Truncated or malformed JSON object at end of file.\", \"line_number\": 1}]}: Status -1\n",
+                "success": true
+            },
+           {
+                "test_file_name": "test_beta-a8_2.txt",
+                "test_description": "also the first {} parenteces deleted",
+                "question": "I´ve send a Jsonl file to you, with the name: 'test_beta-a8_2.txt'. Please give me a summery of the content of the file",
+                "answer": false,
+                "success": true
+            }
+          ]
     },
     {
-        "test_file_name": "test_alpha_9.jsonl",
-        "test_description": "each alpha-test-file contains a different way to get a basic structure for a valid Jsonl file",
+        "test_file_name": "test_alpha_9.pdf",
+        "test_description": "file is a json file as an pdf file",
         "question": false,
         "answer": false,
         "success": false
