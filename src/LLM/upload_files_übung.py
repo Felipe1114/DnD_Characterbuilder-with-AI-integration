@@ -4,7 +4,7 @@ from mistralai.models.sdkerror import SDKError
 from src.debug.debug_log import DebugLog
 from src.LLM.talk_to_mistral import TalkToMistral
 
-
+# TODO daten nur mit f-string anhängen!!!
 @DebugLog.debug_log
 def upload_files_to_mistral():
 	api_key = "EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt"
@@ -30,7 +30,6 @@ def upload_files_to_mistral():
 
 @DebugLog.debug_log
 def upload_files_with_response():
-	# TODO: cleric spells json als txt hochladen
 	try:
 		# Retrieve the API key from environment variables
 		api_key = "EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt"
@@ -94,4 +93,6 @@ if __name__ == "__main__":
 	# res = mistral.response()
 	# print(res)
 	upload_files_with_response()
+	
+	
 	

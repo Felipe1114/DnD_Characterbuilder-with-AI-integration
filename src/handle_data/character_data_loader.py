@@ -17,7 +17,7 @@ CLASS_INDICIES = {
 
 class CharacterDataLoader:
 	"""läd einen character aus dem lokalen speicher. 'class_name' ist eine von den 12 möglichen Klassen"""
-	def __init__(self, class_name):
+	def __init__(self, class_name=None):
 		
 		self.class_name = class_name.lower()
 		self.data_base_path = "../../static_dnd_data/"
@@ -33,7 +33,7 @@ class CharacterDataLoader:
 
 			# erstellt eine liste mit spell-, level- und subclass-datapath
 
-
+	
 	def class_data(self) -> list:
 		"""gibt alle klassen daten, in einer liste zurück"""
 		base_crud = CrudJsonFiles(self.class_base_data)
@@ -48,6 +48,27 @@ class CharacterDataLoader:
 		subclasses: list = subclass_crud.data
 		
 		return [base_data, spells, level_features, subclasses]
+ 
+	@property
+	def class_name(self):
+		"""returns self.class_name"""
+		return self.class_name
+	
+	@class_name.setter
+	def class_name(self, new_class_name: str):
+		"""sets a new class_name and checks, if new_class_name is one of the possible classes"""
+		try:
+			class_name = new_class_name.lower()
+			
+			for key in CLASS_INDICIES.keys():
+				if not class_name == key:
+					raise ValueError
+					
+			self.class_name = class_name
+			
+		except ValueError as e:
+			print(f"new_class_name has to be one of the 12 possible classes; {e}")
+			
  
 	def run(self):
 		return self.class_data()

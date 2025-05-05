@@ -1,0 +1,14 @@
+level_features:
+"""
+__PLACEHOLDER_LEVEL_FEATURES__
+"""
+
+spells:
+"""
+__PLACEHOLDER_SPELLS__
+"""
+
+sublcass_data:
+"""
+__PLACEHOLDER_SUBCLASS_DATA__
+"""
