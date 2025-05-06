@@ -35,9 +35,11 @@ JSON rückgabe:
 from src.LLM.talk_to_mistral import TalkToMistral
 from src.handle_data.crud_json import CrudJsonFiles
 from src.handle_data.algo.binary_dict import BinaryDict
+from src.database.db_manager import DatabaseManager
+from src.handle_data.llm_log_manager import LlmLogManager
 
 class RewriteUserprompt(TalkToMistral):
-	def __init__(self, user_prompt, prompt_key: str="prompt_alpha_3"):
+	def __init__(self, user_prompt, system_prompt_key: str= "prompt_alpha_3"):
 		"""
 		crud: the class, wich gets the prompt from the prompt file
 		prompt_key: the key to geht the correct prompt from the prompt dict
@@ -45,11 +47,14 @@ class RewriteUserprompt(TalkToMistral):
 		self.ask() und self.response() sind base-methods aus TalkToMistral
 		"""
 		super().__init__()
-		self.llm_log_prompt_path = "../../debug_data/LLM_log/LLM_log_prompt.json"
-		self.prompt_crud = CrudJsonFiles(self.llm_log_prompt_path)
-		self.prompt_key = prompt_key
-		self._user_prompt = user_prompt
-
+		self.system_prompt_path = "../../debug_data/LLM_log/LLM_log_prompt.json"
+		self.prompt_crud = CrudJsonFiles(self.system_prompt_path)
+		self.prompt_key = system_prompt_key # key for the system prompt
+		self._user_prompt = user_prompt # prompt from user, with character idea
+		self.db_path = "sqlite:///../../data/db/dnd_db.sqlite" # TODO db_path könnte man noch in env file packen
+		self.db = DatabaseManager(self.db_path)
+		self.log_mngr = LlmLogManager(self.prompt_key)
+		
 	def rewrite(self):
 		"""fragt das LLM, den User-prompt umzuschreiben"""
 		#user_prompt = user_prompt.strip() # definiert den user_prompt
@@ -61,7 +66,12 @@ class RewriteUserprompt(TalkToMistral):
 		# gibt umgeschriebenen user_prompt zurück
 		
 		# gibt die antwort von Mistral zurück
-		return self.response()
+		respone = self.response()
+		
+		# speichert rewritten prompt in llm_log für die dokumentation und ds testing ab
+		self.log_mngr.save_analysed_prompt(self._user_prompt, respone)
+		
+		return respone
 
 
 	@property
@@ -81,41 +91,43 @@ class RewriteUserprompt(TalkToMistral):
 		request_prompt = request.replace("{PLACEHOLDER}", self._user_prompt)
 		
 		return request_prompt
+	
 
 
-#
-#
-# if __name__ == "__main__":
-# 	# crud für llm_log_analyse instanzieren
-# 	llm_log_analysis_path = "../../debug_data/LLM_log/LLM_log_analyse.json"
-# 	analyse_crud = CrudJsonFiles(llm_log_analysis_path)
-#
-# 	# holt die daten aus LLM_log_analyse.json
-# 	analyse_data:list = analyse_crud.data
-#
-# 	# prompt key und user_prompt
-# 	prompt_alpha_version = "prompt_alpha_3" # pormpt_alpha_version ist 'prompt_alpha_version' in BinaryDict
-# 	user_prompt = "Eine Mischung aus: Valentine aus der Adamsfamilie und Calipso aus Fluch der Karibik"
-#
-# 	# analysiere user_prompt und füge ihn in system_prompt ein
-# 	rewrite = RewriteUserprompt(user_prompt, prompt_key=prompt_alpha_version)
-# 	rewritten_prompt = rewrite.rewrite()
-#
-# 	# finde passendes dict in analyse_data über binary_algo
-# 	bnry_dct = BinaryDict(analyse_data, prompt_alpha_version)
-# 	i_of_version_dict = bnry_dct.result()
-# 	i = i_of_version_dict
-#
-# 	analyse_log_data = {
-#         "user_prompt": user_prompt,
-#         "answer": rewritten_prompt
-# 	}
-#
-# 	# füge rewritten_prompt in analyse_data[i] ein
-# 	analyse_data[i]["llm_answers"].append(analyse_log_data)
-#
-# 	# speichere neue analyse_data ab
-# 	analyse_crud.reset()
-# 	analyse_crud.data = analyse_data
-#
-# 	print(analyse_log_data)
+
+
+if __name__ == "__main__":
+	# crud für llm_log_analyse instanzieren
+	llm_log_analysis_path = "../../debug_data/LLM_log/LLM_log_analyse.json"
+	analyse_crud = CrudJsonFiles(llm_log_analysis_path)
+
+	# holt die daten aus LLM_log_analyse.json
+	analyse_data:list = analyse_crud.data
+
+	# prompt key und user_prompt
+	prompt_alpha_version = "prompt_alpha_3" # pormpt_alpha_version ist 'prompt_alpha_version' in BinaryDict
+	user_prompt = "Eine Mischung aus: Valentine aus der Adamsfamilie und Calipso aus Fluch der Karibik"
+
+	# analysiere user_prompt und füge ihn in system_prompt ein
+	rewrite = RewriteUserprompt(user_prompt, system_prompt_key=prompt_alpha_version)
+	rewritten_prompt = rewrite.rewrite()
+
+	# finde passendes dict in analyse_data über binary_algo
+	bnry_dct = BinaryDict(analyse_data, prompt_alpha_version)
+	i_of_version_dict = bnry_dct.result()
+	i = i_of_version_dict
+	
+	analyse_log_data = {
+        "user_prompt": user_prompt,
+        "answer": rewritten_prompt,
+		"characters": None
+	}
+
+	# füge rewritten_prompt in analyse_data[i] ein
+	analyse_data[i]["llm_answers"].append(analyse_log_data)
+
+	# speichere neue analyse_data ab
+	analyse_crud.reset()
+	analyse_crud.data = analyse_data
+
+	print(analyse_log_data)
