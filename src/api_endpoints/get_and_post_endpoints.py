@@ -26,7 +26,7 @@ POST:
 from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import List
-
+# TODO: fertige charcter_builder_app hier einfügen
 router = APIRouter()
 
 class CharacterRequest(BaseModel):
