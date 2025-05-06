@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from src.database.models import Base
 
 # Erstelle eine SQLite-Datenbank im angegebenen Pfad
-DATABASE_URL = f"sqlite:///../../data/db/dnd_db.sqlite"
+DATABASE_URL = "sqlite:///../../data/db/dnd_db.sqlite"
 
 if __name__ == "__main__":
 	
