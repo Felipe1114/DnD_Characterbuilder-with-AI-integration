@@ -5,7 +5,8 @@ from typing import List, Dict
 from src.debug.debug_log import DebugLog
 from pydantic import BaseModel
 
-
+# TODO: überall noch rollback einbauen
+#					 ^^^^^^^^
 class Prompt(BaseModel):
 	"""Defines the Input type and validates it"""
 	text: str
@@ -186,11 +187,12 @@ class DatabaseManager:
 		return []
 	
 	@DebugLog.debug_log
-	def save_generated_characters(self, characters: List[Dict]):
+	# TODO idea_id muss noch gesetzt werden
+	def save_generated_characters(self, characters: List[dict], idea_id):
 		"speichert die erstellen charactere in der db ab"
 		session = self.Session()
 		for character in characters:
-			character_entry = Character(**character)
+			character_entry = Character(idea_id, character)
 			session.add(character_entry)
 
 		session.commit()

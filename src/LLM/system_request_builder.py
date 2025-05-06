@@ -5,14 +5,13 @@ Aufgabe:
 erhält Klassen daten und umgeschriebenen User-Promt
 Kombiniert alles zu einem “System Prompt”"""
 from src.database.db_manager import DatabaseManager
-from src.handle_data.crud_txt import CrudTxtFiles
 from src.handle_data.character_data_loader import CharacterDataLoader, CLASS_INDICIES
 from src.handle_data.crud_txt import CrudTxtFiles
 
 class SystemRequestBuilder:
 	def __init__(self, idea_id):
 		self.idea_id = idea_id
-		self.db_path = "db_path"
+		self.db_path = "sqlite:///../../data/db/dnd_db.sqlite" # TODO db_path könnte man noch in env file packen
 		self.db = DatabaseManager(self.db_path)
 		self.system_message_path = "../../debug_data/LLM_log/system_message_alpha_01.txt"
 		self.crud_message = CrudTxtFiles(self.system_message_path)
@@ -66,7 +65,7 @@ class SystemRequestBuilder:
 		
 		return char_prompt_dict
 	
-	def generate_system_prompts(self):
+	def generate_system_prompts(self) -> list:
 		"""creates a list with four system prompts. Each for a character.
 		Each system prompt contains the system_prompt_template, the rewritten_prompt for each possible class
 		and all necessary data for each class"""
@@ -110,7 +109,10 @@ class SystemRequestBuilder:
 		system_message = system_message.replace("__RewrittenPrompt__", char_details)
 		return system_message
 		
-		
+	def run(self):
+		"""casts generate_system_prompts and returns the prompt list"""
+		prompt_list = self.generate_system_prompts()
+		return prompt_list
 		
 			
 			
