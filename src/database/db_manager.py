@@ -3,6 +3,17 @@ from sqlalchemy.orm import sessionmaker
 from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, BestChar
 from typing import List, Dict
 from src.debug.debug_log import DebugLog
+from pydantic import BaseModel
+
+
+class Prompt(BaseModel):
+	"""Defines the Input type and validates it"""
+	text: str
+	
+class AnalysedPrompt(BaseModel):
+	matched_classes: list
+	keywords: list
+	rewritten_prompt_template: list
 
 class DatabaseManager:
 	"""
@@ -23,7 +34,7 @@ class DatabaseManager:
 		self.Session = sessionmaker(bind=engine)
 	
 	@DebugLog.debug_log
-	def save_user_prompt(self, prompt: str, analysed_dict: dict[str, list[str]]):
+	def save_user_prompt(self, prompt: Prompt, analysed_dict: AnalysedPrompt):
 		"""
 		speichert alle daten aus der Analyse des user_prompts
 		"""
@@ -39,7 +50,7 @@ class DatabaseManager:
 		new_idea_id = session.scalars(stmt_new_idea).first()
 
 		# possible_classes abspeichern
-		self._save_classes(new_idea_id, session)
+		self._save_classes(possible_classes, new_idea_id, session)
 
 		# key_descriptions abspeichern
 		self._save_key_descriptions(key_descriptions, new_idea_id, session)
@@ -82,10 +93,8 @@ class DatabaseManager:
 			session.add(description_to_idea)
 	
 	@DebugLog.debug_log
-	def _save_classes(self, new_idea_id, session):
+	def _save_classes(self, possible_classes, new_idea_id, session):
 		"""saves the three best fitting dnd-classes for user_prompt in db"""
-		possible_classes = ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue',
-							'sorcerer', 'warlock', 'wizard']
 		dnd_classes = Classes(idea_id=new_idea_id,
 							  barbarian='barbarian' in possible_classes,
 							  bard='bard' in possible_classes,
@@ -102,7 +111,7 @@ class DatabaseManager:
 		session.add(dnd_classes)
 	
 	@DebugLog.debug_log
-	def extract_analysed_data(self, analysed_dict: dict[str, list[str]]) -> tuple:
+	def extract_analysed_data(self, analysed_dict: AnalysedPrompt) -> tuple:
 		"""
 		extrahiert alle daten aus dem dictionary und gibt sie als tuple zurück
 		"""
