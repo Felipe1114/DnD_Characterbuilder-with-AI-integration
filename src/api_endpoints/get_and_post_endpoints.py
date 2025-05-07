@@ -26,19 +26,31 @@ POST:
 from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import List
-# TODO: fertige charcter_builder_app hier einfügen
+from src.LLM.character_builder_app import CharacterBuilderApp
+from src.database.db_manager import DatabaseManager
+from src.debug.debug_log import DebugLog
+from sqlalchemy import create_engine
+
+
 router = APIRouter()
 
 class CharacterRequest(BaseModel):
     prompt: str
     class_names: List[str]
 
+@DebugLog.debug_log
 @router.get("/")
-async def get_characters():
-    # Placeholder-Funktion für GET-Anfragen (Zugriff auf generierte Charaktere)
-    return {"message": "Hier werden die generierten Charaktere abgerufen."}
+async def get_characters(idea_id: int):
+    """gets all characters by idea_id"""
+    db_path = "sqlite:///../../data/db/dnd_db.sqlite"
+    engine = create_engine(db_path)
+    db_mngr = DatabaseManager(engine)
+    
+    db_mngr.load_characters(idea_id)
 
-@router.post("/")
-async def generate_characters(request: CharacterRequest):
-    # Placeholder-Funktion für POST-Anfragen (Generierung von Charakteren)
-    return {"message": f"Charaktere basierend auf dem Prompt: {request.prompt}"}
+@DebugLog.debug_log
+@router.post("/generate")
+async def generate_characters(idea_id: int):
+   """Generates for characters and saves them into the db"""
+   char_builder = CharacterBuilderApp(idea_id)
+   char_builder.run()

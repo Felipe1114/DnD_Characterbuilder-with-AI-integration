@@ -35,12 +35,13 @@ from pydantic import BaseModel # BaseModel is a Class, which defines the input t
 from src.database.db_manager import DatabaseManager
 from src.LLM.rewrite_user_promt import RewriteUserprompt
 from sqlalchemy import create_engine
+from src.debug.debug_log import DebugLog
 
 
 router = APIRouter()
 
 # verkünpfung mit db
-db_path = ...
+db_path = "sqlite:///../../data/db/dnd_db.sqlite"
 engine = create_engine(db_path)
 db_mngr = DatabaseManager(engine)
 
@@ -52,9 +53,11 @@ class AnalysedPrompt(BaseModel):
 	matched_classes: list
 	keywords: list
 	rewritten_prompt_template: list
-	
+
+@DebugLog.debug_log
 @router.post("/")
 async def analyze_prompt(user_prompt: Prompt):
+# def analyse_prompt(Prompt(user_prompt).model_dump())
 	"""
 	nimmt user_prompt entgegen
 	gibt user_prompt an LLM.RewriteUserPrompt weiter
@@ -62,7 +65,8 @@ async def analyze_prompt(user_prompt: Prompt):
 	anaylsierter user_prompt und user_prompt werden in db gespeichert
 	"""
 	# instanziert RewriteUserPrompt und erhält bereits user_prompt
-	rewrite = RewriteUserprompt(user_prompt)
+	
+	rewrite = RewriteUserprompt(user_prompt.text)
 	# analysiert user_prompt und gibt analysed_prompt zurück
 	analysed_prompt: AnalysedPrompt = rewrite.rewrite()
 	
