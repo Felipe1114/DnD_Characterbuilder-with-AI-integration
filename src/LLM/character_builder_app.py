@@ -16,6 +16,7 @@ from src.handle_data.llm_log_manager import LlmLogManager
 
 class CharacterBuilderApp:
 	""""""
+	#TODO: in CharacterDataLoader muss noch der character name festgeelegt werden
 	def __init__(self, idea_id):
 		self.db_path = "sqlite:///../../data/db/dnd_db.sqlite"  # TODO db_path könnte man noch in env file packen
 		self.db = DatabaseManager(self.db_path)
@@ -49,5 +50,9 @@ class CharacterBuilderApp:
 		self.log_mngr.save_character_to_llm_log(character_list)
 		# save character_json in db
 		self.db.save_generated_characters(character_list)
-		print("Four characters where generated and saved in database, as Json-objects")
+		
+		for i, char in enumerate(character_list):
+			print(f"\n=====================Character_{i+1}=========================\n")
+			print(char)
+		print("\nFour characters where generated and saved in database, as Json-objects")
 		
