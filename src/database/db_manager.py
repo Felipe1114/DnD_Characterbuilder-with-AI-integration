@@ -212,3 +212,14 @@ class DatabaseManager:
 			session.execute(stmt)
 
 		session.commit()
+		
+	def load_characters(self, idea_id: int):
+		"""Loads all foru character with the foreign_key: idea_id"""
+		session = self.Session()
+		
+		stmt = select(Character).where(Character.idea_id == idea_id)
+		result = session.execute(stmt).first()
+		
+		if result:
+			return result
+		
