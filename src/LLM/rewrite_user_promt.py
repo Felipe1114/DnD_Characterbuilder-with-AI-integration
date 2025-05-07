@@ -47,7 +47,7 @@ class RewriteUserprompt(TalkToMistral):
 		self.ask() und self.response() sind base-methods aus TalkToMistral
 		"""
 		super().__init__()
-		self.system_prompt_path = "../../debug_data/LLM_log/LLM_log_prompt.json"
+		self.system_prompt_path = "../../debug_data/LLM_log/system_prompts_for_rewrite.json"
 		self.prompt_crud = CrudJsonFiles(self.system_prompt_path)
 		self.prompt_key = system_prompt_key # key for the system prompt
 		self._user_prompt = user_prompt # prompt from user, with character idea
@@ -62,15 +62,14 @@ class RewriteUserprompt(TalkToMistral):
 		# gibt Mistral den Auftrag den user_prompt umzuschreiben
 		self.ask(request)
 		
-		#TODO: hier noch LLM log einbauen
-		# gibt umgeschriebenen user_prompt zurück
-		
 		# gibt die antwort von Mistral zurück
 		respone = self.response()
 		
+		"""
+		Log datei hat irgendein problem
 		# speichert rewritten prompt in llm_log für die dokumentation und ds testing ab
 		self.log_mngr.save_analysed_prompt(self._user_prompt, respone)
-		
+		"""
 		return respone
 
 
@@ -86,7 +85,18 @@ class RewriteUserprompt(TalkToMistral):
 
 	def generate_request_prompt(self) -> str:
 		"""generates the prompt for the request, out of the given system_prompt and the user_prompt"""
-		request: str = self.prompt_crud.data[self.prompt_key]
+		"""
+		folgender fehler ist hier aufgetreten:
+		
+		request: str = self.prompt_crud.data[0][self.prompt_key]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		TypeError: list indices must be integers or slices, not str
+		
+		um den FEhler zu beheben werde ich den systemprompt hard coden
+		"""
+		
+		#request: str = self.prompt_crud.data[0][self.prompt_key]
+		request: str = "Gegeben ist der folgende Nutzer-Prompt:\\n{PLACEHOLDER}\\n\\nFinde die zu diesem Prompt am besten passenden Klassen aus folgender 'class_name' Liste:\\n- barbarian\\n- bard\\n- cleric\\n- druid\\n- fighter\\n- monk\\n- paladin\\n- ranger\\n- rogue\\n- sorcerer\\n- warlock\\n- wizard\\n\\nGib als Ergebnis ein JSON mit folgendem Format zurück:\\n{\\n\\\"matched_classes\\\": [best_class, second_best_class, thrid_best_class],\\n\\\"keywords\\\": [keywords aus user_promt, die den character, seine Fähigkeiten und Eingeschaften beschreiben],\\n\\\"rewritten_prompt_template\\\": [umgeschriebene user_prompt mit best_class, umgeschriebener user_promt mit second_best_clas, ...]\\n}\\n\\nBeispiel:\\nuser_promt: \\\"dunkler Magier, der tote beschwört und feuer Zauber beherrscht\\\"\\nJSON rückgabe:\\n{\\n\\\"matched_classes\\\": [\\\"wizard\\\", \\\"warlock\\\", \\\"cleric\\\"],\\n\\\"keywords\\\": [\\\"dunkel\\\", \\\"beschwörung\\\", \\\"feuer\\\", \\\"tote\\\", \\\"zauber\\\"],\\n\\\"rewritten_prompt_template\\\": [\\\"dunkler wizard, der tote beschwört und Feuerzauber beherrscht\\\", \\\"dunkler warlock, der tote beschwört und Feuerzauber beherrscht\\\", \\\"dunkler cleric', der tote beschwört und Feuerzauber beherrscht\\\"]\\n}\nGebe als Antwort nur das Json zurück. Keine erklärungen, oder kommentare. Keine ''' oder \"\"\" am Anfang oder Ende deiner antwort. Auch kein Json: oder json am Anfnag der Antwort. Nur das reine Json, das mit '{' beginnt und mit '}' endet.\n"
 		
 		request_prompt = request.replace("{PLACEHOLDER}", self._user_prompt)
 		
