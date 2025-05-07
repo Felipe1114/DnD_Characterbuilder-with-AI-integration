@@ -55,7 +55,7 @@ class LlmLogManager:
 		}
 		
 		log_data = self.load_log_data()
-		for i, data in enumerate(log_data[0]):
+		for i, data in enumerate(log_data):
 			# finds correct dict on base of prompt_version
 			if data[i]["prompt_generation"] == self.prompt_version:
 				# fügt neues analysiertes prompt an
