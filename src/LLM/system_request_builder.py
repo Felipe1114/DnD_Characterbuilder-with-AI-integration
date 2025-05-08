@@ -88,12 +88,13 @@ class SystemRequestBuilder:
 			
 		return system_message_list
 	
+	# TODO hier müssen (über eine forlschleife?) die class_names eingefügt werden.
 	def add_class_data(self, system_message):
 		"""loads class_data and puts them all together in class_data_template"""
 		# loads a template, where all class_data come together in a big string
 		class_data_template = self.get_class_data_template()
 		# sets the class_name in the data_loader Class -> nececary for loading the correct class
-		self.data_loader.class_name = CLASS_INDICIES[self.idea_id]
+		self.data_loader.class_name = CLASS_INDICIES[self.idea_id] # TODO idea_id lädt nicht die classe!!!!
 		# returns a list with all three class_data parts (level_features, spells, subclass_data)
 		class_data = self.data_loader.class_data()
 		# puts class_data in one big string
