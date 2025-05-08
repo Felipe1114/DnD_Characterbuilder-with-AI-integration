@@ -38,14 +38,15 @@ from sqlalchemy import create_engine
 from src.debug.debug_log import DebugLog
 import json
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
+from pathlib import Path
 
 
 router = APIRouter()
 
 # verkünpfung mit db
-path = "../../data/db/dnd_db.sqlite"
-db_path = f"sqlite:///{path}"
-engine = create_engine(db_path)
+absolute_path = Path(__file__).resolve().parent.parent.parent / "data" / "db" / "dnd_db.sqlite"
+db_path = f"sqlite:///{absolute_path}"
+engine = create_engine(db_path, pool_pre_ping=True)
 db_mngr = DatabaseManager(engine)
 # TODO pydantic muss noch besser eingefügt werden!!
 #  BAsemodels müssen dann in strings o.Ä umgewandelt werden!!!
@@ -84,6 +85,7 @@ async def analyze_prompt(user_prompt: Prompt):
 		db_mngr.save_user_prompt(user_prompt, analysed_prompt_dict)
 	except (SQLAlchemyError, IntegrityError, OperationalError) as e:
 		# rollback wird in save_user_prompt behandelt, hier nur nochmal sicherheitshalber
+		print(f"DB Error: {str(e)}")
 		raise e
 	
 	return (f"prompt: {user_prompt} wurde in Datenbank gespeichert\n"

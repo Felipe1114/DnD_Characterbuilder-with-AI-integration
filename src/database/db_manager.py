@@ -1,3 +1,4 @@
+from flask_sqlalchemy.session import Session
 from sqlalchemy import func, select, delete
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
@@ -71,7 +72,7 @@ class DatabaseManager:
 	def _save_char_idea(self, prompt, session):
 		"""Saves user_prompt in db"""
 		try:
-			char_idea = CharIdea(user_prompt=prompt)
+			char_idea = CharIdea(user_prompt=prompt.text)
 			session.add(char_idea)
 			session.flush()
 		except SQL_ALCHEMY_ERROR as e:
@@ -90,7 +91,7 @@ class DatabaseManager:
 			raise e
 	
 	@DebugLog.debug_log
-	def _save_key_descriptions(self, key_descriptions, new_idea_id, session):
+	def _save_key_descriptions(self, key_descriptions, new_idea_id, session:Session):
 		"""saves the key_descriptions from user_prompt in db"""
 		try:
 			for i, key_description in enumerate(key_descriptions):
@@ -99,8 +100,8 @@ class DatabaseManager:
 				if not key_description in all_key_descriptions:
 					description = KeyDescription(description=key_description)
 					session.add(description)
-					stmt_max = select(func.max(KeyDescription.description_id))
-					description_id = session.scalars(stmt_max).first()
+					session.flush()
+					description_id = description.description_id
 				else:
 					description_id = session.scalars(
 						select(KeyDescription.description_id).where(KeyDescription.description == key_description)).first()
