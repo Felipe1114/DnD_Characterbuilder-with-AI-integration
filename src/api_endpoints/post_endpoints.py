@@ -36,15 +36,19 @@ from src.database.db_manager import DatabaseManager
 from src.LLM.rewrite_user_promt import RewriteUserprompt
 from sqlalchemy import create_engine
 from src.debug.debug_log import DebugLog
+import json
+from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 
 
 router = APIRouter()
 
 # verkünpfung mit db
-db_path = "sqlite:///../../data/db/dnd_db.sqlite"
+path = "../../data/db/dnd_db.sqlite"
+db_path = f"sqlite:///{path}"
 engine = create_engine(db_path)
 db_mngr = DatabaseManager(engine)
-
+# TODO pydantic muss noch besser eingefügt werden!!
+#  BAsemodels müssen dann in strings o.Ä umgewandelt werden!!!
 class Prompt(BaseModel):
 	"""Defines the Input type and validates it"""
 	text: str
@@ -68,16 +72,24 @@ async def analyze_prompt(user_prompt: Prompt):
 	
 	rewrite = RewriteUserprompt(user_prompt.text)
 	# analysiert user_prompt und gibt analysed_prompt zurück
-	analysed_prompt: AnalysedPrompt = rewrite.rewrite()
+	analysed_prompt_str = rewrite.rewrite()
 	
+	analysed_prompt_dict = json.loads(analysed_prompt_str)
+	
+	# für das testing:
+	print(analysed_prompt_dict)
+	print(type(analysed_prompt_dict))
 	# speichern der daten in db
-	db_mngr.save_user_prompt(user_prompt, analysed_prompt)
+	try:
+		db_mngr.save_user_prompt(user_prompt, analysed_prompt_dict)
+	except (SQLAlchemyError, IntegrityError, OperationalError) as e:
+		# rollback wird in save_user_prompt behandelt, hier nur nochmal sicherheitshalber
+		raise e
 	
 	return (f"prompt: {user_prompt} wurde in Datenbank gespeichert\n"
 	        f"analysed_user_prompt:\n"
-	        f"{analysed_prompt}"
+	        f"{analysed_prompt_dict}"
 	        f"wurde in Datenbank gespeichert")
-	
 	
 	
 
