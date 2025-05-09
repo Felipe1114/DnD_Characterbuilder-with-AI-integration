@@ -43,14 +43,21 @@ class CharacterRequest(BaseModel):
 async def get_characters(idea_id: int):
     """gets all characters by idea_id"""
     db_path = "sqlite:///../../data/db/dnd_db.sqlite"
-    engine = create_engine(db_path)
-    db_mngr = DatabaseManager(engine)
+    db_mngr = DatabaseManager(db_path)
     
     db_mngr.load_characters(idea_id)
 
 @DebugLog.debug_log
 @router.post("/generate")
 async def generate_characters(idea_id: int):
-   """Generates for characters and saves them into the db"""
+   """Generates for characters and saves them into the db
+   
+   idea_id is the primary key for the user_prompt
+   the user_prompt is analysed and the LLM had given back a prompt für the generation of a character.
+   
+   this pormpt is saved in the db.
+   
+   with the diea_id, we can get the analysed_prompt from the db
+   """
    char_builder = CharacterBuilderApp(idea_id)
    char_builder.run()

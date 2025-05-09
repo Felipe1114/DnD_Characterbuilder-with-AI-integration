@@ -46,8 +46,7 @@ router = APIRouter()
 # verkünpfung mit db
 absolute_path = Path(__file__).resolve().parent.parent.parent / "data" / "db" / "dnd_db.sqlite"
 db_path = f"sqlite:///{absolute_path}"
-engine = create_engine(db_path, pool_pre_ping=True)
-db_mngr = DatabaseManager(engine)
+db_mngr = DatabaseManager(db_path)
 # TODO pydantic muss noch besser eingefügt werden!!
 #  BAsemodels müssen dann in strings o.Ä umgewandelt werden!!!
 class Prompt(BaseModel):

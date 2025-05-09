@@ -1,6 +1,5 @@
-from flask_sqlalchemy.session import Session
-from sqlalchemy import func, select, delete
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import func, select, delete, create_engine
+from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
 from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, BestChar
 from typing import List
@@ -33,7 +32,8 @@ class DatabaseManager:
 		]
 	}
 	"""
-	def __init__(self, engine):
+	def __init__(self, db_path):
+		engine = create_engine(db_path, pool_pre_ping=True)
 		self.Session = sessionmaker(bind=engine)
 	
 	@DebugLog.debug_log
@@ -162,7 +162,6 @@ class DatabaseManager:
 		finally:
 			session.close()
 	
-	@DebugLog.debug_log
 	def load_character_prompts(self, idea_id):
 		"""loads all data form the analysed user_prompt for creating a system prompt for character creation"""
 		session = self.Session()
