@@ -14,17 +14,18 @@ class SystemRequestBuilder:
 			self.idea_id = idea_id
 		else:
 			raise ValueError("idea_id has to be an integer")
-		self.path = "../../data/db/dnd_db.sqlite"
+		self.path = "../data/db/dnd_db.sqlite"
 		self.db_path = f"sqlite:///{self.path}" # TODO db_path könnte man noch in env file packen
 		self.db = DatabaseManager(self.db_path)
-		self.system_message_path = "../../debug_data/LLM_log/system_message_alpha_01.txt"
+		self.system_message_path = "../debug_data/LLM_log/system_message_alpha_01.txt"
 		self.crud_message = CrudTxtFiles(self.system_message_path)
 		self.place_holder_keys = [
+			"__PLACEHOLDER_BASE_DATA__",
 			"__PLACEHOLDER_LEVEL_FEATURES__",
 			"__PLACEHOLDER_SPELLS__",
 			"__PLACEHOLDER_SUBCLASS_DATA__"
 			]
-		self.class_data_template_path = "../../static_dnd_data/detailed_class_data/all_class_data_template.txt"
+		self.class_data_template_path = "../static_dnd_data/detailed_class_data/all_class_data_template.txt"
 		self.crud_template = CrudTxtFiles(self.class_data_template_path)
 	
 	def get_system_message_template(self):
@@ -45,7 +46,6 @@ class SystemRequestBuilder:
 		
 		"""
 		char_prompts = self.db.load_character_prompts(self.idea_id)
-		print(f"type: {type(char_prompts)}, char_prompts: {char_prompts}")
 		char_prompt_dict = {
 								"char_1": {
 											"class": char_prompts["classes"][0],
@@ -79,6 +79,7 @@ class SystemRequestBuilder:
 		# char_prompt_dict enthält 1. classes 2. key_descriptions 3. rewritten_prompts
 		char_prompt_dict = self.load_char_prompts()
 		
+		
 		# for each of the 4 characters
 		for key, data in char_prompt_dict.items():
 			# loads a clean system_message template for each character
@@ -103,12 +104,11 @@ class SystemRequestBuilder:
 		
 		# gets the text template wehre all class_data(dicts) will be packed together
 		class_data_template = self.get_class_data_template()
-		
 		# returns a list with all three class_data parts (level_features, spells, subclass_data)
 		class_data = c_data_lodr.class_data()
 		# puts class_data in class_data_template
 		for i, data in enumerate(class_data):
-			class_data_template = class_data_template.replace(self.place_holder_keys[i], class_data[i])
+			class_data_template = class_data_template.replace(self.place_holder_keys[i], str(class_data[i]))
 		
 		# replaces Placeholder in the System_message: __ClassData__ with class_data_template
 		system_message = system_message.replace("__ClassData__", class_data_template)

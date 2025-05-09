@@ -175,7 +175,6 @@ class DatabaseManager:
 				'key_descriptions': descriptions_for_idea, # -> ["great", "big", "strong", "fire", ...]
 				'rewritten_prompts': rewritten_prompts # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
 			}
-			print(result)
 			return result
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()

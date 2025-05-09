@@ -1,3 +1,8 @@
+Base_data_for_class:
+"""
+__PLACEHOLDER_BASE_DATA__
+"""
+
 level_features:
 """
 __PLACEHOLDER_LEVEL_FEATURES__

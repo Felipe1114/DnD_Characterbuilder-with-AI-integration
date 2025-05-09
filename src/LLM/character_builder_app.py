@@ -21,7 +21,7 @@ class CharacterBuilderApp:
 	#TODO: in CharacterDataLoader muss noch der character name festgeelegt werden
 	def __init__(self, idea_id):
 		self.idea_id = idea_id
-		self.path = "../../data/db/dnd_db.sqlite"
+		self.path = "../data/db/dnd_db.sqlite"
 		self.db_path = f"sqlite:///{self.path}"  # TODO db_path könnte man noch in env file packen
 		self.db = DatabaseManager(self.db_path)
 		self.system_builder = SystemRequestBuilder(idea_id)
