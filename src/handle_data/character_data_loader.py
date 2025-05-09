@@ -50,27 +50,6 @@ class CharacterDataLoader:
 		
 		return [base_data, spells, level_features, subclasses]
  
-	@property
-	def class_name(self):
-		"""returns self.class_name"""
-		return self.class_name
-	
-	@class_name.setter
-	def class_name(self, new_class_name: str):
-		"""sets a new class_name and checks, if new_class_name is one of the possible classes"""
-		try:
-			class_name = new_class_name.lower()
-			
-			for key in CLASS_INDICIES.keys():
-				if not class_name == key:
-					raise ValueError
-					
-			self.class_name = class_name
-			
-		except ValueError as e:
-			print(f"new_class_name has to be one of the 12 possible classes; {e}")
-			
- 
 	def run(self):
 		return self.class_data()
 
