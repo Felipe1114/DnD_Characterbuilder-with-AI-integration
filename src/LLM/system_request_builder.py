@@ -20,7 +20,6 @@ class SystemRequestBuilder:
 			"__PLACEHOLDER_SPELLS__",
 			"__PLACEHOLDER_SUBCLASS_DATA__"
 			]
-		self.data_loader = CharacterDataLoader()
 		self.class_data_template_path = "../../static_dnd_data/detailed_class_data/all_class_data_template.txt"
 		self.crud_template = CrudTxtFiles(self.class_data_template_path)
 	
@@ -37,6 +36,9 @@ class SystemRequestBuilder:
 	def load_char_prompts(self):
 		"""gets char_ideas from database
 		returns a dict with 3 different classes and rewirtten_user_prompts
+		
+		char_prompts looks like this:
+			
 		"""
 		char_prompts = self.db.load_character_prompts(self.idea_id)
 		
@@ -70,10 +72,11 @@ class SystemRequestBuilder:
 		Each system prompt contains the system_prompt_template, the rewritten_prompt for each possible class
 		and all necessary data for each class"""
 		system_message_list = []
-		char_prompt_dcit = self.load_char_prompts()
+		# char_prompt_dict enthält 1. classes 2. key_descriptions 3. rewritten_prompts
+		char_prompt_dict = self.load_char_prompts()
 		
 		# for each of the 4 characters
-		for key, data in char_prompt_dcit.items():
+		for key, data in char_prompt_dict.items():
 			# loads a clean system_message template for each character
 			system_message = self.get_system_message_template()
 			
@@ -81,26 +84,29 @@ class SystemRequestBuilder:
 			system_message = self.add_char_details(data, system_message)
 			
 			# adds class_data to system_message with .replace()
-			system_message = self.add_class_data(system_message)
+			system_message = self.add_class_data(data, system_message)
 			
 			# appends system_message to the system_message list
 			system_message_list.append(system_message)
 			
 		return system_message_list
 	
-	# TODO hier müssen (über eine forlschleife?) die class_names eingefügt werden.
-	def add_class_data(self, system_message):
+	def add_class_data(self, char_idea_data, system_message):
 		"""loads class_data and puts them all together in class_data_template"""
-		# loads a template, where all class_data come together in a big string
+		# instanciate the CaracterDataLoader Class
+		class_name = char_idea_data["class"]
+		c_data_lodr = CharacterDataLoader(class_name=class_name)
+		
+		# gets the text template wehre all class_data(dicts) will be packed together
 		class_data_template = self.get_class_data_template()
-		# sets the class_name in the data_loader Class -> nececary for loading the correct class
-		self.data_loader.class_name = CLASS_INDICIES[self.idea_id] # TODO idea_id lädt nicht die classe!!!!
+		
 		# returns a list with all three class_data parts (level_features, spells, subclass_data)
-		class_data = self.data_loader.class_data()
-		# puts class_data in one big string
+		class_data = c_data_lodr.class_data()
+		# puts class_data in class_data_template
 		for i, data in enumerate(class_data):
 			class_data_template = class_data_template.replace(self.place_holder_keys[i], class_data[i])
-		# replaces Placeholder: __ClassData__ with class_data_template
+		
+		# replaces Placeholder in the System_message: __ClassData__ with class_data_template
 		system_message = system_message.replace("__ClassData__", class_data_template)
 		return system_message
 	

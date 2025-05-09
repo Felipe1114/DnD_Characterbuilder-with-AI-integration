@@ -17,9 +17,10 @@ CLASS_INDICIES = {
 
 class CharacterDataLoader:
 	"""läd einen character aus dem lokalen speicher. 'class_name' ist eine von den 12 möglichen Klassen"""
-	def __init__(self, class_name=None):
+	def __init__(self, class_name):
 		
 		self.class_name = class_name.lower()
+		
 		self.data_base_path = "../../static_dnd_data/"
 		self.base_data_path = "all_classes.json"
 		self.class_data_path = f"/detailed_class_data/{class_name}/{class_name}"
