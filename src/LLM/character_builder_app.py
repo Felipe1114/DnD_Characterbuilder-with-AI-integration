@@ -7,6 +7,8 @@ kombiniert
 kombiniert alles und gibt das - von dem LLM - erstelle Character Json zurück.
 
 """
+from xml.sax import parse
+
 from src.LLM.system_request_builder import SystemRequestBuilder
 from src.LLM.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
@@ -18,7 +20,9 @@ class CharacterBuilderApp:
 	""""""
 	#TODO: in CharacterDataLoader muss noch der character name festgeelegt werden
 	def __init__(self, idea_id):
-		self.db_path = "sqlite:///../../data/db/dnd_db.sqlite"  # TODO db_path könnte man noch in env file packen
+		self.idea_id = idea_id
+		self.path = "../../data/db/dnd_db.sqlite"
+		self.db_path = f"sqlite:///{self.path}"  # TODO db_path könnte man noch in env file packen
 		self.db = DatabaseManager(self.db_path)
 		self.system_builder = SystemRequestBuilder(idea_id)
 		self.mistral = TalkToMistral()
@@ -47,9 +51,9 @@ class CharacterBuilderApp:
 			character_list.append(character_json)
 		
 		# saves character to llm_log für dekumentation and testing
-		self.log_mngr.save_character_to_llm_log(character_list)
+		#self.log_mngr.save_character_to_llm_log(character_list)
 		# save character_json in db
-		self.db.save_generated_characters(character_list)
+		self.db.save_generated_characters(character_list, idea_id=self.idea_id)
 		
 		for i, char in enumerate(character_list):
 			print(f"\n=====================Character_{i+1}=========================\n")
