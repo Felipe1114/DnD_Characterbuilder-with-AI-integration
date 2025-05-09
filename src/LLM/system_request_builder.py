@@ -10,8 +10,12 @@ from src.handle_data.crud_txt import CrudTxtFiles
 
 class SystemRequestBuilder:
 	def __init__(self, idea_id):
-		self.idea_id = idea_id
-		self.db_path = "sqlite:///../../data/db/dnd_db.sqlite" # TODO db_path könnte man noch in env file packen
+		if isinstance(idea_id, int):
+			self.idea_id = idea_id
+		else:
+			raise ValueError("idea_id has to be an integer")
+		self.path = "../../data/db/dnd_db.sqlite"
+		self.db_path = f"sqlite:///{self.path}" # TODO db_path könnte man noch in env file packen
 		self.db = DatabaseManager(self.db_path)
 		self.system_message_path = "../../debug_data/LLM_log/system_message_alpha_01.txt"
 		self.crud_message = CrudTxtFiles(self.system_message_path)
@@ -38,30 +42,30 @@ class SystemRequestBuilder:
 		returns a dict with 3 different classes and rewirtten_user_prompts
 		
 		char_prompts looks like this:
-			
+		
 		"""
 		char_prompts = self.db.load_character_prompts(self.idea_id)
-		
+		print(f"type: {type(char_prompts)}, char_prompts: {char_prompts}")
 		char_prompt_dict = {
 								"char_1": {
 											"class": char_prompts["classes"][0],
 											"key_descriptions": char_prompts["key_descriptions"],
-											"rewritten_prompt": char_prompts["rewritten_prompt"[0]]
+											"rewritten_prompt": char_prompts["rewritten_prompts"][0]
 											},
 								"char_2": {
 											"class": char_prompts["classes"][0],
 											"key_descriptions": char_prompts["key_descriptions"],
-											"rewritten_prompt": char_prompts["rewritten_prompt"[0]]
+											"rewritten_prompt": char_prompts["rewritten_prompts"][0]
 											},
 								"char_3": {
 											"class": char_prompts["classes"][1],
 											"key_descriptions": char_prompts["key_descriptions"],
-											"rewritten_prompt": char_prompts["rewritten_prompt"[1]]
+											"rewritten_prompt": char_prompts["rewritten_prompts"][1]
 											},
 								"char_4": {
 											"class": char_prompts["classes"][2],
 											"key_descriptions": char_prompts["key_descriptions"],
-											"rewritten_prompt": char_prompts["rewritten_prompt"[2]]
+											"rewritten_prompt": char_prompts["rewritten_prompts"][2]
 											}
 		}
 		
