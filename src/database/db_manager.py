@@ -33,10 +33,9 @@ class DatabaseManager:
 	}
 	"""
 	def __init__(self, db_path):
-		engine = create_engine(db_path, pool_pre_ping=True)
+		engine = create_engine(db_path, pool_pre_ping=True, echo=True)
 		self.Session = sessionmaker(bind=engine)
 	
-	@DebugLog.debug_log
 	def save_user_prompt(self, prompt: Prompt, analysed_dict: AnalysedPrompt):
 		"""
 		speichert alle daten aus der Analyse des user_prompts
@@ -62,13 +61,13 @@ class DatabaseManager:
 			# umgeschriebene user_prompts abspeichern
 			self._save_rewritten_prompts(new_idea_id, rewritten_prompts, session)
 			session.commit()
+			
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
 			raise e
 		finally:
 			session.close()
 	
-	@DebugLog.debug_log
 	def _save_char_idea(self, prompt, session):
 		"""Saves user_prompt in db"""
 		try:
@@ -79,7 +78,6 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	def _save_rewritten_prompts(self, new_idea_id, rewritten_prompts, session):
 		"""saves the three rewritten user_prompts in db"""
 		try:
@@ -90,7 +88,6 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	def _save_key_descriptions(self, key_descriptions, new_idea_id, session:Session):
 		"""saves the key_descriptions from user_prompt in db"""
 		try:
@@ -112,7 +109,6 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	def _save_classes(self, possible_classes, new_idea_id, session):
 		"""saves the three best fitting dnd-classes for user_prompt in db"""
 		try:
@@ -134,7 +130,6 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	def extract_analysed_data(self, analysed_dict: AnalysedPrompt) -> tuple:
 		"""
 		extrahiert alle daten aus dem dictionary und gibt sie als tuple zurück
@@ -144,7 +139,6 @@ class DatabaseManager:
 		rewritten_prompts: list[str] = analysed_dict["rewritten_prompt_template"]
 		return classes, key_words, rewritten_prompts
 	
-	@DebugLog.debug_log
 	def load_all_char_ideas(self):
 		"""lädt alle char_ideen und gibt sie als dict mit key=id und value=idea zurück"""
 		session = self.Session()
@@ -166,24 +160,29 @@ class DatabaseManager:
 		"""loads all data form the analysed user_prompt for creating a system prompt for character creation"""
 		session = self.Session()
 		try:
+			# checks if idea_id is an interger
+			if not isinstance(idea_id, int):
+				raise ValueError("idea_id hase to be an integer")
+			
 			classes_for_idea =  self._load_classes_for_idea(idea_id, session)
 
 			descriptions_for_idea = self._load_key_description_for_idea(idea_id, session)
 
 			rewritten_prompts = self._load_rewritten_prompts(idea_id, session)
-
-			return {
+			
+			result = {
 				'classes': classes_for_idea, # -> three classes [class_1, class_2, class_2]
 				'key_descriptions': descriptions_for_idea, # -> ["great", "big", "strong", "fire", ...]
 				'rewritten_prompts': rewritten_prompts # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
 			}
+			print(result)
+			return result
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
 			raise e
 		finally:
 			session.close()
 	
-	@DebugLog.debug_log
 	def _load_rewritten_prompts(self, idea_id, session):
 		"""loads all rewritten prompts with the idea_id i"""
 		try:
@@ -198,18 +197,22 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	def _load_key_description_for_idea(self, idea_id, session):
 		"""
 		gibt alle descriptions zurück, die eine key-key paarung mit der idea_id haben
+		
+		from the Table DescriptionToIdea we get the description_id-row
 		"""
 		descriptions: list[str] = []
 		try:
 			stmt = select(DescriptionToIdea.description_id).where(DescriptionToIdea.idea_id == idea_id)
+			# all description_id´s from the row in DescriptiontoIdea, where idea_id is 'idea_id'
 			result = session.execute(stmt).all()
+			
 			if result:
 				for i, description_id in enumerate(result):
-					description: str = select(KeyDescription.description).where(KeyDescription.description_id == description_id).first()
+					stmt_2 = select(KeyDescription.description).where(KeyDescription.description_id == description_id[0])
+					description: str = session.execute(stmt_2).first()
 					if description:
 						descriptions.append(description)
 			return descriptions
@@ -217,21 +220,24 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	def _load_classes_for_idea(self, idea_id, session):
 		"""gives back all class_names from Table Classes, wich are True"""
 		try:
 			stmt = select(Classes).where(Classes.idea_id == idea_id)
-			result = session.execute(stmt).first()
+			result = session.scalars(stmt).first()
 			if result:
-				class_names = [column.name for column in Classes.__table__.columns if getattr(result[0], column.name) is True and column.name != "class_table_id" and column.name != "idea_id"]
+				class_names = [
+					column.name
+					for column in Classes.__table__.columns
+					if getattr(result, column.name) is True and column.name not in ("class_table_id", "idea_id")
+				]
 				return class_names
+			
 			return []
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
 			raise e
 	
-	@DebugLog.debug_log
 	# TODO idea_id muss noch gesetzt werden
 	def save_generated_characters(self, characters: List[dict], idea_id):
 		"speichert die erstellen charactere in der db ab"
@@ -248,7 +254,6 @@ class DatabaseManager:
 		finally:
 			session.close()
 	
-	@DebugLog.debug_log
 	def delete_character_by_idea_id(self, idea_id: int):
 		"""Löscht eine char_idea mit allen colums, die damit verbunden sind"""
 		session = self.Session()
@@ -284,3 +289,13 @@ class DatabaseManager:
 			raise e
 		finally:
 			session.close()
+			
+			
+if __name__ == "__main__":
+	path = "../../data/db/dnd_db.sqlite"
+	db_path = f"sqlite:///{path}"
+	
+	db = DatabaseManager(db_path)
+	prompts = db.load_character_prompts(1)
+	print(prompts)
+	
