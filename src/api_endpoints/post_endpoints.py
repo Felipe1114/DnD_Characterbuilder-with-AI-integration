@@ -33,19 +33,18 @@ genauer ablauf:
 from fastapi import APIRouter
 from pydantic import BaseModel # BaseModel is a Class, which defines the input type
 from src.database.db_manager import DatabaseManager
+from src.handle_data.env_loader import EnvLoader
 from src.LLM.rewrite_user_promt import RewriteUserprompt
 from sqlalchemy import create_engine
 from src.debug.debug_log import DebugLog
 import json
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
-from pathlib import Path
 
 
 router = APIRouter()
 
 # verkünpfung mit db
-absolute_path = Path(__file__).resolve().parent.parent.parent / "data" / "db" / "dnd_db.sqlite"
-db_path = f"sqlite:///{absolute_path}"
+db_path = EnvLoader.db_path()
 db_mngr = DatabaseManager(db_path)
 # TODO pydantic muss noch besser eingefügt werden!!
 #  BAsemodels müssen dann in strings o.Ä umgewandelt werden!!!
