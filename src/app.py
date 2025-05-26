@@ -44,5 +44,4 @@ app.include_router(get_router, prefix="/get_data", tags=["Get Data"])
 app.include_router(post_router, prefix="/analyze_prompt", tags=["Analyze Prompt"])
 app.include_router(get_and_post_router, prefix="/generate_characters", tags=["Generate Characters"])
 
-# Wenn du später CORS oder andere globalen Middleware anpassen willst, geht das hier.
-	
+
