@@ -7,6 +7,7 @@ Kombiniert alles zu einem “System Prompt”"""
 from src.database.db_manager import DatabaseManager
 from src.handle_data.character_data_loader import CharacterDataLoader, CLASS_INDICIES
 from src.handle_data.crud_txt import CrudTxtFiles
+from src.handle_data.env_loader import EnvLoader
 
 class SystemRequestBuilder:
 	def __init__(self, idea_id):
@@ -14,8 +15,7 @@ class SystemRequestBuilder:
 			self.idea_id = idea_id
 		else:
 			raise ValueError("idea_id has to be an integer")
-		self.path = "../data/db/dnd_db.sqlite"
-		self.db_path = f"sqlite:///{self.path}" # TODO db_path könnte man noch in env file packen
+		self.db_path = EnvLoader.db_path()
 		self.db = DatabaseManager(self.db_path)
 		self.system_message_path = "../debug_data/LLM_log/system_message_alpha_01.txt"
 		self.crud_message = CrudTxtFiles(self.system_message_path)
