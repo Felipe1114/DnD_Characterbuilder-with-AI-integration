@@ -5,6 +5,7 @@ from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescri
 from typing import List
 from src.debug.debug_log import DebugLog
 from pydantic import BaseModel
+from src.handle_data.env_loader import EnvLoader
 
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)
 
@@ -32,9 +33,15 @@ class DatabaseManager:
 		]
 	}
 	"""
-	def __init__(self, db_path):
-		engine = create_engine(db_path, pool_pre_ping=True, echo=True)
-		self.Session = sessionmaker(bind=engine)
+	def __init__(self, test_case=False, temp_engine=None):
+		# if I want to test the Databasemanager class with a temporary database
+		if test_case:
+			self.session = sessionmaker(bind=temp_engine)
+		
+		else:
+			self.db_path = EnvLoader.db_path()
+			engine = create_engine(self.db_path, pool_pre_ping=True, echo=True)
+			self.Session = sessionmaker(bind=engine)
 	
 	def save_user_prompt(self, prompt: Prompt, analysed_dict: AnalysedPrompt):
 		"""
@@ -291,10 +298,8 @@ class DatabaseManager:
 			
 			
 if __name__ == "__main__":
-	path = "../../data/db/dnd_db.sqlite"
-	db_path = f"sqlite:///{path}"
 	
-	db = DatabaseManager(db_path)
+	db = DatabaseManager()
 	prompts = db.load_character_prompts(1)
 	print(prompts)
 	

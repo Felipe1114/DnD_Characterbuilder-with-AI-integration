@@ -14,7 +14,6 @@ from src.LLM.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
 from json import loads
 from src.handle_data.llm_log_manager import LlmLogManager
-from src.handle_data.env_loader import EnvLoader
 
 
 class CharacterBuilderApp:
@@ -22,8 +21,7 @@ class CharacterBuilderApp:
 	#TODO: in CharacterDataLoader muss noch der character name festgeelegt werden
 	def __init__(self, idea_id):
 		self.idea_id = idea_id
-		self.db_path = EnvLoader.db_path()
-		self.db = DatabaseManager(self.db_path)
+		self.db = DatabaseManager()
 		self.system_builder = SystemRequestBuilder(idea_id)
 		self.mistral = TalkToMistral()
 		self.log_mngr = LlmLogManager()

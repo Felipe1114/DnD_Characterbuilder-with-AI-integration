@@ -18,7 +18,7 @@ TEST_ANALYSED_DICT = {
 def db():
     engine = create_engine("sqlite:///:memory:")
     Base.metadata.create_all(engine)
-    yield DatabaseManager(engine)
+    yield DatabaseManager(test_case=True, temp_engine=engine)
     Base.metadata.drop_all(engine)
 
 def test_save_char_idea(db):

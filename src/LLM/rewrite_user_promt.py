@@ -37,7 +37,6 @@ from src.handle_data.crud_json import CrudJsonFiles
 from src.handle_data.algo.binary_dict import BinaryDict
 from src.database.db_manager import DatabaseManager
 from src.handle_data.llm_log_manager import LlmLogManager
-from src.handle_data.env_loader import EnvLoader
 
 class RewriteUserprompt(TalkToMistral):
 	def __init__(self, user_prompt, system_prompt_key: str= "prompt_alpha_3"):
@@ -52,8 +51,7 @@ class RewriteUserprompt(TalkToMistral):
 		self.prompt_crud = CrudJsonFiles(self.system_prompt_path)
 		self.prompt_key = system_prompt_key # key for the system prompt
 		self._user_prompt = user_prompt # prompt from user, with character idea
-		self.db_path = 	self.db_path = EnvLoader.db_path()
-		self.db = DatabaseManager(self.db_path)
+		self.db = DatabaseManager()
 		self.log_mngr = LlmLogManager(self.prompt_key)
 		
 	def rewrite(self):

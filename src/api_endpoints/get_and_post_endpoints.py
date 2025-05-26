@@ -29,7 +29,6 @@ from typing import List
 from src.LLM.character_builder_app import CharacterBuilderApp
 from src.database.db_manager import DatabaseManager
 from src.debug.debug_log import DebugLog
-from src.handle_data.env_loader import EnvLoader
 
 router = APIRouter()
 
@@ -41,8 +40,7 @@ class CharacterRequest(BaseModel):
 @router.get("/")
 async def get_characters(idea_id: int):
     """gets all characters by idea_id"""
-    db_path = EnvLoader.db_path()
-    db_mngr = DatabaseManager(db_path)
+    db_mngr = DatabaseManager()
     
     db_mngr.load_characters(idea_id)
 
