@@ -14,6 +14,7 @@ from src.LLM.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
 from json import loads
 from src.handle_data.llm_log_manager import LlmLogManager
+debfrom src.debug.debug_log import DebugLog
 
 
 class CharacterBuilderApp:
@@ -38,6 +39,7 @@ class CharacterBuilderApp:
 		
 		return response
 	
+	@DebugLog.debug_log
 	def run(self):
 		"""generates pompt list an loops over the list and creates for dnd characters"""
 		character_prompt_list = self.generate_character_builder_prompts()
