@@ -7,7 +7,6 @@ from src.handle_data.json_to_jsonl import JsonToJsonl
 from src.handle_data.character_data_loader import CharacterDataLoader
 from src.debug.debug_log import DebugLog
 
-# TODO:
 """Note:
 	1. nach dem laden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
 		Woher kommen diese Error nachrichten?

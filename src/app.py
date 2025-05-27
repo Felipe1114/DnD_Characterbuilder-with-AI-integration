@@ -24,9 +24,10 @@ hat folgende Endpunkte:
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware import _MiddlewareFactory
-from api_endpoints.get_endpoints import router as get_router
-from api_endpoints.post_endpoints import router as post_router
-from api_endpoints.get_and_post_endpoints import router as get_and_post_router
+from src.api_endpoints.get_endpoints import router as get_router
+from src.api_endpoints.post_endpoints import router as post_router
+from src.api_endpoints.get_and_post_endpoints import router as get_and_post_router
+from src.debug.debug_log import DebugLog
 
 app = FastAPI()
 
@@ -43,4 +44,4 @@ app.include_router(get_router, prefix="/get_data", tags=["Get Data"])
 app.include_router(post_router, prefix="/analyze_prompt", tags=["Analyze Prompt"])
 app.include_router(get_and_post_router, prefix="/generate_characters", tags=["Generate Characters"])
 
-# Wenn du später CORS oder andere globalen Middleware anpassen willst, geht das hier.
+

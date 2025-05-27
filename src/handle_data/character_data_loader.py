@@ -20,7 +20,8 @@ class CharacterDataLoader:
 	def __init__(self, class_name):
 		
 		self.class_name = class_name.lower()
-		self.data_base_path = "../../static_dnd_data/"
+		
+		self.data_base_path = "../static_dnd_data/"
 		self.base_data_path = "all_classes.json"
 		self.class_data_path = f"/detailed_class_data/{class_name}/{class_name}"
 		
@@ -33,7 +34,7 @@ class CharacterDataLoader:
 
 			# erstellt eine liste mit spell-, level- und subclass-datapath
 
-
+	
 	def class_data(self) -> list:
 		"""gibt alle klassen daten, in einer liste zurück"""
 		base_crud = CrudJsonFiles(self.class_base_data)
@@ -52,11 +53,11 @@ class CharacterDataLoader:
 	def run(self):
 		return self.class_data()
 
-
-if __name__ == "__main__":
-	loader = CharacterDataLoader("barbarian")
-	data = loader.run()
-	print(data)
+#
+# if __name__ == "__main__":
+# 	loader = CharacterDataLoader("barbarian")
+# 	data = loader.run()
+# 	print(data)
 
 
 

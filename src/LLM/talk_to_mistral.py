@@ -2,15 +2,15 @@ from mistralai import Mistral
 from src.handle_data.env_loader import EnvLoader
 
 env_loader = EnvLoader()
-MISTRAL_KEY = env_loader.get_mistral_api_key()
+MISTRAL_KEY = EnvLoader.mistral_key()
 
 class TalkToMistral:
 
 	def __init__(self):
 		# greif auf 'mistral_small' zurück link: https://docs.mistral.ai/getting-started/models/models_overview/
 		self.model = "mistral-small-latest"
-		# TODO api key muss aus env_loader kommen!!!!!!!!!!!!
-		self.client = Mistral(api_key="EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt")
+
+		self.client = Mistral(api_key=MISTRAL_KEY)
 		
 		self._mistral_response = None
 

@@ -18,7 +18,7 @@ def db():
 	engine = create_engine("sqlite:///:memory:")
 	Base.metadata.create_all(engine)
 	# gibt Database_manager(engine) zurück, ohne die funktion zu beenden
-	yield DatabaseManager(engine)
+	yield DatabaseManager(test_case=True, temp_engine=engine)
 	Base.metadata.drop_all(engine)
 
 
