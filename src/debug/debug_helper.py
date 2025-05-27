@@ -1,5 +1,9 @@
-import inspect
+"""This Class helps me, with my debugging.
 
+It prints - if activated - given data in the terminal und gives info, what data it is"""
+
+import inspect
+from src.handle_data.crud_json import CrudJsonFiles
 
 class DebugHelper:
 	"""prints data for checking erros in files"""
@@ -20,15 +24,14 @@ class DebugHelper:
 			print(e)
 			return False
 		
-	
 	@staticmethod
-	def debug_print(*args, **kwargs):
+	def debug_print(data_description: str, data, active: bool=True, store_data: bool=False):
 		"""prints given data and the meta data, where the data come from, like:
 		file_name and line_number
 		"""
 		
 		# if DebugHelper is activeted
-		if DebugHelper.activ():
+		if DebugHelper.activ() and active:
 			# create a frame for the file
 			
 			frame = inspect.currentframe()
@@ -40,10 +43,44 @@ class DebugHelper:
 					file_name = caller_frame.f_code.co_filename
 					line_number = caller_frame.f_lineno
 					# Gib die Debug-Informationen aus
-					print(f"Debug: {file_name}, line {line_number}: ", end="")
+					print(f"------------------------------------------------------------------------------------------------------------------------------------------------------\n"
+					      f"Debug: {file_name}, line {line_number}: ")
 			finally:
 				# Wichtig: Lösche den Frame, um Speicherlecks zu vermeiden
 				del frame
 			
 			# Führe den eigentlichen Print aus
-			print(*args, **kwargs)
+			print(f"data description:\n {data_description}; \n"
+			      f"data:\n {data}\n")
+			      
+			
+			if store_data:
+				DebugHelper._store_data(data, data_description)
+			
+			print("------------------------------------------------------------------------------------------------------------------------------------------------------")
+	
+	@staticmethod
+	def _store_data(data, data_description):
+		"""if the data should be testet in a nother file or stored for documentation"""
+		from datetime import datetime
+		
+		# instantiate CrudJsonFiles-class for storing data
+		j_crud = CrudJsonFiles("../debug_data/data_for_testing/data_for_testing.json")
+		
+		# create meta-data for data
+		frame = inspect.currentframe()
+		caller_frame = frame.f_back
+		file_name = caller_frame.f_code.co_filename
+		line_number = caller_frame.f_lineno
+		date_and_time = datetime.now()
+		
+		# create dict
+		data_dict = {"meta_data": f"Date and Time:{date_and_time},\nData from file:{file_name}, line {line_number}",
+		             "data_description": data_description,
+		             "data": data}
+		
+		# store dict
+		j_crud.data = data_dict
+		
+		# print, that data was stored
+		print("\ndata was saved in 'data_for_testing.json' for further testing tasks\n")

@@ -7,6 +7,11 @@ Kombiniert alles zu einem “System Prompt”"""
 from src.database.db_manager import DatabaseManager
 from src.handle_data.character_data_loader import CharacterDataLoader, CLASS_INDICIES
 from src.handle_data.crud_txt import CrudTxtFiles
+from src.debug.debug_log import DebugLog
+from src.debug.debug_helper import DebugHelper
+
+# activates the DebugHelper
+DebugHelper.activ(activ=True)
 
 class SystemRequestBuilder:
 	def __init__(self, idea_id):
@@ -29,11 +34,17 @@ class SystemRequestBuilder:
 	def get_system_message_template(self):
 		"""gets the System message-template from the local storage"""
 		system_message = self.crud_message.data
+		
 		return system_message
 	
 	def get_class_data_template(self):
 		"""gets class_data_template as text"""
 		class_data_template = self.crud_template.data
+		
+		DebugHelper.debug_print(
+			data_description="class_data_template from: ./static_dnd_data/detailed_class_data/all_class_data_template.txt",
+			data=class_data_template)
+		
 		return class_data_template
 		
 	def load_char_prompts(self):
@@ -43,7 +54,24 @@ class SystemRequestBuilder:
 		char_prompts looks like this:
 		
 		"""
+		# char_prompts is a dcitionary with informations for the character generation.
+		# It looks like this:
+		# 	{
+		# 		'classes': classes_for_idea,  # -> three classes [class_1, class_2, class_3]
+		# 		'key_descriptions': descriptions_for_idea,  # -> ["great", "big", "strong", "fire", ...]
+		# 		'rewritten_prompts': rewritten_prompts  # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
+		# 	}
 		char_prompts = self.db.load_character_prompts(self.idea_id)
+		
+		DebugHelper.debug_print(
+			data_description="char_prompts, from the database; It should look like this:\n"
+			                 "{\n"
+				"'classes': [class_1, class_2, class_3]\n"
+				"'key_descriptions': [great, big, strong, fire, ...]\n"
+				"'rewritten_prompts': [a Paladin wich..., a warlock wich..., a wizard wich...]\n"
+			                 "}\n",
+			data=char_prompts)
+		
 		char_prompt_dict = {
 								"char_1": {
 											"class": char_prompts["classes"][0],
@@ -77,21 +105,38 @@ class SystemRequestBuilder:
 		# char_prompt_dict enthält 1. classes 2. key_descriptions 3. rewritten_prompts
 		char_prompt_dict = self.load_char_prompts()
 		
+		DebugHelper.debug_print(data_description="char_prompt_dict contains a dict with for dicts, with char_promt informations", data=char_prompt_dict)
 		
 		# for each of the 4 characters
 		for key, data in char_prompt_dict.items():
 			# loads a clean system_message template for each character
 			system_message = self.get_system_message_template()
 			
+			DebugHelper.debug_print(
+				data_description="unfilled system_message from: ../debug_data/LLM_log/system_message_alpha_01.txt\n"
+				                 "This unfilled Template will be filled with more character information in the next steps",
+				data=system_message,
+				active=False)
 			# adds char_details to system_message with .replace()
 			system_message = self.add_char_details(data, system_message)
+			
+			DebugHelper.debug_print(
+				data_description="system_message, filled with character_details bzw. system_promt: ../debug_data/LLM_log/system_message_alpha_01.txt\n",
+				data=system_message,
+				active=False)
 			
 			# adds class_data to system_message with .replace()
 			system_message = self.add_class_data(data, system_message)
 			
+			DebugHelper.debug_print(
+				data_description="system_message, filled with class_data: ../debug_data/LLM_log/system_message_alpha_01.txt\n",
+				data=system_message,
+				active=False)
+			
 			# appends system_message to the system_message list
 			system_message_list.append(system_message)
-			
+		
+		
 		return system_message_list
 	
 	def add_class_data(self, char_idea_data, system_message):
@@ -118,9 +163,11 @@ class SystemRequestBuilder:
 		system_message = system_message.replace("__RewrittenPrompt__", char_details)
 		return system_message
 		
+	@DebugLog.debug_log
 	def run(self):
 		"""casts generate_system_prompts and returns the prompt list"""
 		prompt_list = self.generate_system_prompts()
+		
 		return prompt_list
 		
 			
