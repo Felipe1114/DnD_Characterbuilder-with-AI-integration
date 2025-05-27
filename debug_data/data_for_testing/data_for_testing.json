@@ -1,2 +1,1146 @@
 [
+    {
+        "meta_data": "Date and Time:2025-05-27 13:31:20.750299,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json_string: einer von vier generierten charcteren",
+        "data_type": "not specified",
+        "data": "{\n    \"name\": \"Conan\",\n    \"level\": 12,\n    \"hit_points\": 132,\n    \"proficiency_bonus\": 4,\n    \"subclass\": \"Berserker\",\n    \"attributes\": {\n        \"strength\": 18,\n        \"dexterity\": 14,\n        \"constitution\": 16,\n        \"intelligence\": 10,\n        \"wisdom\": 12,\n        \"charisma\": 10\n    },\n    \"attribute_proficiencys\": {\n        \"strength\": true,\n        \"dexterity\": false,\n        \"constitution\": true,\n        \"intelligence\": false,\n        \"wisdom\": false,\n        \"charisma\": false\n    },\n    \"saving_throws\": {\n        \"strength\": 6,\n        \"dexterity\": 2,\n        \"constitution\": 6,\n        \"intelligence\": 0,\n        \"wisdom\": 2,\n        \"charisma\": 0\n    },\n    \"armor_class\": 16,\n    \"attack_bonus\": 8,\n    \"spellcasting\": null,\n    \"skills\": {\n        \"strength_skills\": {\n            \"athletics\": {\"bonus\": 9, \"proficiency_bonus\": true}\n        },\n        \"dexterity_skills\": {\n            \"acrobatics\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"sleight_of_hand\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"stealth\": {\"bonus\": 4, \"proficiency_bonus\": false}\n        },\n        \"intelligence_skills\": {\n            \"arcana\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"history\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"investigation\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"nature\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"religion\": {\"bonus\": 0, \"proficiency_bonus\": false}\n        },\n        \"wisdom_skills\": {\n            \"animal_handling\": {\"bonus\": 3, \"proficiency_bonus\": true},\n            \"insight\": {\"bonus\": 3, \"proficiency_bonus\": false},\n            \"medicine\": {\"bonus\": 3, \"proficiency_bonus\": false},\n            \"perception\": {\"bonus\": 3, \"proficiency_bonus\": true},\n            \"survival\": {\"bonus\": 3, \"proficiency_bonus\": true}\n        },\n        \"charisma_skills\": {\n            \"deception\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"intimidation\": {\"bonus\": 0, \"proficiency_bonus\": true},\n            \"performance\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"persuasion\": {\"bonus\": 0, \"proficiency_bonus\": false}\n        }\n    },\n    \"features\": [\n        \"Rage\",\n        \"Unarmored Defense\",\n        \"Reckless Attack\",\n        \"Danger Sense\",\n        \"Primal Path\",\n        \"Ability Score Improvement\",\n        \"Extra Attack\",\n        \"Fast Movement\",\n        \"Feral Instinct\",\n        \"Brutal Critical (1 die)\",\n        \"Relentless Rage\",\n        \"Frenzy\",\n        \"Mindless Rage\",\n        \"Intimidating Presence\"\n    ],\n    \"special_abilities_and_traits\": [\n        \"Darkvision (60 ft)\",\n        \"Ritual Casting\"\n    ],\n    \"languages\": [\"Common\"],\n    \"equipment\": [\n        \"Greataxe\",\n        \"Two Handaxes\",\n        \"Explorer's Pack\",\n        \"Javelin (4)\"\n    ],\n    \"additional_equipment\": [\n        \"Bedroll\",\n        \"Mess kit\",\n        \"10 ball bearings\",\n        \"10 feet of string\",\n        \"A belt pouch containing 10 GP\"\n    ],\n    \"money\": {\n        \"platinum\": 0,\n        \"gold\": 100,\n        \"electrum\": 0,\n        \"silver\": 50,\n        \"copper\": 25\n    },\n    \"weapons\": {\n        \"greataxe\": {\n            \"damage\": \"1d12 slashing\",\n            \"attack_bonus\": 8,\n            \"properties\": [\"Heavy\", \"Two-Handed\"]\n        },\n        \"handaxe\": {\n            \"damage\": \"1d6 slashing\",\n            \"attack_bonus\": 6,\n            \"properties\": [\"Light\", \"Thrown\"]\n        },\n        \"javelin\": {\n            \"damage\": \"1d6 piercing\",\n            \"attack_bonus\": 6,\n            \"properties\": [\"Light\", \"Thrown\"],\n            \"range\": \"30/120 ft\"\n        }\n    }\n}"
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:31:20.753614,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json: ein generierter character, umgewandelt in einen Json-string",
+        "data_type": "not specified",
+        "data": {
+            "name": "Conan",
+            "level": 12,
+            "hit_points": 132,
+            "proficiency_bonus": 4,
+            "subclass": "Berserker",
+            "attributes": {
+                "strength": 18,
+                "dexterity": 14,
+                "constitution": 16,
+                "intelligence": 10,
+                "wisdom": 12,
+                "charisma": 10
+            },
+            "attribute_proficiencys": {
+                "strength": true,
+                "dexterity": false,
+                "constitution": true,
+                "intelligence": false,
+                "wisdom": false,
+                "charisma": false
+            },
+            "saving_throws": {
+                "strength": 6,
+                "dexterity": 2,
+                "constitution": 6,
+                "intelligence": 0,
+                "wisdom": 2,
+                "charisma": 0
+            },
+            "armor_class": 16,
+            "attack_bonus": 8,
+            "spellcasting": null,
+            "skills": {
+                "strength_skills": {
+                    "athletics": {
+                        "bonus": 9,
+                        "proficiency_bonus": true
+                    }
+                },
+                "dexterity_skills": {
+                    "acrobatics": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "sleight_of_hand": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "stealth": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    }
+                },
+                "intelligence_skills": {
+                    "arcana": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "history": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "investigation": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "nature": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "religion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                },
+                "wisdom_skills": {
+                    "animal_handling": {
+                        "bonus": 3,
+                        "proficiency_bonus": true
+                    },
+                    "insight": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "medicine": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "perception": {
+                        "bonus": 3,
+                        "proficiency_bonus": true
+                    },
+                    "survival": {
+                        "bonus": 3,
+                        "proficiency_bonus": true
+                    }
+                },
+                "charisma_skills": {
+                    "deception": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "intimidation": {
+                        "bonus": 0,
+                        "proficiency_bonus": true
+                    },
+                    "performance": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "persuasion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                }
+            },
+            "features": [
+                "Rage",
+                "Unarmored Defense",
+                "Reckless Attack",
+                "Danger Sense",
+                "Primal Path",
+                "Ability Score Improvement",
+                "Extra Attack",
+                "Fast Movement",
+                "Feral Instinct",
+                "Brutal Critical (1 die)",
+                "Relentless Rage",
+                "Frenzy",
+                "Mindless Rage",
+                "Intimidating Presence"
+            ],
+            "special_abilities_and_traits": [
+                "Darkvision (60 ft)",
+                "Ritual Casting"
+            ],
+            "languages": [
+                "Common"
+            ],
+            "equipment": [
+                "Greataxe",
+                "Two Handaxes",
+                "Explorer's Pack",
+                "Javelin (4)"
+            ],
+            "additional_equipment": [
+                "Bedroll",
+                "Mess kit",
+                "10 ball bearings",
+                "10 feet of string",
+                "A belt pouch containing 10 GP"
+            ],
+            "money": {
+                "platinum": 0,
+                "gold": 100,
+                "electrum": 0,
+                "silver": 50,
+                "copper": 25
+            },
+            "weapons": {
+                "greataxe": {
+                    "damage": "1d12 slashing",
+                    "attack_bonus": 8,
+                    "properties": [
+                        "Heavy",
+                        "Two-Handed"
+                    ]
+                },
+                "handaxe": {
+                    "damage": "1d6 slashing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Light",
+                        "Thrown"
+                    ]
+                },
+                "javelin": {
+                    "damage": "1d6 piercing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Light",
+                        "Thrown"
+                    ],
+                    "range": "30/120 ft"
+                }
+            }
+        }
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:31:29.450452,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json_string: einer von vier generierten charcteren",
+        "data_type": "not specified",
+        "data": "{\n    \"name\": \"Conan the Barbarian\",\n    \"level\": 12,\n    \"hit_points\": 132,\n    \"proficiency_bonus\": 4,\n    \"subclass\": \"Berserker\",\n    \"attributes\": {\n        \"strength\": 20,\n        \"dexterity\": 14,\n        \"constitution\": 16,\n        \"intelligence\": 10,\n        \"wisdom\": 12,\n        \"charisma\": 10\n    },\n    \"attribute_proficiencys\": {\n        \"strength\": true,\n        \"dexterity\": false,\n        \"constitution\": true,\n        \"intelligence\": false,\n        \"wisdom\": false,\n        \"charisma\": false\n    },\n    \"saving_throws\": {\n        \"strength\": 6,\n        \"dexterity\": 2,\n        \"constitution\": 5,\n        \"intelligence\": 0,\n        \"wisdom\": 2,\n        \"charisma\": 0\n    },\n    \"armor_class\": 16,\n    \"attack_bonus\": 8,\n    \"spellcasting\": null,\n    \"skills\": {\n        \"strength_skills\": {\n            \"athletics\": {\"bonus\": 10, \"proficiency_bonus\": true}\n        },\n        \"dexterity_skills\": {\n            \"acrobatics\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"sleight_of_hand\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"stealth\": {\"bonus\": 4, \"proficiency_bonus\": false}\n        },\n        \"intelligence_skills\": {\n            \"arcana\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"history\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"investigation\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"nature\": {\"bonus\": 2, \"proficiency_bonus\": true},\n            \"religion\": {\"bonus\": 0, \"proficiency_bonus\": false}\n        },\n        \"wisdom_skills\": {\n            \"animal_handling\": {\"bonus\": 4, \"proficiency_bonus\": true},\n            \"insight\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"medicine\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"perception\": {\"bonus\": 4, \"proficiency_bonus\": true},\n            \"survival\": {\"bonus\": 4, \"proficiency_bonus\": true}\n        },\n        \"charisma_skills\": {\n            \"deception\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"intimidation\": {\"bonus\": 2, \"proficiency_bonus\": true},\n            \"performance\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"persuasion\": {\"bonus\": 0, \"proficiency_bonus\": false}\n        }\n    },\n    \"features\": [\n        \"Rage\",\n        \"Unarmored Defense\",\n        \"Reckless Attack\",\n        \"Danger Sense\",\n        \"Primal Path\",\n        \"Ability Score Improvement\",\n        \"Extra Attack\",\n        \"Fast Movement\",\n        \"Feral Instinct\",\n        \"Brutal Critical (1 die)\",\n        \"Relentless Rage\",\n        \"Frenzy\",\n        \"Mindless Rage\"\n    ],\n    \"special_abilities_and_traits\": [\n        \"Darkvision (60 ft)\",\n        \"Primal Path: Berserker\",\n        \"Frenzy\",\n        \"Mindless Rage\"\n    ],\n    \"languages\": [\"Common\"],\n    \"equipment\": [\n        \"Greataxe\",\n        \"Two Handaxes\",\n        \"Explorer's Pack\",\n        \"Javelin (4)\"\n    ],\n    \"additional_equipment\": [\n        \"Bedroll\",\n        \"Mess kit\",\n        \"10 ball bearings\",\n        \"10 feet of string\",\n        \"A belt pouch containing 10 GP\"\n    ],\n    \"money\": {\n        \"platinum\": 0,\n        \"gold\": 10,\n        \"electrum\": 0,\n        \"silver\": 50,\n        \"copper\": 25\n    },\n    \"weapons\": {\n        \"greataxe\": {\n            \"damage\": \"1d12 slashing\",\n            \"attack_bonus\": 8,\n            \"properties\": [\"Heavy\", \"Two-Handed\"]\n        },\n        \"handaxe\": {\n            \"damage\": \"1d6 slashing\",\n            \"attack_bonus\": 6,\n            \"properties\": [\"Light\", \"Thrown\"]\n        },\n        \"javelin\": {\n            \"damage\": \"1d6 piercing\",\n            \"attack_bonus\": 6,\n            \"properties\": [\"Light\", \"Thrown\"],\n            \"range\": \"30/120 ft\"\n        }\n    }\n}"
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:31:29.451491,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json: ein generierter character, umgewandelt in einen Json-string",
+        "data_type": "not specified",
+        "data": {
+            "name": "Conan the Barbarian",
+            "level": 12,
+            "hit_points": 132,
+            "proficiency_bonus": 4,
+            "subclass": "Berserker",
+            "attributes": {
+                "strength": 20,
+                "dexterity": 14,
+                "constitution": 16,
+                "intelligence": 10,
+                "wisdom": 12,
+                "charisma": 10
+            },
+            "attribute_proficiencys": {
+                "strength": true,
+                "dexterity": false,
+                "constitution": true,
+                "intelligence": false,
+                "wisdom": false,
+                "charisma": false
+            },
+            "saving_throws": {
+                "strength": 6,
+                "dexterity": 2,
+                "constitution": 5,
+                "intelligence": 0,
+                "wisdom": 2,
+                "charisma": 0
+            },
+            "armor_class": 16,
+            "attack_bonus": 8,
+            "spellcasting": null,
+            "skills": {
+                "strength_skills": {
+                    "athletics": {
+                        "bonus": 10,
+                        "proficiency_bonus": true
+                    }
+                },
+                "dexterity_skills": {
+                    "acrobatics": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "sleight_of_hand": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "stealth": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    }
+                },
+                "intelligence_skills": {
+                    "arcana": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "history": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "investigation": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "nature": {
+                        "bonus": 2,
+                        "proficiency_bonus": true
+                    },
+                    "religion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                },
+                "wisdom_skills": {
+                    "animal_handling": {
+                        "bonus": 4,
+                        "proficiency_bonus": true
+                    },
+                    "insight": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "medicine": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "perception": {
+                        "bonus": 4,
+                        "proficiency_bonus": true
+                    },
+                    "survival": {
+                        "bonus": 4,
+                        "proficiency_bonus": true
+                    }
+                },
+                "charisma_skills": {
+                    "deception": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "intimidation": {
+                        "bonus": 2,
+                        "proficiency_bonus": true
+                    },
+                    "performance": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "persuasion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                }
+            },
+            "features": [
+                "Rage",
+                "Unarmored Defense",
+                "Reckless Attack",
+                "Danger Sense",
+                "Primal Path",
+                "Ability Score Improvement",
+                "Extra Attack",
+                "Fast Movement",
+                "Feral Instinct",
+                "Brutal Critical (1 die)",
+                "Relentless Rage",
+                "Frenzy",
+                "Mindless Rage"
+            ],
+            "special_abilities_and_traits": [
+                "Darkvision (60 ft)",
+                "Primal Path: Berserker",
+                "Frenzy",
+                "Mindless Rage"
+            ],
+            "languages": [
+                "Common"
+            ],
+            "equipment": [
+                "Greataxe",
+                "Two Handaxes",
+                "Explorer's Pack",
+                "Javelin (4)"
+            ],
+            "additional_equipment": [
+                "Bedroll",
+                "Mess kit",
+                "10 ball bearings",
+                "10 feet of string",
+                "A belt pouch containing 10 GP"
+            ],
+            "money": {
+                "platinum": 0,
+                "gold": 10,
+                "electrum": 0,
+                "silver": 50,
+                "copper": 25
+            },
+            "weapons": {
+                "greataxe": {
+                    "damage": "1d12 slashing",
+                    "attack_bonus": 8,
+                    "properties": [
+                        "Heavy",
+                        "Two-Handed"
+                    ]
+                },
+                "handaxe": {
+                    "damage": "1d6 slashing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Light",
+                        "Thrown"
+                    ]
+                },
+                "javelin": {
+                    "damage": "1d6 piercing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Light",
+                        "Thrown"
+                    ],
+                    "range": "30/120 ft"
+                }
+            }
+        }
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:31:44.725013,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json_string: einer von vier generierten charcteren",
+        "data_type": "not specified",
+        "data": "{\n    \"name\": \"Conan\",\n    \"level\": 12,\n    \"hit_points\": 102,\n    \"proficiency_bonus\": 4,\n    \"subclass\": \"Champion\",\n    \"attributes\": {\n        \"strength\": 18,\n        \"dexterity\": 14,\n        \"constitution\": 16,\n        \"intelligence\": 10,\n        \"wisdom\": 12,\n        \"charisma\": 8\n    },\n    \"attribute_proficiencys\": {\n        \"strength\": true,\n        \"dexterity\": false,\n        \"constitution\": false,\n        \"intelligence\": false,\n        \"wisdom\": false,\n        \"charisma\": false\n    },\n    \"saving_throws\": {\n        \"strength\": 6,\n        \"dexterity\": 4,\n        \"constitution\": 6,\n        \"intelligence\": 0,\n        \"wisdom\": 2,\n        \"charisma\": 0\n    },\n    \"armor_class\": 18,\n    \"attack_bonus\": 8,\n    \"spellcasting\": {\n        \"spellcasting_bonus\": 0,\n        \"spellcasting_dc\": 0,\n        \"spellcasting_attack_bonus\": 0,\n        \"cantrips_known\": 0,\n        \"spells_prepared\": 0,\n        \"spell_slots\": {\n            \"1st\": 0,\n            \"2nd\": 0,\n            \"3rd\": 0,\n            \"4th\": 0,\n            \"5th\": 0,\n            \"6th\": 0,\n            \"7th\": 0,\n            \"8th\": 0,\n            \"9th\": 0\n        },\n        \"known_spells\": {\n            \"cantrips\": [],\n            \"1st_level\": [],\n            \"2nd_level\": [],\n            \"3rd_level\": [],\n            \"4th_level\": [],\n            \"5th_level\": [],\n            \"6th_level\": [],\n            \"7th_level\": [],\n            \"8th_level\": [],\n            \"9th_level\": []\n        },\n        \"prepared_spells\": {\n            \"cantrips\": [],\n            \"1st_level\": [],\n            \"2nd_level\": [],\n            \"3rd_level\": [],\n            \"4th_level\": [],\n            \"5th_level\": [],\n            \"6th_level\": [],\n            \"7th_level\": [],\n            \"8th_level\": [],\n            \"9th_level\": []\n        }\n    },\n    \"skills\": {\n        \"strength_skills\": {\n            \"athletics\": {\"bonus\": 10, \"proficiency_bonus\": true}\n        },\n        \"dexterity_skills\": {\n            \"acrobatics\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"sleight_of_hand\": {\"bonus\": 4, \"proficiency_bonus\": false},\n            \"stealth\": {\"bonus\": 4, \"proficiency_bonus\": false}\n        },\n        \"intelligence_skills\": {\n            \"arcana\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"history\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"investigation\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"nature\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"religion\": {\"bonus\": 0, \"proficiency_bonus\": false}\n        },\n        \"wisdom_skills\": {\n            \"animal_handling\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"insight\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"medicine\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"perception\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"survival\": {\"bonus\": 2, \"proficiency_bonus\": true}\n        },\n        \"charisma_skills\": {\n            \"deception\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"intimidation\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"performance\": {\"bonus\": 0, \"proficiency_bonus\": false},\n            \"persuasion\": {\"bonus\": 0, \"proficiency_bonus\": false}\n        }\n    },\n    \"features\": [\n        \"Fighting Style: Defense\",\n        \"Second Wind\",\n        \"Action Surge (1 use)\",\n        \"Martial Archetype\",\n        \"Ability Score Improvement\",\n        \"Extra Attack\",\n        \"Improved Critical\",\n        \"Remarkable Athlete\",\n        \"Additional Fighting Style\",\n        \"Indomitable (1 use)\"\n    ],\n    \"special_abilities_and_traits\": [\n        \"Darkvision (60 ft)\",\n        \"Ritual Casting\",\n        \"Champion: Improved Critical\",\n        \"Champion: Remarkable Athlete\",\n        \"Champion: Additional Fighting Style\"\n    ],\n    \"languages\": [\"Common\"],\n    \"equipment\": [\n        \"Chain Mail\",\n        \"Longbow and 20 arrows\",\n        \"Greatsword\",\n        \"Shield\",\n        \"Dungeoneer's pack\"\n    ],\n    \"additional_equipment\": [\n        \"Bedroll\",\n        \"Mess kit\",\n        \"10 ball bearings\",\n        \"10 feet of string\",\n        \"A belt pouch containing 10 GP\"\n    ],\n    \"money\": {\n        \"platinum\": 0,\n        \"gold\": 100,\n        \"electrum\": 0,\n        \"silver\": 50,\n        \"copper\": 25\n    },\n    \"weapons\": {\n        \"greatsword\": {\n            \"damage\": \"2d6 slashing\",\n            \"attack_bonus\": 8,\n            \"properties\": [\"Versatile (1d10)\"]\n        },\n        \"longbow\": {\n            \"damage\": \"1d8 piercing\",\n            \"attack_bonus\": 6,\n            \"properties\": [\"Ammunition\", \"Range (80/320 ft)\"]\n        }\n    }\n}"
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:31:44.727428,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json: ein generierter character, umgewandelt in einen Json-string",
+        "data_type": "not specified",
+        "data": {
+            "name": "Conan",
+            "level": 12,
+            "hit_points": 102,
+            "proficiency_bonus": 4,
+            "subclass": "Champion",
+            "attributes": {
+                "strength": 18,
+                "dexterity": 14,
+                "constitution": 16,
+                "intelligence": 10,
+                "wisdom": 12,
+                "charisma": 8
+            },
+            "attribute_proficiencys": {
+                "strength": true,
+                "dexterity": false,
+                "constitution": false,
+                "intelligence": false,
+                "wisdom": false,
+                "charisma": false
+            },
+            "saving_throws": {
+                "strength": 6,
+                "dexterity": 4,
+                "constitution": 6,
+                "intelligence": 0,
+                "wisdom": 2,
+                "charisma": 0
+            },
+            "armor_class": 18,
+            "attack_bonus": 8,
+            "spellcasting": {
+                "spellcasting_bonus": 0,
+                "spellcasting_dc": 0,
+                "spellcasting_attack_bonus": 0,
+                "cantrips_known": 0,
+                "spells_prepared": 0,
+                "spell_slots": {
+                    "1st": 0,
+                    "2nd": 0,
+                    "3rd": 0,
+                    "4th": 0,
+                    "5th": 0,
+                    "6th": 0,
+                    "7th": 0,
+                    "8th": 0,
+                    "9th": 0
+                },
+                "known_spells": {
+                    "cantrips": [],
+                    "1st_level": [],
+                    "2nd_level": [],
+                    "3rd_level": [],
+                    "4th_level": [],
+                    "5th_level": [],
+                    "6th_level": [],
+                    "7th_level": [],
+                    "8th_level": [],
+                    "9th_level": []
+                },
+                "prepared_spells": {
+                    "cantrips": [],
+                    "1st_level": [],
+                    "2nd_level": [],
+                    "3rd_level": [],
+                    "4th_level": [],
+                    "5th_level": [],
+                    "6th_level": [],
+                    "7th_level": [],
+                    "8th_level": [],
+                    "9th_level": []
+                }
+            },
+            "skills": {
+                "strength_skills": {
+                    "athletics": {
+                        "bonus": 10,
+                        "proficiency_bonus": true
+                    }
+                },
+                "dexterity_skills": {
+                    "acrobatics": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "sleight_of_hand": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "stealth": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    }
+                },
+                "intelligence_skills": {
+                    "arcana": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "history": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "investigation": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "nature": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "religion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                },
+                "wisdom_skills": {
+                    "animal_handling": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "insight": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "medicine": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "perception": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "survival": {
+                        "bonus": 2,
+                        "proficiency_bonus": true
+                    }
+                },
+                "charisma_skills": {
+                    "deception": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "intimidation": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "performance": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "persuasion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                }
+            },
+            "features": [
+                "Fighting Style: Defense",
+                "Second Wind",
+                "Action Surge (1 use)",
+                "Martial Archetype",
+                "Ability Score Improvement",
+                "Extra Attack",
+                "Improved Critical",
+                "Remarkable Athlete",
+                "Additional Fighting Style",
+                "Indomitable (1 use)"
+            ],
+            "special_abilities_and_traits": [
+                "Darkvision (60 ft)",
+                "Ritual Casting",
+                "Champion: Improved Critical",
+                "Champion: Remarkable Athlete",
+                "Champion: Additional Fighting Style"
+            ],
+            "languages": [
+                "Common"
+            ],
+            "equipment": [
+                "Chain Mail",
+                "Longbow and 20 arrows",
+                "Greatsword",
+                "Shield",
+                "Dungeoneer's pack"
+            ],
+            "additional_equipment": [
+                "Bedroll",
+                "Mess kit",
+                "10 ball bearings",
+                "10 feet of string",
+                "A belt pouch containing 10 GP"
+            ],
+            "money": {
+                "platinum": 0,
+                "gold": 100,
+                "electrum": 0,
+                "silver": 50,
+                "copper": 25
+            },
+            "weapons": {
+                "greatsword": {
+                    "damage": "2d6 slashing",
+                    "attack_bonus": 8,
+                    "properties": [
+                        "Versatile (1d10)"
+                    ]
+                },
+                "longbow": {
+                    "damage": "1d8 piercing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Ammunition",
+                        "Range (80/320 ft)"
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:32:02.843146,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json_string: einer von vier generierten charcteren",
+        "data_type": "not specified",
+        "data": "{\n    \"name\": \"Conan the Ranger\",\n    \"level\": 12,\n    \"hit_points\": 100,\n    \"proficiency_bonus\": 4,\n    \"subclass\": \"Hunter\",\n    \"attributes\": {\n        \"strength\": 16,\n        \"dexterity\": 16,\n        \"constitution\": 14,\n        \"intelligence\": 12,\n        \"wisdom\": 16,\n        \"charisma\": 10\n    },\n    \"attribute_proficiencys\": {\n        \"strength\": false,\n        \"dexterity\": true,\n        \"constitution\": false,\n        \"intelligence\": false,\n        \"wisdom\": true,\n        \"charisma\": false\n    },\n    \"saving_throws\": {\n        \"strength\": 5,\n        \"dexterity\": 6,\n        \"constitution\": 4,\n        \"intelligence\": 3,\n        \"wisdom\": 6,\n        \"charisma\": 2\n    },\n    \"armor_class\": 18,\n    \"attack_bonus\": 8,\n    \"spellcasting\": {\n        \"spellcasting_bonus\": 6,\n        \"spellcasting_dc\": 16,\n        \"spellcasting_attack_bonus\": 6,\n        \"cantrips_known\": 4,\n        \"spells_prepared\": 16,\n        \"spell_slots\": {\n            \"1st\": 4,\n            \"2nd\": 3,\n            \"3rd\": 3,\n            \"4th\": 1,\n            \"5th\": 0,\n            \"6th\": 0,\n            \"7th\": 0,\n            \"8th\": 0,\n            \"9th\": 0\n        },\n        \"known_spells\": {\n            \"cantrips\": [\"Druidcraft\", \"Mold Earth\", \"Thorn Whip\", \"Thaumaturgy\"],\n            \"1st_level\": [\"Alarm\", \"Animal Friendship\", \"Cure Wounds\", \"Detect Magic\", \"Detect Poison and Disease\", \"Fog Cloud\", \"Goodberry\", \"Hunter's Mark\", \"Jump\", \"Longstrider\", \"Speak with Animals\"],\n            \"2nd_level\": [\"Barkskin\", \"Darkvision\", \"Find Traps\", \"Lesser Restoration\", \"Locate Animals or Plants\", \"Locate Object\", \"Pass Without Trace\", \"Protection from Poison\", \"Silence\", \"Spike Growth\"],\n            \"3rd_level\": [\"Conjure Animals\", \"Daylight\", \"Nondetection\", \"Plant Growth\", \"Protection from Energy\", \"Speak with Plants\", \"Water Breathing\", \"Water Walk\", \"Wind Wall\"],\n            \"4th_level\": [\"Conjure Woodland Beings\", \"Freedom of Movement\", \"Locate Creature\", \"Stoneskin\"]\n        },\n        \"prepared_spells\": {\n            \"cantrips\": [\"Druidcraft (S)\", \"Mold Earth (S)\", \"Thorn Whip (S)\", \"Thaumaturgy (S)\"],\n            \"1st_level\": [\"Alarm (S)\", \"Animal Friendship (S)\", \"Cure Wounds (S)\", \"Detect Magic (S)\", \"Detect Poison and Disease (S)\", \"Fog Cloud (S)\", \"Goodberry (S)\", \"Hunter's Mark (S)\", \"Jump (S)\", \"Longstrider (S)\", \"Speak with Animals (S)\"],\n            \"2nd_level\": [\"Barkskin (S)\", \"Darkvision (S)\", \"Find Traps (S)\", \"Lesser Restoration (S)\", \"Locate Animals or Plants (S)\", \"Locate Object (S)\", \"Pass Without Trace (S)\", \"Protection from Poison (S)\", \"Silence (S)\", \"Spike Growth (S)\"],\n            \"3rd_level\": [\"Conjure Animals (S)\", \"Daylight (S)\", \"Nondetection (S)\", \"Plant Growth (S)\", \"Protection from Energy (S)\", \"Speak with Plants (S)\", \"Water Breathing (S)\", \"Water Walk (S)\", \"Wind Wall (S)\"],\n            \"4th_level\": [\"Conjure Woodland Beings (S)\", \"Freedom of Movement (S)\", \"Locate Creature (S)\", \"Stoneskin (S)\"]\n        }\n    },\n    \"skills\": {\n        \"strength_skills\": {\n            \"athletics\": {\"bonus\": 8, \"proficiency_bonus\": true}\n        },\n        \"dexterity_skills\": {\n            \"acrobatics\": {\"bonus\": 8, \"proficiency_bonus\": true},\n            \"sleight_of_hand\": {\"bonus\": 8, \"proficiency_bonus\": true},\n            \"stealth\": {\"bonus\": 8, \"proficiency_bonus\": true}\n        },\n        \"intelligence_skills\": {\n            \"arcana\": {\"bonus\": 3, \"proficiency_bonus\": false},\n            \"history\": {\"bonus\": 3, \"proficiency_bonus\": false},\n            \"investigation\": {\"bonus\": 3, \"proficiency_bonus\": false},\n            \"nature\": {\"bonus\": 3, \"proficiency_bonus\": false},\n            \"religion\": {\"bonus\": 3, \"proficiency_bonus\": false}\n        },\n        \"wisdom_skills\": {\n            \"animal_handling\": {\"bonus\": 8, \"proficiency_bonus\": true},\n            \"insight\": {\"bonus\": 8, \"proficiency_bonus\": true},\n            \"medicine\": {\"bonus\": 8, \"proficiency_bonus\": true},\n            \"perception\": {\"bonus\": 8, \"proficiency_bonus\": true},\n            \"survival\": {\"bonus\": 8, \"proficiency_bonus\": true}\n        },\n        \"charisma_skills\": {\n            \"deception\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"intimidation\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"performance\": {\"bonus\": 2, \"proficiency_bonus\": false},\n            \"persuasion\": {\"bonus\": 2, \"proficiency_bonus\": false}\n        }\n    },\n    \"features\": [\n        \"Spellcasting\",\n        \"Favored Enemy (2 types)\",\n        \"Natural Explorer (2 terrain types)\",\n        \"Fighting Style: Archery\",\n        \"Primeval Awareness\",\n        \"Ability Score Improvement\",\n        \"Extra Attack\",\n        \"Hunter's Prey: Colossus Slayer\",\n        \"Defensive Tactics: Escape the Horde\",\n        \"Hide in Plain Sight\"\n    ],\n    \"special_abilities_and_traits\": [\n        \"Darkvision (60 ft)\",\n        \"Ritual Casting\",\n        \"Hunter's Mark\",\n        \"Favored Enemy: Aberrations\",\n        \"Favored Enemy: Undead\",\n        \"Favored Terrain: Forest\",\n        \"Favored Terrain: Mountain\",\n        \"Natural Explorer: Forest\",\n        \"Natural Explorer: Mountain\"\n    ],\n    \"languages\": [\"Common\", \"Sylvan\", \"Underdark\"],\n    \"equipment\": [\n        \"Longbow\",\n        \"20 Arrows\",\n        \"Scale Mail\",\n        \"Shortsword\",\n        \"Dungeoneer's Pack\",\n        \"A trophy from an animal killed by Conan\"\n    ],\n    \"additional_equipment\": [\n        \"Bedroll\",\n        \"Mess kit\",\n        \"10 ball bearings\",\n        \"10 feet of string\",\n        \"A belt pouch containing 10 GP\"\n    ],\n    \"money\": {\n        \"platinum\": 0,\n        \"gold\": 100,\n        \"electrum\": 0,\n        \"silver\": 50,\n        \"copper\": 25\n    },\n    \"weapons\": {\n        \"longbow\": {\n            \"damage\": \"1d8 piercing\",\n            \"attack_bonus\": 8,\n            \"properties\": [\"Ammunition\", \"Heavy\", \"Two-Handed\"],\n            \"range\": \"150/600 ft\"\n        },\n        \"shortsword\": {\n            \"damage\": \"1d6 piercing\",\n            \"attack_bonus\": 8,\n            \"properties\": [\"Finesse\", \"Light\"]\n        }\n    }\n}"
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:32:02.844895,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character_json: ein generierter character, umgewandelt in einen Json-string",
+        "data_type": "not specified",
+        "data": {
+            "name": "Conan the Ranger",
+            "level": 12,
+            "hit_points": 100,
+            "proficiency_bonus": 4,
+            "subclass": "Hunter",
+            "attributes": {
+                "strength": 16,
+                "dexterity": 16,
+                "constitution": 14,
+                "intelligence": 12,
+                "wisdom": 16,
+                "charisma": 10
+            },
+            "attribute_proficiencys": {
+                "strength": false,
+                "dexterity": true,
+                "constitution": false,
+                "intelligence": false,
+                "wisdom": true,
+                "charisma": false
+            },
+            "saving_throws": {
+                "strength": 5,
+                "dexterity": 6,
+                "constitution": 4,
+                "intelligence": 3,
+                "wisdom": 6,
+                "charisma": 2
+            },
+            "armor_class": 18,
+            "attack_bonus": 8,
+            "spellcasting": {
+                "spellcasting_bonus": 6,
+                "spellcasting_dc": 16,
+                "spellcasting_attack_bonus": 6,
+                "cantrips_known": 4,
+                "spells_prepared": 16,
+                "spell_slots": {
+                    "1st": 4,
+                    "2nd": 3,
+                    "3rd": 3,
+                    "4th": 1,
+                    "5th": 0,
+                    "6th": 0,
+                    "7th": 0,
+                    "8th": 0,
+                    "9th": 0
+                },
+                "known_spells": {
+                    "cantrips": [
+                        "Druidcraft",
+                        "Mold Earth",
+                        "Thorn Whip",
+                        "Thaumaturgy"
+                    ],
+                    "1st_level": [
+                        "Alarm",
+                        "Animal Friendship",
+                        "Cure Wounds",
+                        "Detect Magic",
+                        "Detect Poison and Disease",
+                        "Fog Cloud",
+                        "Goodberry",
+                        "Hunter's Mark",
+                        "Jump",
+                        "Longstrider",
+                        "Speak with Animals"
+                    ],
+                    "2nd_level": [
+                        "Barkskin",
+                        "Darkvision",
+                        "Find Traps",
+                        "Lesser Restoration",
+                        "Locate Animals or Plants",
+                        "Locate Object",
+                        "Pass Without Trace",
+                        "Protection from Poison",
+                        "Silence",
+                        "Spike Growth"
+                    ],
+                    "3rd_level": [
+                        "Conjure Animals",
+                        "Daylight",
+                        "Nondetection",
+                        "Plant Growth",
+                        "Protection from Energy",
+                        "Speak with Plants",
+                        "Water Breathing",
+                        "Water Walk",
+                        "Wind Wall"
+                    ],
+                    "4th_level": [
+                        "Conjure Woodland Beings",
+                        "Freedom of Movement",
+                        "Locate Creature",
+                        "Stoneskin"
+                    ]
+                },
+                "prepared_spells": {
+                    "cantrips": [
+                        "Druidcraft (S)",
+                        "Mold Earth (S)",
+                        "Thorn Whip (S)",
+                        "Thaumaturgy (S)"
+                    ],
+                    "1st_level": [
+                        "Alarm (S)",
+                        "Animal Friendship (S)",
+                        "Cure Wounds (S)",
+                        "Detect Magic (S)",
+                        "Detect Poison and Disease (S)",
+                        "Fog Cloud (S)",
+                        "Goodberry (S)",
+                        "Hunter's Mark (S)",
+                        "Jump (S)",
+                        "Longstrider (S)",
+                        "Speak with Animals (S)"
+                    ],
+                    "2nd_level": [
+                        "Barkskin (S)",
+                        "Darkvision (S)",
+                        "Find Traps (S)",
+                        "Lesser Restoration (S)",
+                        "Locate Animals or Plants (S)",
+                        "Locate Object (S)",
+                        "Pass Without Trace (S)",
+                        "Protection from Poison (S)",
+                        "Silence (S)",
+                        "Spike Growth (S)"
+                    ],
+                    "3rd_level": [
+                        "Conjure Animals (S)",
+                        "Daylight (S)",
+                        "Nondetection (S)",
+                        "Plant Growth (S)",
+                        "Protection from Energy (S)",
+                        "Speak with Plants (S)",
+                        "Water Breathing (S)",
+                        "Water Walk (S)",
+                        "Wind Wall (S)"
+                    ],
+                    "4th_level": [
+                        "Conjure Woodland Beings (S)",
+                        "Freedom of Movement (S)",
+                        "Locate Creature (S)",
+                        "Stoneskin (S)"
+                    ]
+                }
+            },
+            "skills": {
+                "strength_skills": {
+                    "athletics": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    }
+                },
+                "dexterity_skills": {
+                    "acrobatics": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    },
+                    "sleight_of_hand": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    },
+                    "stealth": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    }
+                },
+                "intelligence_skills": {
+                    "arcana": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "history": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "investigation": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "nature": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "religion": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    }
+                },
+                "wisdom_skills": {
+                    "animal_handling": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    },
+                    "insight": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    },
+                    "medicine": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    },
+                    "perception": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    },
+                    "survival": {
+                        "bonus": 8,
+                        "proficiency_bonus": true
+                    }
+                },
+                "charisma_skills": {
+                    "deception": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "intimidation": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "performance": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    },
+                    "persuasion": {
+                        "bonus": 2,
+                        "proficiency_bonus": false
+                    }
+                }
+            },
+            "features": [
+                "Spellcasting",
+                "Favored Enemy (2 types)",
+                "Natural Explorer (2 terrain types)",
+                "Fighting Style: Archery",
+                "Primeval Awareness",
+                "Ability Score Improvement",
+                "Extra Attack",
+                "Hunter's Prey: Colossus Slayer",
+                "Defensive Tactics: Escape the Horde",
+                "Hide in Plain Sight"
+            ],
+            "special_abilities_and_traits": [
+                "Darkvision (60 ft)",
+                "Ritual Casting",
+                "Hunter's Mark",
+                "Favored Enemy: Aberrations",
+                "Favored Enemy: Undead",
+                "Favored Terrain: Forest",
+                "Favored Terrain: Mountain",
+                "Natural Explorer: Forest",
+                "Natural Explorer: Mountain"
+            ],
+            "languages": [
+                "Common",
+                "Sylvan",
+                "Underdark"
+            ],
+            "equipment": [
+                "Longbow",
+                "20 Arrows",
+                "Scale Mail",
+                "Shortsword",
+                "Dungeoneer's Pack",
+                "A trophy from an animal killed by Conan"
+            ],
+            "additional_equipment": [
+                "Bedroll",
+                "Mess kit",
+                "10 ball bearings",
+                "10 feet of string",
+                "A belt pouch containing 10 GP"
+            ],
+            "money": {
+                "platinum": 0,
+                "gold": 100,
+                "electrum": 0,
+                "silver": 50,
+                "copper": 25
+            },
+            "weapons": {
+                "longbow": {
+                    "damage": "1d8 piercing",
+                    "attack_bonus": 8,
+                    "properties": [
+                        "Ammunition",
+                        "Heavy",
+                        "Two-Handed"
+                    ],
+                    "range": "150/600 ft"
+                },
+                "shortsword": {
+                    "damage": "1d6 piercing",
+                    "attack_bonus": 8,
+                    "properties": [
+                        "Finesse",
+                        "Light"
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:32:02.851644,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character is a generated character json-string",
+        "data_type": "<class 'dict'>",
+        "data": {
+            "name": "Conan",
+            "level": 12,
+            "hit_points": 132,
+            "proficiency_bonus": 4,
+            "subclass": "Berserker",
+            "attributes": {
+                "strength": 18,
+                "dexterity": 14,
+                "constitution": 16,
+                "intelligence": 10,
+                "wisdom": 12,
+                "charisma": 10
+            },
+            "attribute_proficiencys": {
+                "strength": true,
+                "dexterity": false,
+                "constitution": true,
+                "intelligence": false,
+                "wisdom": false,
+                "charisma": false
+            },
+            "saving_throws": {
+                "strength": 6,
+                "dexterity": 2,
+                "constitution": 6,
+                "intelligence": 0,
+                "wisdom": 2,
+                "charisma": 0
+            },
+            "armor_class": 16,
+            "attack_bonus": 8,
+            "spellcasting": null,
+            "skills": {
+                "strength_skills": {
+                    "athletics": {
+                        "bonus": 9,
+                        "proficiency_bonus": true
+                    }
+                },
+                "dexterity_skills": {
+                    "acrobatics": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "sleight_of_hand": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    },
+                    "stealth": {
+                        "bonus": 4,
+                        "proficiency_bonus": false
+                    }
+                },
+                "intelligence_skills": {
+                    "arcana": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "history": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "investigation": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "nature": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "religion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                },
+                "wisdom_skills": {
+                    "animal_handling": {
+                        "bonus": 3,
+                        "proficiency_bonus": true
+                    },
+                    "insight": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "medicine": {
+                        "bonus": 3,
+                        "proficiency_bonus": false
+                    },
+                    "perception": {
+                        "bonus": 3,
+                        "proficiency_bonus": true
+                    },
+                    "survival": {
+                        "bonus": 3,
+                        "proficiency_bonus": true
+                    }
+                },
+                "charisma_skills": {
+                    "deception": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "intimidation": {
+                        "bonus": 0,
+                        "proficiency_bonus": true
+                    },
+                    "performance": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    },
+                    "persuasion": {
+                        "bonus": 0,
+                        "proficiency_bonus": false
+                    }
+                }
+            },
+            "features": [
+                "Rage",
+                "Unarmored Defense",
+                "Reckless Attack",
+                "Danger Sense",
+                "Primal Path",
+                "Ability Score Improvement",
+                "Extra Attack",
+                "Fast Movement",
+                "Feral Instinct",
+                "Brutal Critical (1 die)",
+                "Relentless Rage",
+                "Frenzy",
+                "Mindless Rage",
+                "Intimidating Presence"
+            ],
+            "special_abilities_and_traits": [
+                "Darkvision (60 ft)",
+                "Ritual Casting"
+            ],
+            "languages": [
+                "Common"
+            ],
+            "equipment": [
+                "Greataxe",
+                "Two Handaxes",
+                "Explorer's Pack",
+                "Javelin (4)"
+            ],
+            "additional_equipment": [
+                "Bedroll",
+                "Mess kit",
+                "10 ball bearings",
+                "10 feet of string",
+                "A belt pouch containing 10 GP"
+            ],
+            "money": {
+                "platinum": 0,
+                "gold": 100,
+                "electrum": 0,
+                "silver": 50,
+                "copper": 25
+            },
+            "weapons": {
+                "greataxe": {
+                    "damage": "1d12 slashing",
+                    "attack_bonus": 8,
+                    "properties": [
+                        "Heavy",
+                        "Two-Handed"
+                    ]
+                },
+                "handaxe": {
+                    "damage": "1d6 slashing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Light",
+                        "Thrown"
+                    ]
+                },
+                "javelin": {
+                    "damage": "1d6 piercing",
+                    "attack_bonus": 6,
+                    "properties": [
+                        "Light",
+                        "Thrown"
+                    ],
+                    "range": "30/120 ft"
+                }
+            }
+        }
+    },
+    {
+        "meta_data": "Date and Time:2025-05-27 13:45:04.795797,\nData from file:/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/src/debug/debug_helper.py, line 63",
+        "data_description": "character is a generated character json-string",
+        "data_type": "<class 'str'>",
+        "data": "{\"name\": \"Conan\", \"level\": 12, \"hit_points\": 132, \"proficiency_bonus\": 4, \"subclass\": \"Berserker\", \"attributes\": {\"strength\": 18, \"dexterity\": 14, \"constitution\": 16, \"intelligence\": 10, \"wisdom\": 12, \"charisma\": 10}, \"attribute_proficiencys\": {\"strength\": true, \"dexterity\": false, \"constitution\": true, \"intelligence\": false, \"wisdom\": false, \"charisma\": false}, \"saving_throws\": {\"strength\": 6, \"dexterity\": 2, \"constitution\": 6, \"intelligence\": 0, \"wisdom\": 2, \"charisma\": 0}, \"armor_class\": 16, \"attack_bonus\": 8, \"spellcasting\": null, \"skills\": {\"strength_skills\": {\"athletics\": {\"bonus\": 10, \"proficiency_bonus\": true}}, \"dexterity_skills\": {\"acrobatics\": {\"bonus\": 4, \"proficiency_bonus\": false}, \"sleight_of_hand\": {\"bonus\": 4, \"proficiency_bonus\": false}, \"stealth\": {\"bonus\": 4, \"proficiency_bonus\": false}}, \"intelligence_skills\": {\"arcana\": {\"bonus\": 0, \"proficiency_bonus\": false}, \"history\": {\"bonus\": 0, \"proficiency_bonus\": false}, \"investigation\": {\"bonus\": 0, \"proficiency_bonus\": false}, \"nature\": {\"bonus\": 0, \"proficiency_bonus\": false}, \"religion\": {\"bonus\": 0, \"proficiency_bonus\": false}}, \"wisdom_skills\": {\"animal_handling\": {\"bonus\": 4, \"proficiency_bonus\": true}, \"insight\": {\"bonus\": 4, \"proficiency_bonus\": false}, \"medicine\": {\"bonus\": 4, \"proficiency_bonus\": false}, \"perception\": {\"bonus\": 4, \"proficiency_bonus\": true}, \"survival\": {\"bonus\": 4, \"proficiency_bonus\": true}}, \"charisma_skills\": {\"deception\": {\"bonus\": 0, \"proficiency_bonus\": false}, \"intimidation\": {\"bonus\": 2, \"proficiency_bonus\": true}, \"performance\": {\"bonus\": 0, \"proficiency_bonus\": false}, \"persuasion\": {\"bonus\": 0, \"proficiency_bonus\": false}}}, \"features\": [\"Rage\", \"Unarmored Defense\", \"Reckless Attack\", \"Danger Sense\", \"Primal Path\", \"Ability Score Improvement\", \"Extra Attack\", \"Fast Movement\", \"Feral Instinct\", \"Frenzy\", \"Mindless Rage\", \"Relentless Rage\", \"Brutal Critical (1 die)\"], \"special_abilities_and_traits\": [\"Darkvision (60 ft)\", \"Ritual Casting\"], \"languages\": [\"Common\"], \"equipment\": [\"Greataxe\", \"Two Handaxes\", \"Explorer's Pack\", \"Javelin (4)\"], \"additional_equipment\": [\"Bedroll\", \"Mess kit\", \"10 ball bearings\", \"10 feet of string\", \"A belt pouch containing 10 GP\"], \"money\": {\"platinum\": 0, \"gold\": 10, \"electrum\": 0, \"silver\": 50, \"copper\": 25}, \"weapons\": {\"greataxe\": {\"damage\": \"1d12 slashing\", \"attack_bonus\": 8, \"properties\": [\"Heavy\", \"Two-Handed\"]}, \"handaxe\": {\"damage\": \"1d6 slashing\", \"attack_bonus\": 6, \"properties\": [\"Light\", \"Thrown\"]}, \"javelin\": {\"damage\": \"1d6 piercing\", \"attack_bonus\": 6, \"properties\": [\"Light\", \"Thrown\"], \"range\": \"30/120 ft\"}}}"
+    }
 ]

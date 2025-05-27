@@ -11,7 +11,6 @@ from src.debug.debug_log import DebugLog
 from src.debug.debug_helper import DebugHelper
 
 # activates the DebugHelper
-DebugHelper.activ(activ=True)
 
 class SystemRequestBuilder:
 	def __init__(self, idea_id):
@@ -30,6 +29,9 @@ class SystemRequestBuilder:
 			]
 		self.class_data_template_path = "../static_dnd_data/detailed_class_data/all_class_data_template.txt"
 		self.crud_template = CrudTxtFiles(self.class_data_template_path)
+		
+		# sets the DebugHelber on or off
+		DebugHelper.activ(activ=False)
 	
 	def get_system_message_template(self):
 		"""gets the System message-template from the local storage"""
@@ -43,7 +45,8 @@ class SystemRequestBuilder:
 		
 		DebugHelper.debug_print(
 			data_description="class_data_template from: ./static_dnd_data/detailed_class_data/all_class_data_template.txt",
-			data=class_data_template)
+			data=class_data_template,
+			active=False)
 		
 		return class_data_template
 		
@@ -70,7 +73,8 @@ class SystemRequestBuilder:
 				"'key_descriptions': [great, big, strong, fire, ...]\n"
 				"'rewritten_prompts': [a Paladin wich..., a warlock wich..., a wizard wich...]\n"
 			                 "}\n",
-			data=char_prompts)
+			data=char_prompts,
+			active=False)
 		
 		char_prompt_dict = {
 								"char_1": {
@@ -105,7 +109,9 @@ class SystemRequestBuilder:
 		# char_prompt_dict enthält 1. classes 2. key_descriptions 3. rewritten_prompts
 		char_prompt_dict = self.load_char_prompts()
 		
-		DebugHelper.debug_print(data_description="char_prompt_dict contains a dict with for dicts, with char_promt informations", data=char_prompt_dict)
+		DebugHelper.debug_print(data_description="char_prompt_dict contains a dict with for dicts, with char_promt informations",
+		                        data=char_prompt_dict,
+		                        active=False)
 		
 		# for each of the 4 characters
 		for key, data in char_prompt_dict.items():

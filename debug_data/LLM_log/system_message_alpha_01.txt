@@ -7,9 +7,9 @@ Ein beispiel für die Details ist:
 In diesem Beispiel sollst du den DnD Character so erstellen, dass er viele Fähigkeiten hat, die in das Themengebiet 'Necromantie', 'dunkle Magie' und 'Feuermagie' fallen.
 Du wirst in den daten, die du erhälst immer wieder Fähgikeiten auswählen können. Wähle bei diesen auch so, dass die Auswhl den genannten Character Details entsprechen.
 
-Den erstellen Character sollst du als Json datei zurück geben.
+Den erstellen Character sollst du im Json Format zurück geben.
 Hier ist ein Beispiel für einen DnD character der stufe 20:
-'''
+
 {
     "name": "Cleric",
     "level": 20,
@@ -170,8 +170,10 @@ Hier ist ein Beispiel für einen DnD character der stufe 20:
     }
 }
 
-'''
-Geb bitte den erstellen character in genau dieser struktur zurück, wie ich sie dir im beispiel gezeigt habe.
+
+Geb nur den erstellen character in genau dieser struktur zurück, wie ich sie dir im beispiel gezeigt habe.
+Füge kein 'Json' kennzeichen. Nur den reinen text.
+
 Achte darauf, dass das Level der beispiel-struktur 20 ist. Nicht jeder Character soll auf level 20 erstellt werden!
 
 Wenn du in der Characterbeschreibung keine klar erkennbare Level-höhe herauslesen kannst,

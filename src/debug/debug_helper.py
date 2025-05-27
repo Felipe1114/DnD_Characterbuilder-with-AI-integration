@@ -25,7 +25,7 @@ class DebugHelper:
 			return False
 		
 	@staticmethod
-	def debug_print(data_description: str, data, active: bool=True, store_data: bool=False):
+	def debug_print(data_description: str, data, active: bool=True, data_type: bool=False, store_data: bool=False):
 		"""prints given data and the meta data, where the data come from, like:
 		file_name and line_number
 		"""
@@ -50,23 +50,34 @@ class DebugHelper:
 				del frame
 			
 			# Führe den eigentlichen Print aus
-			print(f"data description:\n {data_description}; \n"
-			      f"data:\n {data}\n")
+			print(f"data description:\n {data_description}; \n")
+			
+			# if the data_type should also be printed
+			if data_type:
+				print(f"data_type: {type(data)}")
+			
+			print(f"data:\n {data}\n")
 			      
 			
 			if store_data:
-				DebugHelper._store_data(data, data_description)
+				DebugHelper._store_data(data, data_description, data_type)
 			
 			print("------------------------------------------------------------------------------------------------------------------------------------------------------")
 	
 	@staticmethod
-	def _store_data(data, data_description):
+	def _store_data(data, data_description, data_type):
 		"""if the data should be testet in a nother file or stored for documentation"""
 		from datetime import datetime
 		
 		# instantiate CrudJsonFiles-class for storing data
 		j_crud = CrudJsonFiles("../debug_data/data_for_testing/data_for_testing.json")
 		
+		# if data_type is necesary:
+		if data_type:
+			type_of_data = type(data)
+		else:
+			type_of_data = "not specified"
+			
 		# create meta-data for data
 		frame = inspect.currentframe()
 		caller_frame = frame.f_back
@@ -77,6 +88,7 @@ class DebugHelper:
 		# create dict
 		data_dict = {"meta_data": f"Date and Time:{date_and_time},\nData from file:{file_name}, line {line_number}",
 		             "data_description": data_description,
+		             "data_type": str(type_of_data),
 		             "data": data}
 		
 		# store dict

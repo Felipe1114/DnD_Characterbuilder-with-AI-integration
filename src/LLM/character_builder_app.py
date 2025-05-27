@@ -17,7 +17,6 @@ from src.handle_data.llm_log_manager import LlmLogManager
 from src.debug.debug_log import DebugLog
 from src.debug.debug_helper import DebugHelper
 
-DebugHelper.activ(activ=True)
 
 class CharacterBuilderApp:
 	""""""
@@ -29,6 +28,9 @@ class CharacterBuilderApp:
 		self.mistral = TalkToMistral()
 		self.log_mngr = LlmLogManager()
 		
+		# sets the DebugHelber on or off
+		DebugHelper.activ(activ=False)
+		
 	def generate_character_builder_prompts(self):
 		"""returns a list of 4 character_builder_prompts"""
 		character_prompt_list = self.system_builder.run()
@@ -37,7 +39,7 @@ class CharacterBuilderApp:
 			data_description="character_prompt_list, contains four system_messages for the LLM.\n"
 			                 "In this case the list contains the prompts for: conan the barbar, conan the barbar, conan the fighter, conan the ranger",
 			data=character_prompt_list,
-			active=True)
+			active=False)
 		
 		return character_prompt_list
 	
@@ -59,22 +61,26 @@ class CharacterBuilderApp:
 			
 			DebugHelper.debug_print(data_description="character_json_string: einer von vier generierten charcteren",
 			                        data=character_json_string,
-			                        active=True,
+			                        active=False,
 			                        store_data=True)
 		
 			character_json = loads(character_json_string)
 			
 			DebugHelper.debug_print(data_description="character_json: ein generierter character, umgewandelt in einen Json-string",
 			                        data=character_json,
-			                        active=True,
+			                        active=False,
 			                        store_data=True)
 			
 			character_list.append(character_json)
-			
+		
+		# DebugNote: character_list contains all four characters
 		DebugHelper.debug_print(data_description="character_list: should contain a list of characters as a json-string",
 		                        data=character_list,
-		                        active=True,
+		                        active=False,
 		                        store_data=False)
+		
+		# TODO: in system_message_alpha1.txt besser formulieren, wie der character aussehen soll
+		#  Hat noch falsches format. Am anfang steht "'''Json"; das ist falsch.
 		
 		# saves character to llm_log für dekumentation and testing
 		#self.log_mngr.save_character_to_llm_log(character_list)

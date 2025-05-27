@@ -3,9 +3,11 @@ from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
 from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, BestChar
 from typing import List
-from src.debug.debug_log import DebugLog
 from pydantic import BaseModel
 from src.handle_data.env_loader import EnvLoader
+from src.debug.debug_helper import DebugHelper
+import json
+
 
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)
 
@@ -42,6 +44,9 @@ class DatabaseManager:
 			self.db_path = EnvLoader.db_path()
 			engine = create_engine(self.db_path, pool_pre_ping=True, echo=True)
 			self.Session = sessionmaker(bind=engine)
+			
+			# sets the DebugHelber on or off
+			DebugHelper.activ(activ=True)
 	
 	def save_user_prompt(self, prompt: Prompt, analysed_dict: AnalysedPrompt):
 		"""
@@ -178,7 +183,7 @@ class DatabaseManager:
 			rewritten_prompts = self._load_rewritten_prompts(idea_id, session)
 			
 			result = {
-				'classes': classes_for_idea, # -> three classes [class_1, class_2, class_2]
+				'classes': classes_for_idea, # -> three classes [class_1, class_2, class_3]
 				'key_descriptions': descriptions_for_idea, # -> ["great", "big", "strong", "fire", ...]
 				'rewritten_prompts': rewritten_prompts # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
 			}
@@ -250,6 +255,18 @@ class DatabaseManager:
 		session = self.Session()
 		try:
 			for character in characters:
+				
+				# changes the character in a json-
+				character = json.dumps(character)
+				
+				# Debugging output
+				DebugHelper.debug_print(data_description="character is a generated character json-string",
+				                        data_type=True,
+				                        data=character,
+				                        store_data=True,
+				                        active=True)
+				
+				# TODO: hier in Character ist irgendwo ein fehler
 				character_entry = Character(idea_id, character)
 				session.add(character_entry)
 
