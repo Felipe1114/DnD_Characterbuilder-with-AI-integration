@@ -6,7 +6,6 @@ from typing import List
 from pydantic import BaseModel
 from src.handle_data.env_loader import EnvLoader
 from src.debug.debug_helper import DebugHelper
-import json
 
 
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)
@@ -249,15 +248,15 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	# TODO idea_id muss noch gesetzt werden
-	def save_generated_characters(self, characters: List[dict], idea_id):
+	def save_generated_characters(self, characters: List[str], idea_id):
 		"speichert die erstellen charactere in der db ab"
 		session = self.Session()
 		try:
 			for character in characters:
 				
-				# changes the character in a json-
-				character = json.dumps(character)
+				# if not isinstance(character, str):
+				# 	# if character is not a string
+				# 	character = json.dumps(character)
 				
 				# Debugging output
 				DebugHelper.debug_print(data_description="character is a generated character json-string",
@@ -266,12 +265,14 @@ class DatabaseManager:
 				                        store_data=True,
 				                        active=True)
 				
-				# TODO: hier in Character ist irgendwo ein fehler
-				character_entry = Character(idea_id, character)
+				character_entry = Character(idea_id=idea_id, character=character)
 				session.add(character_entry)
 
 			session.commit()
 		except SQL_ALCHEMY_ERROR as e:
+			print("\n=================================================================================="
+			      "ROLLBACK"
+			      "\n==================================================================================")
 			session.rollback()
 			raise e
 		finally:
