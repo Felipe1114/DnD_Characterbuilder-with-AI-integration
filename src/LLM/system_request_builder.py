@@ -19,7 +19,7 @@ class SystemRequestBuilder:
 		else:
 			raise ValueError("idea_id has to be an integer")
 		self.db = DatabaseManager()
-		self.system_message_path = "../debug_data/LLM_log/system_message_alpha_01.txt"
+		self.system_message_path = "/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/debug_data/LLM_log/system_message_alpha_01.txt"
 		self.crud_message = CrudTxtFiles(self.system_message_path)
 		self.place_holder_keys = [
 			"__PLACEHOLDER_BASE_DATA__",
@@ -27,7 +27,7 @@ class SystemRequestBuilder:
 			"__PLACEHOLDER_SPELLS__",
 			"__PLACEHOLDER_SUBCLASS_DATA__"
 			]
-		self.class_data_template_path = "../static_dnd_data/detailed_class_data/all_class_data_template.txt"
+		self.class_data_template_path = "/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/static_dnd_data/detailed_class_data/all_class_data_template.txt"
 		self.crud_template = CrudTxtFiles(self.class_data_template_path)
 		
 		# sets the DebugHelber on or off
@@ -44,7 +44,7 @@ class SystemRequestBuilder:
 		class_data_template = self.crud_template.data
 		
 		DebugHelper.debug_print(
-			data_description="class_data_template from: ./static_dnd_data/detailed_class_data/all_class_data_template.txt",
+			data_description="class_data_template from: /Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/static_dnd_data/detailed_class_data/all_class_data_template.txt",
 			data=class_data_template,
 			active=False)
 		
