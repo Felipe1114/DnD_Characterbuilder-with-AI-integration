@@ -22,6 +22,7 @@ hat folgende Endpunkte:
         erstelle Charactere werden in Datenbank gespeichert
 """
 from fastapi import FastAPI
+import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware import _MiddlewareFactory
 from src.api_endpoints.get_endpoints import router as get_router
@@ -42,6 +43,4 @@ app.add_middleware(     # type: ignore
 # Hier registrieren wir die Endpunkte
 app.include_router(get_router, prefix="/get_data", tags=["Get Data"])
 app.include_router(post_router, prefix="/analyze_prompt", tags=["Analyze Prompt"])
-app.include_router(get_and_post_router, prefix="/generate_characters", tags=["Generate Characters"])
-
-
+app.include_router(get_and_post_router, prefix="/characters", tags=["Generate Characters"])
