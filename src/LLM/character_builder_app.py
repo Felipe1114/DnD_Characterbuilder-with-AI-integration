@@ -12,7 +12,6 @@ from xml.sax import parse
 from src.LLM.system_request_builder import SystemRequestBuilder
 from src.LLM.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
-from json import loads
 from src.handle_data.llm_log_manager import LlmLogManager
 from src.debug.debug_log import DebugLog
 from src.debug.debug_helper import DebugHelper
@@ -20,16 +19,20 @@ from src.debug.debug_helper import DebugHelper
 
 class CharacterBuilderApp:
 	""""""
-	#TODO: in CharacterDataLoader muss noch der character name festgeelegt werden
 	def __init__(self, idea_id):
-		self.idea_id = idea_id
+		try:
+			self.idea_id = int(idea_id)
+		except ValueError as e:
+			print(f"idea_id has to be an integer: {e}")
+			
+		
 		self.db = DatabaseManager()
 		self.system_builder = SystemRequestBuilder(idea_id)
 		self.mistral = TalkToMistral()
 		self.log_mngr = LlmLogManager()
 		
 		# sets the DebugHelber on or off
-		DebugHelper.activ(activ=False)
+		DebugHelper.activ(activ=True)
 		
 	def generate_character_builder_prompts(self):
 		"""returns a list of 4 character_builder_prompts"""
@@ -55,23 +58,30 @@ class CharacterBuilderApp:
 		"""generates pompt list an loops over the list and creates for dnd characters"""
 		character_prompt_list = self.generate_character_builder_prompts()
 		character_list = []
+		
+		DebugHelper.debug_print(data_description="character_prompt_list: eine liste mit 4 elementen, die jeweils einen genereirungspromt enthalten",
+		                        data=character_prompt_list,
+		                        active=True,
+		                        store_data=True)
+		
 		for i, characater_prompt in enumerate(character_prompt_list):
-			character_json_string = self.generate_character(characater_prompt)
+			character = self.generate_character(characater_prompt)
 			# converts the string in a json-objekt
 			
-			DebugHelper.debug_print(data_description="character_json_string: einer von vier generierten charcteren",
-			                        data=character_json_string,
-			                        active=False,
-			                        store_data=True)
+			# DebugHelper.debug_print(data_description="character_json_string: einer von vier generierten charcteren",
+			#                         data=character,
+			#                         active=False,
+			#                         store_data=True,
+			#                         data_type=True)
 		
-			character_json = loads(character_json_string)
+			# character_json = dumps(character)
 			
 			DebugHelper.debug_print(data_description="character_json: ein generierter character, umgewandelt in einen Json-string",
-			                        data=character_json,
-			                        active=False,
+			                        data=character,
+			                        active=True,
 			                        store_data=True)
 			
-			character_list.append(character_json)
+			character_list.append(character)
 		
 		# DebugNote: character_list contains all four characters
 		DebugHelper.debug_print(data_description="character_list: should contain a list of characters as a json-string",
@@ -79,8 +89,6 @@ class CharacterBuilderApp:
 		                        active=False,
 		                        store_data=False)
 		
-		# TODO: in system_message_alpha1.txt besser formulieren, wie der character aussehen soll
-		#  Hat noch falsches format. Am anfang steht "'''Json"; das ist falsch.
 		
 		# saves character to llm_log für dekumentation and testing
 		#self.log_mngr.save_character_to_llm_log(character_list)
