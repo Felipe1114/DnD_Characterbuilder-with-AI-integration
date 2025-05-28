@@ -70,7 +70,7 @@ class DebugHelper:
 		from datetime import datetime
 		
 		# instantiate CrudJsonFiles-class for storing data
-		j_crud = CrudJsonFiles("../debug_data/data_for_testing/data_for_testing.json")
+		j_crud = CrudJsonFiles("/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/debug_data/data_for_testing/data_for_testing.json")
 		
 		# if data_type is necesary:
 		if data_type:
