@@ -45,7 +45,9 @@ async def get_characters(idea_id: int):
 	
 	db_mngr = DatabaseManager()
 	
-	db_mngr.load_characters(id)
+	character_list = db_mngr.load_characters(id)
+	
+	return character_list
 
 @DebugLog.debug_log
 @router.post("/generate")
