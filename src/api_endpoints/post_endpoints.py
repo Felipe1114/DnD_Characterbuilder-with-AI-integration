@@ -43,8 +43,9 @@ router = APIRouter()
 
 # verkünpfung mit db
 db_mngr = DatabaseManager()
-# TODO pydantic muss noch besser eingefügt werden!!
-#  BAsemodels müssen dann in strings o.Ä umgewandelt werden!!!
+
+# TODO: Pydantic aus dem projekt entfernen
+
 class Prompt(BaseModel):
 	"""Defines the Input type and validates it"""
 	text: str
@@ -56,7 +57,7 @@ class AnalysedPrompt(BaseModel):
 
 @DebugLog.debug_log
 @router.post("/")
-async def analyze_prompt(user_prompt: Prompt):
+async def write_character_idea_for_analysing(user_prompt: Prompt):
 # def analyse_prompt(Prompt(user_prompt).model_dump())
 	"""
 	nimmt user_prompt entgegen

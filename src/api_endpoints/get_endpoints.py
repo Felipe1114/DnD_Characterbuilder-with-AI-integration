@@ -9,7 +9,7 @@ from src.DnD_API.dnd_api_manager import DnDApiManager
 router = APIRouter()
 
 @router.get("/")
-async def get_data():
+async def get_dnd_data_from_DnDapi():
 	manager = DnDApiManager()
 	manager.run()
 	

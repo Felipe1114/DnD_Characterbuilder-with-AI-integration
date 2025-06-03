@@ -41,6 +41,6 @@ app.add_middleware(     # type: ignore
 )
 
 # Hier registrieren wir die Endpunkte
-app.include_router(get_router, prefix="/get_data", tags=["Get Data"])
-app.include_router(post_router, prefix="/analyze_prompt", tags=["Analyze Prompt"])
+app.include_router(get_router, prefix="/get_dnd_data_from_DnDapi", tags=["Get Data"])
+app.include_router(post_router, prefix="/write_character_idea_for_analysing", tags=["Analyze Prompt"])
 app.include_router(get_and_post_router, prefix="/characters", tags=["Generate Characters"])
