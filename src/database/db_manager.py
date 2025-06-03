@@ -9,6 +9,7 @@ from src.debug.debug_helper import DebugHelper
 
 
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)
+# TODO: Pydantic aus dem projekt entfernen
 
 class Prompt(BaseModel):
 	"""Defines the Input type and validates it"""
@@ -41,7 +42,7 @@ class DatabaseManager:
 		
 		else:
 			self.db_path = EnvLoader.db_path()
-			engine = create_engine(self.db_path, pool_pre_ping=True, echo=True)
+			engine = create_engine(self.db_path)
 			self.Session = sessionmaker(bind=engine)
 			
 			# sets the DebugHelber on or off
@@ -304,10 +305,15 @@ class DatabaseManager:
 		session = self.Session()
 		try:
 			stmt = select(Character).where(Character.idea_id == idea_id)
-			result = session.execute(stmt).first()
-
-			if result:
-				return result
+			results = session.execute(stmt).all()
+			
+			DebugHelper.debug_print(active=False, data_description="List of characters, loaded from Database:", data=results, data_type=True, store_data=False)
+			
+			if results:
+				# results is type: Row. Row is not JSON serializable, so it is transformed in a Tuple
+				results = [tuple(row) for row in results]
+		
+				return results
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
 			raise e
