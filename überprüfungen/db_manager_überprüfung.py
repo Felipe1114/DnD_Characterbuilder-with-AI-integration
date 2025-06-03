@@ -41,7 +41,7 @@ if __name__ == "__main__":
 	engine = create_engine("sqlite:///:memory:")
 	Base.metadata.create_all(engine)
 	
-	db = DatabaseManager(engine)
+	db = DatabaseManager(test_case=True, temp_engine=engine)
 	
 	# test funtion wird ausgeführt
 	ue_save_user_prompt(db)

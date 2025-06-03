@@ -1,0 +1,297 @@
+[
+    [
+        {
+            "index": "champion",
+            "class": {
+                "index": "fighter",
+                "name": "Fighter",
+                "url": "/api/2014/classes/fighter"
+            },
+            "name": "Champion",
+            "subclass_flavor": "Martial Archetype",
+            "desc": [
+                "The archetypal Champion focuses on the development of raw physical power honed to deadly perfection. Those who model themselves on this archetype combine rigorous training with physical excellence to deal devastating blows."
+            ],
+            "subclass_levels": [
+                {
+                    "level": 3,
+                    "features": [
+                        {
+                            "index": "improved-critical",
+                            "name": "Improved Critical",
+                            "details": {
+                                "index": "improved-critical",
+                                "class": {
+                                    "index": "fighter",
+                                    "name": "Fighter",
+                                    "url": "/api/2014/classes/fighter"
+                                },
+                                "subclass": {
+                                    "index": "champion",
+                                    "name": "Champion",
+                                    "url": "/api/2014/subclasses/champion"
+                                },
+                                "name": "Improved Critical",
+                                "level": 3,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Beginning when you choose this archetype at 3rd level, your weapon attacks score a critical hit on a roll of 19 or 20."
+                                ],
+                                "url": "/api/2014/features/improved-critical",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "fighter",
+                        "name": "Fighter",
+                        "url": "/api/2014/classes/fighter"
+                    },
+                    "subclass": {
+                        "index": "champion",
+                        "name": "Champion",
+                        "url": "/api/2014/subclasses/champion"
+                    },
+                    "url": "/api/2014/subclasses/champion/levels/3",
+                    "index": "champion-3",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 7,
+                    "features": [
+                        {
+                            "index": "remarkable-athlete",
+                            "name": "Remarkable Athlete",
+                            "details": {
+                                "index": "remarkable-athlete",
+                                "class": {
+                                    "index": "fighter",
+                                    "name": "Fighter",
+                                    "url": "/api/2014/classes/fighter"
+                                },
+                                "subclass": {
+                                    "index": "champion",
+                                    "name": "Champion",
+                                    "url": "/api/2014/subclasses/champion"
+                                },
+                                "name": "Remarkable Athlete",
+                                "level": 7,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 7th level, you can add half your proficiency bonus (round up) to any Strength, Dexterity, or Constitution check you make that doesn't already use your proficiency bonus. In addition, when you make a running long jump, the distance you can cover increases by a number of feet equal to your Strength modifier."
+                                ],
+                                "url": "/api/2014/features/remarkable-athlete",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "fighter",
+                        "name": "Fighter",
+                        "url": "/api/2014/classes/fighter"
+                    },
+                    "subclass": {
+                        "index": "champion",
+                        "name": "Champion",
+                        "url": "/api/2014/subclasses/champion"
+                    },
+                    "url": "/api/2014/subclasses/champion/levels/7",
+                    "index": "champion-7",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 10,
+                    "features": [
+                        {
+                            "index": "additional-fighting-style",
+                            "name": "Additional Fighting Style",
+                            "details": {
+                                "index": "additional-fighting-style",
+                                "class": {
+                                    "index": "fighter",
+                                    "name": "Fighter",
+                                    "url": "/api/2014/classes/fighter"
+                                },
+                                "subclass": {
+                                    "index": "champion",
+                                    "name": "Champion",
+                                    "url": "/api/2014/subclasses/champion"
+                                },
+                                "name": "Additional Fighting Style",
+                                "level": 10,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 10th level, you can choose a second option from the Fighting Style class feature."
+                                ],
+                                "feature_specific": {
+                                    "subfeature_options": {
+                                        "choose": 1,
+                                        "type": "feature",
+                                        "from": {
+                                            "option_set_type": "options_array",
+                                            "options": [
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "fighter-fighting-style-archery",
+                                                        "name": "Fighting Style: Archery",
+                                                        "url": "/api/2014/features/fighter-fighting-style-archery"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "fighter-fighting-style-defense",
+                                                        "name": "Fighting Style: Defense",
+                                                        "url": "/api/2014/features/fighter-fighting-style-defense"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "fighter-fighting-style-dueling",
+                                                        "name": "Fighting Style: Dueling",
+                                                        "url": "/api/2014/features/fighter-fighting-style-dueling"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "fighter-fighting-style-great-weapon-fighting",
+                                                        "name": "Fighting Style: Great Weapon Fighting",
+                                                        "url": "/api/2014/features/fighter-fighting-style-great-weapon-fighting"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "fighter-fighting-style-protection",
+                                                        "name": "Fighting Style: Protection",
+                                                        "url": "/api/2014/features/fighter-fighting-style-protection"
+                                                    }
+                                                },
+                                                {
+                                                    "option_type": "reference",
+                                                    "item": {
+                                                        "index": "fighter-fighting-style-two-weapon-fighting",
+                                                        "name": "Fighting Style: Two-Weapon Fighting",
+                                                        "url": "/api/2014/features/fighter-fighting-style-two-weapon-fighting"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "invocations": []
+                                },
+                                "url": "/api/2014/features/additional-fighting-style",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "fighter",
+                        "name": "Fighter",
+                        "url": "/api/2014/classes/fighter"
+                    },
+                    "subclass": {
+                        "index": "champion",
+                        "name": "Champion",
+                        "url": "/api/2014/subclasses/champion"
+                    },
+                    "url": "/api/2014/subclasses/champion/levels/10",
+                    "index": "champion-10",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 15,
+                    "features": [
+                        {
+                            "index": "superior-critical",
+                            "name": "Superior Critical",
+                            "details": {
+                                "index": "superior-critical",
+                                "class": {
+                                    "index": "fighter",
+                                    "name": "Fighter",
+                                    "url": "/api/2014/classes/fighter"
+                                },
+                                "subclass": {
+                                    "index": "champion",
+                                    "name": "Champion",
+                                    "url": "/api/2014/subclasses/champion"
+                                },
+                                "name": "Superior Critical",
+                                "level": 15,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 15th level, your weapon attacks score a critical hit on a roll of 18-20."
+                                ],
+                                "url": "/api/2014/features/superior-critical",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "fighter",
+                        "name": "Fighter",
+                        "url": "/api/2014/classes/fighter"
+                    },
+                    "subclass": {
+                        "index": "champion",
+                        "name": "Champion",
+                        "url": "/api/2014/subclasses/champion"
+                    },
+                    "url": "/api/2014/subclasses/champion/levels/15",
+                    "index": "champion-15",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 18,
+                    "features": [
+                        {
+                            "index": "survivor",
+                            "name": "Survivor",
+                            "details": {
+                                "index": "survivor",
+                                "class": {
+                                    "index": "fighter",
+                                    "name": "Fighter",
+                                    "url": "/api/2014/classes/fighter"
+                                },
+                                "subclass": {
+                                    "index": "champion",
+                                    "name": "Champion",
+                                    "url": "/api/2014/subclasses/champion"
+                                },
+                                "name": "Survivor",
+                                "level": 18,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don't gain this benefit if you have 0 hit points."
+                                ],
+                                "url": "/api/2014/features/survivor",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "fighter",
+                        "name": "Fighter",
+                        "url": "/api/2014/classes/fighter"
+                    },
+                    "subclass": {
+                        "index": "champion",
+                        "name": "Champion",
+                        "url": "/api/2014/subclasses/champion"
+                    },
+                    "url": "/api/2014/subclasses/champion/levels/18",
+                    "index": "champion-18",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                }
+            ],
+            "url": "/api/2014/subclasses/champion",
+            "updated_at": "2025-04-08T21:14:17.800Z",
+            "spells": []
+        }
+    ]
+]

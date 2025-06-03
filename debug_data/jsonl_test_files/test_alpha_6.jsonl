@@ -1,0 +1,6 @@
+{
+    "text": "DnD is wonderful!",
+    "labels": {
+        "sentiment": "positive" // positive/neutral/negative
+    }
+}

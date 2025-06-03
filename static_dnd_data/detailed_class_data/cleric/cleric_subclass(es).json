@@ -1,0 +1,895 @@
+[
+    [
+        {
+            "index": "life",
+            "class": {
+                "index": "cleric",
+                "name": "Cleric",
+                "url": "/api/2014/classes/cleric"
+            },
+            "name": "Life",
+            "subclass_flavor": "Divine Domain",
+            "desc": [
+                "The Life domain focuses on the vibrant positive energy--one of the fundamental forces of the universe--that sustains all life. The gods of life promote vitality and health through healing the sick and wounded, caring for those in need, and driving away the forces of death and undeath. Almost any non-evil deity can claim influence over this domain, particularly agricultural deities, sun gods, gods of healing or endurance, and gods of home and community."
+            ],
+            "spells": [
+                {
+                    "index": "bless",
+                    "name": "Bless",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-1",
+                            "type": "level",
+                            "name": "Cleric 1",
+                            "url": "/api/2014/classes/cleric/levels/1"
+                        }
+                    ],
+                    "details": {
+                        "index": "bless",
+                        "name": "Bless",
+                        "desc": [
+                            "You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target can roll a d4 and add the number rolled to the attack roll or saving throw."
+                        ],
+                        "higher_level": [
+                            "When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st."
+                        ],
+                        "range": "30 feet",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "A sprinkling of holy water.",
+                        "ritual": false,
+                        "duration": "Up to 1 minute",
+                        "concentration": true,
+                        "casting_time": "1 action",
+                        "level": 1,
+                        "school": {
+                            "index": "enchantment",
+                            "name": "Enchantment",
+                            "url": "/api/2014/magic-schools/enchantment"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/bless",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "cure-wounds",
+                    "name": "Cure Wounds",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-1",
+                            "type": "level",
+                            "name": "Cleric 1",
+                            "url": "/api/2014/classes/cleric/levels/1"
+                        }
+                    ],
+                    "details": {
+                        "index": "cure-wounds",
+                        "name": "Cure Wounds",
+                        "desc": [
+                            "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+                        ],
+                        "higher_level": [
+                            "When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d8 for each slot level above 1st."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 1,
+                        "heal_at_slot_level": {
+                            "1": "1d8 + MOD",
+                            "2": "2d8 + MOD",
+                            "3": "3d8 + MOD",
+                            "4": "4d8 + MOD",
+                            "5": "5d8 + MOD",
+                            "6": "6d8 + MOD",
+                            "7": "7d8 + MOD",
+                            "8": "8d8 + MOD",
+                            "9": "9d8 + MOD"
+                        },
+                        "school": {
+                            "index": "evocation",
+                            "name": "Evocation",
+                            "url": "/api/2014/magic-schools/evocation"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "druid",
+                                "name": "Druid",
+                                "url": "/api/2014/classes/druid"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            },
+                            {
+                                "index": "ranger",
+                                "name": "Ranger",
+                                "url": "/api/2014/classes/ranger"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/cure-wounds",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "lesser-restoration",
+                    "name": "Lesser Restoration",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-3",
+                            "type": "level",
+                            "name": "Cleric 3",
+                            "url": "/api/2014/classes/cleric/levels/3"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "lesser-restoration",
+                        "name": "Lesser Restoration",
+                        "desc": [
+                            "You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 2,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "druid",
+                                "name": "Druid",
+                                "url": "/api/2014/classes/druid"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            },
+                            {
+                                "index": "ranger",
+                                "name": "Ranger",
+                                "url": "/api/2014/classes/ranger"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/lesser-restoration",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "spiritual-weapon",
+                    "name": "Spiritual Weapon",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-3",
+                            "type": "level",
+                            "name": "Cleric 3",
+                            "url": "/api/2014/classes/cleric/levels/3"
+                        }
+                    ],
+                    "details": {
+                        "index": "spiritual-weapon",
+                        "name": "Spiritual Weapon",
+                        "desc": [
+                            "You create a floating, spectral weapon within range that lasts for the duration or until you cast this spell again. When you cast the spell, you can make a melee spell attack against a creature within 5 feet of the weapon. On a hit, the target takes force damage equal to 1d8 + your spellcasting ability modifier.",
+                            "As a bonus action on your turn, you can move the weapon up to 20 feet and repeat the attack against a creature within 5 feet of it.",
+                            "The weapon can take whatever form you choose. Clerics of deities who are associated with a particular weapon (as St. Cuthbert is known for his mace and Thor for his hammer) make this spell's effect resemble that weapon."
+                        ],
+                        "higher_level": [
+                            "When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for every two slot levels above the 2nd."
+                        ],
+                        "range": "60 feet",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "1 minute",
+                        "concentration": false,
+                        "casting_time": "1 bonus action",
+                        "level": 2,
+                        "attack_type": "melee",
+                        "damage": {
+                            "damage_type": {
+                                "index": "force",
+                                "name": "Force",
+                                "url": "/api/2014/damage-types/force"
+                            },
+                            "damage_at_slot_level": {
+                                "2": "1d8 + MOD",
+                                "3": "1d8 + MOD",
+                                "4": "2d8 + MOD",
+                                "5": "2d8 + MOD",
+                                "6": "3d8 + MOD",
+                                "7": "3d8 + MOD",
+                                "8": "4d8 + MOD",
+                                "9": "4d8 + MOD"
+                            }
+                        },
+                        "school": {
+                            "index": "evocation",
+                            "name": "Evocation",
+                            "url": "/api/2014/magic-schools/evocation"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/spiritual-weapon",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "beacon-of-hope",
+                    "name": "Beacon of Hope",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-5",
+                            "type": "level",
+                            "name": "Cleric 5",
+                            "url": "/api/2014/classes/cleric/levels/5"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "beacon-of-hope",
+                        "name": "Beacon of Hope",
+                        "desc": [
+                            "This spell bestows hope and vitality. Choose any number of creatures within range. For the duration, each target has advantage on wisdom saving throws and death saving throws, and regains the maximum number of hit points possible from any healing."
+                        ],
+                        "range": "30 feet",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Up to 1 minute",
+                        "concentration": true,
+                        "casting_time": "1 action",
+                        "level": 3,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/beacon-of-hope",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "revivify",
+                    "name": "Revivify",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-5",
+                            "type": "level",
+                            "name": "Cleric 5",
+                            "url": "/api/2014/classes/cleric/levels/5"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "revivify",
+                        "name": "Revivify",
+                        "desc": [
+                            "You touch a creature that has died within the last minute. That creature returns to life with 1 hit point. This spell can't return to life a creature that has died of old age, nor can it restore any missing body parts."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "Diamonds worth 300gp, which the spell consumes.",
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 3,
+                        "school": {
+                            "index": "conjuration",
+                            "name": "Conjuration",
+                            "url": "/api/2014/magic-schools/conjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/revivify",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "death-ward",
+                    "name": "Death Ward",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-7",
+                            "type": "level",
+                            "name": "Cleric 7",
+                            "url": "/api/2014/classes/cleric/levels/7"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "death-ward",
+                        "name": "Death Ward",
+                        "desc": [
+                            "You touch a creature and grant it a measure of protection from death.",
+                            "The first time the target would drop to 0 hit points as a result of taking damage, the target instead drops to 1 hit point, and the spell ends.",
+                            "If the spell is still in effect when the target is subjected to an effect that would kill it instantaneously without dealing damage, that effect is instead negated against the target, and the spell ends."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "8 hours",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 4,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/death-ward",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "mass-cure-wounds",
+                    "name": "Mass Cure Wounds",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-9",
+                            "type": "level",
+                            "name": "Cleric 9",
+                            "url": "/api/2014/classes/cleric/levels/9"
+                        }
+                    ],
+                    "details": {
+                        "index": "mass-cure-wounds",
+                        "name": "Mass Cure Wounds",
+                        "desc": [
+                            "A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to 3d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+                        ],
+                        "higher_level": [
+                            "When you cast this spell using a spell slot of 6th level or higher, the healing increases by 1d8 for each slot level above 5th."
+                        ],
+                        "range": "60 feet",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 5,
+                        "heal_at_slot_level": {
+                            "5": "3d8 + MOD",
+                            "6": "4d8 + MOD",
+                            "7": "5d8 + MOD",
+                            "8": "6d8 + MOD",
+                            "9": "7d8 + MOD"
+                        },
+                        "area_of_effect": {
+                            "type": "sphere",
+                            "size": 30
+                        },
+                        "school": {
+                            "index": "conjuration",
+                            "name": "Conjuration",
+                            "url": "/api/2014/magic-schools/conjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "druid",
+                                "name": "Druid",
+                                "url": "/api/2014/classes/druid"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/mass-cure-wounds",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "raise-dead",
+                    "name": "Raise Dead",
+                    "prerequisites": [
+                        {
+                            "index": "cleric-9",
+                            "type": "level",
+                            "name": "Cleric 9",
+                            "url": "/api/2014/classes/cleric/levels/9"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "raise-dead",
+                        "name": "Raise Dead",
+                        "desc": [
+                            "You return a dead creature you touch to life, provided that it has been dead no longer than 10 days. If the creature's soul is both willing and at liberty to rejoin the body, the creature returns to life with 1 hit point.",
+                            "This spell also neutralizes any poisons and cures nonmagical diseases that affected the creature at the time it died. This spell doesn't, however, remove magical diseases, curses, or similar effects; if these aren't first removed prior to casting the spell, they take effect when the creature returns to life. The spell can't return an undead creature to life.",
+                            "This spell closes all mortal wounds, but it doesn't restore missing body parts. If the creature is lacking body parts or organs integral for its survival--its head, for instance--the spell automatically fails.",
+                            "Coming back from the dead is an ordeal. The target takes a -4 penalty to all attack rolls, saving throws, and ability checks. Every time the target finishes a long rest, the penalty is reduced by 1 until it disappears."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "A diamond worth at least 500gp, which the spell consumes.",
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 hour",
+                        "level": 5,
+                        "school": {
+                            "index": "necromancy",
+                            "name": "Necromancy",
+                            "url": "/api/2014/magic-schools/necromancy"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            }
+                        ],
+                        "url": "/api/2014/spells/raise-dead",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                }
+            ],
+            "subclass_levels": [
+                {
+                    "level": 1,
+                    "features": [
+                        {
+                            "index": "bonus-proficiency",
+                            "name": "Bonus Proficiency",
+                            "details": {
+                                "index": "bonus-proficiency",
+                                "class": {
+                                    "index": "cleric",
+                                    "name": "Cleric",
+                                    "url": "/api/2014/classes/cleric"
+                                },
+                                "subclass": {
+                                    "index": "life",
+                                    "name": "Life",
+                                    "url": "/api/2014/subclasses/life"
+                                },
+                                "name": "Bonus Proficiency",
+                                "level": 1,
+                                "prerequisites": [],
+                                "desc": [
+                                    "When you choose this domain at 1st level, you gain proficiency with heavy armor."
+                                ],
+                                "url": "/api/2014/features/bonus-proficiency",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        },
+                        {
+                            "index": "disciple-of-life",
+                            "name": "Disciple of Life",
+                            "details": {
+                                "index": "disciple-of-life",
+                                "class": {
+                                    "index": "cleric",
+                                    "name": "Cleric",
+                                    "url": "/api/2014/classes/cleric"
+                                },
+                                "subclass": {
+                                    "index": "life",
+                                    "name": "Life",
+                                    "url": "/api/2014/subclasses/life"
+                                },
+                                "name": "Disciple of Life",
+                                "level": 1,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Also starting at 1st level, your healing spells are more effective. Whenever you use a spell of 1st level or higher to restore hit points to a creature, the creature regains additional hit points equal to 2 + the spell's level."
+                                ],
+                                "url": "/api/2014/features/disciple-of-life",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "cleric",
+                        "name": "Cleric",
+                        "url": "/api/2014/classes/cleric"
+                    },
+                    "subclass": {
+                        "index": "life",
+                        "name": "Life",
+                        "url": "/api/2014/subclasses/life"
+                    },
+                    "url": "/api/2014/subclasses/life/levels/1",
+                    "index": "life-1",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 2,
+                    "features": [
+                        {
+                            "index": "channel-divinity-preserve-life",
+                            "name": "Channel Divinity: Preserve Life",
+                            "details": {
+                                "index": "channel-divinity-preserve-life",
+                                "class": {
+                                    "index": "cleric",
+                                    "name": "Cleric",
+                                    "url": "/api/2014/classes/cleric"
+                                },
+                                "subclass": {
+                                    "index": "life",
+                                    "name": "Life",
+                                    "url": "/api/2014/subclasses/life"
+                                },
+                                "name": "Channel Divinity: Preserve Life",
+                                "level": 2,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 2nd level, you can use your Channel Divinity to heal the badly injured.",
+                                    "As an action, you present your holy symbol and evoke healing energy that can restore a number of hit points equal to five times your cleric level.",
+                                    "Choose any creatures within 30 feet of you, and divide those hit points among them. This feature can restore a creature to no more than half of its hit point maximum. You can't use this feature on an undead or a construct."
+                                ],
+                                "url": "/api/2014/features/channel-divinity-preserve-life",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "cleric",
+                        "name": "Cleric",
+                        "url": "/api/2014/classes/cleric"
+                    },
+                    "subclass": {
+                        "index": "life",
+                        "name": "Life",
+                        "url": "/api/2014/subclasses/life"
+                    },
+                    "url": "/api/2014/subclasses/life/levels/2",
+                    "index": "life-2",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 6,
+                    "features": [
+                        {
+                            "index": "blessed-healer",
+                            "name": "Blessed Healer",
+                            "details": {
+                                "index": "blessed-healer",
+                                "class": {
+                                    "index": "cleric",
+                                    "name": "Cleric",
+                                    "url": "/api/2014/classes/cleric"
+                                },
+                                "subclass": {
+                                    "index": "life",
+                                    "name": "Life",
+                                    "url": "/api/2014/subclasses/life"
+                                },
+                                "name": "Blessed Healer",
+                                "level": 6,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Beginning at 6th level, the healing spells you cast on others heal you as well. When you cast a spell of 1st level or higher that restores hit points to a creature other than you, you regain hit points equal to 2 + the spell's level."
+                                ],
+                                "url": "/api/2014/features/blessed-healer",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "cleric",
+                        "name": "Cleric",
+                        "url": "/api/2014/classes/cleric"
+                    },
+                    "subclass": {
+                        "index": "life",
+                        "name": "Life",
+                        "url": "/api/2014/subclasses/life"
+                    },
+                    "url": "/api/2014/subclasses/life/levels/6",
+                    "index": "life-6",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 8,
+                    "features": [
+                        {
+                            "index": "divine-strike",
+                            "name": "Divine Strike",
+                            "details": {
+                                "index": "divine-strike",
+                                "class": {
+                                    "index": "cleric",
+                                    "name": "Cleric",
+                                    "url": "/api/2014/classes/cleric"
+                                },
+                                "subclass": {
+                                    "index": "life",
+                                    "name": "Life",
+                                    "url": "/api/2014/subclasses/life"
+                                },
+                                "name": "Divine Strike",
+                                "level": 8,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+                                ],
+                                "url": "/api/2014/features/divine-strike",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "cleric",
+                        "name": "Cleric",
+                        "url": "/api/2014/classes/cleric"
+                    },
+                    "subclass": {
+                        "index": "life",
+                        "name": "Life",
+                        "url": "/api/2014/subclasses/life"
+                    },
+                    "url": "/api/2014/subclasses/life/levels/8",
+                    "index": "life-8",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 17,
+                    "features": [
+                        {
+                            "index": "supreme-healing",
+                            "name": "Supreme Healing",
+                            "details": {
+                                "index": "supreme-healing",
+                                "class": {
+                                    "index": "cleric",
+                                    "name": "Cleric",
+                                    "url": "/api/2014/classes/cleric"
+                                },
+                                "name": "Supreme Healing",
+                                "level": 17,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12."
+                                ],
+                                "url": "/api/2014/features/supreme-healing",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "cleric",
+                        "name": "Cleric",
+                        "url": "/api/2014/classes/cleric"
+                    },
+                    "subclass": {
+                        "index": "life",
+                        "name": "Life",
+                        "url": "/api/2014/subclasses/life"
+                    },
+                    "url": "/api/2014/subclasses/life/levels/17",
+                    "index": "life-17",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                }
+            ],
+            "url": "/api/2014/subclasses/life",
+            "updated_at": "2025-04-08T21:14:17.800Z"
+        }
+    ]
+]

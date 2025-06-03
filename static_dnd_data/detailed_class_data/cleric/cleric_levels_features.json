@@ -1,0 +1,956 @@
+[
+    [
+        {
+            "level": 1,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "spellcasting-cleric",
+                    "name": "Spellcasting: Cleric",
+                    "details": {
+                        "index": "spellcasting-cleric",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Spellcasting: Cleric",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "As a conduit for divine power, you can cast cleric spells."
+                        ],
+                        "reference": "/api/2014/classes/cleric/spellcasting",
+                        "url": "/api/2014/features/spellcasting-cleric",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "divine-domain",
+                    "name": "Divine Domain",
+                    "details": {
+                        "index": "divine-domain",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Divine Domain",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "Choose one domain related to your deity, such as Knowledge, Life, Light, Nature, Tempest, Trickery, or War. Only the Life domain is detailed in the Open Game Licensed SRD. Additional Domains are described in the official rulebooks or products from other publishers.",
+                            "Your domain grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels."
+                        ],
+                        "url": "/api/2014/features/divine-domain",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "domain-spells-1",
+                    "name": "Domain Spells",
+                    "details": {
+                        "index": "domain-spells-1",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Domain Spells",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "Each domain has a list of spells--its domain spells--that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
+                            "If you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you."
+                        ],
+                        "url": "/api/2014/features/domain-spells-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 3,
+                "spell_slots_level_1": 2,
+                "spell_slots_level_2": 0,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 0,
+                "destroy_undead_cr": 0
+            },
+            "index": "cleric-1"
+        },
+        {
+            "level": 2,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "channel-divinity-1-rest",
+                    "name": "Channel Divinity (1/rest)",
+                    "details": {
+                        "index": "channel-divinity-1-rest",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Channel Divinity (1/rest)",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.",
+                            "When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.",
+                            "Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.",
+                            "Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses."
+                        ],
+                        "url": "/api/2014/features/channel-divinity-1-rest",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "channel-divinity-turn-undead",
+                    "name": "Channel Divinity: Turn Undead",
+                    "details": {
+                        "index": "channel-divinity-turn-undead",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Channel Divinity: Turn Undead",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
+                            "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+                        ],
+                        "url": "/api/2014/features/channel-divinity-turn-undead",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 3,
+                "spell_slots_level_1": 3,
+                "spell_slots_level_2": 0,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 1,
+                "destroy_undead_cr": 0
+            },
+            "index": "cleric-2"
+        },
+        {
+            "level": 3,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "domain-spells-2",
+                    "name": "Domain Spells",
+                    "details": {
+                        "index": "domain-spells-2",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Domain Spells",
+                        "level": 3,
+                        "prerequisites": [],
+                        "desc": [
+                            "Each domain has a list of spells--its domain spells--that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
+                            "If you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you."
+                        ],
+                        "url": "/api/2014/features/domain-spells-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 3,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 2,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 1,
+                "destroy_undead_cr": 0
+            },
+            "index": "cleric-3"
+        },
+        {
+            "level": 4,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "cleric-ability-score-improvement-1",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "cleric-ability-score-improvement-1",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 4,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/cleric-ability-score-improvement-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 1,
+                "destroy_undead_cr": 0
+            },
+            "index": "cleric-4"
+        },
+        {
+            "level": 5,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "domain-spells-3",
+                    "name": "Domain Spells",
+                    "details": {
+                        "index": "domain-spells-3",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Domain Spells",
+                        "level": 5,
+                        "prerequisites": [],
+                        "desc": [
+                            "Each domain has a list of spells--its domain spells--that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
+                            "If you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you."
+                        ],
+                        "url": "/api/2014/features/domain-spells-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "destroy-undead-cr-1-2-or-below",
+                    "name": "Destroy Undead (CR 1/2 or below)",
+                    "details": {
+                        "index": "destroy-undead-cr-1-2-or-below",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Destroy Undead (CR 1/2 or below)",
+                        "level": 5,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold."
+                        ],
+                        "url": "/api/2014/features/destroy-undead-cr-1-2-or-below",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 2,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 1,
+                "destroy_undead_cr": 0.5
+            },
+            "index": "cleric-5"
+        },
+        {
+            "level": 6,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "channel-divinity-2-rest",
+                    "name": "Channel Divinity (2/rest)",
+                    "details": {
+                        "index": "channel-divinity-2-rest",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Channel Divinity (2/rest)",
+                        "level": 6,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses."
+                        ],
+                        "url": "/api/2014/features/channel-divinity-2-rest",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 0.5
+            },
+            "index": "cleric-6"
+        },
+        {
+            "level": 7,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "domain-spells-4",
+                    "name": "Domain Spells",
+                    "details": {
+                        "index": "domain-spells-4",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Domain Spells",
+                        "level": 7,
+                        "prerequisites": [],
+                        "desc": [
+                            "Each domain has a list of spells--its domain spells--that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
+                            "If you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you."
+                        ],
+                        "url": "/api/2014/features/domain-spells-4",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 1,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 0.5
+            },
+            "index": "cleric-7"
+        },
+        {
+            "level": 8,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "cleric-ability-score-improvement-2",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "cleric-ability-score-improvement-2",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 8,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/cleric-ability-score-improvement-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "destroy-undead-cr-1-or-below",
+                    "name": "Destroy Undead (CR 1 or below)",
+                    "details": {
+                        "index": "destroy-undead-cr-1-or-below",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Destroy Undead (CR 1 or below)",
+                        "level": 8,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold."
+                        ],
+                        "url": "/api/2014/features/destroy-undead-cr-1-or-below",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 2,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 1
+            },
+            "index": "cleric-8"
+        },
+        {
+            "level": 9,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "domain-spells-5",
+                    "name": "Domain Spells",
+                    "details": {
+                        "index": "domain-spells-5",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Domain Spells",
+                        "level": 9,
+                        "prerequisites": [],
+                        "desc": [
+                            "Each domain has a list of spells--its domain spells--that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
+                            "If you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you."
+                        ],
+                        "url": "/api/2014/features/domain-spells-5",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 1,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 1
+            },
+            "index": "cleric-9"
+        },
+        {
+            "level": 10,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "divine-intervention",
+                    "name": "Divine Intervention",
+                    "details": {
+                        "index": "divine-intervention",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Divine Intervention",
+                        "level": 10,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.",
+                            "Imploring your deity's aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The GM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate.",
+                            "If your deity intervenes, you can't use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.",
+                            "At 20th level, your call for intervention succeeds automatically, no roll required."
+                        ],
+                        "url": "/api/2014/features/divine-intervention",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 1
+            },
+            "index": "cleric-10"
+        },
+        {
+            "level": 11,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "destroy-undead-cr-2-or-below",
+                    "name": "Destroy Undead (CR 2 or below)",
+                    "details": {
+                        "index": "destroy-undead-cr-2-or-below",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Destroy Undead (CR 2 or below)",
+                        "level": 11,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold."
+                        ],
+                        "url": "/api/2014/features/destroy-undead-cr-2-or-below",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 2
+            },
+            "index": "cleric-11"
+        },
+        {
+            "level": 12,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "cleric-ability-score-improvement-3",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "cleric-ability-score-improvement-3",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 12,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/cleric-ability-score-improvement-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 2
+            },
+            "index": "cleric-12"
+        },
+        {
+            "level": 13,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 2
+            },
+            "index": "cleric-13"
+        },
+        {
+            "level": 14,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "destroy-undead-cr-3-or-below",
+                    "name": "Destroy Undead (CR 3 or below)",
+                    "details": {
+                        "index": "destroy-undead-cr-3-or-below",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Destroy Undead (CR 3 or below)",
+                        "level": 14,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold."
+                        ],
+                        "url": "/api/2014/features/destroy-undead-cr-3-or-below",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 3
+            },
+            "index": "cleric-14"
+        },
+        {
+            "level": 15,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 3
+            },
+            "index": "cleric-15"
+        },
+        {
+            "level": 16,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "cleric-ability-score-improvement-4",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "cleric-ability-score-improvement-4",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 16,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/cleric-ability-score-improvement-4",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 3
+            },
+            "index": "cleric-16"
+        },
+        {
+            "level": 17,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "destroy-undead-cr-4-or-below",
+                    "name": "Destroy Undead (CR 4 or below)",
+                    "details": {
+                        "index": "destroy-undead-cr-4-or-below",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Destroy Undead (CR 4 or below)",
+                        "level": 17,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold."
+                        ],
+                        "url": "/api/2014/features/destroy-undead-cr-4-or-below",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "channel_divinity_charges": 2,
+                "destroy_undead_cr": 4
+            },
+            "index": "cleric-17"
+        },
+        {
+            "level": 18,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "channel-divinity-3-rest",
+                    "name": "Channel Divinity (3/rest)",
+                    "details": {
+                        "index": "channel-divinity-3-rest",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Channel Divinity (3/rest)",
+                        "level": 18,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses."
+                        ],
+                        "url": "/api/2014/features/channel-divinity-3-rest",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "channel_divinity_charges": 3,
+                "destroy_undead_cr": 4
+            },
+            "index": "cleric-18"
+        },
+        {
+            "level": 19,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "cleric-ability-score-improvement-5",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "cleric-ability-score-improvement-5",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 19,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/cleric-ability-score-improvement-5",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 2,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "channel_divinity_charges": 3,
+                "destroy_undead_cr": 4
+            },
+            "index": "cleric-19"
+        },
+        {
+            "level": 20,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "divine-intervention-improvement",
+                    "name": "Divine Intervention Improvement",
+                    "details": {
+                        "index": "divine-intervention-improvement",
+                        "class": {
+                            "index": "cleric",
+                            "name": "Cleric",
+                            "url": "/api/2014/classes/cleric"
+                        },
+                        "name": "Divine Intervention Improvement",
+                        "level": 20,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 20th level, your call for intervention succeeds automatically, no roll required."
+                        ],
+                        "url": "/api/2014/features/divine-intervention-improvement",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 2,
+                "spell_slots_level_7": 2,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "channel_divinity_charges": 3,
+                "destroy_undead_cr": 4
+            },
+            "index": "cleric-20"
+        }
+    ]
+]

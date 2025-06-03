@@ -1,0 +1,5 @@
+{"input": [
+  {"message": "test content for finding correct jsonl format"},
+  {"answer":  "maybe this is a correct message"}
+  ]
+}

@@ -1,0 +1,970 @@
+[
+    [
+        {
+            "index": "devotion",
+            "class": {
+                "index": "paladin",
+                "name": "Paladin",
+                "url": "/api/2014/classes/paladin"
+            },
+            "name": "Devotion",
+            "subclass_flavor": "Sacred Oath",
+            "desc": [
+                "The Oath of Devotion binds a paladin to the loftiest ideals of justice, virtue, and order. Sometimes called cavaliers, white knights, or holy warriors, these paladins meet the ideal of the knight in shining armor, acting with honor in pursuit of justice and the greater good. They hold themselves to the highest standards of conduct, and some, for better or worse, hold the rest of the world to the same standards. Many who swear this oath are devoted to gods of law and good and use their gods' tenets as the measure of their devotion. They hold angels--the perfect servants of good--as their ideals, and incorporate images of angelic wings into their helmets or coats of arms."
+            ],
+            "spells": [
+                {
+                    "index": "protection-from-evil-and-good",
+                    "name": "Protection from Evil and Good",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-3",
+                            "type": "level",
+                            "name": "Paladin 3",
+                            "url": "/api/2014/classes/paladin/levels/3"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "protection-from-evil-and-good",
+                        "name": "Protection from Evil and Good",
+                        "desc": [
+                            "Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.",
+                            "The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "Holy water or powdered silver and iron, which the spell consumes.",
+                        "ritual": false,
+                        "duration": "Up to 10 minutes",
+                        "concentration": true,
+                        "casting_time": "1 action",
+                        "level": 1,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            },
+                            {
+                                "index": "warlock",
+                                "name": "Warlock",
+                                "url": "/api/2014/classes/warlock"
+                            },
+                            {
+                                "index": "wizard",
+                                "name": "Wizard",
+                                "url": "/api/2014/classes/wizard"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/protection-from-evil-and-good",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "sanctuary",
+                    "name": "Sanctuary",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-3",
+                            "type": "level",
+                            "name": "Paladin 3",
+                            "url": "/api/2014/classes/paladin/levels/3"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "sanctuary",
+                        "name": "Sanctuary",
+                        "desc": [
+                            "You ward a creature within range against attack. Until the spell ends, any creature who targets the warded creature with an attack or a harmful spell must first make a wisdom saving throw. On a failed save, the creature must choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from area effects, such as the explosion of a fireball.",
+                            "If the warded creature makes an attack or casts a spell that affects an enemy creature, this spell ends."
+                        ],
+                        "range": "30 feet",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "A small silver mirror.",
+                        "ritual": false,
+                        "duration": "1 minute",
+                        "concentration": false,
+                        "casting_time": "1 bonus action",
+                        "level": 1,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/sanctuary",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "lesser-restoration",
+                    "name": "Lesser Restoration",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-5",
+                            "type": "level",
+                            "name": "Paladin 5",
+                            "url": "/api/2014/classes/paladin/levels/5"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "lesser-restoration",
+                        "name": "Lesser Restoration",
+                        "desc": [
+                            "You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 2,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "druid",
+                                "name": "Druid",
+                                "url": "/api/2014/classes/druid"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            },
+                            {
+                                "index": "ranger",
+                                "name": "Ranger",
+                                "url": "/api/2014/classes/ranger"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/lesser-restoration",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "zone-of-truth",
+                    "name": "Zone of Truth",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-5",
+                            "type": "level",
+                            "name": "Paladin 5",
+                            "url": "/api/2014/classes/paladin/levels/5"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "zone-of-truth",
+                        "name": "Zone of Truth",
+                        "desc": [
+                            "You create a magical zone that guards against deception in a 15-foot-radius sphere centered on a point of your choice within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there must make a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether each creature succeeds or fails on its saving throw.",
+                            "An affected creature is aware of the spell and can thus avoid answering questions to which it would normally respond with a lie. Such a creature can remain evasive in its answers as long as it remains within the boundaries of the truth."
+                        ],
+                        "range": "60 feet",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "10 minutes",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 2,
+                        "area_of_effect": {
+                            "type": "sphere",
+                            "size": 15
+                        },
+                        "school": {
+                            "index": "enchantment",
+                            "name": "Enchantment",
+                            "url": "/api/2014/magic-schools/enchantment"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/zone-of-truth",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "beacon-of-hope",
+                    "name": "Beacon of Hope",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-9",
+                            "type": "level",
+                            "name": "Paladin 9",
+                            "url": "/api/2014/classes/paladin/levels/9"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "beacon-of-hope",
+                        "name": "Beacon of Hope",
+                        "desc": [
+                            "This spell bestows hope and vitality. Choose any number of creatures within range. For the duration, each target has advantage on wisdom saving throws and death saving throws, and regains the maximum number of hit points possible from any healing."
+                        ],
+                        "range": "30 feet",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Up to 1 minute",
+                        "concentration": true,
+                        "casting_time": "1 action",
+                        "level": 3,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "life",
+                                "name": "Life",
+                                "url": "/api/2014/subclasses/life"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/beacon-of-hope",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "dispel-magic",
+                    "name": "Dispel Magic",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-9",
+                            "type": "level",
+                            "name": "Paladin 9",
+                            "url": "/api/2014/classes/paladin/levels/9"
+                        }
+                    ],
+                    "details": {
+                        "index": "dispel-magic",
+                        "name": "Dispel Magic",
+                        "desc": [
+                            "Choose one creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher on the target, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, the spell ends."
+                        ],
+                        "higher_level": [
+                            "When you cast this spell using a spell slot of 4th level or higher, you automatically end the effects of a spell on the target if the spell's level is equal to or less than the level of the spell slot you used."
+                        ],
+                        "range": "120 feet",
+                        "components": [
+                            "V",
+                            "S"
+                        ],
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 3,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "druid",
+                                "name": "Druid",
+                                "url": "/api/2014/classes/druid"
+                            },
+                            {
+                                "index": "paladin",
+                                "name": "Paladin",
+                                "url": "/api/2014/classes/paladin"
+                            },
+                            {
+                                "index": "sorcerer",
+                                "name": "Sorcerer",
+                                "url": "/api/2014/classes/sorcerer"
+                            },
+                            {
+                                "index": "warlock",
+                                "name": "Warlock",
+                                "url": "/api/2014/classes/warlock"
+                            },
+                            {
+                                "index": "wizard",
+                                "name": "Wizard",
+                                "url": "/api/2014/classes/wizard"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "lore",
+                                "name": "Lore",
+                                "url": "/api/2014/subclasses/lore"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/dispel-magic",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "freedom-of-movement",
+                    "name": "Freedom of Movement",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-13",
+                            "type": "level",
+                            "name": "Paladin 13",
+                            "url": "/api/2014/classes/paladin/levels/13"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "freedom-of-movement",
+                        "name": "Freedom of Movement",
+                        "desc": [
+                            "You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.",
+                            "The target can also spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature that has it grappled. Finally, being underwater imposes no penalties on the target's movement or attacks."
+                        ],
+                        "range": "Touch",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "A leather strap, bound around the arm or a similar appendage.",
+                        "ritual": false,
+                        "duration": "1 hour",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 4,
+                        "school": {
+                            "index": "abjuration",
+                            "name": "Abjuration",
+                            "url": "/api/2014/magic-schools/abjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "bard",
+                                "name": "Bard",
+                                "url": "/api/2014/classes/bard"
+                            },
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            },
+                            {
+                                "index": "druid",
+                                "name": "Druid",
+                                "url": "/api/2014/classes/druid"
+                            },
+                            {
+                                "index": "ranger",
+                                "name": "Ranger",
+                                "url": "/api/2014/classes/ranger"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "land",
+                                "name": "Land",
+                                "url": "/api/2014/subclasses/land"
+                            },
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/freedom-of-movement",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "guardian-of-faith",
+                    "name": "Guardian of Faith",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-13",
+                            "type": "level",
+                            "name": "Paladin 13",
+                            "url": "/api/2014/classes/paladin/levels/13"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "guardian-of-faith",
+                        "name": "Guardian of Faith",
+                        "desc": [
+                            "A Large spectral guardian appears and hovers for the duration in an unoccupied space of your choice that you can see within range. The guardian occupies that space and is indistinct except for a gleaming sword and shield emblazoned with the symbol of your deity.",
+                            "Any creature hostile to you that moves to a space within 10 feet of the guardian for the first time on a turn must succeed on a dexterity saving throw. The creature takes 20 radiant damage on a failed save, or half as much damage on a successful one. The guardian vanishes when it has dealt a total of 60 damage."
+                        ],
+                        "range": "30 feet",
+                        "components": [
+                            "V"
+                        ],
+                        "ritual": false,
+                        "duration": "8 hours",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 4,
+                        "damage": {
+                            "damage_type": {
+                                "index": "radiant",
+                                "name": "Radiant",
+                                "url": "/api/2014/damage-types/radiant"
+                            },
+                            "damage_at_slot_level": {
+                                "4": "20"
+                            }
+                        },
+                        "dc": {
+                            "dc_type": {
+                                "index": "dex",
+                                "name": "DEX",
+                                "url": "/api/2014/ability-scores/dex"
+                            },
+                            "dc_success": "half"
+                        },
+                        "area_of_effect": {
+                            "type": "cylinder",
+                            "size": 10
+                        },
+                        "school": {
+                            "index": "conjuration",
+                            "name": "Conjuration",
+                            "url": "/api/2014/magic-schools/conjuration"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [],
+                        "url": "/api/2014/spells/guardian-of-faith",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "commune",
+                    "name": "Commune",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-17",
+                            "type": "level",
+                            "name": "Paladin 17",
+                            "url": "/api/2014/classes/paladin/levels/17"
+                        }
+                    ],
+                    "details": {
+                        "higher_level": [],
+                        "index": "commune",
+                        "name": "Commune",
+                        "desc": [
+                            "You contact your deity or a divine proxy and ask up to three questions that can be answered with a yes or no. You must ask your questions before the spell ends. You receive a correct answer for each question.",
+                            "Divine beings aren't necessarily omniscient, so you might receive \"unclear\" as an answer if a question pertains to information that lies beyond the deity's knowledge. In a case where a one-word answer could be misleading or contrary to the deity's interests, the GM might offer a short phrase as an answer instead.",
+                            "If you cast the spell two or more times before finishing your next long rest, there is a cumulative 25 percent chance for each casting after the first that you get no answer. The GM makes this roll in secret."
+                        ],
+                        "range": "Self",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "Incense and a vial of holy or unholy water.",
+                        "ritual": true,
+                        "duration": "1 minute",
+                        "concentration": false,
+                        "casting_time": "1 minute",
+                        "level": 5,
+                        "school": {
+                            "index": "divination",
+                            "name": "Divination",
+                            "url": "/api/2014/magic-schools/divination"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            }
+                        ],
+                        "url": "/api/2014/spells/commune",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                },
+                {
+                    "index": "flame-strike",
+                    "name": "Flame Strike",
+                    "prerequisites": [
+                        {
+                            "index": "paladin-17",
+                            "type": "level",
+                            "name": "Paladin 17",
+                            "url": "/api/2014/classes/paladin/levels/17"
+                        }
+                    ],
+                    "details": {
+                        "index": "flame-strike",
+                        "name": "Flame Strike",
+                        "desc": [
+                            "A vertical column of divine fire roars down from the heavens in a location you specify. Each creature in a 10-foot-radius, 40-foot-high cylinder centered on a point within range must make a dexterity saving throw. A creature takes 4d6 fire damage and 4d6 radiant damage on a failed save, or half as much damage on a successful one."
+                        ],
+                        "higher_level": [
+                            "When you cast this spell using a spell slot of 6th level or higher, the fire damage or the radiant damage (your choice) increases by 1d6 for each slot level above 5th."
+                        ],
+                        "range": "60 feet",
+                        "components": [
+                            "V",
+                            "S",
+                            "M"
+                        ],
+                        "material": "Pinch of sulfur.",
+                        "ritual": false,
+                        "duration": "Instantaneous",
+                        "concentration": false,
+                        "casting_time": "1 action",
+                        "level": 5,
+                        "damage": {
+                            "damage_type": {
+                                "index": "fire",
+                                "name": "Fire",
+                                "url": "/api/2014/damage-types/fire"
+                            },
+                            "damage_at_slot_level": {
+                                "5": "4d6 + 4d6",
+                                "6": "4d6 + 5d6",
+                                "7": "4d6 + 6d6",
+                                "8": "4d6 + 7d6",
+                                "9": "4d6 + 8d6"
+                            }
+                        },
+                        "dc": {
+                            "dc_type": {
+                                "index": "dex",
+                                "name": "DEX",
+                                "url": "/api/2014/ability-scores/dex"
+                            },
+                            "dc_success": "half"
+                        },
+                        "area_of_effect": {
+                            "type": "cylinder",
+                            "size": 40
+                        },
+                        "school": {
+                            "index": "evocation",
+                            "name": "Evocation",
+                            "url": "/api/2014/magic-schools/evocation"
+                        },
+                        "classes": [
+                            {
+                                "index": "cleric",
+                                "name": "Cleric",
+                                "url": "/api/2014/classes/cleric"
+                            }
+                        ],
+                        "subclasses": [
+                            {
+                                "index": "devotion",
+                                "name": "Devotion",
+                                "url": "/api/2014/subclasses/devotion"
+                            },
+                            {
+                                "index": "fiend",
+                                "name": "Fiend",
+                                "url": "/api/2014/subclasses/fiend"
+                            }
+                        ],
+                        "url": "/api/2014/spells/flame-strike",
+                        "updated_at": "2025-04-08T21:14:16.147Z"
+                    }
+                }
+            ],
+            "subclass_levels": [
+                {
+                    "level": 3,
+                    "features": [
+                        {
+                            "index": "channel-divinity-sacred-weapon",
+                            "name": "Channel Divinity: Sacred Weapon",
+                            "details": {
+                                "index": "channel-divinity-sacred-weapon",
+                                "class": {
+                                    "index": "paladin",
+                                    "name": "Paladin",
+                                    "url": "/api/2014/classes/paladin"
+                                },
+                                "subclass": {
+                                    "index": "devotion",
+                                    "name": "Devotion",
+                                    "url": "/api/2014/subclasses/devotion"
+                                },
+                                "name": "Channel Divinity: Sacred Weapon",
+                                "level": 3,
+                                "prerequisites": [],
+                                "desc": [
+                                    "As an action, you can imbue one weapon that you are holding with positive energy, using your Channel Divinity. For 1 minute, you add your Charisma modifier to attack rolls made with that weapon (with a minimum bonus of +1). The weapon also emits bright light in a 20-foot radius and dim light 20 feet beyond that. If the weapon is not already magical, it becomes magical for the duration.",
+                                    "You can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall unconscious, this effect ends."
+                                ],
+                                "url": "/api/2014/features/channel-divinity-sacred-weapon",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        },
+                        {
+                            "index": "channel-divinity-turn-the-unholy",
+                            "name": "Channel Divinity: Turn the Unholy",
+                            "details": {
+                                "index": "channel-divinity-turn-the-unholy",
+                                "class": {
+                                    "index": "paladin",
+                                    "name": "Paladin",
+                                    "url": "/api/2014/classes/paladin"
+                                },
+                                "subclass": {
+                                    "index": "devotion",
+                                    "name": "Devotion",
+                                    "url": "/api/2014/subclasses/devotion"
+                                },
+                                "name": "Channel Divinity: Turn the Unholy",
+                                "level": 3,
+                                "prerequisites": [],
+                                "desc": [
+                                    "As an action, you present your holy symbol and speak a prayer censuring fiends and undead, using your Channel Divinity. Each fiend or undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes damage.",
+                                    "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+                                ],
+                                "url": "/api/2014/features/channel-divinity-turn-the-unholy",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "class": {
+                        "index": "paladin",
+                        "name": "Paladin",
+                        "url": "/api/2014/classes/paladin"
+                    },
+                    "subclass": {
+                        "index": "devotion",
+                        "name": "Devotion",
+                        "url": "/api/2014/subclasses/devotion"
+                    },
+                    "url": "/api/2014/subclasses/devotion/levels/3",
+                    "index": "devotion-3",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 7,
+                    "features": [
+                        {
+                            "index": "aura-of-devotion",
+                            "name": "Aura of Devotion",
+                            "details": {
+                                "index": "aura-of-devotion",
+                                "class": {
+                                    "index": "paladin",
+                                    "name": "Paladin",
+                                    "url": "/api/2014/classes/paladin"
+                                },
+                                "subclass": {
+                                    "index": "devotion",
+                                    "name": "Devotion",
+                                    "url": "/api/2014/subclasses/devotion"
+                                },
+                                "name": "Aura of Devotion",
+                                "level": 7,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Starting at 7th level, you and friendly creatures within 10 feet of you can't be charmed while you are conscious.",
+                                    "At 18th level, the range of this aura increases to 30 feet."
+                                ],
+                                "url": "/api/2014/features/aura-of-devotion",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "subclass_specific": {
+                        "aura_range": 10
+                    },
+                    "class": {
+                        "index": "paladin",
+                        "name": "Paladin",
+                        "url": "/api/2014/classes/paladin"
+                    },
+                    "subclass": {
+                        "index": "devotion",
+                        "name": "Devotion",
+                        "url": "/api/2014/subclasses/devotion"
+                    },
+                    "url": "/api/2014/subclasses/devotion/levels/7",
+                    "index": "devotion-7",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 15,
+                    "features": [
+                        {
+                            "index": "purity-of-spirit",
+                            "name": "Purity of Spirit",
+                            "details": {
+                                "index": "purity-of-spirit",
+                                "class": {
+                                    "index": "paladin",
+                                    "name": "Paladin",
+                                    "url": "/api/2014/classes/paladin"
+                                },
+                                "subclass": {
+                                    "index": "devotion",
+                                    "name": "Devotion",
+                                    "url": "/api/2014/subclasses/devotion"
+                                },
+                                "name": "Purity of Spirit",
+                                "level": 15,
+                                "prerequisites": [],
+                                "desc": [
+                                    "Beginning at 15th level, you are always under the effects of a protection from evil and good spell."
+                                ],
+                                "url": "/api/2014/features/purity-of-spirit",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "subclass_specific": {
+                        "aura_range": 10
+                    },
+                    "class": {
+                        "index": "paladin",
+                        "name": "Paladin",
+                        "url": "/api/2014/classes/paladin"
+                    },
+                    "subclass": {
+                        "index": "devotion",
+                        "name": "Devotion",
+                        "url": "/api/2014/subclasses/devotion"
+                    },
+                    "url": "/api/2014/subclasses/devotion/levels/15",
+                    "index": "devotion-15",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 18,
+                    "features": [],
+                    "subclass_specific": {
+                        "aura_range": 30
+                    },
+                    "class": {
+                        "index": "paladin",
+                        "name": "Paladin",
+                        "url": "/api/2014/classes/paladin"
+                    },
+                    "subclass": {
+                        "index": "devotion",
+                        "name": "Devotion",
+                        "url": "/api/2014/subclasses/devotion"
+                    },
+                    "url": "/api/2014/subclasses/devotion/levels/18",
+                    "index": "devotion-18",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                },
+                {
+                    "level": 20,
+                    "features": [
+                        {
+                            "index": "holy-nimbus",
+                            "name": "Holy Nimbus",
+                            "details": {
+                                "index": "holy-nimbus",
+                                "class": {
+                                    "index": "paladin",
+                                    "name": "Paladin",
+                                    "url": "/api/2014/classes/paladin"
+                                },
+                                "subclass": {
+                                    "index": "devotion",
+                                    "name": "Devotion",
+                                    "url": "/api/2014/subclasses/devotion"
+                                },
+                                "name": "Holy Nimbus",
+                                "level": 20,
+                                "prerequisites": [],
+                                "desc": [
+                                    "At 20th level, as an action, you can emanate an aura of sunlight. For 1 minute, bright light shines from you in a 30-foot radius, and dim light shines 30 feet beyond that.",
+                                    "Whenever an enemy creature starts its turn in the bright light, the creature takes 10 radiant damage.",
+                                    "In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead."
+                                ],
+                                "url": "/api/2014/features/holy-nimbus",
+                                "updated_at": "2025-04-08T21:14:01.855Z"
+                            }
+                        }
+                    ],
+                    "subclass_specific": {
+                        "aura_range": 30
+                    },
+                    "class": {
+                        "index": "paladin",
+                        "name": "Paladin",
+                        "url": "/api/2014/classes/paladin"
+                    },
+                    "subclass": {
+                        "index": "devotion",
+                        "name": "Devotion",
+                        "url": "/api/2014/subclasses/devotion"
+                    },
+                    "url": "/api/2014/subclasses/devotion/levels/20",
+                    "index": "devotion-20",
+                    "updated_at": "2025-04-08T21:14:04.101Z"
+                }
+            ],
+            "url": "/api/2014/subclasses/devotion",
+            "updated_at": "2025-04-08T21:14:17.800Z"
+        }
+    ]
+]

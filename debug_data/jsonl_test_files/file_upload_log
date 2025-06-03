@@ -1,0 +1,97 @@
+Naming guideline:
+alphas:
+each alpha-test-file contains a different way to get
+a basic structure for a calid Jsonl file
+
+betas:
+each beta-test-file is build on top of the structure
+of one alpha-test-file.
+f.e.: test_beta-a7_1.jsonl is build on the structure
+of test_alpha_7.jsonl an is the first file of this beta family
+
+test_alpha_1.jsonl:
+Failed
+
+test_alpha_2.jsonl:
+Failed
+
+test_alpha_3.jsonl:
+Failed
+
+test_alpha_4.jsonl:
+Failed
+
+test_alpha_5.jsonl:
+Failed
+
+test_alpha_6.jsonl:
+Failed
+
+test_alpha_7.jsonl:
+Succes // file did not raise an Error
+
+    test_beta-a7_1.jsonl:
+    Succes // file did not raise an Error
+
+    test_beta-a7_2.jsonl: // has cleric spell-Json file as 'data'
+    Success // file did not raise an Error; cleric_spells.json could be put in 'data'
+
+    Code_test:
+    asking mistral, if it knows my files.
+    question: "Did I´ve send Jsonl-files to you. If I did, please give me a list of all files, Ive sendet to you"
+    response:   I'm unable to directly receive or store files, including JSONL files. However, if you have shared the contents of JSONL files in our conversation, I can help you with any questions or tasks related to those contents. If you need to list the files you've mentioned, you can do so by recalling the names or descriptions you provided during our interaction.
+                If you have specific questions or need assistance with the data in your JSONL files, feel free to share the relevant parts, and I'll do my best to help!
+    Failed
+
+    giving mistral the name of a specific file and ask for content of the file.
+    question: "I´ve send a Jsonl file to you, with the name: 'test_beta-a7_2.jsonl'. Please give me a summery of the content of the file"
+    response:   I'm unable to directly access or process files, including JSONL files, that you send. However, I can guide you on how to summarize the content of a JSONL file yourself.
+
+                A JSONL (JSON Lines) file is a text file where each line is a valid JSON object. Here’s a step-by-step guide to summarize the content of your `test_beta-a7_2.jsonl` file:
+
+                1. **Open the File**: Use a text editor or a programming environment to open the file.
+
+                2. **Read the File**: If you're using a programming language like Python, you can read the file line by line.
+
+                3. **Parse Each Line**: Each line in the file is a JSON object, so you need to parse it using a JSON parser.
+
+                4. **Summarize the Content**: Depending on what you want to summarize, you can extract specific fields or perform aggregations.
+
+                Here’s an example using Python:
+
+                ```python
+                import json
+
+                # Open the file
+                with open('test_beta-a7_2.jsonl', 'r') as file:
+                    lines = file.readlines()
+
+                # Initialize a summary dictionary
+                summary = {
+                    'total_lines': len(lines),
+                    'fields': set()
+                }
+
+                # Parse each line and summarize
+                for line in lines:
+                    data = json.loads(line)
+                    summary['fields'].update(data.keys())
+
+                # Print the summary
+                print(f"Total lines: {summary['total_lines']}")
+                print("Fields found:")
+                for field in summary['fields']:
+                    print(f"  - {field}")
+                ```
+
+                This script will give you the total number of lines in the file and the unique fields present in the JSON objects.
+
+                If you provide more details about what specific information you want to summarize (e.g., counts of certain values, aggregations, etc.), I can help you tailor the script further.
+    Failed!
+
+test_alpha_9.jsonl:
+
+test_alpha_10.jsonl:
+
+test_alpha_11.jsonl:
+

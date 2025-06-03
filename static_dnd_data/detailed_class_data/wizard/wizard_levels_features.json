@@ -1,0 +1,658 @@
+[
+    [
+        {
+            "level": 1,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "spellcasting-wizard",
+                    "name": "Spellcasting: Wizard",
+                    "details": {
+                        "index": "spellcasting-wizard",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Spellcasting: Wizard",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power."
+                        ],
+                        "reference": "/api/2014/classes/wizard/spellcasting",
+                        "url": "/api/2014/features/spellcasting-wizard",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "arcane-recovery",
+                    "name": "Arcane Recovery",
+                    "details": {
+                        "index": "arcane-recovery",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Arcane Recovery",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "You have learned to regain some of your magical energy by studying your spellbook. Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher.",
+                            "For example, if you're a 4th-level wizard, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level spell slot or two 1st-level spell slots."
+                        ],
+                        "url": "/api/2014/features/arcane-recovery",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 3,
+                "spell_slots_level_1": 2,
+                "spell_slots_level_2": 0,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 1
+            },
+            "index": "wizard-1"
+        },
+        {
+            "level": 2,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "arcane-tradition",
+                    "name": "Arcane Tradition",
+                    "details": {
+                        "index": "arcane-tradition",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Arcane Tradition",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of eight schools, such as Evocation.",
+                            "Your choice grants you features at 2nd level and again at 6th, 10th, and 14th level."
+                        ],
+                        "url": "/api/2014/features/arcane-tradition",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 3,
+                "spell_slots_level_1": 3,
+                "spell_slots_level_2": 0,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 1
+            },
+            "index": "wizard-2"
+        },
+        {
+            "level": 3,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 3,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 2,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 2
+            },
+            "index": "wizard-3"
+        },
+        {
+            "level": 4,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "wizard-ability-score-improvement-1",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "wizard-ability-score-improvement-1",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 4,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/wizard-ability-score-improvement-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 2
+            },
+            "index": "wizard-4"
+        },
+        {
+            "level": 5,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 2,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 3
+            },
+            "index": "wizard-5"
+        },
+        {
+            "level": 6,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 3
+            },
+            "index": "wizard-6"
+        },
+        {
+            "level": 7,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 1,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 4
+            },
+            "index": "wizard-7"
+        },
+        {
+            "level": 8,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "wizard-ability-score-improvement-2",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "wizard-ability-score-improvement-2",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 8,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/wizard-ability-score-improvement-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 2,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 4
+            },
+            "index": "wizard-8"
+        },
+        {
+            "level": 9,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 1,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 5
+            },
+            "index": "wizard-9"
+        },
+        {
+            "level": 10,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 5
+            },
+            "index": "wizard-10"
+        },
+        {
+            "level": 11,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 6
+            },
+            "index": "wizard-11"
+        },
+        {
+            "level": 12,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "wizard-ability-score-improvement-3",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "wizard-ability-score-improvement-3",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 12,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/wizard-ability-score-improvement-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 6
+            },
+            "index": "wizard-12"
+        },
+        {
+            "level": 13,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 7
+            },
+            "index": "wizard-13"
+        },
+        {
+            "level": 14,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 7
+            },
+            "index": "wizard-14"
+        },
+        {
+            "level": 15,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 8
+            },
+            "index": "wizard-15"
+        },
+        {
+            "level": 16,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "wizard-ability-score-improvement-4",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "wizard-ability-score-improvement-4",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 16,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/wizard-ability-score-improvement-4",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 8
+            },
+            "index": "wizard-16"
+        },
+        {
+            "level": 17,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 6,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 9
+            },
+            "index": "wizard-17"
+        },
+        {
+            "level": 18,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "spell-mastery",
+                    "name": "Spell Mastery",
+                    "details": {
+                        "index": "spell-mastery",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Spell Mastery",
+                        "level": 18,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.",
+                            "By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels."
+                        ],
+                        "url": "/api/2014/features/spell-mastery",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 9
+            },
+            "index": "wizard-18"
+        },
+        {
+            "level": 19,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "wizard-ability-score-improvement-5",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "wizard-ability-score-improvement-5",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 19,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/wizard-ability-score-improvement-5",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 2,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 10
+            },
+            "index": "wizard-19"
+        },
+        {
+            "level": 20,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "signature-spell",
+                    "name": "Signature Spell",
+                    "details": {
+                        "index": "signature-spell",
+                        "class": {
+                            "index": "wizard",
+                            "name": "Wizard",
+                            "url": "/api/2014/classes/wizard"
+                        },
+                        "name": "Signature Spell",
+                        "level": 20,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don't count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can't do so again until you finish a short or long rest.",
+                            "If you want to cast either spell at a higher level, you must expend a spell slot as normal."
+                        ],
+                        "url": "/api/2014/features/signature-spell",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 2,
+                "spell_slots_level_7": 2,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "arcane_recovery_levels": 10
+            },
+            "index": "wizard-20"
+        }
+    ]
+]

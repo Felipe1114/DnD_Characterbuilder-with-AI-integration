@@ -5,7 +5,7 @@ class BinaryDict(BinaryBase):
 	def __init__(self, analyse_data, prompt_alpha_version):
 		self._nums = analyse_data
 		self._target = prompt_alpha_version
-		
+	
 	def _binary_algo(self, analyse_data, prompt_alpha_version):
 		"""geht durch eine liste von geordnetne zahlen und findet den index der gesuchten zahl"""
 		# falls target: f"prompt_alpha_{i}" ist
@@ -19,7 +19,7 @@ class BinaryDict(BinaryBase):
 			raise ValueError("List has no data")
 	
 		mid_idx = len(analyse_data) // 2
-		
+		# TODO: wenn es hier einen Type oder ValueError gibt: Try-block
 		if int(analyse_data[mid_idx]["prompt_generation"].split("_")[-1]) == int_target:
 			return mid_idx
 		elif int(analyse_data[mid_idx]["prompt_generation"].split("_")[-1]) < int_target:

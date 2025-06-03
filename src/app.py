@@ -22,11 +22,13 @@ hat folgende Endpunkte:
         erstelle Charactere werden in Datenbank gespeichert
 """
 from fastapi import FastAPI
+import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware import _MiddlewareFactory
-from api_endpoints.get_endpoints import router as get_router
-from api_endpoints.post_endpoints import router as post_router
-from api_endpoints.get_and_post_endpoints import router as get_and_post_router
+from src.api_endpoints.get_endpoints import router as get_router
+from src.api_endpoints.post_endpoints import router as post_router
+from src.api_endpoints.get_and_post_endpoints import router as get_and_post_router
+from src.debug.debug_log import DebugLog
 
 app = FastAPI()
 
@@ -39,8 +41,6 @@ app.add_middleware(     # type: ignore
 )
 
 # Hier registrieren wir die Endpunkte
-app.include_router(get_router, prefix="/get_data", tags=["Get Data"])
-app.include_router(post_router, prefix="/analyze_prompt", tags=["Analyze Prompt"])
-app.include_router(get_and_post_router, prefix="/generate_characters", tags=["Generate Characters"])
-
-# Wenn du später CORS oder andere globalen Middleware anpassen willst, geht das hier.
+app.include_router(get_router, prefix="/get_dnd_data_from_DnDapi", tags=["Get Data"])
+app.include_router(post_router, prefix="/write_character_idea_for_analysing", tags=["Analyze Prompt"])
+app.include_router(get_and_post_router, prefix="/characters", tags=["Generate Characters"])

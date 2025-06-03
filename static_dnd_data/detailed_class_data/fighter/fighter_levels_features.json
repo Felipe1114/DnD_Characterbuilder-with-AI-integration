@@ -1,0 +1,702 @@
+[
+    [
+        {
+            "level": 1,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "fighter-fighting-style",
+                    "name": "Fighting Style",
+                    "details": {
+                        "index": "fighter-fighting-style",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Fighting Style",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again."
+                        ],
+                        "feature_specific": {
+                            "subfeature_options": {
+                                "choose": 1,
+                                "type": "feature",
+                                "from": {
+                                    "option_set_type": "options_array",
+                                    "options": [
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "fighter-fighting-style-archery",
+                                                "name": "Fighting Style: Archery",
+                                                "url": "/api/2014/features/fighter-fighting-style-archery"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "fighter-fighting-style-defense",
+                                                "name": "Fighting Style: Defense",
+                                                "url": "/api/2014/features/fighter-fighting-style-defense"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "fighter-fighting-style-dueling",
+                                                "name": "Fighting Style: Dueling",
+                                                "url": "/api/2014/features/fighter-fighting-style-dueling"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "fighter-fighting-style-great-weapon-fighting",
+                                                "name": "Fighting Style: Great Weapon Fighting",
+                                                "url": "/api/2014/features/fighter-fighting-style-great-weapon-fighting"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "fighter-fighting-style-protection",
+                                                "name": "Fighting Style: Protection",
+                                                "url": "/api/2014/features/fighter-fighting-style-protection"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "fighter-fighting-style-two-weapon-fighting",
+                                                "name": "Fighting Style: Two-Weapon Fighting",
+                                                "url": "/api/2014/features/fighter-fighting-style-two-weapon-fighting"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "invocations": []
+                        },
+                        "url": "/api/2014/features/fighter-fighting-style",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "second-wind",
+                    "name": "Second Wind",
+                    "details": {
+                        "index": "second-wind",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Second Wind",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again."
+                        ],
+                        "url": "/api/2014/features/second-wind",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 0,
+                "indomitable_uses": 0,
+                "extra_attacks": 0
+            },
+            "index": "fighter-1"
+        },
+        {
+            "level": 2,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "action-surge-1-use",
+                    "name": "Action Surge (1 use)",
+                    "details": {
+                        "index": "action-surge-1-use",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Action Surge (1 use)",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action on top of your regular action and a possible bonus action.",
+                            "Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn."
+                        ],
+                        "url": "/api/2014/features/action-surge-1-use",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 0
+            },
+            "index": "fighter-2"
+        },
+        {
+            "level": 3,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "martial-archetype",
+                    "name": "Martial Archetype",
+                    "details": {
+                        "index": "martial-archetype",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Martial Archetype",
+                        "level": 3,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 3rd level, you choose an archetype that you strive to emulate in your combat styles and techniques, such as Champion. The archetype you choose grants you features at 3rd level and again at 7th, 10th, 15th, and 18th level."
+                        ],
+                        "url": "/api/2014/features/martial-archetype",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 0
+            },
+            "index": "fighter-3"
+        },
+        {
+            "level": 4,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-1",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-1",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 4,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 0
+            },
+            "index": "fighter-4"
+        },
+        {
+            "level": 5,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "extra-attack-1",
+                    "name": "Extra Attack",
+                    "details": {
+                        "index": "extra-attack-1",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Extra Attack",
+                        "level": 5,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn. The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class."
+                        ],
+                        "url": "/api/2014/features/extra-attack-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 1
+            },
+            "index": "fighter-5"
+        },
+        {
+            "level": 6,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-2",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-2",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 6,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 1
+            },
+            "index": "fighter-6"
+        },
+        {
+            "level": 7,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 1
+            },
+            "index": "fighter-7"
+        },
+        {
+            "level": 8,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-3",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-3",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 8,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 0,
+                "extra_attacks": 1
+            },
+            "index": "fighter-8"
+        },
+        {
+            "level": 9,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "indomitable-1-use",
+                    "name": "Indomitable (1 use)",
+                    "details": {
+                        "index": "indomitable-1-use",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Indomitable (1 use)",
+                        "level": 9,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can't use this feature again until you finish a long rest. You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level."
+                        ],
+                        "url": "/api/2014/features/indomitable-1-use",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 1,
+                "extra_attacks": 1
+            },
+            "index": "fighter-9"
+        },
+        {
+            "level": 10,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 4,
+            "features": [],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 1,
+                "extra_attacks": 1
+            },
+            "index": "fighter-10"
+        },
+        {
+            "level": 11,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "extra-attack-2",
+                    "name": "Extra Attack (2)",
+                    "details": {
+                        "index": "extra-attack-2",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Extra Attack (2)",
+                        "level": 11,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn. The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class."
+                        ],
+                        "url": "/api/2014/features/extra-attack-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 1,
+                "extra_attacks": 2
+            },
+            "index": "fighter-11"
+        },
+        {
+            "level": 12,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-4",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-4",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 12,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-4",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 1,
+                "extra_attacks": 2
+            },
+            "index": "fighter-12"
+        },
+        {
+            "level": 13,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "indomitable-2-uses",
+                    "name": "Indomitable (2 uses)",
+                    "details": {
+                        "index": "indomitable-2-uses",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Indomitable (2 uses)",
+                        "level": 13,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can't use this feature again until you finish a long rest. You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level."
+                        ],
+                        "url": "/api/2014/features/indomitable-2-uses",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 2,
+                "extra_attacks": 2
+            },
+            "index": "fighter-13"
+        },
+        {
+            "level": 14,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-5",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-5",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 14,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-5",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 2,
+                "extra_attacks": 2
+            },
+            "index": "fighter-14"
+        },
+        {
+            "level": 15,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 2,
+                "extra_attacks": 2
+            },
+            "index": "fighter-15"
+        },
+        {
+            "level": 16,
+            "ability_score_bonuses": 6,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-6",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-6",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 16,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-6",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 1,
+                "indomitable_uses": 2,
+                "extra_attacks": 2
+            },
+            "index": "fighter-16"
+        },
+        {
+            "level": 17,
+            "ability_score_bonuses": 6,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "action-surge-2-uses",
+                    "name": "Action Surge (2 uses)",
+                    "details": {
+                        "index": "action-surge-2-uses",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Action Surge (2 uses)",
+                        "level": 17,
+                        "prerequisites": [],
+                        "desc": [
+                            "Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action on top of your regular action and a possible bonus action.",
+                            "Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn."
+                        ],
+                        "url": "/api/2014/features/action-surge-2-uses",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "indomitable-3-uses",
+                    "name": "Indomitable (3 uses)",
+                    "details": {
+                        "index": "indomitable-3-uses",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Indomitable (3 uses)",
+                        "level": 17,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can't use this feature again until you finish a long rest. You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level."
+                        ],
+                        "url": "/api/2014/features/indomitable-3-uses",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 2,
+                "indomitable_uses": 3,
+                "extra_attacks": 2
+            },
+            "index": "fighter-17"
+        },
+        {
+            "level": 18,
+            "ability_score_bonuses": 6,
+            "prof_bonus": 6,
+            "features": [],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 2,
+                "indomitable_uses": 3,
+                "extra_attacks": 2
+            },
+            "index": "fighter-18"
+        },
+        {
+            "level": 19,
+            "ability_score_bonuses": 7,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "fighter-ability-score-improvement-7",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "fighter-ability-score-improvement-7",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 19,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/fighter-ability-score-improvement-7",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 2,
+                "indomitable_uses": 3,
+                "extra_attacks": 2
+            },
+            "index": "fighter-19"
+        },
+        {
+            "level": 20,
+            "ability_score_bonuses": 7,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "extra-attack-3",
+                    "name": "Extra Attack (3)",
+                    "details": {
+                        "index": "extra-attack-3",
+                        "class": {
+                            "index": "fighter",
+                            "name": "Fighter",
+                            "url": "/api/2014/classes/fighter"
+                        },
+                        "name": "Extra Attack (3)",
+                        "level": 20,
+                        "prerequisites": [],
+                        "desc": [
+                            "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn. The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class."
+                        ],
+                        "url": "/api/2014/features/extra-attack-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": null,
+            "class_specific": {
+                "action_surges": 2,
+                "indomitable_uses": 3,
+                "extra_attacks": 3
+            },
+            "index": "fighter-20"
+        }
+    ]
+]

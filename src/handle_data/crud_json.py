@@ -1,13 +1,8 @@
+from src.handle_data.crud_base import CrudBase
 import json
 import os
-from pathlib import PurePath
 
-class CRUD:
-	def __init__(self, data_path):
-		self.data_path = data_path
-		self._pure_path = PurePath(self.data_path)
-		self._parent_path = self._pure_path.parent
-
+class CrudJsonFiles(CrudBase):
 	def _save(self, data):
 		with open(self.data_path, 'w') as json_obj:
 			json.dump(data, json_obj, indent=4)

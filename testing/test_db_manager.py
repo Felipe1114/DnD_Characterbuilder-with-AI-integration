@@ -18,7 +18,7 @@ TEST_ANALYSED_DICT = {
 def db():
     engine = create_engine("sqlite:///:memory:")
     Base.metadata.create_all(engine)
-    yield DatabaseManager(engine)
+    yield DatabaseManager(test_case=True, temp_engine=engine)
     Base.metadata.drop_all(engine)
 
 def test_save_char_idea(db):
@@ -75,7 +75,7 @@ def test_load_character_data(db):
     idea_id = session.query(CharIdea.idea_id).first()[0]
     session.close()
 
-    data = db.load_character_data(idea_id)
+    data = db.load_character_prompts(idea_id)
     assert "classes" in data and "key_descriptions" in data and "rewritten_prompts" in data
     assert "paladin" in data["classes"]
     assert len(data["rewritten_prompts"]) == 3

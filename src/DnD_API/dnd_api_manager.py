@@ -2,12 +2,13 @@ from src.DnD_API.class_url_fetcher import DnDClassUrlFetcher
 from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
 from src.DnD_API.deep_datas.class_details import ClassDetails
 from src.DnD_API.progress_tracker import ProgressTracker
-from src.handle_data.CRUD import CRUD
+from src.handle_data.crud_json import CrudJsonFiles
+from src.handle_data.json_to_jsonl import JsonToJsonl
+from src.handle_data.character_data_loader import CharacterDataLoader
 from src.debug.debug_log import DebugLog
 
-# TODO:
 """Note:
-	1. nach dem lden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
+	1. nach dem laden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
 		Woher kommen diese Error nachrichten?
 """
 
@@ -28,16 +29,19 @@ class DnDApiManager:
             'warlock': 10,
             'wizard': 11
                         }
+		self.converter = JsonToJsonl()
 	@DebugLog.debug_log
 	def run(self):
 		# instanziert DnDClassListFetcher
 		self.load_base_class_datas()
 		
 		self.load_detaild_calss_datas()
+		
+		self.convert_json_to_jsonl()
 	
 	def load_detaild_calss_datas(self):
 		tracker = ProgressTracker(len(self.class_ids), task_name="Load and Save 'Detail Class-data' for ")
-		crud = CRUD("../../static_dnd_data/all_classes.json")
+		crud = CrudJsonFiles("../../static_dnd_data/all_classes.json")
 		
 		# lädt von 'all_classes.jons' die daten
 		class_base_data = crud.data
@@ -56,14 +60,14 @@ class DnDApiManager:
 			                  f"{class_name}_subclass(es).json"]
 			
 			for i, data in enumerate(enriched_detail_data):
-				crud = CRUD(f"../../static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
+				crud = CrudJsonFiles(f"../../static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
 				crud.check_path()
 				crud.data = data
 			
 			tracker.update(message=f"-{class_name}")
 	
 	def load_base_class_datas(self):
-		crud = CRUD("../../static_dnd_data/all_classes.json")
+		crud = CrudJsonFiles("../../static_dnd_data/all_classes.json")
 		# reinigt 'all_classes.json' damit es nicht zu dopplungen kommt
 		crud.reset()
 		
@@ -84,10 +88,19 @@ class DnDApiManager:
 			
 			tracker.update()
 		tracker.done()
-	
+		
+	def convert_json_to_jsonl(self):
+		"""loads all class data in a for-loop
+		converts all class_data in one big jsonl dokument"""
+		for key in self.class_ids.keys():
+			loader = CharacterDataLoader(key)
+			class_json_data = loader.run()
+			
+			jsonl_data_path = loader.detail_base_path + f"{key}.jsonl"
+			
+			self.converter.convert_json_to_jsonl(class_json_data, jsonl_data_path)
 		
 #
 # if __name__ == "__main__":
 # 	manager = DnDApiManager()
 # 	manager.run()
-#

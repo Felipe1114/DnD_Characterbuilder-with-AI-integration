@@ -14,7 +14,7 @@ class AnalysedPrompt(Base):
     Enthält die analysierten Prompts, die für die Generierung von Charakteren verwendet werden.
     """
     __tablename__ = 'analysed_prompts'
-    analysed_prompt_id = Column(Integer, primary_key=True)
+    analysed_prompt_id = Column(Integer, primary_key=True, autoincrement=True)
     idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
     analysed_prompt = Column(Text)
 
@@ -40,7 +40,7 @@ class RewrittenPrompts(Base):
     Enthält die umgeschriebenen Prompts aus dem user_prompt für die LLM anfrage.
     """
     __tablename__ = 'rewritten_user_prompts'
-    rewritten_prompt_id = Column(Integer, primary_key=True)
+    rewritten_prompt_id = Column(Integer, primary_key=True, autoincrement=True)
     idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
     rewritten_prompt = Column(String)
 
@@ -51,7 +51,7 @@ class Character(Base):
     Repräsentiert einen generierten Charakter und enthält dessen Daten als JSON.
     """
     __tablename__ = 'characters'
-    character_id = Column(Integer, primary_key=True)
+    character_id = Column(Integer, primary_key=True, autoincrement=True)
     idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
     character = Column(JSON)
 

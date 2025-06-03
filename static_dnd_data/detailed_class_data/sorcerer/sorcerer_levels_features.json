@@ -1,0 +1,1430 @@
+[
+    [
+        {
+            "level": 1,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "spellcasting-sorcerer",
+                    "name": "Spellcasting: Sorcerer",
+                    "details": {
+                        "index": "spellcasting-sorcerer",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Spellcasting: Sorcerer",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "An event in your past, or in the life of a parent or ancestor, left an indelible mark on you, infusing you with arcane magic. This font of magic, whatever its origin, fuels your spells."
+                        ],
+                        "reference": "/api/2014/classes/sorcerer/spellcasting",
+                        "url": "/api/2014/features/spellcasting-sorcerer",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "sorcerous-origin",
+                    "name": "Sorcerous Origin",
+                    "details": {
+                        "index": "sorcerous-origin",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Sorcerous Origin",
+                        "level": 1,
+                        "prerequisites": [],
+                        "desc": [
+                            "Choose a sorcerous origin, which describes the source of your innate magical power, such as Draconic Bloodline.",
+                            "Your choice grants you features when you choose it at 1st level and again at 6th, 14th, and 18th level."
+                        ],
+                        "url": "/api/2014/features/sorcerous-origin",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spells_known": 2,
+                "spell_slots_level_1": 2,
+                "spell_slots_level_2": 0,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 0,
+                "metamagic_known": 0,
+                "creating_spell_slots": []
+            },
+            "index": "sorcerer-1"
+        },
+        {
+            "level": 2,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "font-of-magic",
+                    "name": "Font of Magic",
+                    "details": {
+                        "index": "font-of-magic",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Font of Magic",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.",
+                            "Sorcery Points",
+                            "You have 2 sorcery points, and you gain more as you reach higher levels, as shown in the Sorcery Points column of the Sorcerer table. You can never have more sorcery points than shown on the table for your level. You regain all spent sorcery points when you finish a long rest."
+                        ],
+                        "url": "/api/2014/features/font-of-magic",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "flexible-casting-creating-spell-slots",
+                    "name": "Flexible Casting: Creating Spell Slots",
+                    "details": {
+                        "index": "flexible-casting-creating-spell-slots",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Flexible Casting: Creating Spell Slots",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The Creating Spell Slots table shows the cost of creating a spell slot of a given level. You can create spell slots no higher in level than 5th. ",
+                            "Any spell slot you create with this feature vanishes when you finish a long rest."
+                        ],
+                        "url": "/api/2014/features/flexible-casting-creating-spell-slots",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                },
+                {
+                    "index": "flexible-casting-converting-spell-slot",
+                    "name": "Flexible Casting: Converting Spell Slot",
+                    "details": {
+                        "index": "flexible-casting-converting-spell-slot",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Flexible Casting: Converting Spell Slot",
+                        "level": 2,
+                        "prerequisites": [],
+                        "desc": [
+                            "As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot's level.."
+                        ],
+                        "url": "/api/2014/features/flexible-casting-converting-spell-slot",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spells_known": 3,
+                "spell_slots_level_1": 3,
+                "spell_slots_level_2": 0,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 2,
+                "metamagic_known": 0,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-2"
+        },
+        {
+            "level": 3,
+            "ability_score_bonuses": 0,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "metamagic-1",
+                    "name": "Metamagic",
+                    "details": {
+                        "index": "metamagic-1",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Metamagic",
+                        "level": 3,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.",
+                            "You can use only one Metamagic option on a spell when you cast it, unless otherwise noted."
+                        ],
+                        "feature_specific": {
+                            "subfeature_options": {
+                                "choose": 2,
+                                "type": "feature",
+                                "from": {
+                                    "option_set_type": "options_array",
+                                    "options": [
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-careful-spell",
+                                                "name": "Metamagic: Careful Spell",
+                                                "url": "/api/2014/features/metamagic-careful-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-distant-spell",
+                                                "name": "Metamagic: Distant Spell",
+                                                "url": "/api/2014/features/metamagic-distant-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-empowered-spell",
+                                                "name": "Metamagic: Empowered Spell",
+                                                "url": "/api/2014/features/metamagic-empowered-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-extended-spell",
+                                                "name": "Metamagic: Extended Spell",
+                                                "url": "/api/2014/features/metamagic-extended-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-heightened-spell",
+                                                "name": "Metamagic: Heightened Spell",
+                                                "url": "/api/2014/features/metamagic-heightened-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-quickened-spell",
+                                                "name": "Metamagic: Quickened Spell",
+                                                "url": "/api/2014/features/metamagic-quickened-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-subtle-spell",
+                                                "name": "Metamagic: Subtle Spell",
+                                                "url": "/api/2014/features/metamagic-subtle-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-twinned-spell",
+                                                "name": "Metamagic: Twinned Spell",
+                                                "url": "/api/2014/features/metamagic-twinned-spell"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "invocations": []
+                        },
+                        "url": "/api/2014/features/metamagic-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 4,
+                "spells_known": 4,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 2,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 3,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-3"
+        },
+        {
+            "level": 4,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 2,
+            "features": [
+                {
+                    "index": "sorcerer-ability-score-improvement-1",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "sorcerer-ability-score-improvement-1",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 4,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/sorcerer-ability-score-improvement-1",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spells_known": 5,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 0,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 4,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-4"
+        },
+        {
+            "level": 5,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spells_known": 6,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 2,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 5,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-5"
+        },
+        {
+            "level": 6,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spells_known": 7,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 0,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 6,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-6"
+        },
+        {
+            "level": 7,
+            "ability_score_bonuses": 1,
+            "prof_bonus": 3,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spells_known": 8,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 1,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 7,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-7"
+        },
+        {
+            "level": 8,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 3,
+            "features": [
+                {
+                    "index": "sorcerer-ability-score-improvement-2",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "sorcerer-ability-score-improvement-2",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 8,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/sorcerer-ability-score-improvement-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spells_known": 9,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 2,
+                "spell_slots_level_5": 0,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 8,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-8"
+        },
+        {
+            "level": 9,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 5,
+                "spells_known": 10,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 1,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 9,
+                "metamagic_known": 2,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-9"
+        },
+        {
+            "level": 10,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "metamagic-2",
+                    "name": "Metamagic",
+                    "details": {
+                        "index": "metamagic-2",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Metamagic",
+                        "level": 10,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.",
+                            "You can use only one Metamagic option on a spell when you cast it, unless otherwise noted."
+                        ],
+                        "feature_specific": {
+                            "subfeature_options": {
+                                "choose": 1,
+                                "type": "feature",
+                                "from": {
+                                    "option_set_type": "options_array",
+                                    "options": [
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-careful-spell",
+                                                "name": "Metamagic: Careful Spell",
+                                                "url": "/api/2014/features/metamagic-careful-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-distant-spell",
+                                                "name": "Metamagic: Distant Spell",
+                                                "url": "/api/2014/features/metamagic-distant-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-empowered-spell",
+                                                "name": "Metamagic: Empowered Spell",
+                                                "url": "/api/2014/features/metamagic-empowered-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-extended-spell",
+                                                "name": "Metamagic: Extended Spell",
+                                                "url": "/api/2014/features/metamagic-extended-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-heightened-spell",
+                                                "name": "Metamagic: Heightened Spell",
+                                                "url": "/api/2014/features/metamagic-heightened-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-quickened-spell",
+                                                "name": "Metamagic: Quickened Spell",
+                                                "url": "/api/2014/features/metamagic-quickened-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-subtle-spell",
+                                                "name": "Metamagic: Subtle Spell",
+                                                "url": "/api/2014/features/metamagic-subtle-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-twinned-spell",
+                                                "name": "Metamagic: Twinned Spell",
+                                                "url": "/api/2014/features/metamagic-twinned-spell"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "invocations": []
+                        },
+                        "url": "/api/2014/features/metamagic-2",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 11,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 0,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 10,
+                "metamagic_known": 3,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-10"
+        },
+        {
+            "level": 11,
+            "ability_score_bonuses": 2,
+            "prof_bonus": 4,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 12,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 11,
+                "metamagic_known": 3,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-11"
+        },
+        {
+            "level": 12,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 4,
+            "features": [
+                {
+                    "index": "sorcerer-ability-score-improvement-3",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "sorcerer-ability-score-improvement-3",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 12,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/sorcerer-ability-score-improvement-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 12,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 0,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 12,
+                "metamagic_known": 3,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-12"
+        },
+        {
+            "level": 13,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 13,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 13,
+                "metamagic_known": 3,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-13"
+        },
+        {
+            "level": 14,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 13,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 0,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 14,
+                "metamagic_known": 3,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-14"
+        },
+        {
+            "level": 15,
+            "ability_score_bonuses": 3,
+            "prof_bonus": 5,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 14,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 15,
+                "metamagic_known": 3,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-15"
+        },
+        {
+            "level": 16,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 5,
+            "features": [
+                {
+                    "index": "sorcerer-ability-score-improvement-4",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "sorcerer-ability-score-improvement-4",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 16,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/sorcerer-ability-score-improvement-4",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 14,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 0
+            },
+            "class_specific": {
+                "sorcery_points": 16,
+                "metamagic_known": 4,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-16"
+        },
+        {
+            "level": 17,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "metamagic-3",
+                    "name": "Metamagic",
+                    "details": {
+                        "index": "metamagic-3",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Metamagic",
+                        "level": 17,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.",
+                            "You can use only one Metamagic option on a spell when you cast it, unless otherwise noted."
+                        ],
+                        "feature_specific": {
+                            "subfeature_options": {
+                                "choose": 1,
+                                "type": "feature",
+                                "from": {
+                                    "option_set_type": "options_array",
+                                    "options": [
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-careful-spell",
+                                                "name": "Metamagic: Careful Spell",
+                                                "url": "/api/2014/features/metamagic-careful-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-distant-spell",
+                                                "name": "Metamagic: Distant Spell",
+                                                "url": "/api/2014/features/metamagic-distant-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-empowered-spell",
+                                                "name": "Metamagic: Empowered Spell",
+                                                "url": "/api/2014/features/metamagic-empowered-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-extended-spell",
+                                                "name": "Metamagic: Extended Spell",
+                                                "url": "/api/2014/features/metamagic-extended-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-heightened-spell",
+                                                "name": "Metamagic: Heightened Spell",
+                                                "url": "/api/2014/features/metamagic-heightened-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-quickened-spell",
+                                                "name": "Metamagic: Quickened Spell",
+                                                "url": "/api/2014/features/metamagic-quickened-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-subtle-spell",
+                                                "name": "Metamagic: Subtle Spell",
+                                                "url": "/api/2014/features/metamagic-subtle-spell"
+                                            }
+                                        },
+                                        {
+                                            "option_type": "reference",
+                                            "item": {
+                                                "index": "metamagic-twinned-spell",
+                                                "name": "Metamagic: Twinned Spell",
+                                                "url": "/api/2014/features/metamagic-twinned-spell"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "invocations": []
+                        },
+                        "url": "/api/2014/features/metamagic-3",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 15,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 2,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "sorcery_points": 17,
+                "metamagic_known": 4,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-17"
+        },
+        {
+            "level": 18,
+            "ability_score_bonuses": 4,
+            "prof_bonus": 6,
+            "features": [],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 15,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 1,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "sorcery_points": 18,
+                "metamagic_known": 4,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-18"
+        },
+        {
+            "level": 19,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "sorcerer-ability-score-improvement-5",
+                    "name": "Ability Score Improvement",
+                    "details": {
+                        "index": "sorcerer-ability-score-improvement-5",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Ability Score Improvement",
+                        "level": 19,
+                        "prerequisites": [],
+                        "desc": [
+                            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+                        ],
+                        "url": "/api/2014/features/sorcerer-ability-score-improvement-5",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 15,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 2,
+                "spell_slots_level_7": 1,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "sorcery_points": 19,
+                "metamagic_known": 4,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-19"
+        },
+        {
+            "level": 20,
+            "ability_score_bonuses": 5,
+            "prof_bonus": 6,
+            "features": [
+                {
+                    "index": "sorcerous-restoration",
+                    "name": "Sorcerous Restoration",
+                    "details": {
+                        "index": "sorcerous-restoration",
+                        "class": {
+                            "index": "sorcerer",
+                            "name": "Sorcerer",
+                            "url": "/api/2014/classes/sorcerer"
+                        },
+                        "name": "Sorcerous Restoration",
+                        "level": 20,
+                        "prerequisites": [],
+                        "desc": [
+                            "At 20th level, you regain 4 expended sorcery points whenever you finish a short rest."
+                        ],
+                        "url": "/api/2014/features/sorcerous-restoration",
+                        "updated_at": "2025-04-08T21:14:01.855Z"
+                    }
+                }
+            ],
+            "spellcasting": {
+                "cantrips_known": 6,
+                "spells_known": 15,
+                "spell_slots_level_1": 4,
+                "spell_slots_level_2": 3,
+                "spell_slots_level_3": 3,
+                "spell_slots_level_4": 3,
+                "spell_slots_level_5": 3,
+                "spell_slots_level_6": 2,
+                "spell_slots_level_7": 2,
+                "spell_slots_level_8": 1,
+                "spell_slots_level_9": 1
+            },
+            "class_specific": {
+                "sorcery_points": 20,
+                "metamagic_known": 4,
+                "creating_spell_slots": [
+                    {
+                        "spell_slot_level": 1,
+                        "sorcery_point_cost": 2
+                    },
+                    {
+                        "spell_slot_level": 2,
+                        "sorcery_point_cost": 3
+                    },
+                    {
+                        "spell_slot_level": 3,
+                        "sorcery_point_cost": 5
+                    },
+                    {
+                        "spell_slot_level": 4,
+                        "sorcery_point_cost": 6
+                    },
+                    {
+                        "spell_slot_level": 5,
+                        "sorcery_point_cost": 7
+                    }
+                ]
+            },
+            "index": "sorcerer-20"
+        }
+    ]
+]

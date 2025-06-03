@@ -1,5 +1,5 @@
 from src.DnD_API.deep_datas.class_details import ClassDetails
-from src.handle_data.CRUD import CRUD
+from src.handle_data.crud_json import CrudJsonFiles
 CLASS_NAMES = {
             'barbarian': 0,
             'bard': 1,
@@ -17,7 +17,7 @@ CLASS_NAMES = {
 
 # erhält gesamte base_class_datas von allen 12 Klassen
 def main():	
-	crud = CRUD('../data_test/all_classes.json')
+	crud = CrudJsonFiles('../data_test/all_classes.json')
 	# den index des 'wizards'
 	wizard_id = CLASS_NAMES['wizard']
 	# wizard base_data aus großer base_data liste extrahieren
@@ -30,7 +30,7 @@ def main():
 	
 	file_name_list = ['wizard_spells.json', 'wizard_levels_features.json', 'wizard_subclass(es).json']
 	for i, data in enumerate(wizard_data):
-		crud_2 = CRUD(f'.././data_test/{file_name_list[i]}')
+		crud_2 = CrudJsonFiles(f'.././data_test/{file_name_list[i]}')
 		crud_2.data = data
 
 if __name__ == "__main__":
