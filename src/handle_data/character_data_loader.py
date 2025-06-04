@@ -21,7 +21,7 @@ class CharacterDataLoader:
 		
 		self.class_name = class_name.lower()
 		
-		self.data_base_path = "/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/static_dnd_data/"
+		self.data_base_path = "/data/static_dnd_data/"
 		self.base_data_path = "all_classes.json"
 		self.class_data_path = f"/detailed_class_data/{class_name}/{class_name}"
 		

@@ -1,9 +1,12 @@
 from src.DnD_API.class_url_fetcher import DnDClassUrlFetcher
 from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
 from src.DnD_API.class_details import ClassDetails
-from src.helper.progress_tracker import ProgressTracker
 from src.handle_data.crud_json import CrudJsonFiles
+from src.handle_data.env_loader import EnvLoader
 from src.helper.debug_log import DebugLog
+from src.helper.progress_tracker import ProgressTracker
+
+
 
 """
 Note:
@@ -37,7 +40,9 @@ class DnDApiManager:
 		
 	def load_detaild_calss_datas(self):
 		tracker = ProgressTracker(len(self.class_ids), task_name="Load and Save 'Detail Class-data' for ")
-		crud = CrudJsonFiles("../../static_dnd_data/all_classes.json")
+		
+		self.all_dnd_classes_path = EnvLoader.all_dnd_classes()
+		crud = CrudJsonFiles(self.all_dnd_classes_path)
 		
 		# lädt von 'all_classes.jons' die daten
 		class_base_data = crud.data
@@ -55,14 +60,14 @@ class DnDApiManager:
 			                  f"{class_name}_subclass(es).json"]
 			
 			for i, data in enumerate(enriched_detail_data):
-				crud = CrudJsonFiles(f"../../static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
+				crud = CrudJsonFiles(f"../../data/static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
 				crud.check_path()
 				crud.data = data
 			
 			tracker.update(message=f"-{class_name}")
 	
 	def load_base_class_datas(self):
-		crud = CrudJsonFiles("../../static_dnd_data/all_classes.json")
+		crud = CrudJsonFiles("../../data/static_dnd_data/all_classes.json")
 		# reinigt 'all_classes.json' damit es nicht zu dopplungen kommt
 		crud.reset()
 		

@@ -24,3 +24,7 @@ class EnvLoader:
 	@staticmethod
 	def all_class_data_template():
 		return os.getenv("ALL_CLASS_TEMPLATE")
+	
+	@staticmethod
+	def all_dnd_classes():
+		return os.getenv("ALL_DND_CLASSES")
