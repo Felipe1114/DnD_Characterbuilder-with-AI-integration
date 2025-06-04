@@ -5,10 +5,11 @@ Aufgabe:
 erhält Klassen daten und umgeschriebenen User-Promt
 Kombiniert alles zu einem “System Prompt”"""
 from src.database.db_manager import DatabaseManager
-from src.handle_data.character_data_loader import CharacterDataLoader, CLASS_INDICIES
+from src.handle_data.character_data_loader import CharacterDataLoader
 from src.handle_data.crud_txt import CrudTxtFiles
 from src.helper.debug_log import DebugLog
 from src.helper.debug_helper import DebugHelper
+from src.handle_data.env_loader import EnvLoader
 
 # activates the DebugHelper
 
@@ -18,18 +19,21 @@ class SystemRequestBuilder:
 			self.idea_id = idea_id
 		else:
 			raise ValueError("idea_id has to be an integer")
+		
 		self.db = DatabaseManager()
-		self.system_message_path = "/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/debug_data/LLM_log/system_message_alpha_01.txt"
+		
+		self.system_message_path = EnvLoader.system_message()
 		self.crud_message = CrudTxtFiles(self.system_message_path)
+		
+		self.class_data_template_path = EnvLoader.all_class_data_template()
+		self.crud_template = CrudTxtFiles(self.class_data_template_path)
+		
 		self.place_holder_keys = [
 			"__PLACEHOLDER_BASE_DATA__",
 			"__PLACEHOLDER_LEVEL_FEATURES__",
 			"__PLACEHOLDER_SPELLS__",
 			"__PLACEHOLDER_SUBCLASS_DATA__"
-			]
-		self.class_data_template_path = "/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/static_dnd_data/detailed_class_data/all_class_data_template.txt"
-		self.crud_template = CrudTxtFiles(self.class_data_template_path)
-		
+		]
 		# sets the DebugHelber on or off
 		DebugHelper.activ(activ=False)
 	

@@ -16,3 +16,11 @@ class EnvLoader:
 	@staticmethod
 	def mistral_key():
 		return os.getenv("MISTARL_API_KEY")
+	
+	@staticmethod
+	def system_message():
+		return os.getenv("SYSTEM_MESSAGE")
+	
+	@staticmethod
+	def all_class_data_template():
+		return os.getenv("ALL_CLASS_TEMPLATE")
