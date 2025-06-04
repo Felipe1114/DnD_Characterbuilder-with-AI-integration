@@ -34,7 +34,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel # BaseModel is a Class, which defines the input type
 from src.database.db_manager import DatabaseManager
 from src.LLM.rewrite_user_promt import RewriteUserprompt
-from src.debug.debug_log import DebugLog
+from src.helper.debug_log import DebugLog
 import json
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 

@@ -28,7 +28,7 @@ from starlette.middleware import _MiddlewareFactory
 from src.api_endpoints.get_endpoints import router as get_router
 from src.api_endpoints.post_endpoints import router as post_router
 from src.api_endpoints.get_and_post_endpoints import router as get_and_post_router
-from src.debug.debug_log import DebugLog
+from src.helper.debug_log import DebugLog
 
 app = FastAPI()
 

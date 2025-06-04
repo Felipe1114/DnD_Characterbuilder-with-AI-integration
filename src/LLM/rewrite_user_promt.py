@@ -34,9 +34,8 @@ JSON rückgabe:
 """
 from src.LLM.talk_to_mistral import TalkToMistral
 from src.handle_data.crud_json import CrudJsonFiles
-from src.handle_data.algo.binary_dict import BinaryDict
+from src.helper.binary_algorythm import BinaryDict
 from src.database.db_manager import DatabaseManager
-from src.handle_data.llm_log_manager import LlmLogManager
 
 class RewriteUserprompt(TalkToMistral):
 	def __init__(self, user_prompt, system_prompt_key: str= "prompt_alpha_3"):
@@ -52,7 +51,6 @@ class RewriteUserprompt(TalkToMistral):
 		self.prompt_key = system_prompt_key # key for the system prompt
 		self._user_prompt = user_prompt # prompt from user, with character idea
 		self.db = DatabaseManager()
-		self.log_mngr = LlmLogManager(self.prompt_key)
 		
 	def rewrite(self):
 		"""fragt das LLM, den User-prompt umzuschreiben"""
@@ -64,11 +62,6 @@ class RewriteUserprompt(TalkToMistral):
 		# gibt die antwort von Mistral zurück
 		respone = self.response()
 		
-		"""
-		Log datei hat irgendein problem
-		# speichert rewritten prompt in llm_log für die dokumentation und ds testing ab
-		self.log_mngr.save_analysed_prompt(self._user_prompt, respone)
-		"""
 		return respone
 
 

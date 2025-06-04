@@ -17,7 +17,7 @@ comment zu 2:
 """
 
 from src.DnD_API.dnd_details_fetcher import DnDDetailsFetcher
-from src.DnD_API.progress_tracker import ProgressTracker
+from src.helper.progress_tracker import ProgressTracker
 
 BASE_URL = "https://www.dnd5eapi.co"
 

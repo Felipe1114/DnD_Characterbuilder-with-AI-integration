@@ -2,7 +2,7 @@
 einfache funktion schreiben die mathemathische berechnungen macht und sehen,
 was die DebugLog Klasse macht, wenn ein falscher Type eingefügt wird
 """
-from src.debug.debug_log import DebugLog
+from src.helper.debug_log import DebugLog
 
 
 @DebugLog.debug_log

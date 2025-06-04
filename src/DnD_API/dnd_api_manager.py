@@ -1,13 +1,12 @@
 from src.DnD_API.class_url_fetcher import DnDClassUrlFetcher
 from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
 from src.DnD_API.class_details import ClassDetails
-from src.DnD_API.progress_tracker import ProgressTracker
+from src.helper.progress_tracker import ProgressTracker
 from src.handle_data.crud_json import CrudJsonFiles
-from src.handle_data.json_to_jsonl import JsonToJsonl
-from src.handle_data.character_data_loader import CharacterDataLoader
-from src.debug.debug_log import DebugLog
+from src.helper.debug_log import DebugLog
 
-"""Note:
+"""
+Note:
 	1. nach dem laden der detailed daten einer class wierden für alle drei detail-files ein Error angezeigt
 		Woher kommen diese Error nachrichten?
 """
@@ -29,7 +28,6 @@ class DnDApiManager:
             'warlock': 10,
             'wizard': 11
                         }
-		self.converter = JsonToJsonl()
 	@DebugLog.debug_log
 	def run(self):
 		# instanziert DnDClassListFetcher
@@ -43,7 +41,6 @@ class DnDApiManager:
 		
 		# lädt von 'all_classes.jons' die daten
 		class_base_data = crud.data
-		# TODO: hier noch überprüfen, ob detail data schon existiert
 		for class_name, indent in self.class_ids.items():
 			
 			# extrahiert die base data der jeweiligen Klasse
@@ -87,18 +84,3 @@ class DnDApiManager:
 			tracker.update()
 		tracker.done()
 		
-	def convert_json_to_jsonl(self):
-		"""loads all class data in a for-loop
-		converts all class_data in one big jsonl dokument"""
-		for key in self.class_ids.keys():
-			loader = CharacterDataLoader(key)
-			class_json_data = loader.run()
-			
-			jsonl_data_path = loader.detail_base_path + f"{key}.jsonl"
-			
-			self.converter.convert_json_to_jsonl(class_json_data, jsonl_data_path)
-		
-#
-# if __name__ == "__main__":
-# 	manager = DnDApiManager()
-# 	manager.run()

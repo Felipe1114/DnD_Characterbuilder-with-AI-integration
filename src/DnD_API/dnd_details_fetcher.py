@@ -1,8 +1,7 @@
 import requests
 import time
 from requests import RequestException
-from src.DnD_API.dnd_api_base import DnDAPIBase
-# TODO: debug_log Klasse hier noch einbauen
+from src.DnD_API.base_classes.dnd_api_base import DnDAPIBase
 class DnDDetailsFetcher(DnDAPIBase):
 	"""
 	Diese Klasse ist für das Laden von Detaildaten zu DnD-Klassen zuständig.

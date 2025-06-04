@@ -7,8 +7,8 @@ Kombiniert alles zu einem “System Prompt”"""
 from src.database.db_manager import DatabaseManager
 from src.handle_data.character_data_loader import CharacterDataLoader, CLASS_INDICIES
 from src.handle_data.crud_txt import CrudTxtFiles
-from src.debug.debug_log import DebugLog
-from src.debug.debug_helper import DebugHelper
+from src.helper.debug_log import DebugLog
+from src.helper.debug_helper import DebugHelper
 
 # activates the DebugHelper
 

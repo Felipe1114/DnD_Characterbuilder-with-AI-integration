@@ -1,4 +1,4 @@
-from src.DnD_API.dnd_api_base import DnDAPIBase
+from src.DnD_API.base_classes.dnd_api_base import DnDAPIBase
 from src.handle_data.crud_json import CrudJsonFiles
 
 class DnDClassFetcher(DnDAPIBase):

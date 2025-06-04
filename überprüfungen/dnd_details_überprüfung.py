@@ -1,4 +1,4 @@
-from src.DnD_API.deep_datas.class_details import ClassDetails
+from src.DnD_API.class_details import ClassDetails
 from src.handle_data.crud_json import CrudJsonFiles
 CLASS_NAMES = {
             'barbarian': 0,

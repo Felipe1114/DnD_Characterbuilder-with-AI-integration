@@ -12,9 +12,8 @@ from xml.sax import parse
 from src.LLM.system_request_builder import SystemRequestBuilder
 from src.LLM.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
-from src.handle_data.llm_log_manager import LlmLogManager
-from src.debug.debug_log import DebugLog
-from src.debug.debug_helper import DebugHelper
+from src.helper.debug_log import DebugLog
+from src.helper.debug_helper import DebugHelper
 
 
 class CharacterBuilderApp:
@@ -29,7 +28,6 @@ class CharacterBuilderApp:
 		self.db = DatabaseManager()
 		self.system_builder = SystemRequestBuilder(idea_id)
 		self.mistral = TalkToMistral()
-		self.log_mngr = LlmLogManager()
 		
 		# sets the DebugHelber on or off
 		DebugHelper.activ(activ=True)
@@ -89,9 +87,6 @@ class CharacterBuilderApp:
 		                        active=False,
 		                        store_data=False)
 		
-		
-		# saves character to llm_log für dekumentation and testing
-		#self.log_mngr.save_character_to_llm_log(character_list)
 		# save character_json in db
 		self.db.save_generated_characters(character_list, idea_id=self.idea_id)
 		

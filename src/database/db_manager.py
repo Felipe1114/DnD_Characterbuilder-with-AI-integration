@@ -5,7 +5,7 @@ from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescri
 from typing import List
 from pydantic import BaseModel
 from src.handle_data.env_loader import EnvLoader
-from src.debug.debug_helper import DebugHelper
+from src.helper.debug_helper import DebugHelper
 
 
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)

@@ -1,5 +1,5 @@
 from src.handle_data.crud_json import CrudJsonFiles
-# TODO: pydantic kann hier noch für die input validierung eingefügt werden
+
 CLASS_INDICIES = {
   "barbarian": 0,
   "bard": 1,
@@ -53,11 +53,6 @@ class CharacterDataLoader:
 	def run(self):
 		return self.class_data()
 
-#
-# if __name__ == "__main__":
-# 	loader = CharacterDataLoader("barbarian")
-# 	data = loader.run()
-# 	print(data)
 
 
 

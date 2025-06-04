@@ -28,7 +28,7 @@ from pydantic import BaseModel
 from typing import List
 from src.LLM.character_builder_app import CharacterBuilderApp
 from src.database.db_manager import DatabaseManager
-from src.debug.debug_log import DebugLog
+from src.helper.debug_log import DebugLog
 
 router = APIRouter()
 

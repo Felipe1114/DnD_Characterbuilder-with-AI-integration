@@ -1,8 +1,5 @@
-from src.DnD_API.dnd_api_base import DnDAPIBase
-from src.DnD_API.dnd_class_fetcher import DnDClassFetcher
+from src.DnD_API.base_classes.dnd_api_base import DnDAPIBase
 
-
-# TODO: debug_log Klasse hier noch einbauen
 
 class DnDClassUrlFetcher(DnDAPIBase):
 	"""Erbt von DnDAPIBase
