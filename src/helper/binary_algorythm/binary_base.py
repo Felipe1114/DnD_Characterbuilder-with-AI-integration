@@ -1,8 +1,7 @@
 from pydantic import BaseModel
-# TODO: pydancitc BaseMOdel einfügen
 
 class BinaryBase:
-	"""has a funktion with the binary algo and finds a target: int in nums: list"""
+	"""has a funktion with the binary binary_algorythm and finds a target: int in nums: list"""
 	def __init(self, nums, target):
 		self._nums = nums
 		self._target = target

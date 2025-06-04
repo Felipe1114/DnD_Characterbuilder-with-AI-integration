@@ -1,4 +1,4 @@
-from src.handle_data.algo.binary_base import BinaryBase
+from src.helper.binary_algorythm.binary_base import BinaryBase
 
 class BinaryDict(BinaryBase):
 	# initialisiert __init__ funktio von BinaryBase
