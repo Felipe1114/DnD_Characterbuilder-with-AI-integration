@@ -1,5 +1,5 @@
 from src.database.db_manager import DatabaseManager
-from src.LLM.system_request_builder import SystemRequestBuilder
+from src.llm.system_request_builder import SystemRequestBuilder
 
 # instatiate db
 

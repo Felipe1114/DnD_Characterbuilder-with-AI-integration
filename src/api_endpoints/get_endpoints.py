@@ -4,7 +4,7 @@ was muss hier gemacht werden:
 -   diese daten werden - jeweils - in Json files gespeichert und lokal abgelegt.
 """
 from fastapi import APIRouter
-from src.DnD_API.dnd_api_manager import DnDApiManager
+from src.dnd_api.dnd_api_manager import DnDApiManager
 
 router = APIRouter()
 

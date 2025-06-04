@@ -2,13 +2,13 @@
 from mistralai import Mistral
 from mistralai.models.sdkerror import SDKError
 from src.helper.debug_log import DebugLog
-from src.LLM.talk_to_mistral import TalkToMistral
+from src.llm.talk_to_mistral import TalkToMistral
 
 # TODO daten nur mit f-string anhängen!!!
 @DebugLog.debug_log
 def upload_files_to_mistral():
 	api_key = "EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt"
-	file_path = "../../debug_data/jsonl_test_files/test_beta-a7_2.jsonl"
+	file_path = "../jsonl_test_files/test_beta-a7_2.jsonl"
 	
 	# code from github: https://github.com/mistralai/client-python/blob/main/docs/sdks/files/README.md#upload
 	try:
@@ -33,7 +33,7 @@ def upload_files_with_response():
 	try:
 		# Retrieve the API key from environment variables
 		api_key = "EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt"
-		file_path = "../../debug_data/jsonl_test_files/test_beta-a7_1.jsonl"
+		file_path = "../jsonl_test_files/test_beta-a7_1.jsonl"
 	
 		# Specify model
 		model = "mistral-small-latest"

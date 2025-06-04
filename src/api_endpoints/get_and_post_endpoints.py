@@ -26,7 +26,7 @@ POST:
 from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import List
-from src.LLM.character_builder_app import CharacterBuilderApp
+from src.llm.character_builder_app import CharacterBuilderApp
 from src.database.db_manager import DatabaseManager
 from src.helper.debug_log import DebugLog
 
@@ -55,7 +55,7 @@ async def generate_characters(idea_id: int):
 	"""Generates for characters and saves them into the db
 	
 	idea_id is the primary key for the user_prompt
-	the user_prompt is analysed and the LLM had given back a prompt für the generation of a character.
+	the user_prompt is analysed and the llm had given back a prompt für the generation of a character.
 	
 	this pormpt is saved in the db.
 	

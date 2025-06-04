@@ -2,8 +2,8 @@
 prüft den characterbuilder prozess in prozeduralem code
 """
 from sqlalchemy.exc import OperationalError
-from src.LLM.system_request_builder import SystemRequestBuilder
-from src.LLM.talk_to_mistral import TalkToMistral
+from src.llm.system_request_builder import SystemRequestBuilder
+from src.llm.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
 from json import loads
 

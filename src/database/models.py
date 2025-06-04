@@ -37,7 +37,7 @@ class CharIdea(Base):
 
 class RewrittenPrompts(Base):
     """
-    Enthält die umgeschriebenen Prompts aus dem user_prompt für die LLM anfrage.
+    Enthält die umgeschriebenen Prompts aus dem user_prompt für die llm anfrage.
     """
     __tablename__ = 'rewritten_user_prompts'
     rewritten_prompt_id = Column(Integer, primary_key=True, autoincrement=True)

@@ -15,7 +15,7 @@ hat folgende Endpunkte:
         Klassen_namen : ['wizard', ‘sorcerer’, ‘celric’]
 
     generate Charcters(GET, POST)
-        analysierte request-promts werden geladen und mit lokalen daten (Klassen daten von DnD5e API) an LLM gegeben.
+        analysierte request-promts werden geladen und mit lokalen daten (Klassen daten von DnD5e API) an llm gegeben.
 
         Aus den daten werden dann vier Charactere erstellt und als Json zurück gegeben.
 

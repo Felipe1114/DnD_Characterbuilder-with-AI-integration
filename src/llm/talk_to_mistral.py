@@ -36,7 +36,7 @@ class TalkToMistral:
 
 	# noch nicht definiert
 	def system_message(self):
-		"""erklärt dem LLM, was es genau mit den erhaltenen daten machen soll"""
+		"""erklärt dem llm, was es genau mit den erhaltenen daten machen soll"""
 		pass
 
 

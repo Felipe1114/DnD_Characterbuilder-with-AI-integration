@@ -32,12 +32,12 @@ JSON rückgabe:
 }
 
 """
-from src.LLM.talk_to_mistral import TalkToMistral
+from src.llm.talk_to_mistral import TalkToMistral
 from src.handle_data.crud_json import CrudJsonFiles
-from src.helper.binary_algorythm import BinaryDict
+from src.helper.binary_algorythm.binary_dict import BinaryDict
 from src.database.db_manager import DatabaseManager
 
-class RewriteUserprompt(TalkToMistral):
+class AnalyseUserPrompt(TalkToMistral):
 	def __init__(self, user_prompt, system_prompt_key: str= "prompt_alpha_3"):
 		"""
 		crud: the class, wich gets the prompt from the prompt file
@@ -46,14 +46,14 @@ class RewriteUserprompt(TalkToMistral):
 		self.ask() und self.response() sind base-methods aus TalkToMistral
 		"""
 		super().__init__()
-		self.system_prompt_path = "../../debug_data/LLM_log/system_prompts_for_rewrite.json"
+		self.system_prompt_path = "../../data/debug_data/LLM_log/system_prompts_for_rewrite.json"
 		self.prompt_crud = CrudJsonFiles(self.system_prompt_path)
 		self.prompt_key = system_prompt_key # key for the system prompt
 		self._user_prompt = user_prompt # prompt from user, with character idea
 		self.db = DatabaseManager()
 		
 	def rewrite(self):
-		"""fragt das LLM, den User-prompt umzuschreiben"""
+		"""fragt das llm, den User-prompt umzuschreiben"""
 		#user_prompt = user_prompt.strip() # definiert den user_prompt
 		request = self.generate_request_prompt()
 		# gibt Mistral den Auftrag den user_prompt umzuschreiben
@@ -100,7 +100,7 @@ class RewriteUserprompt(TalkToMistral):
 
 if __name__ == "__main__":
 	# crud für llm_log_analyse instanzieren
-	llm_log_analysis_path = "../../debug_data/LLM_log/LLM_log_analyse.json"
+	llm_log_analysis_path = "../../data/debug_data/LLM_log/LLM_log_analyse.json"
 	analyse_crud = CrudJsonFiles(llm_log_analysis_path)
 
 	# holt die daten aus LLM_log_analyse.json
@@ -111,7 +111,7 @@ if __name__ == "__main__":
 	user_prompt = "Eine Mischung aus: Valentine aus der Adamsfamilie und Calipso aus Fluch der Karibik"
 
 	# analysiere user_prompt und füge ihn in system_prompt ein
-	rewrite = RewriteUserprompt(user_prompt, system_prompt_key=prompt_alpha_version)
+	rewrite = AnalyseUserPrompt(user_prompt, system_prompt_key=prompt_alpha_version)
 	rewritten_prompt = rewrite.rewrite()
 
 	# finde passendes dict in analyse_data über binary_algo

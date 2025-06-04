@@ -1,7 +1,7 @@
 """
 """
 
-from src.LLM.analyse_user_promt import AnalyceClassName
+from src.llm.analyse_user_promt import AnalyceClassName
 from src.handle_data.crud_json import CrudJsonFiles
 
 def main():

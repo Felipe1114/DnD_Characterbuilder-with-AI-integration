@@ -1,16 +1,16 @@
-"""	fungiert als LLM-main
+"""	fungiert als llm-main
 kombiniert
 - Class CharacterRequestBuilder
 - Class TalkToMistral
 
 
-kombiniert alles und gibt das - von dem LLM - erstelle Character Json zurück.
+kombiniert alles und gibt das - von dem llm - erstelle Character Json zurück.
 
 """
 from xml.sax import parse
 
-from src.LLM.system_request_builder import SystemRequestBuilder
-from src.LLM.talk_to_mistral import TalkToMistral
+from src.llm.system_request_builder import SystemRequestBuilder
+from src.llm.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
 from src.helper.debug_log import DebugLog
 from src.helper.debug_helper import DebugHelper
@@ -37,7 +37,7 @@ class CharacterBuilderApp:
 		character_prompt_list = self.system_builder.run()
 		
 		DebugHelper.debug_print(
-			data_description="character_prompt_list, contains four system_messages for the LLM.\n"
+			data_description="character_prompt_list, contains four system_messages for the llm.\n"
 			                 "In this case the list contains the prompts for: conan the barbar, conan the barbar, conan the fighter, conan the ranger",
 			data=character_prompt_list,
 			active=False)
