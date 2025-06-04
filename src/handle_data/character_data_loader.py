@@ -1,5 +1,9 @@
 from src.handle_data.crud_json import CrudJsonFiles
-# TODO: pydantic kann hier noch für die input validierung eingefügt werden
+from src.helper.debug_helper import DebugHelper
+from src.handle_data.env_loader import EnvLoader
+
+DebugHelper.activ(True)
+
 CLASS_INDICIES = {
   "barbarian": 0,
   "bard": 1,
@@ -21,13 +25,13 @@ class CharacterDataLoader:
 		
 		self.class_name = class_name.lower()
 		
-		self.data_base_path = "/Users/felipepietzsch/Masterschool/Ohne Titel/DnD_Characterbuilder-with-AI-integration/static_dnd_data/"
+		self.data_base_path = EnvLoader.static_dnd_data_dir()
 		self.base_data_path = "all_classes.json"
 		self.class_data_path = f"/detailed_class_data/{class_name}/{class_name}"
 		
 		self.detail_base_path = self.data_base_path + self.class_data_path
 		
-		self.class_base_data = self.data_base_path +  self.base_data_path
+		self.class_base_data = self.data_base_path + "/" + self.base_data_path
 		self.spell_file_path = self.detail_base_path + "_spells.json"
 		self.level_file_path = self.detail_base_path + "_levels_features.json"
 		self.subclass_file_path = self.detail_base_path + "_subclass(es).json"
@@ -42,6 +46,11 @@ class CharacterDataLoader:
 		level_crud = CrudJsonFiles(self.level_file_path)
 		subclass_crud = CrudJsonFiles(self.subclass_file_path)
 		
+		DebugHelper.debug_print(data=self.class_name,
+		                        data_description="the name of the current class:",
+		                        store_data=False,
+		                        data_type=True)
+				
 		base_data: dict = base_crud.data[CLASS_INDICIES[self.class_name]]
 		
 		spells: list = spell_crud.data
@@ -53,11 +62,6 @@ class CharacterDataLoader:
 	def run(self):
 		return self.class_data()
 
-#
-# if __name__ == "__main__":
-# 	loader = CharacterDataLoader("barbarian")
-# 	data = loader.run()
-# 	print(data)
 
 
 

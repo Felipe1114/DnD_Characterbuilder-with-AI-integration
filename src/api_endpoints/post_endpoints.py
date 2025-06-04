@@ -33,8 +33,8 @@ genauer ablauf:
 from fastapi import APIRouter
 from pydantic import BaseModel # BaseModel is a Class, which defines the input type
 from src.database.db_manager import DatabaseManager
-from src.LLM.rewrite_user_promt import RewriteUserprompt
-from src.debug.debug_log import DebugLog
+from src.llm.analyse_user_prompt import AnalyseUserPrompt
+from src.helper.debug_log import DebugLog
 import json
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 
@@ -61,13 +61,13 @@ async def write_character_idea_for_analysing(user_prompt: Prompt):
 # def analyse_prompt(Prompt(user_prompt).model_dump())
 	"""
 	nimmt user_prompt entgegen
-	gibt user_prompt an LLM.RewriteUserPrompt weiter
+	gibt user_prompt an llm.AnalyseUserPrompt weiter
 	prompt wird analysiert
 	anaylsierter user_prompt und user_prompt werden in db gespeichert
 	"""
-	# instanziert RewriteUserPrompt und erhält bereits user_prompt
+	# instanziert AnalyseUserPrompt und erhält bereits user_prompt
 	
-	rewrite = RewriteUserprompt(user_prompt.text)
+	rewrite = AnalyseUserPrompt(user_prompt.text)
 	# analysiert user_prompt und gibt analysed_prompt zurück
 	analysed_prompt_str = rewrite.rewrite()
 	
