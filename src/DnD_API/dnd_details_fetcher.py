@@ -2,6 +2,7 @@ import requests
 import time
 from requests import RequestException
 from src.DnD_API.base_classes.dnd_api_base import DnDAPIBase
+
 class DnDDetailsFetcher(DnDAPIBase):
 	"""
 	Diese Klasse ist für das Laden von Detaildaten zu DnD-Klassen zuständig.
@@ -50,7 +51,6 @@ class DnDDetailsFetcher(DnDAPIBase):
 		"""gibt die class_detail_url zurück"""
 		return self.class_detail_url
 
-	# TODO hier kann man mit pydantic und BaseModel überprüfen, dass ein echter url-string eingefügt wird
 	@detail_url.setter
 	def detail_url(self, new_detail_url):
 		"""setzt eine neue class_detail_url"""

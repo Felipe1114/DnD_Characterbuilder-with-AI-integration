@@ -31,6 +31,10 @@ class DnDApiManager:
             'warlock': 10,
             'wizard': 11
                         }
+		
+		self.all_dnd_classes_path = EnvLoader.all_dnd_classes()
+		self.detailed_class_data_path = EnvLoader.detailed_class_data_dir()
+
 	@DebugLog.debug_log
 	def run(self):
 		# instanziert DnDClassListFetcher
@@ -41,7 +45,6 @@ class DnDApiManager:
 	def load_detaild_calss_datas(self):
 		tracker = ProgressTracker(len(self.class_ids), task_name="Load and Save 'Detail Class-data' for ")
 		
-		self.all_dnd_classes_path = EnvLoader.all_dnd_classes()
 		crud = CrudJsonFiles(self.all_dnd_classes_path)
 		
 		# lädt von 'all_classes.jons' die daten
@@ -60,14 +63,17 @@ class DnDApiManager:
 			                  f"{class_name}_subclass(es).json"]
 			
 			for i, data in enumerate(enriched_detail_data):
-				crud = CrudJsonFiles(f"../../data/static_dnd_data/detailed_class_data/{class_name}/{file_name_list[i]}")
+				
+				crud = CrudJsonFiles(f"{self.detailed_class_data_path}/{class_name}/{file_name_list[i]}")
+				
 				crud.check_path()
 				crud.data = data
 			
 			tracker.update(message=f"-{class_name}")
 	
 	def load_base_class_datas(self):
-		crud = CrudJsonFiles("../../data/static_dnd_data/all_classes.json")
+		"""Loads the base datas for all dnd_classes from the DnD5e-api"""
+		crud = CrudJsonFiles(self.all_dnd_classes_path)
 		# reinigt 'all_classes.json' damit es nicht zu dopplungen kommt
 		crud.reset()
 		
