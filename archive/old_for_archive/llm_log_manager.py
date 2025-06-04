@@ -2,7 +2,7 @@ from src.handle_data.crud_json import CrudJsonFiles
 
 class LlmLogManager:
 	def __init__(self, prompt_version="prompt_alpha_3"):
-		self.llm_log_path = "../debug_data/LLM_log/LLM_log_analyse.json"
+		self.llm_log_path = "../../debug_data/LLM_log/LLM_log_analyse.json"
 		self.crud_j = CrudJsonFiles(self.llm_log_path)
 		self.prompt_version = prompt_version
 		self.user_prompt = None
