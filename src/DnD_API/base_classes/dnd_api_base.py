@@ -1,9 +1,7 @@
 import requests
 from requests import RequestException
 import time
-from src.DnD_API.progress_tracker import ProgressTracker
 
-# TODO: debug_log Klasse hier noch einbauen
 
 class DnDAPIBase:
 	"""Basis Klasse für DnD5e API.
