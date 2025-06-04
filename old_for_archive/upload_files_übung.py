@@ -1,7 +1,7 @@
 
 from mistralai import Mistral
 from mistralai.models.sdkerror import SDKError
-from src.debug.debug_log import DebugLog
+from src.helper.debug_log import DebugLog
 from src.LLM.talk_to_mistral import TalkToMistral
 
 # TODO daten nur mit f-string anhängen!!!
