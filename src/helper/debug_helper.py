@@ -50,17 +50,15 @@ class DebugHelper:
 				del frame
 			
 			# Führe den eigentlichen Print aus
-			print(f"data description:\n {data_description}; \n")
+			print(f"data description:\n{data_description}; \n")
 			
 			# if the data_type should also be printed
 			if data_type:
 				print(f"data_type: {type(data)}")
 			
-			print(f"data:\n {data}\n")
+			print(f"data:\n{data}\n")
 			      
-			
-			if store_data:
-				DebugHelper._store_data(data, data_description, data_type)
+			# _store_data had an error. File 'data_for_testing.json' could not be found (may be I deleted it...)
 			
 			print("------------------------------------------------------------------------------------------------------------------------------------------------------")
 	
