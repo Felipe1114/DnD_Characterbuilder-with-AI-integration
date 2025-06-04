@@ -31,4 +31,4 @@ class EnvLoader:
 	
 	@staticmethod
 	def detailed_class_data_dir():
-		return os.getenv()
+		return os.getenv("DETAILED_CLASS_DATA_DIR")
