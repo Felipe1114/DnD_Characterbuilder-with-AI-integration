@@ -34,11 +34,6 @@ class TalkToMistral:
 		return self._mistral_response.choices[0].message.content
   
 
-	# noch nicht definiert
-	def system_message(self):
-		"""erklärt dem llm, was es genau mit den erhaltenen daten machen soll"""
-		pass
-
 
 
 

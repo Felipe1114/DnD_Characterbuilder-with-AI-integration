@@ -90,8 +90,3 @@ class CharacterBuilderApp:
 		# save character_json in db
 		self.db.save_generated_characters(character_list, idea_id=self.idea_id)
 		
-		# for i, char in enumerate(character_list):
-		# 	print(f"\n=====================Character_{i+1}=========================\n")
-		# 	print(char)
-		# print("\nFour characters where generated and saved in database, as Json-objects")
-		#

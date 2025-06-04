@@ -11,12 +11,3 @@ class DnDClassUrlFetcher(DnDAPIBase):
 		self.load_data() # lädt die daten von : 'https://www.dnd5eapi.co/api/classes'
 		# returns a list of all class urls
 		return [f"https://www.dnd5eapi.co{entry['url']}" for entry in self.data.get('results', [])]
-	
-#
-# if __name__ == "__main__":
-# 	list_fetcher = DnDClassListFetcher()
-#
-# 	list_fetcher.get_class_urls()
-# 	print(list_fetcher.get_class_urls())
-#
-#
