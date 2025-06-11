@@ -55,7 +55,7 @@ including rollback mechanisms for failed transactions and proper session managem
 from sqlalchemy import func, select, delete, create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
-from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, BestChar
+from src.database.models import UserPrompt, Character, RewrittenPrompts, KeyDescription, DescriptionToPrompt, Classes, BestChar
 from typing import List
 from src.handle_data.env_loader import EnvLoader
 from src.helper.debug_helper import DebugHelper
@@ -94,7 +94,7 @@ class DatabaseManager:
 			self._save_user_prompt(prompt, session)
 
 			# generates a new 'idea_id'
-			stmt_new_idea = select(func.max(CharIdea.idea_id))
+			stmt_new_idea = select(func.max(UserPrompt.idea_id))
 			new_idea_id = session.scalars(stmt_new_idea).first()
 
 			# saves possible_classes
@@ -116,7 +116,7 @@ class DatabaseManager:
 	def _save_user_prompt(self, prompt: str, session):
 		"""Saves user_prompt in db"""
 		try:
-			char_idea = CharIdea(user_prompt=prompt)
+			char_idea = UserPrompt(user_prompt=prompt)
 			session.add(char_idea)
 			session.flush()
 		except SQL_ALCHEMY_ERROR as e:
@@ -148,7 +148,7 @@ class DatabaseManager:
 					description_id = session.scalars(
 						select(KeyDescription.description_id).where(KeyDescription.description == key_description)).first()
 
-				description_to_idea = DescriptionToIdea(idea_id=new_idea_id, description_id=description_id)
+				description_to_idea = DescriptionToPrompt(idea_id=new_idea_id, description_id=description_id)
 				session.add(description_to_idea)
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
@@ -189,7 +189,7 @@ class DatabaseManager:
 		"""loads all char_ideas (user_prompts) and gives them back as key=id and value=idea"""
 		session = self.Session()
 		try:
-			stmt = select(CharIdea)
+			stmt = select(UserPrompt)
 			result = session.execute(stmt).all()
 
 			if not result:
@@ -251,7 +251,7 @@ class DatabaseManager:
 		"""
 		descriptions: list[str] = []
 		try:
-			stmt = select(DescriptionToIdea.description_id).where(DescriptionToIdea.idea_id == idea_id)
+			stmt = select(DescriptionToPrompt.description_id).where(DescriptionToPrompt.idea_id == idea_id)
 			# all description_id´s from the row in DescriptiontoIdea, where idea_id is 'idea_id'
 			result = session.execute(stmt).all()
 			
@@ -311,7 +311,7 @@ class DatabaseManager:
 		session = self.Session()
 		try:
 			# list of all models, which containing the idea_id as foregin_key
-			models = [CharIdea, DescriptionToIdea, RewrittenPrompts, Classes, Character, BestChar]
+			models = [UserPrompt, DescriptionToPrompt, RewrittenPrompts, Classes, Character, BestChar]
 
 			# looping thrue all models
 			for i, model in enumerate(models):
