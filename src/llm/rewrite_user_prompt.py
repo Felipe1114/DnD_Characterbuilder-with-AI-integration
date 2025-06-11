@@ -37,7 +37,7 @@ from src.handle_data.crud_json import CrudJsonFiles
 from src.helper.binary_algorythm.binary_dict import BinaryDict
 from src.database.db_manager import DatabaseManager
 
-class AnalyseUserPrompt(TalkToMistral):
+class RewriteUserPrompt(TalkToMistral):
 	def __init__(self, user_prompt, system_prompt_key: str= "prompt_alpha_3"):
 		"""
 		crud: the class, wich gets the prompt from the prompt file
@@ -111,7 +111,7 @@ if __name__ == "__main__":
 	user_prompt = "Eine Mischung aus: Valentine aus der Adamsfamilie und Calipso aus Fluch der Karibik"
 
 	# analysiere user_prompt und füge ihn in system_prompt ein
-	rewrite = AnalyseUserPrompt(user_prompt, system_prompt_key=prompt_alpha_version)
+	rewrite = RewriteUserPrompt(user_prompt, system_prompt_key=prompt_alpha_version)
 	rewritten_prompt = rewrite.rewrite()
 
 	# finde passendes dict in analyse_data über binary_algo

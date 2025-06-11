@@ -1,39 +1,73 @@
+"""
+# DatabaseManager Class Overview
+
+This module provides the `DatabaseManager` class, which manages interactions with a SQL database
+for a character creation system. The class handles saving, loading, and deleting data related to
+user prompts, character ideas, classes, descriptions, and generated characters.
+
+## Key Features
+
+- **Database Connection Management**: Handles both production and test database connections
+- **Data Persistence**: Saves and retrieves character ideas, rewritten prompts, key descriptions, and classes
+- **Character Management**: Stores and retrieves generated character data
+- **Data Deletion**: Provides functionality to delete character ideas and related data
+- **Error Handling**: Comprehensive error handling for database operations
+
+## Main Components
+
+### Class: DatabaseManager
+
+#### Core Methods:
+- `save_rewritten_data()`: Saves analyzed prompt data including classes, descriptions, and rewritten prompts
+- `load_character_prompts()`: Retrieves all data needed for character creation based on an idea ID
+- `save_generated_characters()`: Stores generated character data in the database
+- `delete_character_by_idea_id()`: Deletes a character idea and all related data
+- `load_all_char_ideas()`: Retrieves all character ideas from the database
+- `load_characters()`: Loads generated characters for a specific idea
+
+#### Helper Methods:
+- `_save_user_prompt()`: Internal method for saving user prompts
+- `_save_rewritten_prompts()`: Internal method for saving rewritten prompts
+- `_save_key_descriptions()`: Internal method for saving key descriptions
+- `_save_classes()`: Internal method for saving class information
+- `_load_rewritten_prompts()`: Internal method for loading rewritten prompts
+- `_load_key_description_for_idea()`: Internal method for loading descriptions
+- `_load_classes_for_idea()`: Internal method for loading class information
+- `extract_rewriten_data()`: Extracts data from analysis dictionary
+
+## Database Models Used
+
+The class interacts with several database models:
+- CharIdea: Stores user prompts
+- Character: Stores generated characters
+- RewrittenPrompts: Stores rewritten versions of user prompts
+- KeyDescription: Stores key descriptions extracted from prompts
+- DescriptionToIdea: Maps descriptions to character ideas
+- Classes: Stores class information for character ideas
+- BestChar: Stores information about best characters
+
+## Error Handling
+
+The class implements comprehensive error handling for database operations,
+including rollback mechanisms for failed transactions and proper session management.
+"""
+
 from sqlalchemy import func, select, delete, create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
 from src.database.models import CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, BestChar
 from typing import List
-from pydantic import BaseModel
 from src.handle_data.env_loader import EnvLoader
 from src.helper.debug_helper import DebugHelper
 
-
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)
-# TODO: Pydantic aus dem projekt entfernen
 
-class Prompt(BaseModel):
-	"""Defines the Input type and validates it"""
-	text: str
-	
-class AnalysedPrompt(BaseModel):
-	matched_classes: list
-	keywords: list
-	rewritten_prompt_template: list
+# sets the DebugHelper on or off
+DebugHelper.activ(activ=True)
 
 class DatabaseManager:
 	"""
-	managet die interaktionene mit der datenbank
-
-	erhaltene daten:
-	{
-		"matched_classes": ["paladin", "fighter", "cleric"],
-		"keywords": ["Bote des Lichts", "großes Schwert", "Elemente beherrschen", "strahlende Rüstung"],
-		"rewritten_prompt_template": [
-		"Ein paladin des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht.",
-		"Ein fighter des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht.",
-		"Ein cleric des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht."
-		]
-	}
+	manages the interactions with the database
 	"""
 	def __init__(self, test_case=False, temp_engine=None):
 		# if I want to test the Databasemanager class with a temporary database
@@ -45,32 +79,31 @@ class DatabaseManager:
 			engine = create_engine(self.db_path)
 			self.Session = sessionmaker(bind=engine)
 			
-			# sets the DebugHelber on or off
-			DebugHelper.activ(activ=True)
+			
 	
-	def save_user_prompt(self, prompt: Prompt, analysed_dict: AnalysedPrompt):
+	def save_rewritten_data(self, prompt: str, analysed_dict):
 		"""
-		speichert alle daten aus der Analyse des user_prompts
+		Saves all generated data from the analysing prozess of the user_prompt
 		"""
-		# extrahiert die daten aus der LLM_antwort
-		possible_classes, key_descriptions, rewritten_prompts = self.extract_analysed_data(analysed_dict)
+		# extracts the data from the rewrite prozess of the LLM
+		possible_classes, key_descriptions, rewritten_prompts = self.extract_rewriten_data(analysed_dict)
 
 		session = self.Session()
 		try:
-			# user_prompt abspeichern
-			self._save_char_idea(prompt, session)
+			# saves user_prompt
+			self._save_user_prompt(prompt, session)
 
-			# gibt die nueste / höchste idea_id heraus
+			# generates a new 'idea_id'
 			stmt_new_idea = select(func.max(CharIdea.idea_id))
 			new_idea_id = session.scalars(stmt_new_idea).first()
 
-			# possible_classes abspeichern
+			# saves possible_classes
 			self._save_classes(possible_classes, new_idea_id, session)
 
-			# key_descriptions abspeichern
+			# saves key_descriptions
 			self._save_key_descriptions(key_descriptions, new_idea_id, session)
 
-			# umgeschriebene user_prompts abspeichern
+			# saves rewritten_user_prompts
 			self._save_rewritten_prompts(new_idea_id, rewritten_prompts, session)
 			session.commit()
 			
@@ -80,10 +113,10 @@ class DatabaseManager:
 		finally:
 			session.close()
 	
-	def _save_char_idea(self, prompt, session):
+	def _save_user_prompt(self, prompt: str, session):
 		"""Saves user_prompt in db"""
 		try:
-			char_idea = CharIdea(user_prompt=prompt.text)
+			char_idea = CharIdea(user_prompt=prompt)
 			session.add(char_idea)
 			session.flush()
 		except SQL_ALCHEMY_ERROR as e:
@@ -138,13 +171,14 @@ class DatabaseManager:
 								  warlock='warlock' in possible_classes,
 								  wizard='wizard' in possible_classes)
 			session.add(dnd_classes)
+			
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
 			raise e
 	
-	def extract_analysed_data(self, analysed_dict: AnalysedPrompt) -> tuple:
+	def extract_rewriten_data(self, analysed_dict) -> tuple:
 		"""
-		extrahiert alle daten aus dem dictionary und gibt sie als tuple zurück
+		extracts data from the dictionary and returns them as tuples
 		"""
 		classes: list[str] = analysed_dict["matched_classes"]
 		key_words: list[str] = analysed_dict["keywords"]
@@ -152,7 +186,7 @@ class DatabaseManager:
 		return classes, key_words, rewritten_prompts
 	
 	def load_all_char_ideas(self):
-		"""lädt alle char_ideen und gibt sie als dict mit key=id und value=idea zurück"""
+		"""loads all char_ideas (user_prompts) and gives them back as key=id and value=idea"""
 		session = self.Session()
 		try:
 			stmt = select(CharIdea)
@@ -210,9 +244,10 @@ class DatabaseManager:
 	
 	def _load_key_description_for_idea(self, idea_id, session):
 		"""
-		gibt alle descriptions zurück, die eine key-key paarung mit der idea_id haben
+		returns descriptions wich have a key-key connection with the given idea_id
 		
-		from the Table DescriptionToIdea we get the description_id-row
+		from the Table DescriptionToIdea we get the description_id-row,
+		wich contains all key-key pairs for descriptions and idea_ids
 		"""
 		descriptions: list[str] = []
 		try:
@@ -250,15 +285,10 @@ class DatabaseManager:
 			raise e
 	
 	def save_generated_characters(self, characters: List[str], idea_id):
-		"speichert die erstellen charactere in der db ab"
+		"saves generated characters in db"
 		session = self.Session()
 		try:
 			for character in characters:
-				
-				# if not isinstance(character, str):
-				# 	# if character is not a string
-				# 	character = json.dumps(character)
-				
 				# Debugging output
 				DebugHelper.debug_print(data_description="character is a generated character json-string",
 				                        data_type=True,
@@ -271,16 +301,13 @@ class DatabaseManager:
 
 			session.commit()
 		except SQL_ALCHEMY_ERROR as e:
-			print("\n=================================================================================="
-			      "ROLLBACK"
-			      "\n==================================================================================")
 			session.rollback()
 			raise e
 		finally:
 			session.close()
 	
 	def delete_character_by_idea_id(self, idea_id: int):
-		"""Löscht eine char_idea mit allen colums, die damit verbunden sind"""
+		"""delets a idea_id (user_prompt) with all connected colums"""
 		session = self.Session()
 		try:
 			# list of all models, which containing the idea_id as foregin_key
@@ -301,7 +328,7 @@ class DatabaseManager:
 			session.close()
 		
 	def load_characters(self, idea_id: int):
-		"""Loads all foru character with the foreign_key: idea_id"""
+		"""Loads all four character with the foreign_key: idea_id"""
 		session = self.Session()
 		try:
 			stmt = select(Character).where(Character.idea_id == idea_id)

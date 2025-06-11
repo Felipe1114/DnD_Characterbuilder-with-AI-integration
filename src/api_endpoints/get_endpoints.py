@@ -1,7 +1,8 @@
 """
-was muss hier gemacht werden:
--   alle dnd-class daten werden für alle 12 dnd-classes von der DnD5e-api gezogen.
--   diese daten werden - jeweils - in Json files gespeichert und lokal abgelegt.
+GET API-Endpoints
+
+Gets no Input
+Loads all necesary DnD data, like all datas for the 12 DnD classes, from the DnD5e-api
 """
 from fastapi import APIRouter
 from src.dnd_api.dnd_api_manager import DnDApiManager
@@ -10,6 +11,7 @@ router = APIRouter()
 
 @router.get("/")
 async def get_dnd_data_from_DnDapi():
+	"""loads all dnd class_data form the DnD5e-API"""
 	manager = DnDApiManager()
 	manager.run()
 	

@@ -26,7 +26,7 @@ def ue_save_user_prompt(db):
 	
 	session = db.Session()
 	# daten in db gespeichert
-	db.save_user_prompt(prompt, analysed_result)
+	db.save_rewritten_data(prompt, analysed_result)
 	
 	stmt = select(RewrittenPrompts)
 	result = session.execute(stmt).all()

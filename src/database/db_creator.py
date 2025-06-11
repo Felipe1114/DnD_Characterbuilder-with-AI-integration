@@ -1,26 +1,25 @@
+"""
+Only for use, if a new database should be created.
+"""
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.database.models import Base
 from src.handle_data.env_loader import EnvLoader
 
-# Erstelle eine SQLite-Datenbank im angegebenen Pfad
+# !!! If you have a existing database, be shure, in your .env file, you´ve created a new database_file_path;
+# !!! If not, your new database may overwrite your existing database
 
+# gets the database_file_path for the new database
 DATABASE_URL = EnvLoader.db_path()
 
 if __name__ == "__main__":
 	
 	engine = create_engine(DATABASE_URL)
 	
-	# Erstelle alle Tabellen in der Datenbank
 	Base.metadata.create_all(engine)
 	
-	# Optional: Erstelle eine Sitzung, um mit der Datenbank zu interagieren
 	Session = sessionmaker(bind=engine)
 	session = Session()
 	
-	# Beispiel: Füge einen Eintrag hinzu (optional)
-	# new_idea = CharIdea(user_prompt="Create a powerful sorcerer")
-	# session.add(new_idea)
-	# session.commit()
-	
-	print("Datenbank und Tabellen wurden erfolgreich erstellt.")
+	print("Database was sucesfully created.")

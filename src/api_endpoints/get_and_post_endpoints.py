@@ -1,27 +1,12 @@
 """
-Was muss gemacht werden:
-GET:
--   von der datenbank werden alle daten einer char_idea gezogen.
--   dann werden vier charactere erstellt
-for 2x class 1 , 1x class 2, 1x class 3:
-    character mit keywords: 'keywords' und dem rewritten_prompt: rewritten_prompt[i]
+GET and POST API endpoints
 
-
-beispiel_daten: {
-"matched_classes": ["paladin", "fighter", "cleric"],
-"keywords": ["Bote des Lichts", "großes Schwert", "Elemente beherrschen", "strahlende Rüstung"],
-"rewritten_prompt_template": [
-    "Ein paladin des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht.",
-    "Ein fighter des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht.",
-    "Ein cleric des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht."
-    ]
-}
-
-
-danach:
 POST:
--   alle vier erstellen charactere als JSON in die colum 'character' des Tables 'Character' speichern
+	Generates a DnD Character on base of a rewritten-user-Prompt and saves it (POST) to the Database
 
+GET:
+	Gets a DnD Character from the Database, by its idea_id --> id of the user_prompt
+												   ^^^^^^^
 """
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -55,12 +40,12 @@ async def generate_characters(idea_id: int):
 	"""Generates for characters and saves them into the db
 	
 	idea_id is the primary key for the user_prompt
-	the user_prompt is analysed and the llm had given back a prompt für the generation of a character.
+	the user_prompt is rewritten and the llm had given back a prompt für the generation of a character.
 	
 	this pormpt is saved in the db.
 	
-	with the diea_id, we can get the analysed_prompt from the db
-"""
+	with the diea_id, we can get the rewritten_prompts from the db
+	"""
 	# checks, if idea_id is an int
 	id = str_to_int(idea_id)
 	

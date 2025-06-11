@@ -1,39 +1,13 @@
 """
-Welche daten kommen in die Datenbank:
-- analysed promt sieht so aus:
-{
-"matched_classes": ["paladin", "fighter", "cleric"],
-"keywords": ["Bote des Lichts", "großes Schwert", "Elemente beherrschen", "strahlende Rüstung"],
-"rewritten_prompt_template": [
-    "Ein paladin des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht.",
-    "Ein fighter des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht.",
-    "Ein cleric des Lichts. Er hat ein großes Schwert und beherrscht die Elemente. Er ist in eine strahlende Rüstung getaucht."
-  ]
-}
+POST API endpoint
 
-was muss gemacht werden:
--   user_prompt muss gespeichert werden
--   matched_classes muss in Table classes eingefügt werden -> paladin, fighter und cleric auf 'true'
--   keywords müssen in Table key_descriptions eingefügt werden und eine colum mit idea_id und description_id angelegt werden.
-    Wichtig: abchecken, ob Keyword schon im Table vorhanden ist. Wenn ja, dann nur eine neue colum im Table description_to_idea anlegen.
--   rewritten_user_prompts müssen in Table rewritten_user_prompts eingefügt werden.
+gets a user_prompt, wich contains a idea or a description for a DnD-Character.
 
-genauer ablauf:
-1. user gibt prompt ein -> input()
-2. llm analysiert prompt -> LLm
-	prompt_key = "prompt_alpha_3"
-    user_promt = "Ein bote des lichts. Er hat ein großes schwert und beherrscht die elemente. Er ist in eine strahlende Rüstung getaucht."
-
-    rewrite = RewriteUserPromt(user_promt, prompt_key=prompt_key)
-
-    rewritten_promt = rewrite.rewrite() <-- gibt das dict zurück mit den analysierten user-prompt daten
-3. user prompt und analysierten prompt speichern
-
+rewrites the user_promt and saves the rewritten_user_prompt into the database
 """
 from fastapi import APIRouter
-from pydantic import BaseModel # BaseModel is a Class, which defines the input type
 from src.database.db_manager import DatabaseManager
-from src.llm.analyse_user_prompt import AnalyseUserPrompt
+from src.llm.rewrite_user_prompt import RewriteUserPrompt
 from src.helper.debug_log import DebugLog
 import json
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
@@ -41,53 +15,34 @@ from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 
 router = APIRouter()
 
-# verkünpfung mit db
 db_mngr = DatabaseManager()
 
-# TODO: Pydantic aus dem projekt entfernen
-
-class Prompt(BaseModel):
-	"""Defines the Input type and validates it"""
-	text: str
- 
-class AnalysedPrompt(BaseModel):
-	matched_classes: list
-	keywords: list
-	rewritten_prompt_template: list
 
 @DebugLog.debug_log
 @router.post("/")
-async def write_character_idea_for_analysing(user_prompt: Prompt):
-# def analyse_prompt(Prompt(user_prompt).model_dump())
+async def write_character_idea_for_analysing(user_prompt: str):
 	"""
-	nimmt user_prompt entgegen
-	gibt user_prompt an llm.AnalyseUserPrompt weiter
-	prompt wird analysiert
-	anaylsierter user_prompt und user_prompt werden in db gespeichert
+	takes the user_prompt as input
+	gives user_prompt to AnalyseUserPrompt class, wich rewrites user_prompt
+	saves rewritten_user_prompt and user_prompt to database
 	"""
-	# instanziert AnalyseUserPrompt und erhält bereits user_prompt
 	
-	rewrite = AnalyseUserPrompt(user_prompt.text)
-	# analysiert user_prompt und gibt analysed_prompt zurück
-	analysed_prompt_str = rewrite.rewrite()
+	# instanziates RewriteUserPrompt class
+	rewrite = RewriteUserPrompt(user_prompt)
+	# analyses user_prompt and gives back rewritten_user_prompt
+	rewritten_user_prompt = rewrite.rewrite()
 	
-	analysed_prompt_dict = json.loads(analysed_prompt_str)
+	rewritten_user_prompt_json = json.loads(rewritten_user_prompt)
 	
-	# für das testing:
-	print(analysed_prompt_dict)
-	print(type(analysed_prompt_dict))
-	# speichern der daten in db
+	# saves data in db
 	try:
-		db_mngr.save_user_prompt(user_prompt, analysed_prompt_dict)
+		db_mngr.save_rewritten_data(user_prompt, rewritten_user_prompt_json)
 	except (SQLAlchemyError, IntegrityError, OperationalError) as e:
-		# rollback wird in save_user_prompt behandelt, hier nur nochmal sicherheitshalber
+		# rollback is handled in 'save_rewritten_data' method.
 		print(f"DB Error: {str(e)}")
 		raise e
 	
-	return (f"prompt: {user_prompt} wurde in Datenbank gespeichert\n"
-	        f"analysed_user_prompt:\n"
-	        f"{analysed_prompt_dict}"
-	        f"wurde in Datenbank gespeichert")
+	return f"prompt: {user_prompt} and {rewritten_user_prompt} saved in database"
 	
 	
 
