@@ -5,7 +5,7 @@ class CrudTxtFiles(CrudBase):
 	handels crud operations on .txt files
 	
 	Class Variables form __init__:
-		self.data_path -> data_paht
+		self.data_path -> data_path
 		self._pure_path -> PurePathClass
 		self._parent_path = -> the path before the 'file_name' like: ../crud_txt.py
 	"""

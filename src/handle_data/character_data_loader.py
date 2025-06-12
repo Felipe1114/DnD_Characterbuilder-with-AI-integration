@@ -20,36 +20,37 @@ CLASS_INDICIES = {
                 }
 
 class CharacterDataLoader:
-	"""läd einen character aus dem lokalen speicher. 'class_name' ist eine von den 12 möglichen Klassen"""
+	"""Loads all class data for a specific class from local storage; 'class_name' is one of the 12 possible classes"""
 	def __init__(self, class_name):
 		
 		self.class_name = class_name.lower()
 		
-		self.data_base_path = EnvLoader.static_dnd_data_dir()
+		self.data_base_path = EnvLoader.static_dnd_data_dir() # base_dir path from .env
 		self.base_data_path = "all_classes.json"
-		self.class_data_path = f"/detailed_class_data/{class_name}/{class_name}"
+		self.class_data_path = f"/detailed_class_data/{class_name}/{class_name}" # constructor for class_dir ending
 		
-		self.detail_base_path = self.data_base_path + self.class_data_path
+		self.detail_base_path = self.data_base_path + self.class_data_path # path constructor for individual class dir
 		
 		self.class_base_data = self.data_base_path + "/" + self.base_data_path
 		self.spell_file_path = self.detail_base_path + "_spells.json"
 		self.level_file_path = self.detail_base_path + "_levels_features.json"
 		self.subclass_file_path = self.detail_base_path + "_subclass(es).json"
 
-			# erstellt eine liste mit spell-, level- und subclass-datapath
 
 	
 	def class_data(self) -> list:
-		"""gibt alle klassen daten, in einer liste zurück"""
+		"""returns all data from a class in a list"""
 		base_crud = CrudJsonFiles(self.class_base_data)
 		spell_crud = CrudJsonFiles(self.spell_file_path)
 		level_crud = CrudJsonFiles(self.level_file_path)
 		subclass_crud = CrudJsonFiles(self.subclass_file_path)
 		
+		# debug helper moulde
 		DebugHelper.debug_print(data=self.class_name,
 		                        data_description="the name of the current class:",
 		                        store_data=False,
-		                        data_type=True)
+		                        data_type=True,
+		                        active=False)
 				
 		base_data: dict = base_crud.data[CLASS_INDICIES[self.class_name]]
 		

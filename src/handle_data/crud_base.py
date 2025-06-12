@@ -15,14 +15,12 @@ class CrudBase(ABC):
 		pass
 	
 	@property
-
 	@abstractmethod
 	def data(self):
 		"""returns the data from storage"""
 		pass
 	
 	@data.setter
-
 	@abstractmethod
 	def data(self, new_data):
 		"""saves new data to storage"""
