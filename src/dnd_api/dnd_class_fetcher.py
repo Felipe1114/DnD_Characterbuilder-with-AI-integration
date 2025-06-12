@@ -15,7 +15,6 @@ class DnDClassFetcher(DnDAPIBase):
 
 		self.save_data(class_data_dict)
 	 
-	# temporary method
 	def save_data(self, new_data):
 		self.crud.data = new_data
 
