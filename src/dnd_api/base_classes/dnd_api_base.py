@@ -4,8 +4,7 @@ import time
 
 
 class DnDAPIBase:
-	"""Basis Klasse für DnD5e API.
-	Stellt die grundlegende logic, um requests an die DnD5e-API zu stellen"""
+	"""Baseclass for DnDAPI 'loader'. Contains the base logic for the 'loader' module"""
 	def __init__(self, url):
 		self.url = url
 		self.data = {}
