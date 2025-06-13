@@ -91,7 +91,7 @@ class ClassDetails:
 			
 			# creates a new dict, with the spell data and its descriptions
 			detailed_spells.append({
-			    "index": spell["index"],
+			    "searched_index": spell["searched_index"],
 			    "name": spell["name"],
 			    "level": spell.get("level"),
 			    "details": details
@@ -131,7 +131,7 @@ class ClassDetails:
 				# creates a new dict with level features and its descriptions
 				if details:
 					features.append({
-					    "index": feature["index"],
+					    "searched_index": feature["searched_index"],
 					    "name": feature["name"],
 					    "details": details
 					})
@@ -148,7 +148,7 @@ class ClassDetails:
 			                        "features": features,
 			                        "spellcasting": level.get("spellcasting", None),
 			                        "class_specific": level["class_specific"],
-			                        "index": level["index"],
+			                        "searched_index": level["searched_index"],
 			                        })
 
 		self.enriched_levels = enriched_levels
@@ -192,7 +192,7 @@ class ClassDetails:
 					self.d_fetcher.detail_url = f_url
 					details = self.d_fetcher.load_data()
 					features.append({
-						"index": feature["index"],
+						"searched_index": feature["searched_index"],
 						"name": feature["name"],
 						"details": details
 					})
@@ -219,7 +219,7 @@ class ClassDetails:
 				details = self.d_fetcher.load_data()
 				
 				subclass_spells.append({
-					"index": spell.get("index"),
+					"searched_index": spell.get("searched_index"),
 					"name": spell.get("name"),
 					"prerequisites": spell_entry.get("prerequisites"),
 					"details": details
