@@ -1,9 +1,3 @@
-"""Diese Klasse baut die Systemnachricht zusammen.
-Sie analysiert den Prompt und kombiniert ihn mit den JSON-Daten.
-
-Aufgabe:
-erhält Klassen daten und umgeschriebenen User-Promt
-Kombiniert alles zu einem “System Prompt”"""
 from src.database.db_manager import DatabaseManager
 from src.handle_data.character_data_loader import CharacterDataLoader
 from src.handle_data.crud_txt import CrudTxtFiles
@@ -11,9 +5,11 @@ from src.helper.debug_log import DebugLog
 from src.helper.debug_helper import DebugHelper
 from src.handle_data.env_loader import EnvLoader
 
-# activates the DebugHelper
-
 class SystemRequestBuilder:
+	"""
+	builds up final prompt for llm.
+	Prompt contains system_message, rewritten_prompt and dnd_class_data
+	"""
 	def __init__(self, idea_id):
 		if isinstance(idea_id, int):
 			self.idea_id = idea_id
@@ -59,15 +55,12 @@ class SystemRequestBuilder:
 		returns a dict with 3 different classes and rewirtten_user_prompts
 		
 		char_prompts looks like this:
-		
+		{
+				'classes': classes_for_idea,  # -> three classes [class_1, class_2, class_3]
+				'key_descriptions': descriptions_for_idea,  # -> ["great", "big", "strong", "fire", ...]
+				'rewritten_prompts': rewritten_prompts  # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
+			}
 		"""
-		# char_prompts is a dcitionary with informations for the character generation.
-		# It looks like this:
-		# 	{
-		# 		'classes': classes_for_idea,  # -> three classes [class_1, class_2, class_3]
-		# 		'key_descriptions': descriptions_for_idea,  # -> ["great", "big", "strong", "fire", ...]
-		# 		'rewritten_prompts': rewritten_prompts  # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
-		# 	}
 		char_prompts = self.db.load_character_prompts(self.idea_id)
 		
 		DebugHelper.debug_print(
@@ -127,6 +120,7 @@ class SystemRequestBuilder:
 				                 "This unfilled Template will be filled with more character information in the next steps",
 				data=system_message,
 				active=False)
+			
 			# adds char_details to system_message with .replace()
 			system_message = self.add_char_details(data, system_message)
 			
@@ -175,7 +169,7 @@ class SystemRequestBuilder:
 		
 	@DebugLog.debug_log
 	def run(self):
-		"""casts generate_system_prompts and returns the prompt list"""
+		"""calls generate_system_prompts and returns the prompt list"""
 		prompt_list = self.generate_system_prompts()
 		
 		return prompt_list

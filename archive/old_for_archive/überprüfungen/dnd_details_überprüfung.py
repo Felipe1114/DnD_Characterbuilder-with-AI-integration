@@ -18,7 +18,7 @@ CLASS_NAMES = {
 # erhält gesamte base_class_datas von allen 12 Klassen
 def main():	
 	crud = CrudJsonFiles('../data_test/all_classes.json')
-	# den index des 'wizards'
+	# den searched_index des 'wizards'
 	wizard_id = CLASS_NAMES['wizard']
 	# wizard base_data aus großer base_data liste extrahieren
 	wizard_base_data = crud.data[wizard_id]

@@ -7,7 +7,7 @@ MISTRAL_KEY = EnvLoader.mistral_key()
 class TalkToMistral:
 
 	def __init__(self):
-		# greif auf 'mistral_small' zurück link: https://docs.mistral.ai/getting-started/models/models_overview/
+		# calls mistral api: https://docs.mistral.ai/getting-started/models/models_overview/
 		self.model = "mistral-small-latest"
 
 		self.client = Mistral(api_key=MISTRAL_KEY)
@@ -16,7 +16,7 @@ class TalkToMistral:
 
 	def ask(self, promt: str, user: str="user"):
 		"""
-		schickt eine frage an Mistral_small_api und gibt die antwort zruück
+		sends a request to miestral api
 		"""
 		mistral_small_response = self.client.chat.complete(
 			model=self.model,
@@ -26,8 +26,10 @@ class TalkToMistral:
 		self._mistral_response = mistral_small_response
 
 	def response(self) -> str:
-		"""Gibt die anwort von Mistral_small zurück; falls keine antwort zwischen gespeichert ist.
-		wird ausgegeben: 'You did not ask anything. Please make a question!'"""
+		"""returns response of mistral api.
+		if no request was set, the default message is:
+		    "You did not ask anything. Please make a question!"
+		"""
 		if not self._mistral_response:
 			return "You did not ask anything. Please make a question!"
 		

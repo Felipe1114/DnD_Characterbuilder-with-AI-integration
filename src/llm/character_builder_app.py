@@ -1,23 +1,14 @@
-"""	fungiert als llm-main
-kombiniert
-- Class CharacterRequestBuilder
-- Class TalkToMistral
-
-
-kombiniert alles und gibt das - von dem llm - erstelle Character Json zurück.
+"""
 
 """
-from xml.sax import parse
-
 from src.llm.system_request_builder import SystemRequestBuilder
 from src.llm.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
 from src.helper.debug_log import DebugLog
 from src.helper.debug_helper import DebugHelper
 
-
 class CharacterBuilderApp:
-	""""""
+	"""generates a dnd character on base of rewritten-prompt and dnd_class data"""
 	def __init__(self, idea_id):
 		try:
 			self.idea_id = int(idea_id)
@@ -30,7 +21,7 @@ class CharacterBuilderApp:
 		self.mistral = TalkToMistral()
 		
 		# sets the DebugHelber on or off
-		DebugHelper.activ(activ=True)
+		DebugHelper.activ(activ=False)
 		
 	def generate_character_builder_prompts(self):
 		"""returns a list of 4 character_builder_prompts"""
@@ -64,24 +55,14 @@ class CharacterBuilderApp:
 		
 		for i, characater_prompt in enumerate(character_prompt_list):
 			character = self.generate_character(characater_prompt)
-			# converts the string in a json-objekt
-			
-			# DebugHelper.debug_print(data_description="character_json_string: einer von vier generierten charcteren",
-			#                         data=character,
-			#                         active=False,
-			#                         store_data=True,
-			#                         data_type=True)
-		
-			# character_json = dumps(character)
 			
 			DebugHelper.debug_print(data_description="character_json: ein generierter character, umgewandelt in einen Json-string",
 			                        data=character,
-			                        active=True,
+			                        active=False,
 			                        store_data=True)
 			
 			character_list.append(character)
 		
-		# DebugNote: character_list contains all four characters
 		DebugHelper.debug_print(data_description="character_list: should contain a list of characters as a json-string",
 		                        data=character_list,
 		                        active=False,
