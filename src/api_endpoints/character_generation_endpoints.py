@@ -6,11 +6,8 @@ POST:
 
 GET:
 	Gets a DnD Character from the Database, by its user_prompt_id --> user_prompt_id of the user_prompt
-												   ^^^^^^^
 """
 from fastapi import APIRouter, HTTPException
-from keystonemiddleware.echo.service import echo_app
-
 from src.llm.character_builder_app import CharacterBuilderApp
 from src.database.db_manager import DatabaseManager
 from src.helper.debug_log import DebugLog
