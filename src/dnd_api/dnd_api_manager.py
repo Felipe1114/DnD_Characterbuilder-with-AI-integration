@@ -86,11 +86,11 @@ class DnDApiManager:
 		
 		tracker.done()
 		
-		@DebugLog.debug_log
-		def run(self):
-			# load base_data
-			self.load_base_class_datas()
-			
-			# load details for base_data
-			self.load_detaild_calss_datas()
+	@DebugLog.debug_log
+	def run(self):
+		# load base_data
+		self.load_base_class_datas()
 		
+		# load details for base_data
+		self.load_detaild_calss_datas()
+	

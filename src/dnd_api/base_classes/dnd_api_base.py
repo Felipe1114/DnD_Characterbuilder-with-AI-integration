@@ -1,6 +1,7 @@
 import requests
 from requests import RequestException
 import time
+from fastapi import HTTPException
 
 
 class DnDAPIBase:
@@ -22,5 +23,5 @@ class DnDAPIBase:
 				raise RequestException(f"Error at loading: {response.status_code}; dnd_api_base.py 20")
 		
 		except RequestException as e:
-			raise e
+			raise HTTPException(status_code=502, detail=f"Error with DnD5e-api: {e}")
 		

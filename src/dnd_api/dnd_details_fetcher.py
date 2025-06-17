@@ -2,6 +2,7 @@ import requests
 import time
 from requests import RequestException
 from src.dnd_api.base_classes.dnd_api_base import DnDAPIBase
+from fastapi import HTTPException
 
 class DnDDetailsFetcher(DnDAPIBase):
 	"""
@@ -14,17 +15,17 @@ class DnDDetailsFetcher(DnDAPIBase):
 		"""
 		super().__init__(base_url)
 		self.class_detail_url = None  # This Urls will be set later, to load class datas
-		self.data = {}  # the loades data will be saved here
+		self.data = {}  # the loaded data will be saved here
 
 	def load_data(self, delay=0.1):
 		"""
 		Loads the class_data from the actual setted URL (class_detail_url)
 	    """
-
+		
 		if not self.class_detail_url:
-			print("Error: No class_detail_url.")
+			raise HTTPException(status_code=502, detail="no url for DnD5e-api; url must set, before loading class_detail_data")
 			
-			return None
+			
 
 		try:
 			response = requests.get(self.class_detail_url)
@@ -43,8 +44,8 @@ class DnDDetailsFetcher(DnDAPIBase):
 			return self.data
 
 		except RequestException as e:
-			print(f"Error: {e}")
-			self.data = None
+			raise HTTPException(status_code=502, detail=f"Error with DnD5e-api: {e}")
+			
 
 	@property
 	def detail_url(self):
