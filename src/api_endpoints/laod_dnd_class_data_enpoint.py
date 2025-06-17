@@ -22,9 +22,12 @@ async def get_dnd_data_from_DnDapi():
 		if e.status_code == 502:
 			raise HTTPException(status_code=502, detail=e)
 		
+		if e.status_code == 404:
+			raise HTTPException(status_code=404, detail=e)
+
+		# for all other HTTPExceptions
 		else:
 			raise HTTPException(status_code=500, detail="Internal server error!")
-	
 	
 	# for all other Excpetions
 	except Exception as e:
