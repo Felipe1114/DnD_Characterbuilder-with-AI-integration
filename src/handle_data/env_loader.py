@@ -43,3 +43,8 @@ class EnvLoader:
 	def static_dnd_data_dir():
 		"""path to static dnd data dir; main dir for all dnd data in local storage"""
 		return os.getenv("STATIC_DND_DATA_DIR")
+	
+	@staticmethod
+	def system_message_rewrite_user_prompt():
+		"""path for the system message to rewrite the user_prompt"""
+		return os.getenv("SYSTEM_MESSAGE_REWRITE_USER_PROMPT")
