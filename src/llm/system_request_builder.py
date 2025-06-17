@@ -18,7 +18,7 @@ class SystemRequestBuilder:
 		
 		self.db = DatabaseManager()
 		
-		self.system_message_path = EnvLoader.system_message()
+		self.system_message_path = EnvLoader.system_message_rewrite_user_prompt()
 		self.crud_message = CrudTxtFiles(self.system_message_path)
 		
 		self.class_data_template_path = EnvLoader.all_class_data_template()
