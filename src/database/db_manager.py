@@ -79,8 +79,6 @@ class DatabaseManager:
 			engine = create_engine(self.db_path)
 			self.Session = sessionmaker(bind=engine)
 			
-			
-	
 	def save_rewritten_data(self, prompt: str, analysed_dict):
 		"""
 		Saves all generated data from the analysing prozess of the user_prompt
@@ -347,6 +345,23 @@ class DatabaseManager:
 		finally:
 			session.close()
 			
+	def load_user_prompt_ids(self):
+		"""loads all user_prompt_id´s form the database"""
+		session = self.Session()
+		
+		try:
+			stmt = select(UserPrompt.user_prompt_id)
+			result = session.execute(stmt).all()
+			
+			if result:
+				# returns a list of user_prompt_id´s
+				return [i for i in result]
+		
+		except SQL_ALCHEMY_ERROR as e:
+			session.rollback()
+			raise e
+		finally:
+			session.close()
 			
 if __name__ == "__main__":
 	
