@@ -1,3 +1,19 @@
+"""
+how to use:
+
+import class
+>>> from src.helper.logger import Logger
+instanciate class with module name
+>>> logger = Logger(module="module_name")
+possible module names:
+- api
+- db
+- dnd_api
+- llm
+- tracker
+
+with the five log-methods you can logg your stuff
+"""
 import logging
 import os
 from src.handle_data.env_loader import EnvLoader
@@ -15,11 +31,18 @@ MODULE = {"api": "api",
           "llm": "llm",
           "tracker": "tracker"}
 
+class LogLevelSwitch:
+	"""with this calss the logg-level can bet set for all log classes"""
+	@staticmethod
+	def set_level():
+		return LEVEL["DEBUG"]	
+
 class Logger:
 	_initialized = False
 	_general_handler = None  # Class attribute for general handler
 	_module_handlers = {}  # Class attribute for modul specific handler
 	
+	log_level = LogLevelSwitch.set_level()
 	def __init__(self, module: str):
 		# is module aceptable
 		if module not in MODULE:
@@ -29,7 +52,6 @@ class Logger:
 		
 		self.module = MODULE[module]
 		self.log_dir = EnvLoader.log_dir()
-		self.log_level = LEVEL["DEBUG"]
 		self._formatter = logging.Formatter(
 			'%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 		)
@@ -41,7 +63,7 @@ class Logger:
 		
 		# cerate logger
 		self._logger = logging.getLogger(self.module)
-		self._logger.setLevel(self.log_level)
+		self._logger.setLevel(Logger.log_level)
 		
 		# adds handler, if not done yet
 		self._add_handlers()
@@ -53,7 +75,7 @@ class Logger:
 		
 		# konfigure logging-system
 		logging.basicConfig(
-			level=self.log_level,
+			level=Logger.log_level,
 			format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 			handlers=[logging.StreamHandler()]  # Standardmäßig auf stderr ausgeben
 		)
@@ -62,7 +84,7 @@ class Logger:
 		Logger._general_handler = logging.FileHandler(
 			f"{self.log_dir}/.log"
 		)
-		Logger._general_handler.setLevel(self.log_level)
+		Logger._general_handler.setLevel(Logger.log_level)
 		Logger._general_handler.setFormatter(self._formatter)
 	
 	def _add_handlers(self):
@@ -76,7 +98,7 @@ class Logger:
 			module_handler = logging.FileHandler(
 				f"{self.log_dir}/{self.module}.log"
 			)
-			module_handler.setLevel(self.log_level)
+			module_handler.setLevel(Logger.log_level)
 			module_handler.setFormatter(self._formatter)
 			Logger._module_handlers[self.module] = module_handler
 		
@@ -103,3 +125,4 @@ class Logger:
 	def critical(self, message: str, exc_info: Optional[bool] = None, stack_info: Optional[bool] = None):
 		"""loggs critical-message"""
 		self._logger.critical(message, exc_info=exc_info, stack_info=stack_info)
+		
