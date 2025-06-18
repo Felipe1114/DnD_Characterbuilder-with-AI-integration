@@ -1,0 +1,105 @@
+import logging
+import os
+from src.handle_data.env_loader import EnvLoader
+from typing import Optional
+
+LEVEL = {"DEBUG": logging.DEBUG,
+          "INFO": logging.INFO,
+          "WARNING": logging.WARNING,
+          "ERROR": logging.ERROR,
+          "CRITICAL": logging.CRITICAL}
+
+MODULE = {"api": "api",
+          "db": "db",
+          "dnd_api": "dnd_api",
+          "llm": "llm",
+          "tracker": "tracker"}
+
+class Logger:
+	_initialized = False
+	_general_handler = None  # Class attribute for general handler
+	_module_handlers = {}  # Class attribute for modul specific handler
+	
+	def __init__(self, module: str):
+		# is module aceptable
+		if module not in MODULE:
+			raise ValueError(
+				f"'module' must be one of: {', '.join(MODULE.keys())}"
+			)
+		
+		self.module = MODULE[module]
+		self.log_dir = EnvLoader.log_dir()
+		self.log_level = LEVEL["DEBUG"]
+		self._formatter = logging.Formatter(
+			'%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+		)
+		
+		# initializes logging system, if not done yet
+		if not Logger._initialized:
+			self._initialize_logging()
+			Logger._initialized = True
+		
+		# cerate logger
+		self._logger = logging.getLogger(self.module)
+		self._logger.setLevel(self.log_level)
+		
+		# adds handler, if not done yet
+		self._add_handlers()
+	
+	def _initialize_logging(self):
+		"""initializes the basic logging system, once"""
+		# creates logging-dir, if it does not exist
+		os.makedirs(self.log_dir, exist_ok=True)
+		
+		# konfigure logging-system
+		logging.basicConfig(
+			level=self.log_level,
+			format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+			handlers=[logging.StreamHandler()]  # Standardmäßig auf stderr ausgeben
+		)
+		
+		# creates general handler
+		Logger._general_handler = logging.FileHandler(
+			f"{self.log_dir}/.log"
+		)
+		Logger._general_handler.setLevel(self.log_level)
+		Logger._general_handler.setFormatter(self._formatter)
+	
+	def _add_handlers(self):
+		"""adds module_handler to logger, if it does not exist"""
+		# adds general_handler to handler, if it does not exist
+		if Logger._general_handler not in self._logger.handlers:
+			self._logger.addHandler(Logger._general_handler)
+		
+		# create or gets module handler
+		if self.module not in Logger._module_handlers:
+			module_handler = logging.FileHandler(
+				f"{self.log_dir}/{self.module}.log"
+			)
+			module_handler.setLevel(self.log_level)
+			module_handler.setFormatter(self._formatter)
+			Logger._module_handlers[self.module] = module_handler
+		
+		# adds module_handler to logger, if it does not exist
+		if Logger._module_handlers[self.module] not in self._logger.handlers:
+			self._logger.addHandler(Logger._module_handlers[self.module])
+
+	def debug(self, message: str, exc_info: Optional[bool] = None, stack_info: Optional[bool] = None):
+		"""loggs debug-message"""
+		self._logger.debug(message, exc_info=exc_info, stack_info=stack_info)
+	
+	def info(self, message: str):
+		"""loggs info-message"""
+		self._logger.info(message)
+	
+	def warning(self, message: str, exc_info: Optional[bool] = None, stack_info: Optional[bool] = None):
+		"""loggs waring-message"""
+		self._logger.warning(message, exc_info=exc_info, stack_info=stack_info)
+	
+	def error(self, message: str, exc_info: Optional[bool] = None, stack_info: Optional[bool] = None):
+		"""loggs error-message"""
+		self._logger.error(message, exc_info=exc_info, stack_info=stack_info)
+	
+	def critical(self, message: str, exc_info: Optional[bool] = None, stack_info: Optional[bool] = None):
+		"""loggs critical-message"""
+		self._logger.critical(message, exc_info=exc_info, stack_info=stack_info)
