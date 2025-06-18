@@ -48,3 +48,8 @@ class EnvLoader:
 	def system_message_rewrite_user_prompt():
 		"""path for the system message to rewrite the user_prompt"""
 		return os.getenv("SYSTEM_MESSAGE_REWRITE_USER_PROMPT")
+	
+	@staticmethod
+	def log_dir():
+		"""path to log_dir"""
+		return os.getenv("LOG_DIR")
