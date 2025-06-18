@@ -4,7 +4,6 @@
 from src.llm.system_request_builder import SystemRequestBuilder
 from src.llm.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
-from src.helper.debug_log import DebugLog
 from src.helper.debug_helper import DebugHelper
 
 class CharacterBuilderApp:

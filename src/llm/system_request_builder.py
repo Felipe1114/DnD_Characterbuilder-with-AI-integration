@@ -1,7 +1,6 @@
 from src.database.db_manager import DatabaseManager
 from src.handle_data.character_data_loader import CharacterDataLoader
 from src.handle_data.crud_txt import CrudTxtFiles
-from src.helper.debug_log import DebugLog
 from src.helper.debug_helper import DebugHelper
 from src.handle_data.env_loader import EnvLoader
 
@@ -167,7 +166,6 @@ class SystemRequestBuilder:
 		system_message = system_message.replace("__RewrittenPrompt__", char_details)
 		return system_message
 		
-	@DebugLog.debug_log
 	def run(self):
 		"""calls generate_system_prompts and returns the prompt list"""
 		prompt_list = self.generate_system_prompts()

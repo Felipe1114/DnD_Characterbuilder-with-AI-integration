@@ -5,13 +5,11 @@ gets a user_prompt, wich contains a idea or a description for a DnD-Character.
 
 rewrites the user_promt and saves the rewritten_user_prompt into the database
 """
-from alembic.util import status
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 import json
 from src.database.db_manager import DatabaseManager
 from src.llm.rewrite_user_prompt import RewriteUserPrompt
-from src.helper.debug_log import DebugLog
 
 
 router = APIRouter()

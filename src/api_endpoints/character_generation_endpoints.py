@@ -10,13 +10,11 @@ GET:
 from fastapi import APIRouter, HTTPException
 from src.llm.character_builder_app import CharacterBuilderApp
 from src.database.db_manager import DatabaseManager
-from src.helper.debug_log import DebugLog
 
 router = APIRouter()
 db_mngr = DatabaseManager()
 
 
-@DebugLog.debug_log
 @router.get("/get")
 async def get_characters(user_input: int):
 	"""gets all characters by user_prompt_id"""
@@ -42,7 +40,6 @@ async def get_characters(user_input: int):
 		# 500 error for all other cases
 
 	
-@DebugLog.debug_log
 @router.post("/generate")
 async def generate_characters(user_input: int):
 	"""Generates for characters and saves them into the db
