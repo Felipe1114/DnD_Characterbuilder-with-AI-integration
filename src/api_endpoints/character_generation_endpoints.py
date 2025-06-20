@@ -21,7 +21,7 @@ logger = Logger("api")
 async def get_characters(user_input: int):
 	"""gets all characters by user_prompt_id"""
 	try:
-		logger.info(f"Execute endpoit: /characters/get?user_input={user_input}")
+		logger.debug(f"Execute endpoit: /characters/get?user_input={user_input}")
 		# validates user_input
 		# if not, raise HTTPException with 400 status_code
 		user_prompt_id = validate_input(user_input)

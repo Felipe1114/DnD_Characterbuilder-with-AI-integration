@@ -51,19 +51,21 @@ The class interacts with several database models:
 The class implements comprehensive error handling for database operations,
 including rollback mechanisms for failed transactions and proper session management.
 """
-
+from nltk.book import texts
 from sqlalchemy import func, select, delete, create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
+from sympy.polys.ring_series import rs_sin
+
 from src.database.models import UserPrompt, Character, RewrittenPrompts, KeyDescription, DescriptionToPrompt, Classes, BestChar
-from typing import List
 from src.handle_data.env_loader import EnvLoader
-from src.helper.debug_helper import DebugHelper
+from src.helper.logger import Logger
+from fastapi import HTTPException
+from typing import List
+
+logger = Logger("db")
 
 SQL_ALCHEMY_ERROR =(PendingRollbackError, SQLAlchemyError, IntegrityError, OperationalError)
-
-# sets the DebugHelper on or off
-DebugHelper.activ(activ=True)
 
 class DatabaseManager:
 	"""
@@ -72,20 +74,33 @@ class DatabaseManager:
 	def __init__(self, test_case=False, temp_engine=None):
 		# if I want to test the Databasemanager class with a temporary database
 		if test_case:
+			logger.info(f"initialize DataBaseManager in test_mode")
+			
 			self.session = sessionmaker(bind=temp_engine)
 		
 		else:
+			logger.info(f"initialize DataBaseManager in normal_mode")
+
 			self.db_path = EnvLoader.db_path()
+			logger.debug(f"initialized self.db_path as: {self.db_path}")
+
 			engine = create_engine(self.db_path)
+			logger.debug(f"initialized engine as: {engine}")
+
 			self.Session = sessionmaker(bind=engine)
 			
+			logger.debug(f"initialized DataBaseMangaer as: {__name__}")
+		
 	def save_rewritten_data(self, prompt: str, analysed_dict):
 		"""
 		Saves all generated data from the analysing prozess of the user_prompt
 		"""
 		# extracts the data from the rewrite prozess of the LLM
+		logger.info(f"save data from rewrite process of rewriting the user_prompt...")
+		
 		possible_classes, key_descriptions, rewritten_prompts = self.extract_rewriten_data(analysed_dict)
-
+		logger.debug(f"extracted the rewritten data:\npossible_classes: {possible_classes}\nkey_descriptions: {key_descriptions}\nrewritten_prompts: {rewritten_prompts}")
+		
 		session = self.Session()
 		try:
 			# saves user_prompt
@@ -94,6 +109,7 @@ class DatabaseManager:
 			# generates a new 'idea_id'
 			stmt_new_idea = select(func.max(UserPrompt.idea_id))
 			new_idea_id = session.scalars(stmt_new_idea).first()
+			logger.debug(f"created 'new_idea_id' as: {new_idea_id}")
 
 			# saves possible_classes
 			self._save_classes(possible_classes, new_idea_id, session)
@@ -107,54 +123,99 @@ class DatabaseManager:
 			
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with database; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
 		finally:
 			session.close()
 	
 	def _save_user_prompt(self, prompt: str, session):
 		"""Saves user_prompt in db"""
 		try:
-			char_idea = UserPrompt(user_prompt=prompt)
-			session.add(char_idea)
+			logger.info(f"save user_prompt")
+			logger.debug(f"save user_prompt as: {prompt}")
+			
+			user_prompt = UserPrompt(user_prompt=prompt)
+			logger.debug(f"add user_prompt: {prompt} to Table 'UserPrompt'")
+			
+			session.add(user_prompt)
 			session.flush()
+			
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with _save_user_prompt; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
 	
 	def _save_rewritten_prompts(self, new_idea_id, rewritten_prompts, session):
 		"""saves the three rewritten user_prompts in db"""
 		try:
+			logger.info(f"save rewritten prompts")
+		
 			for i, r_prompt in enumerate(rewritten_prompts):
+				logger.debug(f"save rewritten prompt: {r_prompt} from rewritten_prompts: {rewritten_prompts}; prompt nmbr: {i +1 }. of {len(rewritten_prompts)}.")
+				
 				rewritten_prompt = RewrittenPrompts(idea_id=new_idea_id, rewritten_prompt=r_prompt)
+				logger.debug(f"add rewritten_prompt: {rewritten_prompt} to table RewrittenPrompts")
+				
 				session.add(rewritten_prompt)
+				
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with _save_rewritten_prompts; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
 	
-	def _save_key_descriptions(self, key_descriptions, new_idea_id, session:Session):
+	def _save_key_descriptions(self, key_descriptions, user_prompt_id, session:Session):
 		"""saves the key_descriptions from user_prompt in db"""
 		try:
+			logger.info(f"save key descriptions...")
+			
 			for i, key_description in enumerate(key_descriptions):
+				logger.debug(f"save key_description: {key_description} from key_descriptions: {key_descriptions}; key_description nmbr: {i + 1}. of {len(key_descriptions)}.")
+				
+				logger.info(f"load existing_keydescrpitions")
+
 				stmt_all = select(KeyDescription.description)
-				all_key_descriptions = session.scalars(stmt_all).all()
-				if not key_description in all_key_descriptions:
+				existing_keydescriptions = session.scalars(stmt_all).all()
+				logger.debug(f"loades existing_key_descrpitions: {existing_keydescriptions}")
+				
+				logger.debug(f"check, if key_description: {key_description} is not in existing keydescriptions")
+				if not key_description in existing_keydescriptions:
+					
+					logger.debug(f"key_description: {key_description} is not in existing keydescriptions")
 					description = KeyDescription(description=key_description)
 					session.add(description)
+					logger.debug(f"add key_description to table KeyDescriptions")
+					
 					session.flush()
 					description_id = description.description_id
+				
 				else:
-					description_id = session.scalars(
-						select(KeyDescription.description_id).where(KeyDescription.description == key_description)).first()
+					logger.debug(f"key_description: {key_description} is in existing keydescriptions")
+					
+					description_id = (session.scalars(
+						select(KeyDescription.description_id)
+						.where(KeyDescription.description == key_description))
+	                    .first())
 
-				description_to_idea = DescriptionToPrompt(idea_id=new_idea_id, description_id=description_id)
+				
+				description_to_idea = DescriptionToPrompt(user_prompt_id=user_prompt_id, description_id=description_id)
+				logger.debug(f"connect description: {description} with user_prompt_id in 'DescriptionToPrompt' table")
 				session.add(description_to_idea)
+	
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with _save_rewritten_prompts; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
 	
 	def _save_classes(self, possible_classes, new_idea_id, session):
 		"""saves the three best fitting dnd-classes for user_prompt in db"""
 		try:
+			logger.info(f"save possible classes; extracted from user_prompt")
+			logger.debug(f"save possible classes: {possible_classes};  extracted from user_prompt")
+			
 			dnd_classes = Classes(idea_id=new_idea_id,
 								  barbarian='barbarian' in possible_classes,
 								  bard='bard' in possible_classes,
@@ -168,64 +229,100 @@ class DatabaseManager:
 								  sorcerer='sorcerer' in possible_classes,
 								  warlock='warlock' in possible_classes,
 								  wizard='wizard' in possible_classes)
+		
 			session.add(dnd_classes)
 			
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with _save_classes; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
 	
 	def extract_rewriten_data(self, analysed_dict) -> tuple:
 		"""
 		extracts data from the dictionary and returns them as tuples
 		"""
-		classes: list[str] = analysed_dict["matched_classes"]
-		key_words: list[str] = analysed_dict["keywords"]
-		rewritten_prompts: list[str] = analysed_dict["rewritten_prompt_template"]
-		return classes, key_words, rewritten_prompts
+		try:
+			classes: list[str] = analysed_dict.get("matched_classes", [])
+			key_words: list[str] = analysed_dict.get("keywords", [])
+			rewritten_prompts: list[str] = analysed_dict.get("rewritten_prompt_template", [])
+			
+			return classes, key_words, rewritten_prompts
+	
+		except Exception as e:
+			logger.critical(f"Error with extract_rewritten_data; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
 	
 	def load_all_char_ideas(self):
 		"""loads all char_ideas (user_prompts) and gives them back as key=id and value=idea"""
+		logger.info(f"load all user_prompts / char_ideas for character generration from database...")
+		
 		session = self.Session()
+		
 		try:
 			stmt = select(UserPrompt)
-			result = session.execute(stmt).all()
+			logger.debug(f"stmt for loading all user_prompts / char_ideas from database: {stmt}")
 
+			result = session.execute(stmt).all()
+			
 			if not result:
+				logger.warning(f"stmt for loading all user_prompts / char_ideas had no effeckt; result is empty!!!")
 				return {}
 
+			logger.debug(f"stmt for loading all user_prompts / char_ideas was succesfull; result: {result}")
+
 			return result
+		
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with load_all_char_ideas; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
+		
 		finally:
 			session.close()
 	
-	def load_character_prompts(self, idea_id):
+	def load_character_prompts(self, user_prompt_id):
 		"""loads all data form the analysed user_prompt for creating a system prompt for character creation"""
+		logger.info(f"loading character prompts...")
+		
 		session = self.Session()
 		try:
 			# checks if idea_id is an interger
-			if not isinstance(idea_id, int):
+			if not isinstance(user_prompt_id, int):
 				raise ValueError("idea_id hase to be an integer")
 			
-			classes_for_idea =  self._load_classes_for_idea(idea_id, session)
+			classes_for_idea =  self._load_classes_for_idea(user_prompt_id, session)
+			
+			descriptions_for_idea = self._load_key_description_for_idea(user_prompt_id, session)
 
-			descriptions_for_idea = self._load_key_description_for_idea(idea_id, session)
-
-			rewritten_prompts = self._load_rewritten_prompts(idea_id, session)
+			rewritten_prompts = self._load_rewritten_prompts(user_prompt_id, session)
 			
 			result = {
 				'classes': classes_for_idea, # -> three classes [class_1, class_2, class_3]
 				'key_descriptions': descriptions_for_idea, # -> ["great", "big", "strong", "fire", ...]
 				'rewritten_prompts': rewritten_prompts # -> ["a Paladin wich...", "a warlock wich...", "a wizard wich..."]
 			}
+			
+			logger.debug(f"loading character prompt from user_prompt_id was succesfull; result: {result}")
 			return result
+		
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			
+			logger.critical(f"Error with load_character_prompts; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
+		
+		except ValueError as e:
+			session.rollback()
+		
+			logger.critical(f"Error with load_character_prompts: user_prompt_id has to be an integer!; status_code: 500; {e}")
+			raise HTTPException(status_code=500, detail=e)
+
 		finally:
 			session.close()
 	
+	# TODO: hier mit logging weiter machen
 	def _load_rewritten_prompts(self, idea_id, session):
 		"""loads all rewritten prompts with the idea_id i"""
 		try:
@@ -282,19 +379,14 @@ class DatabaseManager:
 			session.rollback()
 			raise e
 	
-	def save_generated_characters(self, characters: List[str], idea_id):
+	def save_generated_characters(self, characters: List[str], user_prompt_id):
 		"saves generated characters in db"
 		session = self.Session()
 		try:
 			for character in characters:
 				# Debugging output
-				DebugHelper.debug_print(data_description="character is a generated character json-string",
-				                        data_type=True,
-				                        data=character,
-				                        store_data=True,
-				                        active=True)
 				
-				character_entry = Character(idea_id=idea_id, character=character)
+				character_entry = Character(user_prompt_id=user_prompt_id, character=character)
 				session.add(character_entry)
 
 			session.commit()
@@ -331,8 +423,6 @@ class DatabaseManager:
 		try:
 			stmt = select(Character).where(Character.idea_id == idea_id)
 			results = session.execute(stmt).all()
-			
-			DebugHelper.debug_print(active=False, data_description="List of characters, loaded from Database:", data=results, data_type=True, store_data=False)
 			
 			if results:
 				# results is type: Row. Row is not JSON serializable, so it is transformed in a Tuple

@@ -10,14 +10,15 @@ from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 import json
 from src.database.db_manager import DatabaseManager
 from src.llm.rewrite_user_prompt import RewriteUserPrompt
+from src.helper.logger import Logger
 
+logger = Logger("llm")
 
 router = APIRouter()
 
 db_mngr = DatabaseManager()
 
 
-@DebugLog.debug_log
 @router.post("/")
 async def rewrite_user_prompt(user_prompt: str):
 	"""
