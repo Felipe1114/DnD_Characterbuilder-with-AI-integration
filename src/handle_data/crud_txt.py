@@ -1,7 +1,7 @@
 from src.handle_data.crud_base import CrudBase
 from src.helper.logger import Logger
 
-logger = Logger("crud")
+logger = Logger("data_handler")
 
 class CrudTxtFiles(CrudBase):
 	"""

@@ -4,7 +4,7 @@ import os
 from src.helper.logger import Logger
 from fastapi import HTTPException
 
-logger = Logger("crud")
+logger = Logger("data_handler")
 
 class CrudBase(ABC):
 	"""handles crud operations for local data"""

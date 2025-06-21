@@ -4,7 +4,7 @@ from json import JSONDecodeError
 from fastapi import HTTPException
 from src.helper.logger import Logger
 
-logger = Logger("crud")
+logger = Logger("data_handler")
 
 class CrudJsonFiles(CrudBase):
 	"""handels JSON crud operations"""

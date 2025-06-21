@@ -79,7 +79,7 @@ MODULE = {"api": "api",
           "dnd_api": "dnd_api",
           "llm": "llm",
           "tracker": "tracker",
-          "crud": "crud"}
+          "data_handler": "data_handler"}
 
 class LogLevelSwitch:
 	"""with this calss the logg-level can bet set for all log classes"""

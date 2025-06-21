@@ -1,7 +1,6 @@
 """
 """
 from src.llm.talk_to_mistral import TalkToMistral
-from src.handle_data.crud_json import CrudJsonFiles
 from src.database.db_manager import DatabaseManager
 from src.handle_data.crud_txt import CrudTxtFiles
 from src.handle_data.env_loader import EnvLoader
