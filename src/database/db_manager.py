@@ -21,7 +21,7 @@ user prompts, character ideas, classes, descriptions, and generated characters.
 - `save_rewritten_data()`: Saves analyzed prompt data including classes, descriptions, and rewritten prompts
 - `load_character_prompts()`: Retrieves all data needed for character creation based on an idea ID
 - `save_generated_characters()`: Stores generated character data in the database
-- `delete_character_by_idea_id()`: Deletes a character idea and all related data
+- `delete_character_by_user_prompt_id()`: Deletes a character idea and all related data
 - `load_all_char_ideas()`: Retrieves all character ideas from the database
 - `load_characters()`: Loads generated characters for a specific idea
 
@@ -31,8 +31,8 @@ user prompts, character ideas, classes, descriptions, and generated characters.
 - `_save_key_descriptions()`: Internal method for saving key descriptions
 - `_save_classes()`: Internal method for saving class information
 - `_load_rewritten_prompts()`: Internal method for loading rewritten prompts
-- `_load_key_description_for_idea()`: Internal method for loading descriptions
-- `_load_classes_for_idea()`: Internal method for loading class information
+- `_load_key_description_for_user_prompt()`: Internal method for loading descriptions
+- `_load_classes_for_user_prompt()`: Internal method for loading class information
 - `extract_rewriten_data()`: Extracts data from analysis dictionary
 
 ## Database Models Used
@@ -51,12 +51,14 @@ The class interacts with several database models:
 The class implements comprehensive error handling for database operations,
 including rollback mechanisms for failed transactions and proper session management.
 """
-from nltk.book import texts
+import logging
+
+from mpmath.libmp import str_to_man_exp
 from sqlalchemy import func, select, delete, create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
-from sympy.polys.ring_series import rs_sin
 
+from src.api_endpoints.rewrite_user_prompt_endpoint import rewrite_user_prompt
 from src.database.models import UserPrompt, Character, RewrittenPrompts, KeyDescription, DescriptionToPrompt, Classes, BestChar
 from src.handle_data.env_loader import EnvLoader
 from src.helper.logger import Logger
@@ -292,9 +294,9 @@ class DatabaseManager:
 			if not isinstance(user_prompt_id, int):
 				raise ValueError("idea_id hase to be an integer")
 			
-			classes_for_idea =  self._load_classes_for_idea(user_prompt_id, session)
+			classes_for_idea =  self._load_classes_for_user_prompt(user_prompt_id, session)
 			
-			descriptions_for_idea = self._load_key_description_for_idea(user_prompt_id, session)
+			descriptions_for_idea = self._load_key_description_for_user_prompt(user_prompt_id, session)
 
 			rewritten_prompts = self._load_rewritten_prompts(user_prompt_id, session)
 			
@@ -322,82 +324,145 @@ class DatabaseManager:
 		finally:
 			session.close()
 	
-	# TODO: hier mit logging weiter machen
 	def _load_rewritten_prompts(self, idea_id, session):
 		"""loads all rewritten prompts with the idea_id i"""
 		try:
+			logger.info(f"load rewritten prompts from database...")
 			stmt = select(RewrittenPrompts.rewritten_prompt).where(RewrittenPrompts.idea_id == idea_id)
+			logger.debug(f"stmt for loading rewritten prompts from database: {stmt}")
+			
 			result = session.execute(stmt).all()
-
-			if result:
-				return result
-
-			return []
+			
+			if not result:
+				logger.warning(f"database request was not succesfull")
+				raise HTTPException(status_code=500, detail=f"rewritten prompts could not loaded from database")
+				
+				
+			logger.info(f"database request was successfull")
+			logger.debug(f"result from database request: {result}")
+			
+			return result
+		
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			logger.warning(f"Error with database: {e}")
+		
+			raise HTTPException(status_code=500, detail=e)
+		
+		except  HTTPException as e:
+			session.rollback()
+			raise HTTPException(status_code=500, detail=e)
 	
-	def _load_key_description_for_idea(self, idea_id, session):
+	def _load_key_description_for_user_prompt(self, user_prompt_id, session):
 		"""
 		returns descriptions wich have a key-key connection with the given idea_id
 		
 		from the Table DescriptionToIdea we get the description_id-row,
 		wich contains all key-key pairs for descriptions and idea_ids
 		"""
+		logger.info(f"lod key descriptions for user_prompt")
+		
 		descriptions: list[str] = []
 		try:
-			stmt = select(DescriptionToPrompt.description_id).where(DescriptionToPrompt.idea_id == idea_id)
-			# all description_id´s from the row in DescriptiontoIdea, where idea_id is 'idea_id'
+			stmt = select(DescriptionToPrompt.description_id).where(DescriptionToPrompt.user_prompt_id == user_prompt_id)
+			logger.debug(f"stmt for loading key descriptions for user prompt from database: {stmt}")
+			
+			# all description_id´s from the row in DescriptiontoIdea, where user_prompt:id is 'user_prompt_id'
 			result = session.execute(stmt).all()
 			
-			if result:
+			if not result:
+				logger.warning("databease request to Table: DescriptionToPrompt failed")
+				
+				raise HTTPException(status_code=500, detail=f"databease request to Table: DescriptionToPrompt failed")
+	
+			elif result:
+				logger.info(f"database request for load key descriptions for user prompt was succesfull")
+			
 				for i, description_id in enumerate(result):
+					logger.info(f"extracting descriptions from result from database")
+					
 					stmt_2 = select(KeyDescription.description).where(KeyDescription.description_id == description_id[0])
 					description: str = session.execute(stmt_2).first()
+					logger.debug(f"extracting description: {description} from result; description nmbr: {i +1}. of {len(result)}.")
+
 					if description:
 						descriptions.append(description)
-			return descriptions
+				
+			logger.info(f"loading of key descriptions for user prompt, was succesfull")
+		
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			raise HTTPException(status_code=500, detail=e)
 	
-	def _load_classes_for_idea(self, idea_id, session):
+		except HTTPException as e:
+			session.rollback()
+			raise HTTPException(status_code=500, detail=e)
+			
+	def _load_classes_for_user_prompt(self, user_prompt_id, session):
 		"""gives back all class_names from Table Classes, wich are True"""
 		try:
-			stmt = select(Classes).where(Classes.idea_id == idea_id)
+			logger.info(f"load classes for user_prompt")
+			
+			stmt = select(Classes).where(Classes.user_prompt_id == user_prompt_id)
+			logger.debug(f"stmt for loading prozess: {stmt}")
+			
 			result = session.scalars(stmt).first()
-			if result:
-				class_names = [
+			
+			if not result:
+				logger.warning(f"could not load classes for user_prompt from database")
+			
+				raise HTTPException(status_code=500, detail=f"could not load classes for user_prompt from database")
+				
+			elif result:
+				logger.info(f"Loding prozess form classes for user_prompt was succesfull")
+				
+				classes = [
 					column.name
 					for column in Classes.__table__.columns
 					if getattr(result, column.name) is True and column.name not in ("class_table_id", "idea_id")
 				]
-				return class_names
+				logger.debug(f"loades classes are: {classes}")
+				
+				return classes
 			
-			return []
 		except SQL_ALCHEMY_ERROR as e:
 			session.rollback()
-			raise e
+			raise HTTPException(status_code=500, detail=e)
+		
+		except HTTPException as e:
+			session.rollback()
+			raise HTTPException(status_code=500, detail=e)
+
 	
 	def save_generated_characters(self, characters: List[str], user_prompt_id):
 		"saves generated characters in db"
+		logger.info(f"save generated characters")
+		logger.debug(f"user_prompt_id: {user_prompt_id}; characters for saving: {characters}")
+		
 		session = self.Session()
 		try:
-			for character in characters:
-				# Debugging output
-				
+			for i, character in enumerate(characters):
 				character_entry = Character(user_prompt_id=user_prompt_id, character=character)
 				session.add(character_entry)
+				
+				logger.debug(f"saving character: {character}; character nmbr: {i + 1}. of {len(characters)}.")
 
 			session.commit()
+			
 		except SQL_ALCHEMY_ERROR as e:
+			logger.error(f"could not save cahracters in database: {e}")
+			
 			session.rollback()
-			raise e
+			raise HTTPException(status_code=500, detail=f"could not save cahracters in database: {e}")
+		
 		finally:
 			session.close()
 	
-	def delete_character_by_idea_id(self, idea_id: int):
+	def delete_character_by_user_prompt_id(self, user_prompt_id: int):
 		"""delets a idea_id (user_prompt) with all connected colums"""
+		logger.info(f"deleting character by user_prompt_id")
+		logger.debug(f"deleting character with user_prompt_id: {user_prompt_id}")
+
 		session = self.Session()
 		try:
 			# list of all models, which containing the idea_id as foregin_key
@@ -405,38 +470,67 @@ class DatabaseManager:
 
 			# looping thrue all models
 			for i, model in enumerate(models):
-
+				logger.debug(f"deleting character connection in table: {model}; table nmbr: {i +1}. of {len(models)}.")
+				
 				# deleting all colums with the idea_id == idea_id
-				stmt = delete(model).where(model.idea_id == idea_id)
+				stmt = delete(model).where(model.idea_id == user_prompt_id)
+				logger.debug(f"stm for deleting {model}: {stmt}")
+
 				session.execute(stmt)
 
 			session.commit()
+			
 		except SQL_ALCHEMY_ERROR as e:
+			logger.error(f"failed deleting character with user_prompt_id: {user_prompt_id}: {e}")
+			
 			session.rollback()
-			raise e
+			raise HTTPException(status_code=500, detail=f"failed deleting character with user_prompt_id: {user_prompt_id}: {e}")
+		
 		finally:
 			session.close()
 		
-	def load_characters(self, idea_id: int):
+	def load_characters(self, user_prompt_id: int):
 		"""Loads all four character with the foreign_key: idea_id"""
+		logger.info(f"loading character...")
+		logger.debug(f"loading character with user_prompt_id: {user_prompt_id}")
+		
 		session = self.Session()
+		
 		try:
-			stmt = select(Character).where(Character.idea_id == idea_id)
+			stmt = select(Character).where(Character.idea_id == user_prompt_id)
+			logger.debug(f"stmt for loading character: {stmt}")
 			results = session.execute(stmt).all()
 			
 			if results:
+				logger.info(f"loading prozess was succesfull")
 				# results is type: Row. Row is not JSON serializable, so it is transformed in a Tuple
 				results = [tuple(row) for row in results]
-		
+				logger.debug(f"loading prozess was succesfull; results: {results}")
+				
 				return results
+			
+			if not results:
+				raise HTTPException(status_code=500, detail=f"failed loading character from database, with user_prompt_id: {user_prompt_id}")
+	
 		except SQL_ALCHEMY_ERROR as e:
+			logger.error(f"failed loading character from database, with user_prompt_id: {user_prompt_id}: {e}")
+			
 			session.rollback()
-			raise e
+			raise HTTPException(status_code=500, detail=f"failed loading character from database, with user_prompt_id: {user_prompt_id}: {e}")
+		
+		except HTTPException as e:
+			logger.error(f"failed loading character from database, with user_prompt_id: {user_prompt_id}: {e}")
+
+			session.rollback()
+			raise HTTPException(status_code=500, detail=e)
+	
 		finally:
 			session.close()
 			
 	def load_user_prompt_ids(self):
 		"""loads all user_prompt_id´s form the database"""
+		logger.info(f"loading all user prompt id´s")
+		
 		session = self.Session()
 		
 		try:
@@ -447,15 +541,20 @@ class DatabaseManager:
 				# returns a list of user_prompt_id´s
 				return [i for i in result]
 		
+			if not result:
+				raise HTTPException(status_code=500, detail=f"failed loading user_prompt_id´s")
+				
 		except SQL_ALCHEMY_ERROR as e:
+			logger.error(f"failed loading user_prompt_id´s: {e}")
+
 			session.rollback()
-			raise e
+			raise HTTPException(status_code=500, detail=f"failed loading user_prompt_id´s: {e}")
+	
+		except HTTPException as e:
+			logger.error(f"failed loading user_prompt_id´s: {e}")
+			
+			session.rollback()
+			raise HTTPException(status_code=500, detail=e)
+	
 		finally:
 			session.close()
-			
-if __name__ == "__main__":
-	
-	db = DatabaseManager()
-	prompts = db.load_character_prompts(1)
-	print(prompts)
-	
