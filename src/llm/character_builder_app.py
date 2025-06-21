@@ -17,6 +17,7 @@ class CharacterBuilderApp:
 		logger.info(f"initialize CharacterBuilderApp")
 		
 		self.db = DatabaseManager()
+		# TODO: hier mit logging weiter machen
 		self.system_builder = SystemRequestBuilder(user_prompt_id)
 		self.mistral = TalkToMistral()
 		
