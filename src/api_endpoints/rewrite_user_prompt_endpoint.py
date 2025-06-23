@@ -12,12 +12,11 @@ from src.database.db_manager import DatabaseManager
 from src.llm.rewrite_user_prompt import RewriteUserPrompt
 from src.helper.logger import Logger
 
-logger = Logger("llm")
+logger = Logger("api")
 
 router = APIRouter()
 
 db_mngr = DatabaseManager()
-
 
 @router.post("/")
 async def rewrite_user_prompt(user_prompt: str):
@@ -27,6 +26,8 @@ async def rewrite_user_prompt(user_prompt: str):
 	saves rewritten_user_prompt and user_prompt to database
 	"""
 	try:
+		logger.debug(f"execute api endpoint 'rewrite user prompt")
+		logger.info(f"start rewriting user prompt...")
 		# instanziates RewriteUserPrompt class
 		rewrite = RewriteUserPrompt(user_prompt)
 		# analyses user_prompt and gives back rewritten_user_prompt
@@ -36,29 +37,35 @@ async def rewrite_user_prompt(user_prompt: str):
 		
 	except HTTPException as e:
 		if e.status_code == 400:
+			logger.error(f"Error with statuscode: 400: {e}")
 			raise HTTPException(status_code=400, detail=e)
 		
 		if e.status_code == 403:
+			logger.error(f"Error with statuscode: 403: {e}")
 			raise HTTPException(status_code=403, detail=e)
 		
 		else:
+			logger.error(f"Error with statuscode: 500: {e}")
 			raise HTTPException(status_code=500, detail=f"Internal Server error: {e}")
 	
 	except Exception as e:
+		logger.error(f"Error with statuscode: 500: {e}")
 		raise HTTPException(status_code=500, detail=f"Internal Server error: {e}")
 		
 	
 	# saves data in db
 	try:
+		logger.info(f"save rewritten data into database...")
 		db_mngr.save_rewritten_data(user_prompt, rewritten_user_prompt_json)
-		
-		return f"prompt: {user_prompt} and {rewritten_user_prompt} saved in database"
+		logger.info(f"saving rewritten data was sucessfull...")
 	
 	except (SQLAlchemyError, IntegrityError, OperationalError) as e:
 		# rollback is handled in 'save_rewritten_data' method.
+		logger.error(f"Error with database; statuscode: 500: {e}")
 		raise HTTPException(status_code=500, detail=f"Error with the database: {e}")
 	
 	except Exception as e:
+		logger.error(f"Error with statuscode: 500: {e}")
 		raise HTTPException(status_code=500, detail=f"Internal server error: {e}")
 	
 	
