@@ -57,8 +57,6 @@ from mpmath.libmp import str_to_man_exp
 from sqlalchemy import func, select, delete, create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError, PendingRollbackError
-
-from src.api_endpoints.rewrite_user_prompt_endpoint import rewrite_user_prompt
 from src.database.models import UserPrompt, Character, RewrittenPrompts, KeyDescription, DescriptionToPrompt, Classes, BestChar
 from src.handle_data.env_loader import EnvLoader
 from src.helper.logger import Logger
