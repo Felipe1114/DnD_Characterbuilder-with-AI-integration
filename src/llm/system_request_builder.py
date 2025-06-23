@@ -4,6 +4,7 @@ from src.handle_data.crud_txt import CrudTxtFiles
 from src.handle_data.env_loader import EnvLoader
 from src.helper.logger import Logger
 from fastapi import HTTPException
+from src.llm.system_messages import SYSTEM_MESSAGE_FOR_CHARACTER_GENERATION
 
 logger = Logger("llm")
 
@@ -24,10 +25,6 @@ class SystemRequestBuilder:
 				raise ValueError("idea_id has to be an integer")
 			
 			self.db = DatabaseManager()
-			
-			self.system_message_path = EnvLoader.system_message_rewrite_user_prompt()
-			logger.debug(f"initialize self.system_message_path as: {self.system_message_path}")
-			self.crud_message = CrudTxtFiles(self.system_message_path)
 			
 			self.class_data_template_path = EnvLoader.all_class_data_template()
 			logger.debug(f"initialize self.class_data_template_path as: {self.class_data_template_path}")
@@ -50,7 +47,7 @@ class SystemRequestBuilder:
 		"""gets the System message-template from the local storage"""
 		try:
 			logger.info(f"get system message tempalte")
-			system_message = self.crud_message.data
+			system_message = SYSTEM_MESSAGE_FOR_CHARACTER_GENERATION
 			logger.debug(f"system_message loaded as: {system_message}")
 			
 			return system_message

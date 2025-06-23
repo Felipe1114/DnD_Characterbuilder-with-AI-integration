@@ -20,11 +20,6 @@ class EnvLoader:
 		return os.getenv("MISTARL_API_KEY")
 	
 	@staticmethod
-	def system_message():
-		"""path for .txt file with System message for generating a dnd character"""
-		return os.getenv("SYSTEM_MESSAGE")
-	
-	@staticmethod
 	def all_class_data_template():
 		"""path for .txt file with the 'all class data' template, where all data for one class is stored and put into the sytem message"""
 		return os.getenv("ALL_CLASS_TEMPLATE")
@@ -43,11 +38,6 @@ class EnvLoader:
 	def static_dnd_data_dir():
 		"""path to static dnd data dir; main dir for all dnd data in local storage"""
 		return os.getenv("STATIC_DND_DATA_DIR")
-	
-	@staticmethod
-	def system_message_rewrite_user_prompt():
-		"""path for the system message to rewrite the user_prompt"""
-		return os.getenv("SYSTEM_MESSAGE_REWRITE_USER_PROMPT")
 	
 	@staticmethod
 	def log_dir():
