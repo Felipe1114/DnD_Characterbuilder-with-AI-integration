@@ -106,19 +106,19 @@ class DatabaseManager:
 			# saves user_prompt
 			self._save_user_prompt(prompt, session)
 
-			# generates a new 'idea_id'
-			stmt_new_idea = select(func.max(UserPrompt.idea_id))
-			new_idea_id = session.scalars(stmt_new_idea).first()
-			logger.debug(f"created 'new_idea_id' as: {new_idea_id}")
+			# generates a new 'user_prompt_id'
+			stmt_new_idea = select(func.max(UserPrompt.user_prompt_id))
+			new_user_prompt_id = session.scalars(stmt_new_idea).first()
+			logger.debug(f"created 'new_user_prompt_id' as: {new_user_prompt_id}")
 
 			# saves possible_classes
-			self._save_classes(possible_classes, new_idea_id, session)
+			self._save_classes(possible_classes, new_user_prompt_id, session)
 
 			# saves key_descriptions
-			self._save_key_descriptions(key_descriptions, new_idea_id, session)
+			self._save_key_descriptions(key_descriptions, new_user_prompt_id, session)
 
 			# saves rewritten_user_prompts
-			self._save_rewritten_prompts(new_idea_id, rewritten_prompts, session)
+			self._save_rewritten_prompts(new_user_prompt_id, rewritten_prompts, session)
 			session.commit()
 			
 		except SQL_ALCHEMY_ERROR as e:
@@ -147,7 +147,7 @@ class DatabaseManager:
 			logger.critical(f"Error with _save_user_prompt; status_code: 500; {e}")
 			raise HTTPException(status_code=500, detail=e)
 	
-	def _save_rewritten_prompts(self, new_idea_id, rewritten_prompts, session):
+	def _save_rewritten_prompts(self, new_user_prompt_id, rewritten_prompts, session):
 		"""saves the three rewritten user_prompts in db"""
 		try:
 			logger.info(f"save rewritten prompts")
@@ -155,7 +155,7 @@ class DatabaseManager:
 			for i, r_prompt in enumerate(rewritten_prompts):
 				logger.debug(f"save rewritten prompt: {r_prompt} from rewritten_prompts: {rewritten_prompts}; prompt nmbr: {i +1 }. of {len(rewritten_prompts)}.")
 				
-				rewritten_prompt = RewrittenPrompts(idea_id=new_idea_id, rewritten_prompt=r_prompt)
+				rewritten_prompt = RewrittenPrompts(user_prompt_id=new_user_prompt_id, rewritten_prompt=r_prompt)
 				logger.debug(f"add rewritten_prompt: {rewritten_prompt} to table RewrittenPrompts")
 				
 				session.add(rewritten_prompt)
@@ -210,13 +210,13 @@ class DatabaseManager:
 			logger.critical(f"Error with _save_rewritten_prompts; status_code: 500; {e}")
 			raise HTTPException(status_code=500, detail=e)
 	
-	def _save_classes(self, possible_classes, new_idea_id, session):
+	def _save_classes(self, possible_classes, new_user_prompt_id, session):
 		"""saves the three best fitting dnd-classes for user_prompt in db"""
 		try:
 			logger.info(f"save possible classes; extracted from user_prompt")
 			logger.debug(f"save possible classes: {possible_classes};  extracted from user_prompt")
 			
-			dnd_classes = Classes(idea_id=new_idea_id,
+			dnd_classes = Classes(user_prompt_id=new_user_prompt_id,
 								  barbarian='barbarian' in possible_classes,
 								  bard='bard' in possible_classes,
 								  cleric='cleric' in possible_classes,
@@ -288,9 +288,9 @@ class DatabaseManager:
 		
 		session = self.Session()
 		try:
-			# checks if idea_id is an interger
+			# checks if user_prompt_id is an interger
 			if not isinstance(user_prompt_id, int):
-				raise ValueError("idea_id hase to be an integer")
+				raise ValueError("user_prompt_id hase to be an integer")
 			
 			classes_for_idea =  self._load_classes_for_user_prompt(user_prompt_id, session)
 			
@@ -322,11 +322,11 @@ class DatabaseManager:
 		finally:
 			session.close()
 	
-	def _load_rewritten_prompts(self, idea_id, session):
-		"""loads all rewritten prompts with the idea_id i"""
+	def _load_rewritten_prompts(self, user_prompt_id, session):
+		"""loads all rewritten prompts with the user_prompt_id i"""
 		try:
 			logger.info(f"load rewritten prompts from database...")
-			stmt = select(RewrittenPrompts.rewritten_prompt).where(RewrittenPrompts.idea_id == idea_id)
+			stmt = select(RewrittenPrompts.rewritten_prompt).where(RewrittenPrompts.user_prompt_id == user_prompt_id)
 			logger.debug(f"stmt for loading rewritten prompts from database: {stmt}")
 			
 			result = session.execute(stmt).all()
@@ -353,10 +353,10 @@ class DatabaseManager:
 	
 	def _load_key_description_for_user_prompt(self, user_prompt_id, session):
 		"""
-		returns descriptions wich have a key-key connection with the given idea_id
+		returns descriptions wich have a key-key connection with the given user_prompt_id
 		
 		from the Table DescriptionToIdea we get the description_id-row,
-		wich contains all key-key pairs for descriptions and idea_ids
+		wich contains all key-key pairs for descriptions and user_prompt_ids
 		"""
 		logger.info(f"lod key descriptions for user_prompt")
 		
@@ -417,7 +417,7 @@ class DatabaseManager:
 				classes = [
 					column.name
 					for column in Classes.__table__.columns
-					if getattr(result, column.name) is True and column.name not in ("class_table_id", "idea_id")
+					if getattr(result, column.name) is True and column.name not in ("class_table_id", "user_prompt_id")
 				]
 				logger.debug(f"loades classes are: {classes}")
 				
@@ -457,21 +457,21 @@ class DatabaseManager:
 			session.close()
 	
 	def delete_character_by_user_prompt_id(self, user_prompt_id: int):
-		"""delets a idea_id (user_prompt) with all connected colums"""
+		"""delets a user_prompt_id (user_prompt) with all connected colums"""
 		logger.info(f"deleting character by user_prompt_id")
 		logger.debug(f"deleting character with user_prompt_id: {user_prompt_id}")
 
 		session = self.Session()
 		try:
-			# list of all models, which containing the idea_id as foregin_key
+			# list of all models, which containing the user_prompt_id as foregin_key
 			models = [UserPrompt, DescriptionToPrompt, RewrittenPrompts, Classes, Character, BestChar]
 
 			# looping thrue all models
 			for i, model in enumerate(models):
 				logger.debug(f"deleting character connection in table: {model}; table nmbr: {i +1}. of {len(models)}.")
 				
-				# deleting all colums with the idea_id == idea_id
-				stmt = delete(model).where(model.idea_id == user_prompt_id)
+				# deleting all colums with the user_prompt_id == user_prompt_id
+				stmt = delete(model).where(model.user_prompt_id == user_prompt_id)
 				logger.debug(f"stm for deleting {model}: {stmt}")
 
 				session.execute(stmt)
@@ -488,14 +488,14 @@ class DatabaseManager:
 			session.close()
 		
 	def load_characters(self, user_prompt_id: int):
-		"""Loads all four character with the foreign_key: idea_id"""
+		"""Loads all four character with the foreign_key: user_prompt_id"""
 		logger.info(f"loading character...")
 		logger.debug(f"loading character with user_prompt_id: {user_prompt_id}")
 		
 		session = self.Session()
 		
 		try:
-			stmt = select(Character).where(Character.idea_id == user_prompt_id)
+			stmt = select(Character).where(Character.user_prompt_id == user_prompt_id)
 			logger.debug(f"stmt for loading character: {stmt}")
 			results = session.execute(stmt).all()
 			
