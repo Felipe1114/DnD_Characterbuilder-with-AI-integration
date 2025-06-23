@@ -1,116 +1,135 @@
-"""
-Basis-Klasse für alle 12 DnD-Klassen.
-Stellt die Grundstruktur für Subklassen bereit.
-
-Nutzung der Klasse:
-1. zuerst mus in die instanzierte Klase ein dnd_class_dict und ein class_nme eingefügt werden
-2. dann 'initialize_all_data(self) ausführen
-	füllt self.spells, self.levels u. self.subclasses mit daten (von der api)
-comment zu 2:
-	da die geladenen spells, levels und subclass daten noch keine beschreibung der einzelnen datensäzte haben
-	werden in punkt 3 für jeden spell, level/feature und subclass spell/feature, die descriptions von der api angefragt
-3. spell_details, level_details und subclass_details ausführen
-	lädt alle descriptions der spells, level/features, etc...
-
-
-
-"""
-
 from src.dnd_api.dnd_details_fetcher import DnDDetailsFetcher
 from src.helper.progress_tracker import ProgressTracker
+from src.helper.logger import Logger
+from fastapi import HTTPException
+
+logger = Logger("dnd_api")
 
 BASE_URL = "https://www.dnd5eapi.co"
 
-# Diese Klasse verwaltet die Daten einer DnD-Klasse aus der 5e API.
-# Sie lädt und verarbeitet Informationen über Zauber, Level und Subklassen.
 class ClassDetails:
+	"""Class loads all detailed information witch are not in the 'base' dictionary of a dnd-claass
+	
+	The loades details are not enough. They need more descriptions.
+	So the progranmm prozess is:
+		1. load detail data form base-data
+		2. load descriptions for each detail-data
+	"""
 	def __init__(self, data: dict, class_name: str):
-		"""Initialisiert die Klasse mit Basisdaten und prüft den Klassennamen."""
-		self.data = data # ein dict mit base-daten einer DnD Klasse
-		self.class_name = self.data.get('name', '').lower()
-		self.d_fetcher = DnDDetailsFetcher()
+		try:
+			logger.info(f"initialize ClassDeteails as: {__name__}")
+			
+			self.data = data # the 'base-data' dict of a dnd class
+			logger.debug(f"initialzing prozess for ClassDetails: self.data: {self.data}")
+			self.class_name = self.data.get('name', '').lower()
+			logger.debug(f"initialzing prozess for ClassDetails: self.class_name: {self.class_name}")
 		
-		# überpft, ob das dictionary auch die daten der richtigen Klasse enthält
-		if self.class_name != class_name.lower():
-			raise ValueError(f"Wrong data input. Expected '{class_name}', got '{self.class_name}'.")
-		
-		# detaiil daten ohne descriptions
-		self.spells = None
-		self.levels = None
-		self.subclasses = None
-		
-		# detaiil daten mit descriptions
-		self.enriched_spells = None
-		self.enriched_levels = None
-		self.enriched_subclasses = [] # da es mögl. mehr subclasses gibt, ist hier eine leere Liste, statt None
+			self.d_fetcher = DnDDetailsFetcher()
+			
+			
+			if self.class_name != class_name.lower():
+				logger.warning(f"wrong class_name in ClassDetails")
+				
+				raise ValueError(f"Wrong data input. Expected '{class_name}', got '{self.class_name}' instead.")
+			
+			# detail data without desccirptions
+			self.spells = None
+			logger.debug(f"initialzing prozess for ClassDetails: self.spells: {self.spells}")
 
+			self.levels = None
+			logger.debug(f"initialzing prozess for ClassDetails: self.levels: {self.levels}")
+
+			self.subclasses = None
+			logger.debug(f"initialzing prozess for ClassDetails: self.subclass: {self.subclasses}")
+
+			# detail data with descriptions
+			self.enriched_spells = None
+			logger.debug(f"initialzing prozess for ClassDetails: self.enriched_spells: {self.enriched_spells}")
+
+			self.enriched_levels = None
+			logger.debug(f"initialzing prozess for ClassDetails: self.enriched_levels: {self.enriched_levels}")
+
+			self.enriched_subclasses = [] # cause in a further version their will be more than one sublcass, here is an empty list, insted None
+			logger.debug(f"initialzing prozess for ClassDetails: self.enriched_sublcass: {self.enriched_subclasses}")
+
+		except ValueError as e:
+			raise HTTPException(status_code=500, detail=f"Internal Server error: {e}")
+		
 	def initialize_all_data(self):
-		"""Initialisiert alle Basisdaten: Zauber, Level und Subklassen."""
-		# Überprüfen, ob Zauber vorhanden sind und laden
+		"""loads all detail data from the base data dict"""
+		# if spells are in base data dict, load spells
 		self.spells = self.load_spells() if 'spells' in self.data else []
-		# Laden der Leveldaten
+		# loads detail data for levels
 		self.levels = self.load_levels()
-		# Laden der Subklassendaten
+		# loads detail data for sublcasses
 		self.subclasses = self.load_subclasses()
 
 	def load_spells(self):
-		"""Lädt die Zauberinformationen für die Klasse."""
-		# API-Call zur Zauber-URL
+		"""load details for spells"""
 		url = f"{BASE_URL}{self.data['spells']}"
 		
 		self.d_fetcher.detail_url = url
 		
-		# führt api spell-request aus und gibt api spell-response zurück
+		logger.info(f"loading spells for class: {self.class_name}")
+		
 		return self.d_fetcher.load_data()
 
 	def load_levels(self):
-		"""Lädt die Levelinformationen für die Klasse."""
-		# erstellt request-url für class_levels
+		"""loads detail data for level"""
 		url = f"{BASE_URL}{self.data['class_levels']}"
 		
-		# setzt detail_url auf class_level request url
 		self.d_fetcher.detail_url = url
 		
-		# führt api level-request aus und gibt api level-response zurück
+		logger.info(f"loading levels for class: {self.class_name}")
+
 		return self.d_fetcher.load_data()
 
 	def load_subclasses(self):
-		"""Lädt die Subklasseninformationen für die Klasse."""
-		# Erstellen von URLs für alle Subklassen
+		"""loads detils for subclass data
+		
+		cause in the future their will be more subclasses, this method contains the logic for the loading porcess of more than one subclass
+		"""
+		logger.info(f"loading subclasses for class: {self.class_name}")
+		
 		urls = [f"{BASE_URL}{entry['url']}" for entry in self.data.get('subclasses', [])]
 		all_data = []
 		
 		for i, url in enumerate(urls):
 			self.d_fetcher.detail_url = url
-			# führt api sublcass-request aus und gibt api subclass-response zurück
+
 			data = self.d_fetcher.load_data()
+			
+			logger.debug(f"loading subclass nmbr: {i + 1}. for class: {self.class_name}")
 			if data:
 				all_data.append(data)
 		
-		# führt api spell-request aus und gibt api spell-response zurück
-
-		# gibt hier nicht self.d_fetcher.load_data zurück, da mehrere 'loadt_data' calls gemacht werden müssen
+	
 		return all_data
 
 	def spell_details(self):
-		"""Lädt detaillierte Informationen zu den Zaubern der Klasse."""
+		"""loads descriptions for spell_data"""
+		logger.info(f"loading spell_details for class: {self.class_name}")
+		
 		if not self.spells:
+			logger.debug(f"No spells in class_data of class: {self.class_name}")
 			return []
 		
-		# Fortschrittsverfolgung für das Laden der Zauber
+		# progress tracker for user interface
 		tracker = ProgressTracker(self.spells.get("count", 0), task_name=f"{self.class_name}-spell_details")
 		detailed_spells = []
 
 		for i, spell in enumerate(self.spells.get("results", [])):
-			# API-Call zur Zauber-URL
+			
+			logger.debug(f"loading spell_details for spell: {spell}; spell {i+1}. of {len(self.spells.get("results", []))}.")
+			
 			url = f"{BASE_URL}{spell['url']}"
 			
-			# setzt die url für den fetching prozess
 			self.d_fetcher.detail_url = url
 			details = self.d_fetcher.load_data()
 			
+			# creates a new dict, with the spell data and its descriptions
 			detailed_spells.append({
-			    "index": spell["index"],
+			    "searched_index": spell["searched_index"],
 			    "name": spell["name"],
 			    "level": spell.get("level"),
 			    "details": details
@@ -120,136 +139,177 @@ class ClassDetails:
 
 		tracker.done()
 		
-		# speichere spells zwischen
+		logger.debug(f"spell_data with details saved in self.enriched_spells")
+		
+		# save spell data with descriptions
 		self.enriched_spells = detailed_spells
 
 	def level_details(self):
-		"""Lädt detaillierte Informationen zu den Leveln der Klasse.
-		"""
-		# Fortschrittsverfolgung für das Laden der Level
-		tracker = ProgressTracker(len(self.levels), task_name=f"{self.class_name}-level/feature details")
-		# leere liste die später in self.enriched_levels gespeichert wird
-		# überprüft, ob self.levels überhaupt daten enthält
-		if not self.levels:
-			raise ValueError("self.data enthält keine daten!!!")
+		"""loads descriptions for level data"""
+		try:
+			logger.info(f"loading level_details for class: {self.class_name}")
 			
-		enriched_levels = []
+			# progress tracker for user interface
+			tracker = ProgressTracker(len(self.levels), task_name=f"{self.class_name}-level/feature details")
 		
-		# geht jedes der 20 level in self.levels durch
-		for i, level in enumerate(self.levels):
-			features = []
-
-			# es wird über die features, in level iteriert
-			for feature in level.get('features', []):
-				# API-Call zur Feature-URL
-				url = f"{BASE_URL}{feature['url']}"
+			# does self.levels hase data?
+			if not self.levels:
+				logger.warning(f"No data in self.levels in class: ClassDetails")
 				
-				# url für api zugriff wird in fetcher gesetzt
-				self.d_fetcher.detail_url = url
-				details = self.d_fetcher.load_data()
-				if details:
-					features.append({
-					    "index": feature["index"],
-					    "name": feature["name"],
-					    "details": details
-					})
-				else:
-					raise ValueError(f"Error: Fehler beim laden von: {self.class_name}-feature: {url}")
+				raise ValueError(f"self.data: {self.data} has no data!!!")
 				
-				tracker.update(message=f'loading level/feature details{url}')
-
-			enriched_levels.append({
-									"level": level["level"],
-			                        "ability_score_bonuses": level["ability_score_bonuses"],
-			                        "prof_bonus": level["prof_bonus"],
-			                        "features": features,
-			                        "spellcasting": level.get("spellcasting", None),
-			                        "class_specific": level["class_specific"],
-			                        "index": level["index"],
-			                        })
-
-		# angefragte daten abspeichern
-		self.enriched_levels = enriched_levels
-		tracker.done()
+			enriched_levels = []
+			
+			# iterates over each level and each feature in each level. 1 level of nested loops
+			# level iteration
+			for i, level in enumerate(self.levels):
+				logger.debug(f"loading details for level: {level}; level {i+1}. of {len(self.levels)}.")
+				
+				features = []
 		
-
-
-
+				# feature iteration
+				for i, feature in enumerate(level.get('features', [])):
+					
+					logger.debug(f"loading feature: {feature} of level: {level}; feature nmbr: {i +1} of {len(level.get('features', []))}.")
+					
+					url = f"{BASE_URL}{feature['url']}"
+					
+					self.d_fetcher.detail_url = url
+					details = self.d_fetcher.load_data()
+					
+					# creates a new dict with level features and its descriptions
+					if details:
+						features.append({
+						    "searched_index": feature["searched_index"],
+						    "name": feature["name"],
+						    "details": details
+						})
+					
+					else:
+						logger.warning(f"Error with url: {url}")
+						
+						raise ValueError(f"Error: Error of loading: {self.class_name}-feature: {url}")
+					
+					tracker.update(message=f'loading level/feature details{url}')
+				
+				# create new dict with the current level and its new feature dict with their descriptions
+				enriched_levels.append({
+										"level": level["level"],
+				                        "ability_score_bonuses": level["ability_score_bonuses"],
+				                        "prof_bonus": level["prof_bonus"],
+				                        "features": features,
+				                        "spellcasting": level.get("spellcasting", None),
+				                        "class_specific": level["class_specific"],
+				                        "searched_index": level["searched_index"],
+				                        })
+		
+			self.enriched_levels = enriched_levels
+			
+			logger.debug(f"enriched_levels savend in self.enriched_levels in class ClassDetails")
+			
+			tracker.done()
+			
+		except ValueError as e:
+			raise HTTPException(status_code=500, detail=f"Internal Server error: {e}")
+		
 	def subclass_details(self):
-		"""Lädt detaillierte Informationen zu den Subklassen der Klasse."""
-		# Fortschrittsverfolgung für das Laden der Subklassen
+		"""loads descripitions for subclass data"""
+		# progress tracker für user interface
+		logger.info(f"loading subclass_details")
+		
 		tracker = ProgressTracker(len(self.subclasses), task_name=f"{self.class_name}-subclasses")
 		
 		for i, subclass in enumerate(self.subclasses):
+			logger.debug(f"loading subclass: {subclass} of subclasses: {self.subclasses}; subclass nmbr: {i +1} of {len(self.subclasses)}")
+			
 			tracker.update(message='loading subclasses')
 			self._enrich_subclass(subclass)
 		
 		tracker.done()
 
 	def _enrich_subclass(self, subclass):
-		"""Ergänzt die Subklasseninformationen mit Zaubern und Leveln/features."""
-		# Spells
-		if 'spells' in subclass:
-			subclass_spells = []
-			spell_list = subclass.get('spells', [])
-			# Fortschrittsverfolgung für das Laden der Subklassenzauber
-			spell_tracker = ProgressTracker(len(spell_list), task_name=f"{self.class_name}-subclass:{subclass['name']} spells")
-
-			for s, spell_entry in enumerate(spell_list):
-				spell = spell_entry.get('spell', {})
-				# API-Call zur Zauber-URL
-				url = f"{BASE_URL}{spell.get('url')}"
-				self.d_fetcher.detail_url = url
-				details = self.d_fetcher.load_data()
-				
-				subclass_spells.append({
-				    "index": spell.get("index"),
-				    "name": spell.get("name"),
-				    "prerequisites": spell_entry.get("prerequisites"),
-				    "details": details
-				})
-				
-				spell_tracker.update(message=f'loading {subclass['name']} spells:{url}')
-			
-			spell_tracker.done()
-			subclass['spells'] = subclass_spells
-
-		# Subclass Levels
+		"""loads the spells for the subclass"""
+		self._load_subclass_spells(subclass)
+		self._load_subclass_levels(subclass)
+		
+		self.enriched_subclasses.append(subclass)
+	
+	def _load_subclass_levels(self, subclass):
+		"""loading levels for subclass"""
+		logger.info(f"load subclass levels")
+		
 		if 'subclass_levels' in subclass:
-			# API-Call zur Subclass Levels-URL
 			url = f"{BASE_URL}{subclass['subclass_levels']}"
 			self.d_fetcher.detail_url = url
 			levels = self.d_fetcher.load_data()
 			
-			# Fortschrittsverfolgung für das Laden der Subklassenzauber
-			feature_tracker = ProgressTracker(len(levels), task_name=f"{self.class_name}-subclass:{subclass['name']} levels/features")
-
-			for level in levels:
+			# progress tracker for uster interface
+			tracker = ProgressTracker(len(levels),
+			                                  task_name=f"{self.class_name}-subclass:{subclass['name']} levels/features")
+			
+			for i, level in enumerate(levels):
+				logger.debug(f"loading subclass level: {level} of levels: {levels}; level nmbr: {i +1}. of {len(levels)}.")
+				
+				logger.info(f"laoding features for levels in subclass")
+				
 				features = []
-				for feature in level.get('features', []):
+				for i, feature in enumerate(level.get('features', [])):
+					logger.debug(f"loading feature: {feature} of level: {level}; feature nmbr: {i + 1}. of {len(level.get('features', []))}.")
+					
 					# API-Call zur Feature-URL
 					f_url = f"{BASE_URL}{feature['url']}"
 					self.d_fetcher.detail_url = f_url
 					details = self.d_fetcher.load_data()
 					features.append({
-					    "index": feature["index"],
-					    "name": feature["name"],
-					    "details": details
+						"searched_index": feature["searched_index"],
+						"name": feature["name"],
+						"details": details
 					})
 					
-					feature_tracker.update(message=f'loading {subclass['name']} levels/features: {f_url}')
-
+					tracker.update(message=f'loading {subclass['name']} levels/features: {f_url}')
+				
 				level["features"] = features
-
+			
 			subclass['subclass_levels'] = levels
 			
-			self.enriched_subclasses.append(subclass)
-
-
+	
+	def _load_subclass_spells(self, subclass):
+		"""loading spells for subclass"""
+		logger.info(f"loading spells for subclass")
+		
+		if 'spells' in subclass:
+			subclass_spells = []
+			spell_list = subclass.get('spells', [])
+			# progress tracker for user interface
+			tracker = ProgressTracker(len(spell_list),
+			                          task_name=f"{self.class_name}-subclass:{subclass['name']} spells")
+			
+			for i, spell_entry in enumerate(spell_list):
+				logger.debug(f"loading spell: {spell} of subclass: {subclass}; spell numbr: {i +1}. of {len(spell_list)}.")
+				
+				spell = spell_entry.get('spell', {})
+				url = f"{BASE_URL}{spell.get('url')}"
+				self.d_fetcher.detail_url = url
+				details = self.d_fetcher.load_data()
+				
+				subclass_spells.append({
+					"searched_index": spell.get("searched_index"),
+					"name": spell.get("name"),
+					"prerequisites": spell_entry.get("prerequisites"),
+					"details": details
+				})
+				
+				tracker.update(message=f'loading {subclass['name']} spells:{url}')
+			
+			tracker.done()
+			
+			subclass['spells'] = subclass_spells
+	
 	def initialize_all_details(self) -> tuple:
-		"""Lädt alle Details: Zauber, Level und Subklassen."""
+		"""puts all loading funktions togeter. Loads all detail data for class_data"""
 		if self.spells:
 			self.spell_details()
 		self.level_details()
 		self.subclass_details()
+		
 		return self.enriched_spells, self.enriched_levels, self.enriched_subclasses

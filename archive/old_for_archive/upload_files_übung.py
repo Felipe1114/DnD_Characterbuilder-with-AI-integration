@@ -1,11 +1,8 @@
 
 from mistralai import Mistral
 from mistralai.models.sdkerror import SDKError
-from src.helper.debug_log import DebugLog
-from src.llm.talk_to_mistral import TalkToMistral
 
-# TODO daten nur mit f-string anhängen!!!
-@DebugLog.debug_log
+
 def upload_files_to_mistral():
 	api_key = "EBBtyAxkHIZOWJcTz3AzsTH0xyDKcDKt"
 	file_path = "../jsonl_test_files/test_beta-a7_2.jsonl"
@@ -28,7 +25,6 @@ def upload_files_to_mistral():
 		file_path_message = f"\nfile wiht error: {file_path!r}; \n{e}"
 		raise SDKError(file_path_message)
 
-@DebugLog.debug_log
 def upload_files_with_response():
 	try:
 		# Retrieve the API key from environment variables

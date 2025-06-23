@@ -5,18 +5,21 @@ It prints - if activated - given data in the terminal und gives info, what data 
 import inspect
 from src.handle_data.crud_json import CrudJsonFiles
 
+
 class DebugHelper:
+	_activ = True
+	
 	"""prints data for checking erros in files"""
 	@staticmethod
 	def activ(activ: bool=True):
-		"""sets the DebugHelper activ oder inaktiv
+		"""sets the class variable to activ oder inactiv
 		
 		can be put on top on a code-file in outerscope, to activate oder deactivate the DebugHelper
 		"""
 		try:
 			# checks, if input is a bool
 			if isinstance(activ, bool):
-				return activ
+				DebugHelper._activ = activ
 			
 			raise ValueError("Argument for DebugHelper.active has to be a bool!")
 			
@@ -31,7 +34,7 @@ class DebugHelper:
 		"""
 		
 		# if DebugHelper is activeted
-		if DebugHelper.activ() and active:
+		if DebugHelper._activ and active:
 			# create a frame for the file
 			
 			frame = inspect.currentframe()
@@ -39,17 +42,17 @@ class DebugHelper:
 				# where did the printet data came from?
 				caller_frame = frame.f_back
 				if caller_frame is not None:
-					# Hole den Dateinamen und die Zeilennummer
+					# gets file_name and line_number
 					file_name = caller_frame.f_code.co_filename
 					line_number = caller_frame.f_lineno
-					# Gib die Debug-Informationen aus
+					# prints debuging information
 					print(f"------------------------------------------------------------------------------------------------------------------------------------------------------\n"
 					      f"Debug: {file_name}, line {line_number}: ")
 			finally:
-				# Wichtig: Lösche den Frame, um Speicherlecks zu vermeiden
+				# delete frame, for storage efficiency
 				del frame
 			
-			# Führe den eigentlichen Print aus
+			# prints the infomation about the data stored in the variable
 			print(f"data description:\n{data_description}; \n")
 			
 			# if the data_type should also be printed

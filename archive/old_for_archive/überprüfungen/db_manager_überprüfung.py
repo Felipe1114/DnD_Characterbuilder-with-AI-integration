@@ -3,7 +3,7 @@
 - kömnnen daten aus der db gelesen werden?
 - können objekte aus der db gelöscht werden?
 """
-from src.database.models import Base, CharIdea, Character, RewrittenPrompts, KeyDescription, DescriptionToIdea, Classes, \
+from src.database.models import Base, UserPrompt, Character, RewrittenPrompts, KeyDescription, DescriptionToPrompt, Classes, \
 	BestChar, AnalysedPrompt
 from src.database.db_manager import DatabaseManager
 from sqlalchemy import create_engine, select
@@ -26,7 +26,7 @@ def ue_save_user_prompt(db):
 	
 	session = db.Session()
 	# daten in db gespeichert
-	db.save_user_prompt(prompt, analysed_result)
+	db.save_rewritten_data(prompt, analysed_result)
 	
 	stmt = select(RewrittenPrompts)
 	result = session.execute(stmt).all()

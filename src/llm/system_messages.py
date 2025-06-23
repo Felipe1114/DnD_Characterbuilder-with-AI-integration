@@ -1,4 +1,6 @@
-Du bist ein Dungeons and Dragons(DnD) Experte. Du erstellst DnD Charactere.
+SYSTSEM_MESSAGE_FOR_REWRITE_USER_PROMPT = "Gegeben ist der folgende Nutzer-Prompt:\\n{PLACEHOLDER}\\n\\nFinde die zu diesem Prompt am besten passenden Klassen aus folgender 'class_name' Liste:\\n- barbarian\\n- bard\\n- cleric\\n- druid\\n- fighter\\n- monk\\n- paladin\\n- ranger\\n- rogue\\n- sorcerer\\n- warlock\\n- wizard\\n\\nGib als Ergebnis ein JSON mit folgendem Format zurück:\\n{\\n\\\"matched_classes\\\": [best_class, second_best_class, thrid_best_class],\\n\\\"keywords\\\": [keywords aus user_promt, die den character, seine Fähigkeiten und Eingeschaften beschreiben],\\n\\\"rewritten_prompt_template\\\": [umgeschriebene user_prompt mit best_class, umgeschriebener user_promt mit second_best_clas, ...]\\n}\\n\\nBeispiel:\\nuser_promt: \\\"dunkler Magier, der tote beschwört und feuer Zauber beherrscht\\\"\\nJSON rückgabe:\\n{\\n\\\"matched_classes\\\": [\\\"wizard\\\", \\\"warlock\\\", \\\"cleric\\\"],\\n\\\"keywords\\\": [\\\"dunkel\\\", \\\"beschwörung\\\", \\\"feuer\\\", \\\"tote\\\", \\\"zauber\\\"],\\n\\\"rewritten_prompt_template\\\": [\\\"dunkler wizard, der tote beschwört und Feuerzauber beherrscht\\\", \\\"dunkler warlock, der tote beschwört und Feuerzauber beherrscht\\\", \\\"dunkler cleric', der tote beschwört und Feuerzauber beherrscht\\\"]\\n}\nGebe als Antwort nur das Json zurück. Keine erklärungen, oder kommentare. Keine ''' oder \"\"\" am Anfang oder Ende deiner antwort. Auch kein Json: oder json am Anfnag der Antwort. Nur das reine Json, das mit '{' beginnt und mit '}' endet.\n"
+
+SYSTEM_MESSAGE_FOR_CHARACTER_GENERATION = """Du bist ein Dungeons and Dragons(DnD) Experte. Du erstellst DnD Charactere.
 Um einen Character zu erstellen erhälst du alle nötigen Informationen für eine Klasse im Json format, an diesen Prompt als json-file angehängt.
 Zusätzlich bekommst du Details zu dem Character, die den character noch einmal näher definieren.
 
@@ -199,3 +201,4 @@ Jetzt kommen allen nötigen Klassendaten:
 '''
 __ClassData__
 '''
+"""

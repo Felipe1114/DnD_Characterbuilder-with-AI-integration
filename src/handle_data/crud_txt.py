@@ -1,11 +1,14 @@
 from src.handle_data.crud_base import CrudBase
+from src.helper.logger import Logger
+
+logger = Logger("data_handler")
 
 class CrudTxtFiles(CrudBase):
 	"""
 	handels crud operations on .txt files
 	
 	Class Variables form __init__:
-		self.data_path -> data_paht
+		self.data_path -> data_path
 		self._pure_path -> PurePathClass
 		self._parent_path = -> the path before the 'file_name' like: ../crud_txt.py
 	"""
@@ -48,7 +51,13 @@ class CrudTxtFiles(CrudBase):
 		"""saves data in a new file"""
 		self._save(new_data)
 	
-	def reset(self, empty_data=""):
+	def reset(self, empty_data: str=""):
 		"""resets a .txt file - per default - with an empty string'"""
-		self._save(empty_data)
+		# checks if correct empty data type is given for 'empty_data'
+		if not empty_data in ['']:
+			logger.warning(
+				f"Error with reset .txt-file: {self.data_path}; got wrong Value: {empty_data} instead of [] or {"{}"}")
+			raise ValueError("empty_data has to be '' (empty string)")
+		
+		super().reset(empty_data)
 	

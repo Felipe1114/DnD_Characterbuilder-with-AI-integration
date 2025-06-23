@@ -1,90 +1,76 @@
 """
-Dieses Modul definiert die Datenbankmodelle für das DnD Characterbuilder-Projekt
-auf Basis der überarbeiteten Datenbankstruktur. Die Klassen beschreiben die
-Tabellenstruktur für Charakterideen, generierte Charaktere, analysierte Prompts,
-Beschreibungen, Klassen und Bewertungen.
+
 """
 from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, JSON
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
 
-class AnalysedPrompt(Base):
+class UserPrompt(Base):
     """
-    Enthält die analysierten Prompts, die für die Generierung von Charakteren verwendet werden.
+	Contains the character ideas (the user_prompt) for the generation of a DnD Character	
     """
-    __tablename__ = 'analysed_prompts'
-    analysed_prompt_id = Column(Integer, primary_key=True, autoincrement=True)
-    idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
-    analysed_prompt = Column(Text)
-
-    idea = relationship("CharIdea", back_populates="analysed_prompt")
-
-class CharIdea(Base):
-    """
-    Enthält die vom Benutzer eingegebenen Ideen (Prompts), auf denen Charaktere basieren.
-    """
-    __tablename__ = 'char_ideas'
-    idea_id = Column(Integer, primary_key=True, autoincrement=True)
+    __tablename__ = 'user_prompt'
+    user_prompt_id = Column(Integer, primary_key=True, autoincrement=True)
     user_prompt = Column(Text)
 
-    characters = relationship("Character", back_populates="idea")
-    analysed_prompt = relationship("AnalysedPrompt", uselist=False, back_populates="idea")
-    best_char = relationship("BestChar", uselist=False, back_populates="idea")
-    class_table = relationship("Classes", uselist=False, back_populates="idea")
-    idea_descriptions = relationship("DescriptionToIdea", back_populates="idea")
-    rewritten_user_prompts = relationship("RewrittenPrompts", back_populates="idea")
+    character = relationship("Character", back_populates="prompt")
+    rewritten_prompt = relationship("RewrittenPrompts", uselist=False, back_populates="prompt")
+    best_char = relationship("BestChar", uselist=False, back_populates="prompt")
+    class_table = relationship("Classes", uselist=False, back_populates="prompt")
+    idea_descriptions = relationship("DescriptionToPrompt", back_populates="prompt")
+    rewritten_user_prompts = relationship("RewrittenPrompts", back_populates="prompt")
 
 class RewrittenPrompts(Base):
     """
-    Enthält die umgeschriebenen Prompts aus dem user_prompt für die llm anfrage.
+    Contains the rewritten Prommpts from the rewrite process of the POST api endpoint
     """
     __tablename__ = 'rewritten_user_prompts'
     rewritten_prompt_id = Column(Integer, primary_key=True, autoincrement=True)
-    idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
+    user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'))
     rewritten_prompt = Column(String)
 
-    idea = relationship("CharIdea", back_populates="rewritten_user_prompts")
+    prompt = relationship("UserPrompt", back_populates="rewritten_user_prompts")
 
 class Character(Base):
     """
-    Repräsentiert einen generierten Charakter und enthält dessen Daten als JSON.
+	Contains the DnD character in form of a JSON-like dict
     """
-    __tablename__ = 'characters'
+    __tablename__ = 'character'
     character_id = Column(Integer, primary_key=True, autoincrement=True)
-    idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
+    user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'))
     character = Column(JSON)
 
-    idea = relationship("CharIdea", back_populates="characters")
+    prompt = relationship("UserPrompt", back_populates="character")
 
 class KeyDescription(Base):
     """
-    Repräsentiert eine einzelne Eigenschaft oder Beschreibung wie 'groß', 'feurig', etc.
+	Key descriptions represnetate the key Values of a Character. Like 'Avatar' or 'strong'
     """
     __tablename__ = 'key_descriptions'
     description_id = Column(Integer, primary_key=True, autoincrement=True)
     description = Column(String)
 
-    description_links = relationship("DescriptionToIdea", back_populates="description")
+    description_links = relationship("DescriptionToPrompt", back_populates="description")
 
-class DescriptionToIdea(Base):
+class DescriptionToPrompt(Base):
     """
-    Verbindet eine Beschreibung mit einer bestimmten Idee.
+    Connection Table of a key-description to a user_prompt
     """
-    __tablename__ = 'descriptions_to_idea'
-    idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'), primary_key=True)
+    __tablename__ = 'description_to_prompt'
+    user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'), primary_key=True)
     description_id = Column(Integer, ForeignKey('key_descriptions.description_id'), primary_key=True)
 
-    idea = relationship("CharIdea", back_populates="idea_descriptions")
+    prompt = relationship("UserPrompt", back_populates="idea_descriptions")
     description = relationship("KeyDescription", back_populates="description_links")
 
 class Classes(Base):
     """
-    Enthält alle möglichen Klassen (als Boolean-Werte) und gibt an, welche Klassen zu einer bestimmten Charakteridee passen.
+	contains all twelve dnd classes and shows, wich user_prompt best with wich three classes.
     """
     __tablename__ = 'classes'
     class_table_id = Column(Integer, primary_key=True)
-    idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'))
+    user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'))
 
     barbarian = Column(Boolean)
     bard = Column(Boolean)
@@ -99,18 +85,17 @@ class Classes(Base):
     warlock = Column(Boolean)
     wizard = Column(Boolean)
 
-    idea = relationship("CharIdea", back_populates="class_table")
+    prompt = relationship("UserPrompt", back_populates="class_table")
 
 class BestChar(Base):
     """
-    Speichert die vier besten Charaktere für eine bestimmte Idee,
-    sortiert von 'am besten' bis 'weniger gut'.
+    Contains a sorted 'list' of all four generated characters by a user_prompt, in order of its 'bestness'
     """
     __tablename__ = 'best_char'
-    idea_id = Column(Integer, ForeignKey('char_ideas.idea_id'), primary_key=True)
-    num_one = Column(Integer, ForeignKey('characters.character_id'))
-    num_two = Column(Integer, ForeignKey('characters.character_id'))
-    num_three = Column(Integer, ForeignKey('characters.character_id'))
-    num_four = Column(Integer, ForeignKey('characters.character_id'))
+    user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'), primary_key=True)
+    num_one = Column(Integer, ForeignKey('character.character_id'))
+    num_two = Column(Integer, ForeignKey('character.character_id'))
+    num_three = Column(Integer, ForeignKey('character.character_id'))
+    num_four = Column(Integer, ForeignKey('character.character_id'))
 
-    idea = relationship("CharIdea", back_populates="best_char")
+    prompt = relationship("UserPrompt", back_populates="best_char")
