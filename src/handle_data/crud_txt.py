@@ -1,4 +1,4 @@
-from src.handle_data.crud_base import CrudBase
+from src.handle_data.base_classes.crud_base import CrudBase
 from src.helper.logger import Logger
 
 logger = Logger("data_handler")

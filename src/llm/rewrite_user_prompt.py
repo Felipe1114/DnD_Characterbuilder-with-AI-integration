@@ -1,6 +1,5 @@
-from src.llm.talk_to_mistral import TalkToMistral
+from src.llm.base_classes.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
-from src.handle_data.crud_txt import CrudTxtFiles
 from src.helper.logger import Logger
 from src.llm.system_messages import SYSTSEM_MESSAGE_FOR_REWRITE_USER_PROMPT
 

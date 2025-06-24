@@ -1,4 +1,4 @@
-from src.handle_data.crud_base import CrudBase
+from src.handle_data.base_classes.crud_base import CrudBase
 import json
 from json import JSONDecodeError
 from fastapi import HTTPException

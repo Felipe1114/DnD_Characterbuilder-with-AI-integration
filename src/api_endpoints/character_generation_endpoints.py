@@ -18,13 +18,13 @@ db_mngr = DatabaseManager()
 logger = Logger("api")
 
 @router.get("/get")
-async def get_characters(user_input: int):
+async def get_characters(user_prompt_id: int):
 	"""gets all characters by user_prompt_id"""
 	try:
-		logger.debug(f"Execute endpoit: /characters/get?user_input={user_input}")
+		logger.debug(f"Execute endpoit: /characters/get?user_input={user_prompt_id}")
 		# validates user_input
 		# if not, raise HTTPException with 400 status_code
-		user_prompt_id = validate_input(user_input)
+		user_prompt_id = validate_input(user_prompt_id)
 		
 		# does user_prompt_id exist in db?
 		# if not, raise HTTPException with 404 status_code
@@ -44,7 +44,7 @@ async def get_characters(user_input: int):
 
 	
 @router.post("/generate")
-async def generate_characters(user_input: int):
+async def generate_characters(user_prompt_id: int):
 	"""Generates for characters and saves them into the db
 	
 	user_prompt_id is the primary key for the user_prompt
@@ -57,7 +57,7 @@ async def generate_characters(user_input: int):
 	try:
 		# validates user_input
 		# if not, raise HTTPException with 400 status_code
-		user_prompt_id = validate_input(user_input)
+		user_prompt_id = validate_input(user_prompt_id)
 		
 		# does user_prompt_id exist in db?
 		# if not, raise HTTPException with 404 status_code
