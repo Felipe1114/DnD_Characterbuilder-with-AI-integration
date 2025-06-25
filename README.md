@@ -334,7 +334,6 @@ pip install -r requirements.txt
 The dnd_api module is responsible for downloading all data of the 12 DnD classes from the DnD5e API and saving them locally as JSON. For each class, a separate JSON file is created, which contains all `Spells`, `level_features`, and `subclass_features`.
 
 ```mermaid
----title: DnD-api-manager---
 classDiagram
 direction TB
     class DnDAPIBase {
@@ -463,7 +462,6 @@ The llm module consists of two applications:
 
 **Analysis of a User Prompt**
 ```mermaid
----title: Analyse User Prompt---
 classDiagram
 direction TB
     class AnalyseUserPrompt {
@@ -533,8 +531,6 @@ direction TB
 
 **Generation of a DnD Character**
 ```mermaid
----config: look: neo theme: base---
-title: Generate DnD Character
 classDiagram
 direction TB
     class DatabaseManager {
