@@ -763,6 +763,9 @@ direction TB
     }
 
 	class EnvLoader:::Peach
+   
+    classDef Peach :,stroke-width:1px, stroke-dasharray:none, stroke:#FBB35A, fill:#FFEFDB, color:#8F632D
+
 
 ```
 
