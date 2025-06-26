@@ -64,6 +64,7 @@ logger.critical("Terminating application due to critical error: %s", str(e))
 
 """
 import logging
+from logging.handlers import RotatingFileHandler
 import os
 from src.handle_data.env_loader import EnvLoader
 from typing import Optional
@@ -134,8 +135,8 @@ class Logger:
 		)
 		
 		# creates general handler
-		Logger._general_handler = logging.FileHandler(
-			f"{self.log_dir}/.log"
+		Logger._general_handler = RotatingFileHandler(
+			f"{self.log_dir}/.log", maxBytes=8*1024*1024, backupCount=4
 		)
 		Logger._general_handler.setLevel(Logger.log_level)
 		Logger._general_handler.setFormatter(self._formatter)
@@ -149,9 +150,10 @@ class Logger:
 		
 		# create or gets module handler
 		if self.module not in Logger._module_handlers:
-			module_handler = logging.FileHandler(
-				f"{self.log_dir}/{self.module}.log"
-			)
+			module_handler = RotatingFileHandler(filename=f"{self.log_dir}/{self.module}.log",
+				maxBytes=5*1024*1024, backupCount=2
+                )
+			
 			module_handler.setLevel(Logger.log_level)
 			module_handler.setFormatter(self._formatter)
 			# adds module_handler to module_handler dict
