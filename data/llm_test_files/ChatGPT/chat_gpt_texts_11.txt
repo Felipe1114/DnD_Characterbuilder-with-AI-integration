@@ -1,0 +1,1 @@
+zurück geben sollst.  Rückgabeformat: text   Verbotene formate: Markdwon   vorboteneer inhalt: ```json, ```

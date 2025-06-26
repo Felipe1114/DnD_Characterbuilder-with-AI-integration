@@ -31,10 +31,20 @@ async def rewrite_user_prompt(user_prompt: str):
 		# instanziates RewriteUserPrompt class
 		rewrite = RewriteUserPrompt(user_prompt)
 		# analyses user_prompt and gives back rewritten_user_prompt
+		
 		rewritten_user_prompt = rewrite.rewrite()
+		logger.debug(f"rewritten_user_prompt(type:{type(rewritten_user_prompt)} is: {rewritten_user_prompt}")
 		
-		rewritten_user_prompt_json = json.loads(rewritten_user_prompt)#
-		
+		logger.debug(f"start changing 'rewritten_user_prompt' to json.loads()...")
+		rewritten_user_prompt_json = json.loads(str(rewritten_user_prompt))
+		logger.debug(f"changed 'rewritten_user_prompt' to json.loads()...")
+
+	
+	# saves data in db
+		logger.info(f"save rewritten data into database...")
+		db_mngr.save_rewritten_data(user_prompt, rewritten_user_prompt_json)
+		logger.info(f"saving rewritten data was sucessfull...")
+	
 	except HTTPException as e:
 		if e.status_code == 400:
 			logger.error(f"Error with statuscode: 400: {e}")
@@ -47,17 +57,6 @@ async def rewrite_user_prompt(user_prompt: str):
 		else:
 			logger.error(f"Error with statuscode: 500: {e}")
 			raise HTTPException(status_code=500, detail=f"Internal Server error: {e}")
-	
-	except Exception as e:
-		logger.error(f"Error with statuscode: 500: {e}")
-		raise HTTPException(status_code=500, detail=f"Internal Server error: {e}")
-		
-	
-	# saves data in db
-	try:
-		logger.info(f"save rewritten data into database...")
-		db_mngr.save_rewritten_data(user_prompt, rewritten_user_prompt_json)
-		logger.info(f"saving rewritten data was sucessfull...")
 	
 	except (SQLAlchemyError, IntegrityError, OperationalError) as e:
 		# rollback is handled in 'save_rewritten_data' method.
