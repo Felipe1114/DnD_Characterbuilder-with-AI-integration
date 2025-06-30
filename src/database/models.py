@@ -14,12 +14,12 @@ class UserPrompt(Base):
     user_prompt_id = Column(Integer, primary_key=True, autoincrement=True)
     user_prompt = Column(Text)
 
-    character = relationship("Character", back_populates="prompt")
-    rewritten_prompt = relationship("RewrittenPrompts", uselist=False, back_populates="prompt")
-    best_char = relationship("BestChar", uselist=False, back_populates="prompt")
-    class_table = relationship("Classes", uselist=False, back_populates="prompt")
-    idea_descriptions = relationship("DescriptionToPrompt", back_populates="prompt")
-    rewritten_user_prompts = relationship("RewrittenPrompts", back_populates="prompt")
+    character = relationship("Character", back_populates="user_prompt")
+    rewritten_prompt = relationship("RewrittenPrompts", uselist=False, back_populates="user_prompt")
+    best_char = relationship("BestChar", uselist=False, back_populates="user_prompt")
+    class_table = relationship("Classes", uselist=False, back_populates="user_prompt")
+    idea_descriptions = relationship("DescriptionToPrompt", back_populates="user_prompt")
+    rewritten_user_prompts = relationship("RewrittenPrompts", back_populates="user_prompt")
 
 class RewrittenPrompts(Base):
     """
@@ -30,7 +30,7 @@ class RewrittenPrompts(Base):
     user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'))
     rewritten_prompt = Column(String)
 
-    prompt = relationship("UserPrompt", back_populates="rewritten_user_prompts")
+    user_prompt = relationship("UserPrompt", back_populates="rewritten_user_prompts")
 
 class Character(Base):
     """
@@ -41,7 +41,7 @@ class Character(Base):
     user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'))
     character = Column(JSON)
 
-    prompt = relationship("UserPrompt", back_populates="character")
+    user_prompt = relationship("UserPrompt", back_populates="character")
 
 class KeyDescription(Base):
     """
@@ -61,7 +61,7 @@ class DescriptionToPrompt(Base):
     user_prompt_id = Column(Integer, ForeignKey('user_prompt.user_prompt_id'), primary_key=True)
     description_id = Column(Integer, ForeignKey('key_descriptions.description_id'), primary_key=True)
 
-    prompt = relationship("UserPrompt", back_populates="idea_descriptions")
+    user_prompt = relationship("UserPrompt", back_populates="idea_descriptions")
     description = relationship("KeyDescription", back_populates="description_links")
 
 class Classes(Base):
@@ -85,7 +85,7 @@ class Classes(Base):
     warlock = Column(Boolean)
     wizard = Column(Boolean)
 
-    prompt = relationship("UserPrompt", back_populates="class_table")
+    user_prompt = relationship("UserPrompt", back_populates="class_table")
 
 class BestChar(Base):
     """
@@ -98,4 +98,4 @@ class BestChar(Base):
     num_three = Column(Integer, ForeignKey('character.character_id'))
     num_four = Column(Integer, ForeignKey('character.character_id'))
 
-    prompt = relationship("UserPrompt", back_populates="best_char")
+    user_prompt = relationship("UserPrompt", back_populates="best_char")

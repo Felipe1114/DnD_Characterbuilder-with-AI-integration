@@ -532,12 +532,15 @@ class DatabaseManager:
 		session = self.Session()
 		
 		try:
+			logger.debug(f"create stmt for loading process...")
 			stmt = select(UserPrompt.user_prompt_id)
+			logger.debug(f"waiting for result...")
 			result = session.execute(stmt).all()
+			logger.debug(f"result ist: {result}")
 			
 			if result:
 				# returns a list of user_prompt_id´s
-				return [i for i in result]
+				return [i[0] for i in result]
 		
 			if not result:
 				raise HTTPException(status_code=500, detail=f"failed loading user_prompt_id´s")
