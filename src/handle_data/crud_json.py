@@ -14,7 +14,7 @@ class CrudJsonFiles(CrudBase):
 			logger.debug(f"data: {data} will savend in file: {self.data_path}")
 			with open(self.data_path, 'w') as json_obj:
 				json.dump(data, json_obj, indent=4)
-			logger.info(f"saved json-file: {self.data_path} with data: {data} ")
+			logger.debug(f"saved json-file: {self.data_path} with data: {data} ")
 			
 		except JSONDecodeError as e:
 			logger.critical(f"Error: JSONDecodeError with: {self.data_path}; Error: {e}")

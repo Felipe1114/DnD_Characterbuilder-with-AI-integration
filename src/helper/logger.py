@@ -87,7 +87,7 @@ class LogLevelSwitch:
 	"""with this calss the logg-level can bet set for all log classes"""
 	@staticmethod
 	def set_level():
-		return LEVEL["DEBUG"]	
+		return LEVEL["DEBUG"]
 
 class Logger:
 	_initialized = False

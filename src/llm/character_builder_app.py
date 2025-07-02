@@ -3,6 +3,8 @@ from src.llm.base_classes.talk_to_mistral import TalkToMistral
 from src.database.db_manager import DatabaseManager
 from src.helper.logger import Logger
 from fastapi import HTTPException
+from src.api_endpoints.rewrite_user_prompt_endpoint import check_json_struk
+
 
 logger = Logger("llm")
 
@@ -37,6 +39,9 @@ class CharacterBuilderApp:
 		
 		self.mistral.ask(character_prompt)
 		response = self.mistral.response()
+		
+		# check if response has markdown format
+		response = check_json_struk(response)
 		
 		return response
 	
