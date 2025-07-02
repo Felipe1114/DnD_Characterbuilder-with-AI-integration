@@ -43,3 +43,8 @@ class EnvLoader:
 	def log_dir():
 		"""path to log_dir"""
 		return os.getenv("LOG_DIR")
+	
+	@staticmethod
+	def character_dir():
+		"""path to generated local characters"""
+		return os.getenv("CHARACTER_DIR")

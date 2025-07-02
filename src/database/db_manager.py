@@ -24,6 +24,7 @@ user prompts, character ideas, classes, descriptions, and generated characters.
 - `delete_character_by_user_prompt_id()`: Deletes a character idea and all related data
 - `load_all_char_ideas()`: Retrieves all character ideas from the database
 - `load_characters()`: Loads generated characters for a specific idea
+- `load_user_prompt_id(): Loads all user_prompt_ids from the db
 
 #### Helper Methods:
 - `_save_user_prompt()`: Internal method for saving user prompts
@@ -486,42 +487,67 @@ class DatabaseManager:
 		
 		finally:
 			session.close()
-		
+	
 	def load_characters(self, user_prompt_id: int):
-		"""Loads all four character with the foreign_key: user_prompt_id"""
-		logger.info(f"loading character...")
-		logger.debug(f"loading character with user_prompt_id: {user_prompt_id}")
+		"""Loads all characters with the foreign_key: user_prompt_id and returns their JSON data"""
+		logger.info(f"Loading characters...")
+		logger.debug(f"Loading characters with user_prompt_id: {user_prompt_id}")
 		
 		session = self.Session()
-		
 		try:
 			stmt = select(Character).where(Character.user_prompt_id == user_prompt_id)
-			logger.debug(f"stmt for loading character: {stmt}")
+			logger.debug(f"Statement for loading characters: {stmt}")
+			
 			results = session.execute(stmt).all()
 			
 			if results:
-				logger.info(f"loading prozess was succesfull")
-				# results is type: Row. Row is not JSON serializable, so it is transformed in a Tuple
-				results = [tuple(row) for row in results]
-				logger.debug(f"loading prozess was succesfull; results: {results}")
+				logger.info("Loading process was successful")
 				
-				return results
+				# Extract JSON data from each Character object
+				json_results = []
 			
-			if not results:
-				raise HTTPException(status_code=500, detail=f"failed loading character from database, with user_prompt_id: {user_prompt_id}")
-	
-		except SQL_ALCHEMY_ERROR as e:
-			logger.error(f"failed loading character from database, with user_prompt_id: {user_prompt_id}: {e}")
+				logger.info(f"extracting results to Json...")
+				for i, row in enumerate(results):
+					logger.debug(f"extrakting char {i}. of {len(results)}. ...")
+					character = row[0]  # Get the Character object from the tuple
+					# Convert the Character object to a dictionary or get its JSON representation
+					# Assuming your Character model has a method to_json() or similar
+					if hasattr(character, 'to_json'):
+						json_data = character.to_json()
+					elif hasattr(character, '__dict__'):
+						# Fallback: convert to dict (note: this might include SQLAlchemy internal attributes)
+						json_data = {k: v for k, v in character.__dict__.items()
+						             if not k.startswith('_') and k != 'metadata'}
+					else:
+						# If no conversion method is available, skip this character
+						continue
+					
+					json_results.append(json_data)
+				
+				logger.debug(f"Successfully loaded characters: {json_results}")
+				return json_results
 			
-			session.rollback()
-			raise HTTPException(status_code=500, detail=f"failed loading character from database, with user_prompt_id: {user_prompt_id}: {e}")
+			raise HTTPException(
+				status_code=404,
+				detail=f"No characters found with user_prompt_id: {user_prompt_id}"
+			)
 		
-		except HTTPException as e:
-			logger.error(f"failed loading character from database, with user_prompt_id: {user_prompt_id}: {e}")
-
+		except SQL_ALCHEMY_ERROR as e:
+			logger.error(f"Database error while loading characters with user_prompt_id {user_prompt_id}: {e}")
 			session.rollback()
-			raise HTTPException(status_code=500, detail=e)
-	
+			raise HTTPException(
+				status_code=500,
+				detail=f"Database error while loading characters: {str(e)}"
+			)
+		
+		except Exception as e:
+			logger.error(f"Unexpected error while loading characters with user_prompt_id {user_prompt_id}: {e}")
+			session.rollback()
+			raise HTTPException(
+				status_code=500,
+				detail=f"Unexpected error: {str(e)}"
+			)
+		
 		finally:
 			session.close()
 			

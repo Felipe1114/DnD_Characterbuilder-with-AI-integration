@@ -8,6 +8,10 @@ rewrites the user_promt and saves the rewritten_user_prompt into the database
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, OperationalError
 import json
+import re
+
+from yaql.cli.cli_functions import load_data
+
 from src.database.db_manager import DatabaseManager
 from src.llm.rewrite_user_prompt import RewriteUserPrompt
 from src.helper.logger import Logger
@@ -34,6 +38,8 @@ async def rewrite_user_prompt(user_prompt: str):
 		
 		rewritten_user_prompt = rewrite.rewrite()
 		logger.debug(f"rewritten_user_prompt(type:{type(rewritten_user_prompt)} is: {rewritten_user_prompt}")
+		
+		rewritten_user_prompt = check_json_struk(txt=rewritten_user_prompt)
 		
 		logger.debug(f"start changing 'rewritten_user_prompt' to json.loads()...")
 		rewritten_user_prompt_json = json.loads(str(rewritten_user_prompt))
@@ -68,8 +74,27 @@ async def rewrite_user_prompt(user_prompt: str):
 		raise HTTPException(status_code=500, detail=f"Internal server error: {e}")
 	
 	
+def check_json_struk(txt:str):
+	"""checks, if txt is a json like string; if ```json is in front of txt, or ``` is at the end of txt, it will be removed"""
+	# Check if the text starts with ```json and ends with ```
+	logger.info(f"check, if rewritten_user_prompt has markdown format in it...")
 	
+	if re.match(r'^\s*```json\s*', txt, flags=re.IGNORECASE | re.DOTALL) and txt.rstrip().endswith('```'):
+		logger.info(f"rewritten_user_prompt has markdown formats, removing them...")
+		
+		logger.debug(f"remove ```json from rewritten_user_prompt")
+		# Remove ```json from the beginning
+		txt = re.sub(r'^\s*```json\s*', '', txt, flags=re.IGNORECASE | re.DOTALL)
+		
+		logger.debug(f"remove ``` from rewritten_user_prompt")
+		# Remove ``` from the end
+		txt = re.sub(r'\s*```\s*$', '', txt)
+		
+		logger.info(f"return clean rewritten_user_prompt")
+		return txt.strip()
 	
+	logger.info(f"rewritten_user_prompt is clean")
+	return txt
 
 
 
