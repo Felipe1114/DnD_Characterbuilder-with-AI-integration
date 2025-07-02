@@ -214,7 +214,7 @@ def save_characters_local(cleaned_json:list):
 	output_dir = EnvLoader.character_dir()
 	Path(output_dir).mkdir(parents=True, exist_ok=True)
 	
-	for idx + 1, character_data in enumerate(cleaned_json):
+	for idx, character_data in enumerate(cleaned_json):
 		# Extrahiere das JSON aus dem 'character'-Feld
 		character_json = character_data
 		
